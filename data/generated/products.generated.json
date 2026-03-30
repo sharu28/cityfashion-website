@@ -1,0 +1,36 @@
+[
+  {
+    "id": "4080",
+    "slug": "style-4080",
+    "title": "Style 4080",
+    "category": "embroidered-tops",
+    "startingPrice": "Rs. 1,950",
+    "moq": "6 pcs",
+    "description": "Easy-selling embroidered top for retail shops.",
+    "colors": [
+      "Brown",
+      "Beige",
+      "Black",
+      "Pink",
+      "Maroon",
+      "Blue",
+      "Olive",
+      "Mauve"
+    ],
+    "isNewArrival": true,
+    "isSaleItem": false,
+    "sourceFolder": "4080",
+    "notes": "Use top-level images only. Keep output grids out of the storefront.",
+    "images": [
+      "/products/style-4080/ref-model.jpeg",
+      "/products/style-4080/img-7397-1.png",
+      "/products/style-4080/img-7398-1.png",
+      "/products/style-4080/img-7399-1.png",
+      "/products/style-4080/img-7401-1.png",
+      "/products/style-4080/img-7402-1.png",
+      "/products/style-4080/img-7404.png",
+      "/products/style-4080/img-7409.png",
+      "/products/style-4080/img-7410.png"
+    ]
+  }
+]

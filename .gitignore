@@ -1,2 +1,6 @@
 .codex-skill-bundle/
 .codex-skill-temp-1/
+.next/
+.npm-cache/
+node_modules/
+tsconfig.tsbuildinfo
