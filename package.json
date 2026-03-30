@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "check": "node_modules\\.bin\\tsc.cmd --noEmit && eslint .",
+    "check": "tsc --noEmit && eslint .",
     "build": "npm run check && next build",
     "start": "next start",
     "lint": "eslint .",

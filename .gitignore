@@ -4,3 +4,5 @@
 .npm-cache/
 node_modules/
 tsconfig.tsbuildinfo
+
+.vercel
