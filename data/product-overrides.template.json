@@ -1,0 +1,16 @@
+{
+  "STYLE-CODE": {
+    "title": "Style STYLE-CODE",
+    "category": "frocks",
+    "startingPrice": "Rs. 2,250",
+    "moq": "6 pcs",
+    "description": "Short simple line for retail shops.",
+    "colors": ["Black", "Blue", "Rose"],
+    "isNewArrival": true,
+    "isSaleItem": false,
+    "imageOrder": ["cover.jpg", "back.jpg", "color-1.jpg"],
+    "sourceSubfolders": ["."],
+    "excludeImages": ["draft.jpg"],
+    "notes": "Optional internal note"
+  }
+}

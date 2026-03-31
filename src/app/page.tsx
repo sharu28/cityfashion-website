@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { CatalogShell } from "@/components/catalog-shell";
 import { ProductGrid } from "@/components/product-grid";
@@ -7,12 +8,24 @@ import { WhatsAppButton } from "@/components/whatsapp-button";
 import {
   buildWhatsAppLink,
   categories,
-  company,
   featuredProducts,
   newArrivals,
   saleItems,
-  whatsappNumber,
 } from "@/lib/catalog";
+import { company, formattedWhatsAppNumber, getAbsoluteUrl, siteDescription } from "@/lib/site";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    url: getAbsoluteUrl("/"),
+  },
+  twitter: {
+    images: [getAbsoluteUrl("/twitter-image")],
+  },
+  description: siteDescription,
+};
 
 export default function Home() {
   const heroProducts = featuredProducts.slice(0, 3);
@@ -59,7 +72,7 @@ export default function Home() {
                 <div className="grid grid-cols-2 gap-3 border-t border-white/12 pt-5 text-sm text-white/72 sm:grid-cols-3">
                   <div>
                     <p className="text-[0.68rem] uppercase tracking-[0.24em] text-white/44">WhatsApp</p>
-                    <p className="mt-2">{whatsappNumber}</p>
+                    <p className="mt-2">{formattedWhatsAppNumber}</p>
                   </div>
                   <div>
                     <p className="text-[0.68rem] uppercase tracking-[0.24em] text-white/44">Address</p>
@@ -172,30 +185,55 @@ export default function Home() {
         </CatalogShell>
       </section>
 
-      <section className="pt-8">
+      <section id="visit-us" className="pt-8">
         <CatalogShell>
           <div className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
             <div className="rounded-[2.2rem] bg-[var(--accent-soft)] p-6">
-              <p className="text-[0.72rem] uppercase tracking-[0.28em] text-[var(--text-soft)]">Simple ordering</p>
+              <p className="text-[0.72rem] uppercase tracking-[0.28em] text-[var(--text-soft)]">Visit and order</p>
               <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-[var(--text-strong)]">
-                Send the style code and order faster.
+                Wholesale styles from Keyzer Street, Colombo 11.
               </h2>
               <p className="mt-4 text-sm leading-6 text-[var(--text-soft)]">
-                Each product page shows the code, starting price, MOQ, and all image views in one place.
+                Best for shops that want simple browsing and fast repeat orders. Send the style code on WhatsApp for quick help.
               </p>
+              <div className="mt-5 space-y-2 text-sm text-[var(--text-soft)]">
+                <p className="font-semibold text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
+                <p>{company.address}</p>
+              </div>
             </div>
             <div className="rounded-[2.2rem] border border-[var(--line)] bg-[var(--panel)] p-6">
               <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                 <div className="max-w-xl">
-                  <p className="text-[0.72rem] uppercase tracking-[0.28em] text-[var(--text-soft)]">Order now</p>
+                  <p className="text-[0.72rem] uppercase tracking-[0.28em] text-[var(--text-soft)]">Buyer confidence</p>
                   <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[var(--text-strong)]">
-                    Open product. View colors. Order on WhatsApp.
+                    Made for existing buyers and easy reorder sharing.
                   </h2>
                   <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                    Best for shops, resellers, and repeat wholesale buyers around Sri Lanka.
+                    Use this catalog to show styles, check colors, and message your order in one simple flow.
                   </p>
                 </div>
                 <WhatsAppButton href={buildWhatsAppLink()} label="Start WhatsApp Order" />
+              </div>
+            </div>
+          </div>
+        </CatalogShell>
+      </section>
+
+      <section className="pt-8">
+        <CatalogShell>
+          <div className="rounded-[2.2rem] border border-[var(--line)] bg-[rgba(255,249,242,0.92)] p-6">
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="rounded-[1.7rem] bg-[var(--sand)] p-5">
+                <p className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-soft)]">Who this is for</p>
+                <p className="mt-3 text-lg font-semibold text-[var(--text-strong)]">Ladies wear retailers and repeat wholesale buyers.</p>
+              </div>
+              <div className="rounded-[1.7rem] bg-[var(--sand)] p-5">
+                <p className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-soft)]">What you see</p>
+                <p className="mt-3 text-lg font-semibold text-[var(--text-strong)]">Style code, images, colors, starting price, and MOQ.</p>
+              </div>
+              <div className="rounded-[1.7rem] bg-[var(--sand)] p-5">
+                <p className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-soft)]">How to order</p>
+                <p className="mt-3 text-lg font-semibold text-[var(--text-strong)]">Open product and send the code on WhatsApp.</p>
               </div>
             </div>
           </div>

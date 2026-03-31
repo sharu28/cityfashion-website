@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -7,12 +8,50 @@ import { ProductBadges } from "@/components/product-badges";
 import { ProductGrid } from "@/components/product-grid";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { buildWhatsAppLink, getProduct, getRelatedProducts } from "@/lib/catalog";
+import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
 
 type ProductPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProduct(slug);
+
+  if (!product) {
+    return {};
+  }
+
+  const description = `${product.description} Starting price ${product.startingPrice}. MOQ ${product.moq}.`;
+
+  return {
+    title: `${product.title}`,
+    description,
+    alternates: {
+      canonical: `/products/${product.slug}`,
+    },
+    openGraph: {
+      title: `${product.title} | ${siteName}`,
+      description,
+      url: getAbsoluteUrl(`/products/${product.slug}`),
+      images: product.coverImage
+        ? [
+            {
+              url: getAbsoluteUrl(product.coverImage),
+              width: 1200,
+              height: 1500,
+              alt: product.title,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      images: [product.coverImage ? getAbsoluteUrl(product.coverImage) : getAbsoluteUrl("/twitter-image")],
+    },
+  };
+}
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
@@ -109,11 +148,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             <div className="rounded-[2rem] border border-[var(--line)] bg-[var(--panel)] p-5">
-              <p className="text-[0.72rem] uppercase tracking-[0.28em] text-[var(--text-soft)]">Order steps</p>
+              <p className="text-[0.72rem] uppercase tracking-[0.28em] text-[var(--text-soft)]">Order help</p>
               <div className="mt-4 space-y-3 text-sm leading-6 text-[var(--text-soft)]">
                 <p>1. Check all product images.</p>
                 <p>2. Pick color names you need.</p>
                 <p>3. Send style code on WhatsApp.</p>
+                <p className="pt-2 font-semibold text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
+                <p>131 Keyzer Street, Colombo 11</p>
               </div>
             </div>
           </aside>

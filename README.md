@@ -33,6 +33,14 @@ Each product is matched by folder name. Example:
 }
 ```
 
+Template file:
+
+- `data/product-overrides.template.json`
+
+Bulk product workflow:
+
+- `PRODUCT_IMPORT_GUIDE.md`
+
 ## Notes
 
 - Imported product images are copied into `public/products`

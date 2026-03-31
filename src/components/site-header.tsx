@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { buildWhatsAppLink, company } from "@/lib/catalog";
+import { buildWhatsAppLink } from "@/lib/catalog";
+import { company } from "@/lib/site";
 
 export function SiteHeader() {
   return (
@@ -18,6 +19,7 @@ export function SiteHeader() {
           <nav className="hidden items-center gap-6 text-sm text-[var(--text-soft)] md:flex">
             <Link href="/#categories">Categories</Link>
             <Link href="/#new-arrivals">New</Link>
+            <Link href="/#visit-us">Visit</Link>
             <Link href="/#sale-items">Sale</Link>
             <Link href={buildWhatsAppLink()} className="rounded-full bg-[var(--text-strong)] px-4 py-2 font-semibold text-white">
               WhatsApp

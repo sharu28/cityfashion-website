@@ -1,12 +1,5 @@
 import products from "../../data/generated/products.generated.json";
-
-export const whatsappNumber = "94742216040";
-
-export const company = {
-  name: "City Fashion",
-  tagline: "Wholesale ladies wear for Sri Lanka retailers",
-  address: "131 Keyzer Street, Colombo 11",
-};
+import { company, whatsappNumber } from "@/lib/site";
 
 export const categories = [
   {

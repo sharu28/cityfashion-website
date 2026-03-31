@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -6,12 +7,40 @@ import { ProductGrid } from "@/components/product-grid";
 import { SectionTitle } from "@/components/section-title";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { buildWhatsAppLink, categories, getCategory, productsByCategory } from "@/lib/catalog";
+import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
 
 type CategoryPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const category = getCategory(slug);
+
+  if (!category) {
+    return {};
+  }
+
+  const description = `${category.intro} Browse ${category.name.toLowerCase()} and order on WhatsApp.`;
+
+  return {
+    title: `${category.name}`,
+    description,
+    alternates: {
+      canonical: `/category/${category.slug}`,
+    },
+    openGraph: {
+      title: `${category.name} | ${siteName}`,
+      description,
+      url: getAbsoluteUrl(`/category/${category.slug}`),
+    },
+    twitter: {
+      images: [getAbsoluteUrl("/twitter-image")],
+    },
+  };
+}
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
@@ -52,7 +81,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </div>
 
             <div className="rounded-[2rem] bg-[var(--hero)] p-5 text-white">
-              <p className="text-[0.72rem] uppercase tracking-[0.28em] text-white/48">More categories</p>
+              <p className="text-[0.72rem] uppercase tracking-[0.28em] text-white/48">Contact and browse</p>
+              <div className="mt-4 space-y-1 text-sm text-white/74">
+                <p>{formattedWhatsAppNumber}</p>
+                <p>131 Keyzer Street, Colombo 11</p>
+              </div>
               <div className="mt-5 flex flex-wrap gap-3">
                 {categories.map((item) => (
                   <Link
