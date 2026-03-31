@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { buildWhatsAppLink } from "@/lib/catalog";
+import { RetailerOrderButton } from "@/components/retailer-order-button";
 import { company, formattedWhatsAppNumber } from "@/lib/site";
 
 export function SiteFooter() {
@@ -22,9 +22,7 @@ export function SiteFooter() {
           <div className="space-y-2 text-sm text-[var(--text-soft)]">
             <p className="font-semibold text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
             <p>{company.address}</p>
-            <Link href={buildWhatsAppLink()} className="inline-flex font-semibold text-[var(--text-strong)] underline decoration-[var(--accent)] underline-offset-4">
-              Order on WhatsApp
-            </Link>
+            <RetailerOrderButton label="Retailer order" />
           </div>
         </div>
 

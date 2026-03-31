@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 
 import { CatalogShell } from "@/components/catalog-shell";
 import { ProductGrid } from "@/components/product-grid";
+import { RetailerOrderButton } from "@/components/retailer-order-button";
+import { RetailerShortlistInlineLink } from "@/components/retailer-provider";
 import { SectionTitle } from "@/components/section-title";
-import { WhatsAppButton } from "@/components/whatsapp-button";
 import {
-  buildWhatsAppLink,
   categories,
   featuredProducts,
   newArrivals,
@@ -60,7 +60,8 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <WhatsAppButton href={buildWhatsAppLink()} label="Order on WhatsApp" />
+                  <RetailerOrderButton label="Retailer order" />
+                  <RetailerShortlistInlineLink />
                   <Link
                     href="#new-arrivals"
                     className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/18 px-6 text-sm font-semibold text-white"
@@ -80,7 +81,7 @@ export default function Home() {
                   </div>
                   <div className="col-span-2 sm:col-span-1">
                     <p className="text-[0.68rem] uppercase tracking-[0.24em] text-white/44">Best for</p>
-                    <p className="mt-2">Wholesale buyers and repeat shop orders</p>
+                    <p className="mt-2">Retailers who want saved styles and faster repeat orders</p>
                   </div>
                 </div>
               </div>
@@ -123,7 +124,7 @@ export default function Home() {
             <SectionTitle
               eyebrow="Browse"
               title="Shop by category"
-              body="Choose a category and open styles fast. Each product page shows colors, starting price, MOQ, and WhatsApp order."
+              body="Choose a category and open styles fast. Each product page shows colors, starting price, MOQ, and retailer order flow."
             />
             <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {categories.map((category) => (
@@ -153,8 +154,8 @@ export default function Home() {
             <SectionTitle
               eyebrow="Latest"
               title="New arrivals"
-              body="Fresh styles for your next order."
-              action={<WhatsAppButton href={buildWhatsAppLink()} label="Ask on WhatsApp" />}
+              body="Fresh styles for your next retailer order."
+              action={<RetailerOrderButton label="Login to order" />}
             />
             <div className="mt-8">
               <ProductGrid products={newArrivals.length > 0 ? newArrivals : featuredProducts.slice(0, 6)} />
@@ -170,7 +171,7 @@ export default function Home() {
               eyebrow="Value"
               title="Sale items"
               body="Good picks when you need better margin and quick movement."
-              action={<WhatsAppButton href={buildWhatsAppLink()} label="Ask sale items" variant="light" />}
+              action={<RetailerOrderButton label="Ask sale items" variant="light" />}
             />
             <div className="mt-8">
               {saleItems.length > 0 ? (
@@ -194,7 +195,7 @@ export default function Home() {
                 Wholesale styles from Keyzer Street, Colombo 11.
               </h2>
               <p className="mt-4 text-sm leading-6 text-[var(--text-soft)]">
-                Best for shops that want simple browsing and fast repeat orders. Send the style code on WhatsApp for quick help.
+                Best for shops that want simple browsing, saved styles, and fast repeat orders. Log in with your phone before WhatsApp order.
               </p>
               <div className="mt-5 space-y-2 text-sm text-[var(--text-soft)]">
                 <p className="font-semibold text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
@@ -209,10 +210,10 @@ export default function Home() {
                     Made for existing buyers and easy reorder sharing.
                   </h2>
                   <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                    Use this catalog to show styles, check colors, and message your order in one simple flow.
+                    Use this catalog to show styles, save favorites, and start retailer orders in one simple flow.
                   </p>
                 </div>
-                <WhatsAppButton href={buildWhatsAppLink()} label="Start WhatsApp Order" />
+                <RetailerOrderButton label="Start WhatsApp Order" />
               </div>
             </div>
           </div>
@@ -229,11 +230,11 @@ export default function Home() {
               </div>
               <div className="rounded-[1.7rem] bg-[var(--sand)] p-5">
                 <p className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-soft)]">What you see</p>
-                <p className="mt-3 text-lg font-semibold text-[var(--text-strong)]">Style code, images, colors, starting price, and MOQ.</p>
+                <p className="mt-3 text-lg font-semibold text-[var(--text-strong)]">Style code, images, colors, price, MOQ, fabric, and size range.</p>
               </div>
               <div className="rounded-[1.7rem] bg-[var(--sand)] p-5">
                 <p className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-soft)]">How to order</p>
-                <p className="mt-3 text-lg font-semibold text-[var(--text-strong)]">Open product and send the code on WhatsApp.</p>
+                <p className="mt-3 text-lg font-semibold text-[var(--text-strong)]">Save styles, log in with phone, and start WhatsApp order.</p>
               </div>
             </div>
           </div>

@@ -4,6 +4,8 @@
     "category": "frocks",
     "startingPrice": "Rs. 2,250",
     "moq": "6 pcs",
+    "fabric": "Cotton blend",
+    "sizeRange": "Free size",
     "description": "Short simple line for retail shops.",
     "colors": ["Black", "Blue", "Rose"],
     "isNewArrival": true,

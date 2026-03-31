@@ -6,8 +6,9 @@ import { notFound } from "next/navigation";
 import { CatalogShell } from "@/components/catalog-shell";
 import { ProductBadges } from "@/components/product-badges";
 import { ProductGrid } from "@/components/product-grid";
-import { WhatsAppButton } from "@/components/whatsapp-button";
-import { buildWhatsAppLink, getProduct, getRelatedProducts } from "@/lib/catalog";
+import { RetailerOrderButton } from "@/components/retailer-order-button";
+import { SaveProductButton } from "@/components/save-product-button";
+import { getProduct, getRelatedProducts } from "@/lib/catalog";
 import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
 
 type ProductPageProps = {
@@ -24,7 +25,8 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     return {};
   }
 
-  const description = `${product.description} Starting price ${product.startingPrice}. MOQ ${product.moq}.`;
+  const detailLine = [product.fabric, product.sizeRange].filter(Boolean).join(". ");
+  const description = `${product.description} Starting price ${product.startingPrice}. MOQ ${product.moq}.${detailLine ? ` ${detailLine}.` : ""}`;
 
   return {
     title: `${product.title}`,
@@ -103,7 +105,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-[2.4rem] bg-[var(--hero)] p-6 text-white shadow-[0_24px_60px_rgba(32,19,13,0.2)]">
-              <p className="text-[0.72rem] uppercase tracking-[0.28em] text-white/46">{product.id}</p>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-[0.72rem] uppercase tracking-[0.28em] text-white/46">{product.id}</p>
+                </div>
+                <SaveProductButton productSlug={product.slug} />
+              </div>
               <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white">{product.title}</h1>
               <p className="mt-4 text-sm leading-6 text-white/72">{product.description}</p>
               <div className="mt-5">
@@ -118,6 +125,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <div className="rounded-[1.5rem] border border-white/12 bg-white/8 p-4">
                   <p className="text-[0.68rem] uppercase tracking-[0.24em] text-white/46">MOQ</p>
                   <p className="mt-2 text-xl font-semibold text-white">{product.moq}</p>
+                </div>
+                <div className="rounded-[1.5rem] border border-white/12 bg-white/8 p-4">
+                  <p className="text-[0.68rem] uppercase tracking-[0.24em] text-white/46">Fabric</p>
+                  <p className="mt-2 text-base font-semibold text-white">{product.fabric || "Ask on WhatsApp"}</p>
+                </div>
+                <div className="rounded-[1.5rem] border border-white/12 bg-white/8 p-4">
+                  <p className="text-[0.68rem] uppercase tracking-[0.24em] text-white/46">Size range</p>
+                  <p className="mt-2 text-base font-semibold text-white">{product.sizeRange || "Ask on WhatsApp"}</p>
                 </div>
               </div>
 
@@ -140,9 +155,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               <div className="mt-6 space-y-3">
-                <WhatsAppButton href={buildWhatsAppLink(product)} label="Order on WhatsApp" />
+                <RetailerOrderButton productSlug={product.slug} label="Order on WhatsApp" />
                 <p className="text-sm text-white/68">
-                  Send style code <span className="font-semibold text-white">{product.id}</span> for faster help.
+                  Save this style first if you want it kept in your shortlist. Send style code{" "}
+                  <span className="font-semibold text-white">{product.id}</span> for faster help.
                 </p>
               </div>
             </div>
@@ -151,8 +167,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <p className="text-[0.72rem] uppercase tracking-[0.28em] text-[var(--text-soft)]">Order help</p>
               <div className="mt-4 space-y-3 text-sm leading-6 text-[var(--text-soft)]">
                 <p>1. Check all product images.</p>
-                <p>2. Pick color names you need.</p>
-                <p>3. Send style code on WhatsApp.</p>
+                <p>2. Save the style or pick color names you need.</p>
+                <p>3. Start WhatsApp order after retailer login.</p>
                 <p className="pt-2 font-semibold text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
                 <p>131 Keyzer Street, Colombo 11</p>
               </div>

@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 
 import { CatalogShell } from "@/components/catalog-shell";
 import { ProductGrid } from "@/components/product-grid";
+import { RetailerOrderButton } from "@/components/retailer-order-button";
 import { SectionTitle } from "@/components/section-title";
-import { WhatsAppButton } from "@/components/whatsapp-button";
-import { buildWhatsAppLink, categories, getCategory, productsByCategory } from "@/lib/catalog";
+import { categories, getCategory, productsByCategory } from "@/lib/catalog";
 import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
 
 type CategoryPageProps = {
@@ -62,7 +62,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 eyebrow="Category"
                 title={category.name}
                 body={category.intro}
-                action={<WhatsAppButton href={buildWhatsAppLink()} label="Order on WhatsApp" />}
+                action={<RetailerOrderButton label="Retailer order" />}
               />
               <div className="grid gap-3 sm:grid-cols-3">
                 <div className="rounded-[1.5rem] bg-[var(--sand)] p-4">
@@ -71,11 +71,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </div>
                 <div className="rounded-[1.5rem] bg-[var(--sand)] p-4">
                   <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[var(--text-soft)]">Best flow</p>
-                  <p className="mt-2 text-base font-semibold text-[var(--text-strong)]">Open style and send code</p>
+                  <p className="mt-2 text-base font-semibold text-[var(--text-strong)]">Save style and start order</p>
                 </div>
                 <div className="rounded-[1.5rem] bg-[var(--sand)] p-4">
                   <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[var(--text-soft)]">Details shown</p>
-                  <p className="mt-2 text-base font-semibold text-[var(--text-strong)]">Price, MOQ, colors</p>
+                  <p className="mt-2 text-base font-semibold text-[var(--text-strong)]">Price, MOQ, colors, sizes</p>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 ))}
               </div>
               <p className="mt-6 text-sm leading-6 text-white/68">
-                Need fast help? Open any product and send the style code on WhatsApp.
+                Need fast help? Save the style first, then start retailer order on WhatsApp.
               </p>
             </div>
           </div>

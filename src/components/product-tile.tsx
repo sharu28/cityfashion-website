@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { CatalogProductView } from "@/lib/catalog";
 
 import { ProductBadges } from "@/components/product-badges";
+import { SaveProductButton } from "@/components/save-product-button";
 
 type ProductTileProps = { product: CatalogProductView };
 
@@ -13,8 +14,11 @@ export function ProductTile({ product }: ProductTileProps) {
   return (
     <Link
       href={`/products/${product.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[rgba(255,250,244,0.9)] p-3 shadow-[0_18px_45px_rgba(48,31,13,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(48,31,13,0.12)]"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[rgba(255,250,244,0.9)] p-3 shadow-[0_18px_45px_rgba(48,31,13,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(48,31,13,0.12)]"
     >
+      <div className="absolute right-5 top-5 z-10">
+        <SaveProductButton productSlug={product.slug} />
+      </div>
       <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-[var(--muted)]">
         {image ? (
           <Image

@@ -2,36 +2,61 @@
 
 ## Goal
 
-Use this workflow when preparing the next `50-100` products for the City Fashion site.
+Use this workflow when preparing and reviewing product batches for the City Fashion site.
 
-## 1. Put each style in one folder
+The current batch already has starter overrides for `29` imported styles.
 
-Source folder:
+## Source and generated locations
 
-`C:\Users\sharu\Projects\family-biz\products`
+- Raw source folders: `C:\Users\sharu\Projects\family-biz\products`
+- Website-ready copied images: `public/products`
+- Generated catalog data: `data/generated/products.generated.json`
+- Current starter overrides: `data/product-overrides.json`
+- Reusable starter template: `data/product-overrides.template.json`
 
-Example:
+## Current staged workflow
 
-```text
-products
-  4081
-    cover.jpg
-    back.jpg
-    red.jpg
-  4082
-    front.jpg
-    side.jpg
-    beige.jpg
-```
+1. Put each style in one folder inside `../products`
+2. Clean obvious bad or duplicate images first
+3. Review starter override data in `data/product-overrides.json`
+4. Run `npm run import-products`
+5. Run `npm run check`
+6. Review the site visually
+7. Commit and push
+8. Update `.memory/STATE.md` and `.memory/TODO.md` if the batch review changed priorities
 
-Rules:
+## What counts as messy
 
-- Folder name should be the style code
-- Keep only website-ready images when possible
-- Use one clear cover image
-- Remove collages, drafts, WhatsApp screenshots, and duplicate exports when possible
+These are the main patterns to clean before trusting the import result:
 
-## 2. Minimum data needed per product
+- grid or collage exports
+- random export names
+- nested subfolders
+- unused video files
+- descriptive folder names that need review
+
+## Suggested cleanup flow for messy folders
+
+For each style:
+
+1. Keep the best real product images
+2. Remove or ignore grid/collage files
+3. Remove duplicate `.jpg` and `.png` versions when possible
+4. Ignore video files unless they are needed elsewhere
+5. Review folders with names like `1570 KY Bamboo`, `3003 V-3`, `3003 V-6`
+6. Set the best cover image first in `imageOrder`
+
+## Product review order
+
+For each product:
+
+1. clean images
+2. confirm category
+3. fill price and MOQ
+4. add colors and short description
+5. re-import and review the site
+
+## Minimum data needed per product
 
 Every product should have:
 
@@ -43,26 +68,7 @@ Every product should have:
 - `colors`
 - `cover image order`
 
-Use this template:
-
-`data/product-overrides.template.json`
-
-Then copy entries into:
-
-`data/product-overrides.json`
-
-## 3. Suggested cleanup flow for messy folders
-
-For each style:
-
-1. Make one clean folder named by style code
-2. Copy the best raw images into it
-3. Keep one cover image first
-4. Remove unwanted files or list them in `excludeImages`
-5. Add the image order in `imageOrder`
-6. Add business fields in `data/product-overrides.json`
-
-## 4. Import and check
+## Import and verify
 
 Run:
 
@@ -72,7 +78,7 @@ npm run check
 npm run build
 ```
 
-## 5. Before push
+## Before push
 
 Make sure these are updated:
 

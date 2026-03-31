@@ -1,14 +1,23 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+import { createSupabaseProxyClient, isSupabaseEnabled } from "@/lib/supabase/server";
+
 const primaryHost = "cityfashion.shop";
 const localHosts = new Set(["localhost", "127.0.0.1"]);
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0] ?? "";
 
   if (!host || localHosts.has(host)) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+
+    if (isSupabaseEnabled()) {
+      const supabase = createSupabaseProxyClient(request, response);
+      await supabase?.auth.getUser();
+    }
+
+    return response;
   }
 
   if (host !== primaryHost) {
@@ -19,7 +28,14 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl, 308);
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+
+  if (isSupabaseEnabled()) {
+    const supabase = createSupabaseProxyClient(request, response);
+    await supabase?.auth.getUser();
+  }
+
+  return response;
 }
 
 export const config = {

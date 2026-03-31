@@ -147,6 +147,8 @@ for (const folder of sourceFolders) {
     category,
     startingPrice: override.startingPrice ?? "Call for price",
     moq: override.moq ?? "6 pcs",
+    fabric: override.fabric ?? "",
+    sizeRange: override.sizeRange ?? "",
     description: override.description ?? "Wholesale style for Sri Lanka retailers.",
     colors: override.colors ?? [],
     isNewArrival: override.isNewArrival ?? true,

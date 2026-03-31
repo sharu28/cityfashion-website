@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Manrope, Playfair_Display } from "next/font/google";
 
+import { AttributionTracker } from "@/components/attribution-tracker";
+import { RetailerProvider } from "@/components/retailer-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { company, getAbsoluteUrl, siteDescription, siteName, siteUrl } from "@/lib/site";
@@ -73,10 +76,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sans.variable} ${serif.variable} bg-[var(--bg)] text-[var(--text-strong)] antialiased`}>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <RetailerProvider>
+          <AttributionTracker />
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </RetailerProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

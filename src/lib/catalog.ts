@@ -69,6 +69,8 @@ export type CatalogProduct = {
   category: string;
   startingPrice: string;
   moq: string;
+  fabric?: string;
+  sizeRange?: string;
   description: string;
   colors: string[];
   isNewArrival: boolean;
