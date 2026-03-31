@@ -30,6 +30,7 @@ Current status on `2026-03-31`:
 - automatic local server start failed on Windows during embedded PostgreSQL startup
 - starter `programs/` docs created for launch ops, product cleanup, SEO/GEO, and reporting loops
 - first ops-hub templates created for prospects, outreach queue, campaigns, experiment log, and weekly reports
+- a live Google Sheets ops hub has now been created and seeded through direct API writes with a service account
 
 ### Autoresearch-inspired `program.md` runs
 

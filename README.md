@@ -9,6 +9,7 @@ Wholesale ladies' wear catalog website for Sri Lanka retailers.
 - Deployment: live on Vercel
 - Current generated starter batch: `29` imported products
 - Retailer flow now includes phone OTP gate before saving styles or starting WhatsApp order
+- Google Sheets ops hub is now live for campaigns, prospects, and weekly reporting
 - Source product photos live outside the repo in `../products`
 - Imported assets and generated data must be committed before push
 - Repo-local operating memory now lives in `.memory/`
@@ -64,6 +65,7 @@ git push origin main
 
 - `AGENTS.md` -> repo rules and current implementation guidance
 - `supabase/schema.sql` -> retailer auth, shortlist, and event tables
+- `../cityfashion-ops/ops-hub/README.md` -> Google Sheets ops hub structure
 - `.memory/PROJECT.md` -> stable project truth
 - `.memory/STATE.md` -> current working context and resume point
 - `.memory/TODO.md` -> running task list

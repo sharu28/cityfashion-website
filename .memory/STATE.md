@@ -6,6 +6,7 @@ Last updated: `2026-03-31`
 
 - Finish Supabase project setup for retailer phone OTP and shortlist
 - QA the new retailer login and shortlist flow on mobile
+- Seed the Google Sheets ops hub with first real retailer and campaign rows
 - Review and clean the current 29-product starter batch
 - Keep the site growth-ready on `cityfashion.shop`
 
@@ -21,6 +22,7 @@ Last updated: `2026-03-31`
 - Retailer phone OTP is required before wishlist or WhatsApp order
 - `Supabase + Sheets` is the default v1 stack for retailer capture and growth ops
 - The sidecar now includes a reporting program and ops-hub sheet templates
+- The first Google Sheets ops hub is now created and writable by service account
 
 ## Open blockers
 
@@ -35,8 +37,8 @@ Last updated: `2026-03-31`
 1. Create or connect the Supabase project and run `supabase/schema.sql`
 2. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` locally and in Vercel
 3. QA OTP signup, save, shortlist, and WhatsApp order flow on mobile
-4. Review `PRODUCT_REVIEW_NOTES.md`
-5. Clean highest-priority messy folders and complete product metadata
+4. Seed the Google Sheets ops hub with existing retailers, first campaigns, and weekly report rows
+5. Review `PRODUCT_REVIEW_NOTES.md` and clean product metadata
 
 ## External memory / orchestration direction
 

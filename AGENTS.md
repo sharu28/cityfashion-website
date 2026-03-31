@@ -16,6 +16,7 @@ City Fashion website built with Next.js.
 - Redirect and canonical behavior for the primary domain already exists and should be preserved
 - Analytics, sitemap, robots, OG image, and Twitter image routes are already part of the app shell
 - Retailer login, shortlist, and gated WhatsApp order flow now exist and depend on Supabase env vars
+- The first Google Sheets ops hub is live and should be treated as the working campaign database
 - There is an active starter batch of `29` imported product folders
 - Most new product category assignments are provisional and should not be treated as business-final
 - Source product images live outside the repo in `C:\Users\sharu\Projects\family-biz\products`
@@ -193,6 +194,7 @@ git push origin main
 - `.memory-private/*` is local-only and ignored by git
 - Future Paperclip-style orchestration should consume repo memory from a separate sibling workspace
 - Future `program.md`-style runs should be treated as experiments and summarized back into `.memory/EXPERIMENTS.md`
+- The live ops hub sits outside the repo in Google Sheets and should be updated through the service-account path, not manual repo files
 
 ## Editing Guidance For Future Agents
 

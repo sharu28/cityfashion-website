@@ -8,6 +8,8 @@
   owner: user | status: active | context: `.env.example`
 - [ ] QA retailer signup, shortlist save, and WhatsApp order flow on mobile.  
   owner: agent | status: active | context: `src/components/retailer-provider.tsx`
+- [ ] Seed `existing_retailers`, `campaigns`, and `weekly_reports` in the live Google Sheets ops hub.  
+  owner: agent | status: active | context: `../cityfashion-ops/ops-hub/README.md`
 - [ ] Review highest-priority messy product folders and pick usable images.  
   owner: user | status: active | context: `PRODUCT_REVIEW_NOTES.md`
 - [ ] Confirm provisional categories for the 29-product starter batch.  
@@ -23,8 +25,6 @@
   owner: agent | status: queued | context: `PRODUCT_REVIEW_NOTES.md`
 - [ ] Start the first SEO/GEO backlog pass for launch pages and product pages.  
   owner: agent | status: queued | context: `.memory/SEO_GEO.md`
-- [ ] Create the shared Sheets or Airtable ops hub from `../cityfashion-ops/ops-hub/` templates.  
-  owner: user | status: queued | context: `../cityfashion-ops/ops-hub/README.md`
 - [ ] Debug Paperclip local embedded PostgreSQL startup in `../cityfashion-ops` or switch the sidecar to a different supported database path.  
   owner: agent | status: queued | context: `.memory/EXPERIMENTS.md`
 - [ ] Use the new sidecar programs to generate low-risk launch, SEO, and catalog process tasks while product cleanup waits.  
@@ -56,3 +56,5 @@
   owner: agent | status: done | context: `.memory/EXPERIMENTS.md`
 - [x] Added retailer OTP, server-side shortlist, gated WhatsApp order flow, and Supabase setup docs.  
   owner: agent | status: done | context: `README.md`
+- [x] Created the first live Google Sheets ops hub and API write path.  
+  owner: agent | status: done | context: `../cityfashion-ops/ops-hub/README.md`
