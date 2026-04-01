@@ -25,10 +25,14 @@
   owner: agent | status: queued | context: `PRODUCT_REVIEW_NOTES.md`
 - [ ] Start the first SEO/GEO backlog pass for launch pages and product pages.  
   owner: agent | status: queued | context: `.memory/SEO_GEO.md`
-- [ ] Debug Paperclip local embedded PostgreSQL startup in `../cityfashion-ops` or switch the sidecar to a different supported database path.  
-  owner: agent | status: queued | context: `.memory/EXPERIMENTS.md`
+- [ ] Start Docker Desktop and run the external Postgres Paperclip recovery flow in `../cityfashion-ops/scripts/`.  
+  owner: agent | status: queued | context: `../cityfashion-ops/PAPERCLIP_EXTERNAL_POSTGRES.md`
+- [ ] Debug Paperclip local embedded PostgreSQL startup in `../cityfashion-ops` only if external Postgres recovery is not good enough.  
+  owner: agent | status: backlog | context: `.memory/EXPERIMENTS.md`
 - [ ] Use the new sidecar programs to generate low-risk launch, SEO, and catalog process tasks while product cleanup waits.  
   owner: agent | status: queued | context: `../cityfashion-ops/programs/`
+- [ ] Populate the first real weekly growth report once Supabase and analytics inputs are available.  
+  owner: agent | status: queued | context: `../cityfashion-ops/outputs/2026-04-01-reporting-draft.md`
 
 ## Later
 

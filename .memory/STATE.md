@@ -1,6 +1,6 @@
 # Project State
 
-Last updated: `2026-03-31`
+Last updated: `2026-04-01`
 
 ## Current focus
 
@@ -23,6 +23,7 @@ Last updated: `2026-03-31`
 - `Supabase + Sheets` is the default v1 stack for retailer capture and growth ops
 - The sidecar now includes a reporting program and ops-hub sheet templates
 - The first Google Sheets ops hub is now created and writable by service account
+- External Postgres via `DATABASE_URL` is now the default Paperclip recovery path on this Windows machine
 
 ## Open blockers
 
@@ -31,6 +32,7 @@ Last updated: `2026-03-31`
 - Prices, MOQ, colors, and descriptions are incomplete for most imported styles
 - Supabase project env vars and phone auth provider are not configured in this repo or Vercel yet
 - Paperclip local server startup is blocked on this Windows machine by embedded PostgreSQL startup failure after successful onboarding and doctor checks
+- Docker Desktop is installed but was not running during the first external Postgres recovery pass
 
 ## Resume here
 
@@ -38,7 +40,8 @@ Last updated: `2026-03-31`
 2. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` locally and in Vercel
 3. QA OTP signup, save, shortlist, and WhatsApp order flow on mobile
 4. Seed the Google Sheets ops hub with existing retailers, first campaigns, and weekly report rows
-5. Review `PRODUCT_REVIEW_NOTES.md` and clean product metadata
+5. Start the external Postgres Paperclip recovery flow from `../cityfashion-ops/scripts/`
+6. Review `PRODUCT_REVIEW_NOTES.md` and clean product metadata
 
 ## External memory / orchestration direction
 

@@ -22,15 +22,20 @@ Near-term experiment:
 - define how it reads repo memory
 - define how it writes back summaries, task proposals, and research outputs
 
-Current status on `2026-03-31`:
+Current status on `2026-04-01`:
 
 - sibling workspace created at `../cityfashion-ops`
 - Paperclip CLI onboarding completed with local data in `../cityfashion-ops/.paperclip-data`
 - `paperclipai doctor` passed
 - automatic local server start failed on Windows during embedded PostgreSQL startup
+- embedded Postgres failure reproduces with exit code `3221225734`
+- setting `DATABASE_URL` changes `paperclipai run` away from embedded Postgres and into a normal external DB connection attempt
+- the first external DB test failed with `ECONNREFUSED 127.0.0.1:55432` because no database was running yet
+- external Postgres is now the default Paperclip recovery path on this Windows machine
 - starter `programs/` docs created for launch ops, product cleanup, SEO/GEO, and reporting loops
 - first ops-hub templates created for prospects, outreach queue, campaigns, experiment log, and weekly reports
 - a live Google Sheets ops hub has now been created and seeded through direct API writes with a service account
+- helper scripts and recovery notes now exist in `../cityfashion-ops` for the external Postgres path
 
 ### Autoresearch-inspired `program.md` runs
 

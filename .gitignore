@@ -7,3 +7,5 @@ tsconfig.tsbuildinfo
 
 .vercel
 .memory-private/
+.env.local
+supabase/.temp/
