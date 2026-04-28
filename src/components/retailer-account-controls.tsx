@@ -16,7 +16,7 @@ export function RetailerAccountControls() {
       <button
         type="button"
         onClick={() => openAuth({ type: "order" })}
-        className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--sand)] px-4 text-sm font-semibold text-[var(--text-strong)]"
+        className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--sand)] px-4 text-sm font-bold text-[var(--text-strong)] transition hover:bg-[var(--sand-strong)] active:scale-[0.98]"
       >
         Retailer login
       </button>
@@ -27,7 +27,7 @@ export function RetailerAccountControls() {
     <div className="flex items-center gap-2">
       <Link
         href="/shortlist"
-        className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--sand)] px-4 text-sm font-semibold text-[var(--text-strong)]"
+        className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--sand)] px-4 text-sm font-bold text-[var(--text-strong)] transition hover:bg-[var(--sand-strong)] active:scale-[0.98]"
       >
         Shortlist ({shortlist.length})
       </Link>
@@ -36,7 +36,7 @@ export function RetailerAccountControls() {
         onClick={() => {
           void signOut();
         }}
-        className="inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--line)] px-4 text-sm font-semibold text-[var(--text-strong)]"
+        className="inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--line)] px-4 text-sm font-bold text-[var(--text-strong)] transition hover:bg-[var(--sand)] active:scale-[0.98]"
       >
         {retailer.phone}
       </button>

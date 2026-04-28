@@ -3,7 +3,7 @@ import { ShortlistPage } from "@/components/shortlist-page";
 
 export default function RetailerShortlistPage() {
   return (
-    <main className="pb-16 pt-24">
+    <main className="overflow-hidden pb-16 pt-28">
       <CatalogShell>
         <ShortlistPage />
       </CatalogShell>

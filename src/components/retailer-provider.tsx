@@ -310,13 +310,13 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
     <RetailerContext.Provider value={value}>
       {children}
       {authOpen ? (
-        <div className="fixed inset-0 z-[70] flex items-end justify-center bg-[rgba(24,17,14,0.45)] p-4 sm:items-center">
-          <div className="w-full max-w-md overflow-hidden rounded-[2rem] border border-[rgba(76,54,34,0.12)] bg-[var(--panel)] shadow-[0_28px_80px_rgba(37,25,20,0.22)]">
+        <div className="fixed inset-0 z-[70] flex items-end justify-center bg-[rgba(24,22,19,0.48)] p-4 sm:items-center">
+          <div className="w-full max-w-md overflow-hidden rounded-[1.4rem] border border-[var(--line)] bg-[var(--panel)] shadow-[0_28px_80px_rgba(33,31,27,0.22)]">
             <div className="border-b border-[var(--line)] px-5 py-4">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[var(--text-soft)]">Retailer access</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[var(--text-strong)]">
+                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[var(--text-soft)]">Retailer access</p>
+                  <h2 className="mt-2 text-3xl font-bold leading-[1.06] tracking-[-0.01em] text-[var(--text-strong)]">
                     {copy.title}
                   </h2>
                   <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{copy.body}</p>
@@ -324,17 +324,17 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
                 <button
                   type="button"
                   onClick={closeAuth}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sand)] text-xl text-[var(--text-strong)]"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sand)] text-sm font-bold text-[var(--text-strong)] transition hover:bg-[var(--sand-strong)] active:scale-[0.98]"
                   aria-label="Close retailer login"
                 >
-                  ×
+                  X
                 </button>
               </div>
             </div>
 
             <div className="space-y-5 px-5 py-5">
               {!session.enabled ? (
-                <div className="rounded-[1.5rem] bg-[var(--sand)] p-4 text-sm leading-6 text-[var(--text-soft)]">
+                <div className="rounded-[1.1rem] bg-[var(--sand)] p-4 text-sm leading-6 text-[var(--text-soft)]">
                   Supabase keys are not added yet. Add them in `.env.local` to turn on phone login.
                 </div>
               ) : otpStep === "phone" ? (
@@ -344,12 +344,12 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
               )}
 
               {errorMessage ? (
-                <div className="rounded-[1.5rem] border border-[rgba(177,89,76,0.16)] bg-[rgba(255,236,230,0.9)] px-4 py-3 text-sm text-[rgba(122,59,44,0.94)]">
+                <div className="rounded-[1.1rem] border border-[rgba(157,74,60,0.2)] bg-[rgba(255,236,230,0.9)] px-4 py-3 text-sm text-[var(--danger)]">
                   {errorMessage}
                 </div>
               ) : null}
 
-              <div className="rounded-[1.5rem] bg-[rgba(243,215,186,0.46)] px-4 py-4 text-sm leading-6 text-[var(--text-soft)]">
+              <div className="rounded-[1.1rem] bg-[var(--accent-soft)] px-4 py-4 text-sm leading-6 text-[var(--text-soft)]">
                 <p className="font-semibold text-[var(--text-strong)]">Why we ask for phone login</p>
                 <p className="mt-2">Retailers can save styles, stay logged in, and start WhatsApp orders faster later.</p>
               </div>
@@ -382,13 +382,13 @@ function RetailerPhoneForm() {
           placeholder="074 221 6040"
           value={phone}
           onChange={(event) => setPhone(event.target.value)}
-          className="w-full rounded-[1.25rem] border border-[var(--line)] bg-white px-4 py-3 text-base text-[var(--text-strong)] outline-none transition focus:border-[rgba(185,120,55,0.42)]"
+          className="w-full rounded-[1rem] border border-[var(--line)] bg-white px-4 py-3 text-base text-[var(--text-strong)] outline-none transition focus:border-[var(--whatsapp)]"
         />
       </label>
       <button
         type="submit"
         disabled={isAuthBusy}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[var(--text-strong)] px-6 text-sm font-semibold text-white disabled:opacity-60"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[var(--whatsapp)] px-6 text-sm font-bold text-white transition active:scale-[0.98] disabled:opacity-60"
       >
         {isAuthBusy ? "Sending code..." : "Send OTP"}
       </button>
@@ -409,7 +409,7 @@ function RetailerOtpForm() {
         await verifyOtp(otp);
       }}
     >
-      <div className="rounded-[1.5rem] bg-[var(--sand)] px-4 py-4 text-sm leading-6 text-[var(--text-soft)]">
+      <div className="rounded-[1rem] bg-[var(--sand)] px-4 py-4 text-sm leading-6 text-[var(--text-soft)]">
         Code sent to <span className="font-semibold text-[var(--text-strong)]">{maskedPhone || otpPhone}</span>
       </div>
       <label className="block space-y-2">
@@ -421,13 +421,13 @@ function RetailerOtpForm() {
           placeholder="123456"
           value={otp}
           onChange={(event) => setOtp(event.target.value.replace(/\D/g, "").slice(0, 6))}
-          className="w-full rounded-[1.25rem] border border-[var(--line)] bg-white px-4 py-3 text-center text-2xl tracking-[0.4em] text-[var(--text-strong)] outline-none transition focus:border-[rgba(185,120,55,0.42)]"
+          className="w-full rounded-[1rem] border border-[var(--line)] bg-white px-4 py-3 text-center text-2xl tracking-[0.4em] text-[var(--text-strong)] outline-none transition focus:border-[var(--whatsapp)]"
         />
       </label>
       <button
         type="submit"
         disabled={isAuthBusy}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[var(--whatsapp)] px-6 text-sm font-semibold text-white disabled:opacity-60"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[var(--whatsapp)] px-6 text-sm font-bold text-white transition active:scale-[0.98] disabled:opacity-60"
       >
         {isAuthBusy ? "Checking code..." : "Verify and continue"}
       </button>
@@ -450,7 +450,7 @@ export function RetailerStatusCard() {
 
   if (!isLoaded) {
     return (
-      <div className="rounded-[1.7rem] border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--text-soft)]">
+      <div className="rounded-[1.1rem] border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--text-soft)]">
         Checking retailer access...
       </div>
     );
@@ -458,14 +458,14 @@ export function RetailerStatusCard() {
 
   if (!retailer) {
     return (
-      <div className="rounded-[1.7rem] border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--text-soft)]">
+      <div className="rounded-[1.1rem] border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--text-soft)]">
         Sign up with phone OTP to save styles and order faster.
       </div>
     );
   }
 
   return (
-    <div className="rounded-[1.7rem] border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--text-soft)]">
+    <div className="rounded-[1.1rem] border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--text-soft)]">
       Logged in with <span className="font-semibold text-[var(--text-strong)]">{retailer.phone}</span>. Saved styles:{" "}
       <span className="font-semibold text-[var(--text-strong)]">{shortlist.length}</span>.
     </div>
@@ -476,7 +476,7 @@ export function RetailerShortlistInlineLink() {
   const { shortlist } = useRetailer();
 
   return (
-    <Link href="/shortlist" className="inline-flex items-center gap-2 rounded-full bg-[var(--sand)] px-4 py-2 text-sm font-semibold text-[var(--text-strong)]">
+    <Link href="/shortlist" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[var(--sand)] px-4 py-2 text-sm font-bold text-[var(--text-strong)] transition hover:bg-[var(--sand-strong)] active:scale-[0.98]">
       Shortlist
       <span className="rounded-full bg-white px-2 py-0.5 text-xs">{shortlist.length}</span>
     </Link>

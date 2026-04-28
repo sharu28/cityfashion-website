@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
 import { AttributionTracker } from "@/components/attribution-tracker";
 import { RetailerProvider } from "@/components/retailer-provider";
@@ -11,14 +11,14 @@ import { company, getAbsoluteUrl, siteDescription, siteName, siteUrl } from "@/l
 
 import "./globals.css";
 
-const sans = Manrope({
+const sans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-const serif = Playfair_Display({
+const mono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -75,11 +75,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sans.variable} ${serif.variable} bg-[var(--bg)] text-[var(--text-strong)] antialiased`}>
+      <body className={`${sans.variable} ${mono.variable} bg-[var(--bg)] text-[var(--text-strong)] antialiased`}>
+        <a href="#main-content" className="skip-link">
+          Skip to catalog
+        </a>
         <RetailerProvider>
           <AttributionTracker />
           <SiteHeader />
-          {children}
+          <div id="main-content">{children}</div>
           <SiteFooter />
         </RetailerProvider>
         <Analytics />

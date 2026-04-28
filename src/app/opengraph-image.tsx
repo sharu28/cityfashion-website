@@ -17,7 +17,7 @@ export default function OpenGraphImage() {
           display: "flex",
           height: "100%",
           width: "100%",
-          background: "linear-gradient(135deg, #1f1714 0%, #2c1d15 55%, #b97837 100%)",
+          background: "linear-gradient(135deg, #211f1b 0%, #181613 62%, #1f8f59 100%)",
           color: "white",
           padding: "56px",
           fontFamily: "sans-serif",
@@ -39,8 +39,8 @@ export default function OpenGraphImage() {
               <div style={{ display: "flex", fontSize: 22, letterSpacing: 7, textTransform: "uppercase", opacity: 0.7 }}>
                 Wholesale Catalog
               </div>
-              <div style={{ display: "flex", fontSize: 78, fontWeight: 700, lineHeight: 0.95, maxWidth: 720 }}>
-                Easy ladies wear for shop orders.
+              <div style={{ display: "flex", fontSize: 82, fontWeight: 800, lineHeight: 0.9, maxWidth: 790 }}>
+                Wholesale ladies wear for Sri Lanka shops.
               </div>
               <div style={{ display: "flex", fontSize: 30, opacity: 0.82, maxWidth: 760 }}>
                 {company.retailerLine}. Browse styles, view colors, and order on WhatsApp.
@@ -56,7 +56,7 @@ export default function OpenGraphImage() {
                 style={{
                   display: "flex",
                   borderRadius: 999,
-                  background: "#20925d",
+                  background: "#1f8f59",
                   padding: "16px 28px",
                   fontSize: 28,
                   fontWeight: 700,

@@ -7,7 +7,7 @@ type ProductBadgesProps = {
 export function ProductBadges({ badges, categoryLabel, invert = false }: ProductBadgesProps) {
   const chipStyle = invert
     ? "border-white/18 bg-white/10 text-white"
-    : "border-[var(--line)] bg-white/78 text-[var(--text-soft)]";
+    : "border-[var(--line)] bg-[rgba(255,253,248,0.82)] text-[var(--text-soft)]";
 
   const allBadges = categoryLabel ? [categoryLabel, ...badges] : badges;
 
@@ -20,7 +20,7 @@ export function ProductBadges({ badges, categoryLabel, invert = false }: Product
       {allBadges.map((badge) => (
         <span
           key={badge}
-          className={`rounded-full border px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] ${chipStyle}`}
+          className={`rounded-md border px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.14em] ${chipStyle}`}
         >
           {badge}
         </span>

@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f6efe6;
-  --hero: #1f1714;
-  --panel: #fff9f2;
-  --panel-strong: #f1e3d3;
-  --muted: #e3d2c0;
-  --sand: #f1e7dc;
-  --sand-strong: #ead8c5;
-  --line: rgba(93, 67, 43, 0.14);
-  --accent: #b97837;
-  --accent-soft: #f3d7ba;
-  --text-strong: #251914;
-  --text-soft: #735847;
-  --whatsapp: #20925d;
+  --bg: #f7f5ef;
+  --hero: #181613;
+  --panel: #fffdf8;
+  --panel-strong: #ede7dc;
+  --muted: #ded7ca;
+  --sand: #ebe5d9;
+  --sand-strong: #ddd4c5;
+  --line: rgba(51, 45, 37, 0.14);
+  --accent: #1f8f59;
+  --accent-soft: #dfeee5;
+  --text-strong: #211f1b;
+  --text-soft: #70665b;
+  --whatsapp: #1f8f59;
+  --danger: #9d4a3c;
 }
 
 * {
@@ -28,8 +29,10 @@ body {
   margin: 0;
   font-family: var(--font-sans), sans-serif;
   background:
-    radial-gradient(circle at top, rgba(185, 120, 55, 0.12), transparent 28%),
-    linear-gradient(180deg, #fbf5ee 0%, #f6ede3 46%, #f7efe5 100%);
+    radial-gradient(circle at top left, rgba(31, 143, 89, 0.1), transparent 25rem),
+    radial-gradient(circle at 80% 12%, rgba(37, 25, 20, 0.08), transparent 22rem),
+    linear-gradient(180deg, #fbfaf6 0%, #f7f5ef 52%, #f4f0e8 100%);
+  font-variant-numeric: tabular-nums;
 }
 
 a {
@@ -42,7 +45,48 @@ img {
 }
 
 ::selection {
-  background: rgba(185, 120, 55, 0.24);
+  background: rgba(31, 143, 89, 0.18);
+}
+
+:focus-visible {
+  outline: 2px solid var(--whatsapp);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 80;
+  transform: translateY(-140%);
+  border-radius: 999px;
+  background: var(--text-strong);
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.editorial-reveal {
+  animation: editorial-reveal 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--index, 0) * 70ms);
+}
+
+@keyframes editorial-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .grain {
@@ -54,10 +98,10 @@ img {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.045;
   background-image:
     linear-gradient(rgba(37, 25, 20, 0.18) 1px, transparent 1px),
     linear-gradient(90deg, rgba(37, 25, 20, 0.12) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-size: 28px 28px;
   mask-image: radial-gradient(circle at center, black, transparent 92%);
 }
