@@ -46,7 +46,9 @@ Vercel Analytics and Speed Insights are enabled by default. To enable Google Ana
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
-GA4 receives page views, product views, shortlist changes, OTP requests, completed retailer logins, and WhatsApp order starts. No phone number or OTP value is sent to analytics. Mark `whatsapp_order_started` as a key event in GA4.
+GA4 receives page views, product views, shortlist changes, OTP requests, completed retailer logins, and WhatsApp order starts. No phone number or OTP value is sent to analytics. `whatsapp_order_started` is the primary GA4 key event and is counted once per session.
+
+The site sends Google Consent Mode v2 signals for analytics and advertising storage. Until a visitor chooses **Allow measurement**, Google storage consent defaults to denied. Visitors can reopen **Cookie settings** from the footer, and `/privacy` documents the measurement and retailer-account data flows.
 
 ## Product import flow
 

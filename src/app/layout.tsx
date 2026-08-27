@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { AttributionTracker } from "@/components/attribution-tracker";
+import { ConsentAwareVercelAnalytics, CookieConsent } from "@/components/cookie-consent";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { RetailerProvider } from "@/components/retailer-provider";
 import { SiteFooter } from "@/components/site-footer";
@@ -67,6 +66,9 @@ export const metadata: Metadata = {
     "WhatsApp wholesale order",
   ],
   category: "fashion",
+  verification: {
+    google: "fMZuit_rw1_e8LUQFKzIBp-Rs74h0llLHqBqkvhbBW8",
+  },
 };
 
 export default function RootLayout({
@@ -87,8 +89,8 @@ export default function RootLayout({
           <div id="main-content">{children}</div>
           <SiteFooter />
         </RetailerProvider>
-        <Analytics />
-        <SpeedInsights />
+        <CookieConsent />
+        <ConsentAwareVercelAnalytics />
       </body>
     </html>
   );

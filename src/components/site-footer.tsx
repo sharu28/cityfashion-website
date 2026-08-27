@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CookieSettingsButton } from "@/components/cookie-consent";
 import { RetailerOrderButton } from "@/components/retailer-order-button";
 import { categories } from "@/lib/catalog";
 import { company, formattedWhatsAppNumber } from "@/lib/site";
@@ -64,7 +65,13 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-2 border-t border-white/14 pt-5 text-xs text-white/46 sm:flex-row sm:items-center sm:justify-between">
           <p>Wholesale ladies wear, Colombo 11</p>
-          <p>Browse styles. Save picks. Order on WhatsApp.</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
+            <Link href="/privacy" className="hover:text-white">
+              Privacy
+            </Link>
+            <CookieSettingsButton />
+            <p>Browse styles. Save picks. Order on WhatsApp.</p>
+          </div>
         </div>
       </div>
     </footer>
