@@ -1,7 +1,7 @@
 import { track } from "@vercel/analytics";
 
 type AnalyticsValue = boolean | number | string;
-type AnalyticsProperties = Record<string, AnalyticsValue | AnalyticsValue[] | undefined>;
+type AnalyticsProperties = Record<string, unknown>;
 
 declare global {
   interface Window {
@@ -20,9 +20,8 @@ const vercelEventNames: Record<string, string> = {
 
 function flatProperties(properties: AnalyticsProperties) {
   return Object.fromEntries(
-    Object.entries(properties).filter(
-      (entry): entry is [string, AnalyticsValue] =>
-        entry[1] !== undefined && !Array.isArray(entry[1]),
+    Object.entries(properties).filter((entry): entry is [string, AnalyticsValue] =>
+      ["boolean", "number", "string"].includes(typeof entry[1]),
     ),
   );
 }

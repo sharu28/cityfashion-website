@@ -16,6 +16,13 @@ export function ProductViewTracker({ category, productId, productName }: Product
       item_category: category,
       item_id: productId,
       item_name: productName,
+      items: [
+        {
+          item_category: category,
+          item_id: productId,
+          item_name: productName,
+        },
+      ],
     });
   }, [category, productId, productName]);
 

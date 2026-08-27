@@ -77,6 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sans.variable} ${mono.variable} bg-[var(--bg)] text-[var(--text-strong)] antialiased`}>
+        <GoogleAnalytics />
         <a href="#main-content" className="skip-link">
           Skip to catalog
         </a>
@@ -86,7 +87,6 @@ export default function RootLayout({
           <div id="main-content">{children}</div>
           <SiteFooter />
         </RetailerProvider>
-        <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />
       </body>
