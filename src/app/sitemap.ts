@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 
-import { allProducts, categories } from "@/lib/catalog";
+import { allProducts, populatedCategories } from "@/lib/catalog";
 import { getAbsoluteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const categoryPages = categories.map((category) => ({
+  const categoryPages = populatedCategories.map((category) => ({
     url: getAbsoluteUrl(`/category/${category.slug}`),
     changeFrequency: "weekly" as const,
     priority: 0.7,

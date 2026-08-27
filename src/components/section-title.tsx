@@ -8,16 +8,16 @@ type SectionTitleProps = {
 
 export function SectionTitle({ eyebrow, title, body, action, invert = false }: SectionTitleProps) {
   return (
-    <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-      <div className="max-w-xl space-y-3">
-        <p className={`text-[0.72rem] font-bold uppercase tracking-[0.18em] ${invert ? "text-white/58" : "text-[var(--text-soft)]"}`}>
+    <div className="flex flex-col gap-5 border-t border-current/15 pt-5 md:flex-row md:items-end md:justify-between">
+      <div className="max-w-2xl space-y-3">
+        <p className={`text-[0.68rem] font-black uppercase tracking-[0.22em] ${invert ? "text-white/58" : "text-[var(--text-soft)]"}`}>
           {eyebrow}
         </p>
-        <h2 className={`text-balance text-3xl font-bold leading-[1.06] tracking-[-0.01em] md:text-5xl ${invert ? "text-white" : "text-[var(--text-strong)]"}`}>
+        <h2 className={`catalog-heading text-balance text-4xl font-black leading-[0.95] md:text-6xl ${invert ? "text-white" : "text-[var(--text-strong)]"}`}>
           {title}
         </h2>
         {body ? (
-          <p className={`max-w-lg text-pretty text-sm leading-6 md:text-base ${invert ? "text-white/68" : "text-[var(--text-soft)]"}`}>
+          <p className={`max-w-xl text-pretty text-sm leading-6 md:text-base ${invert ? "text-white/68" : "text-[var(--text-soft)]"}`}>
             {body}
           </p>
         ) : null}

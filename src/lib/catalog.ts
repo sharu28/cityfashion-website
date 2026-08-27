@@ -76,6 +76,7 @@ export type CatalogProduct = {
   isNewArrival: boolean;
   isSaleItem: boolean;
   images: string[];
+  cloudinaryImages?: string[];
   sourceFolder?: string;
   notes?: string;
 };
@@ -103,11 +104,13 @@ const normalizeProduct = (product: CatalogProduct): CatalogProductView => {
   const badges = [product.isNewArrival ? "New" : null, product.isSaleItem ? "Sale" : null].filter(
     (badge): badge is string => Boolean(badge),
   );
+  const resolvedImages = product.cloudinaryImages?.length ? product.cloudinaryImages : product.images;
 
   return {
     ...product,
+    images: resolvedImages,
     categoryMeta,
-    coverImage: product.images[0] ?? null,
+    coverImage: resolvedImages[0] ?? null,
     badges,
   };
 };
@@ -138,6 +141,10 @@ export const saleItems = allProducts.filter((product) => product.isSaleItem);
 
 export const productsByCategory = (slug: string) =>
   allProducts.filter((product) => product.category === slug);
+
+export const populatedCategories = categories.filter((category) =>
+  allProducts.some((product) => product.category === category.slug),
+);
 
 export const getProduct = (slug: string) => allProducts.find((product) => product.slug === slug);
 

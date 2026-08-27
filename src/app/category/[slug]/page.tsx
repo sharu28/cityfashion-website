@@ -4,10 +4,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CatalogShell } from "@/components/catalog-shell";
-import { ProductGrid } from "@/components/product-grid";
+import { ProductBrowser } from "@/components/product-browser";
 import { RetailerOrderButton } from "@/components/retailer-order-button";
 import { SectionTitle } from "@/components/section-title";
-import { categories, getCategory, productsByCategory } from "@/lib/catalog";
+import { getCategory, populatedCategories, productsByCategory } from "@/lib/catalog";
 import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
 
 type CategoryPageProps = {
@@ -15,6 +15,14 @@ type CategoryPageProps = {
     slug: string;
   }>;
 };
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return populatedCategories.map((category) => ({
+    slug: category.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -53,97 +61,98 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   const products = productsByCategory(slug);
   const coverProduct = products[0];
+  const secondaryProducts = products.slice(1, 4);
 
   return (
-    <main className="overflow-hidden pb-16 pt-28">
-      <CatalogShell>
-        <div className="mb-6 flex flex-wrap items-center gap-2 text-sm font-medium text-[var(--text-soft)]">
-          <Link href="/" className="hover:text-[var(--text-strong)]">
-            Home
-          </Link>
-          <span>/</span>
-          <span className="text-[var(--text-strong)]">{category.name}</span>
-        </div>
-
-        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-          <div className="space-y-6">
-            <SectionTitle
-              eyebrow="Category"
-              title={category.name}
-              body={category.intro}
-              action={<RetailerOrderButton label="Retailer order" />}
-            />
-            <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-[1.1rem] border border-[var(--line)] bg-[rgba(255,253,248,0.76)] p-4">
-                <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">Styles</p>
-                <p className="mt-2 text-3xl font-bold tracking-normal text-[var(--text-strong)]">{products.length}</p>
-              </div>
-              <div className="rounded-[1.1rem] bg-[var(--sand)] p-4 sm:col-span-2">
-                <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">Order flow</p>
-                <p className="mt-2 text-base font-bold text-[var(--text-strong)]">
-                  Save style, log in with phone, then send WhatsApp order.
-                </p>
-              </div>
-            </div>
+    <main className="overflow-hidden pb-16 pt-20">
+      <section className="bg-[var(--hero)] py-5 text-white">
+        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
+          <div className="mb-5 flex flex-wrap items-center gap-2 text-sm font-bold text-white/58">
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+            <span>/</span>
+            <span className="text-white">{category.name}</span>
           </div>
 
-          <div className="overflow-hidden rounded-[1.5rem] bg-[var(--hero)]">
-            <div className="grid min-h-80 sm:grid-cols-[1fr_0.78fr]">
-              <div className="relative min-h-80 bg-[var(--muted)]">
-                {coverProduct?.coverImage ? (
-                  <Image
-                    src={coverProduct.coverImage}
-                    alt={`${category.name} cover style`}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                  />
-                ) : null}
-              </div>
-              <div className="flex flex-col justify-between gap-6 p-5 text-white">
-                <div>
-                  <p className="text-sm font-bold text-white">{formattedWhatsAppNumber}</p>
-                  <p className="mt-2 text-sm leading-6 text-white/68">131 Keyzer Street, Colombo 11</p>
+          <div className="grid gap-3 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
+            <div className="flex min-h-96 flex-col justify-between border border-white/14 p-5 sm:p-7">
+              <SectionTitle
+                eyebrow="Category"
+                title={category.name}
+                body={category.intro}
+                action={<RetailerOrderButton label="Retailer order" variant="light" />}
+                invert
+              />
+              <div className="mt-8 grid gap-px bg-white/14 sm:grid-cols-3">
+                <div className="bg-[var(--hero)] p-4">
+                  <p className="text-[0.62rem] font-black uppercase tracking-[0.18em] text-white/44">Styles</p>
+                  <p className="mt-2 text-4xl font-black text-white">{products.length}</p>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {categories.map((item) => (
-                    <Link
-                      key={item.slug}
-                      href={`/category/${item.slug}`}
-                      className={`rounded-full border px-3 py-2 text-sm font-bold transition ${
-                        item.slug === category.slug
-                          ? "border-white bg-white text-[var(--text-strong)]"
-                          : "border-white/12 bg-white/8 text-white hover:bg-white/14"
-                      }`}
-                    >
-                      {item.shortName}
-                    </Link>
-                  ))}
+                <div className="bg-[var(--hero)] p-4 sm:col-span-2">
+                  <p className="text-[0.62rem] font-black uppercase tracking-[0.18em] text-white/44">Order flow</p>
+                  <p className="mt-2 text-sm font-bold leading-6 text-white/72">
+                    Save styles, log in with phone, then send one WhatsApp order.
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        <section className="mt-10">
-          {products.length > 0 ? (
-            <ProductGrid products={products} />
-          ) : (
-            <div className="rounded-[1.3rem] border border-[var(--line)] bg-[var(--panel)] px-6 py-10 text-sm leading-6 text-[var(--text-soft)]">
-              No products are mapped to this category yet. Browse new arrivals or add this category in product data and run the importer again.
-              <div className="mt-5">
+            <div className="grid min-h-96 grid-cols-2 gap-2 sm:grid-cols-4">
+              {[coverProduct, ...secondaryProducts].filter(Boolean).map((product, index) => (
                 <Link
-                  href="/#new-arrivals"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--sand)] px-6 text-sm font-bold text-[var(--text-strong)]"
+                  key={product.slug}
+                  href={`/products/${product.slug}`}
+                  className={`group relative overflow-hidden border border-white/12 bg-white/8 ${
+                    index === 0 ? "col-span-2 row-span-2" : ""
+                  }`}
                 >
-                  Browse new arrivals
+                  {product.coverImage ? (
+                    <Image
+                      src={product.coverImage}
+                      alt={`${product.title} cover style`}
+                      fill
+                      priority={index === 0}
+                      className="object-cover transition duration-700 group-hover:scale-[1.04]"
+                      sizes={index === 0 ? "(max-width: 768px) 100vw, 48vw" : "(max-width: 768px) 50vw, 18vw"}
+                    />
+                  ) : null}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[rgba(18,17,15,0.88)] to-transparent p-3">
+                    <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-white/64">Style {product.id}</p>
+                    <p className="mt-1 text-sm font-black text-white">{product.startingPrice}</p>
+                  </div>
                 </Link>
-              </div>
+              ))}
             </div>
-          )}
-        </section>
-      </CatalogShell>
+          </div>
+        </CatalogShell>
+      </section>
+
+      <section className="py-8 md:py-12">
+        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
+          <div className="mb-7 flex gap-2 overflow-x-auto pb-2">
+            {populatedCategories.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/category/${item.slug}`}
+                className={`shrink-0 border px-4 py-3 text-[0.7rem] font-black uppercase tracking-[0.14em] transition ${
+                  item.slug === category.slug
+                    ? "border-[var(--text-strong)] bg-[var(--text-strong)] !text-white"
+                    : "border-[var(--line)] bg-[var(--panel)] text-[var(--text-strong)] hover:bg-[var(--sand)]"
+                }`}
+              >
+                {item.shortName}
+              </Link>
+            ))}
+          </div>
+
+          <ProductBrowser products={products} />
+
+          <div className="mt-10 border-t border-[var(--line)] pt-5 text-sm leading-6 text-[var(--text-soft)]">
+            Need help choosing colors or sizes? Message {formattedWhatsAppNumber} with the style codes you like.
+          </div>
+        </CatalogShell>
+      </section>
     </main>
   );
 }

@@ -9,9 +9,9 @@ import { RetailerOrderButton } from "@/components/retailer-order-button";
 import { RetailerShortlistInlineLink } from "@/components/retailer-provider";
 import { SectionTitle } from "@/components/section-title";
 import {
-  categories,
   featuredProducts,
   newArrivals,
+  populatedCategories,
   productsByCategory,
   saleItems,
 } from "@/lib/catalog";
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const heroProducts = featuredProducts.slice(0, 4);
-  const categoryCards = categories.map((category) => {
+  const heroProducts = featuredProducts.slice(0, 6);
+  const categoryCards = populatedCategories.map((category) => {
     const products = productsByCategory(category.slug);
 
     return {
@@ -41,142 +41,130 @@ export default function Home() {
       coverImage: products[0]?.coverImage ?? null,
     };
   });
+  const secondaryProducts = saleItems.length > 0 ? saleItems : featuredProducts.slice(8, 16);
+  const hasSaleItems = saleItems.length > 0;
 
   return (
     <main className="overflow-hidden pb-28 md:pb-16">
-      <section className="grain relative px-3 pb-14 pt-28 sm:px-6 lg:px-8">
-        <CatalogShell className="px-0 sm:px-0 lg:px-0">
-          <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
-            <div className="editorial-reveal max-w-5xl space-y-7" style={{ "--index": 0 } as CSSProperties}>
+      <section className="relative bg-[var(--hero)] pt-20 text-white">
+        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
+          <div className="grid min-h-[calc(100dvh-5rem)] gap-4 py-4 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch">
+            <div className="editorial-reveal flex flex-col justify-between gap-8 border border-white/12 p-5 sm:p-7 lg:p-8" style={{ "--index": 0 } as CSSProperties}>
               <div className="space-y-5">
-                <p className="text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[var(--text-soft)]">
+                <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-white/58">
                   Wholesale ladies wear, Colombo
                 </p>
-                <h1 className="max-w-5xl text-balance text-[clamp(2.75rem,6.7vw,6rem)] font-bold leading-[1] tracking-[-0.015em] text-[var(--text-strong)]">
-                  Wholesale ladies wear for Sri Lanka shops.
+                <h1 className="catalog-heading max-w-4xl text-[clamp(3.4rem,9vw,8.7rem)] font-black leading-[0.84] text-white">
+                  Pick styles fast. Order for your shop.
                 </h1>
-                <p className="max-w-xl text-pretty text-base leading-7 text-[var(--text-soft)] sm:text-lg">
+                <p className="max-w-xl text-pretty text-base leading-7 text-white/68 sm:text-lg">
                   Browse real product photos, check starting price and MOQ, save styles, and send your order on WhatsApp.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <RetailerOrderButton label="Order on WhatsApp" />
-                <Link
-                  href="#new-arrivals"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[var(--line)] bg-[rgba(255,253,248,0.72)] px-6 text-sm font-bold text-[var(--text-strong)] transition duration-300 hover:-translate-y-0.5 hover:bg-white active:translate-y-px active:scale-[0.98]"
-                >
-                  View new arrivals
-                </Link>
-                <RetailerShortlistInlineLink />
-              </div>
+              <div className="space-y-5">
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    href="#new-arrivals"
+                    className="inline-flex min-h-11 items-center justify-center border border-white bg-white px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] text-[var(--text-strong)] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--sand)] active:translate-y-px active:scale-[0.98]"
+                  >
+                    Browse latest styles
+                  </Link>
+                  <RetailerOrderButton label="WhatsApp order" />
+                  <RetailerShortlistInlineLink />
+                </div>
 
-              <div className="grid max-w-3xl gap-3 border-t border-[var(--line)] pt-5 text-sm text-[var(--text-soft)] sm:grid-cols-3">
-                <div>
-                  <p className="font-bold text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
-                  <p className="mt-1">WhatsApp orders</p>
-                </div>
-                <div>
-                  <p className="font-bold text-[var(--text-strong)]">{company.address}</p>
-                  <p className="mt-1">Visit us</p>
-                </div>
-                <div>
-                  <p className="font-bold text-[var(--text-strong)]">{featuredProducts.length} styles</p>
-                  <p className="mt-1">Starter catalog</p>
+                <div className="grid gap-0 border border-white/14 text-sm text-white/64 sm:grid-cols-3">
+                  <div className="border-b border-white/14 p-3 sm:border-b-0 sm:border-r">
+                    <p className="font-black text-white">{formattedWhatsAppNumber}</p>
+                    <p className="mt-1">WhatsApp orders</p>
+                  </div>
+                  <div className="border-b border-white/14 p-3 sm:border-b-0 sm:border-r">
+                    <p className="font-black text-white">{company.address}</p>
+                    <p className="mt-1">Visit us</p>
+                  </div>
+                  <div className="p-3">
+                    <p className="font-black text-white">{featuredProducts.length} styles</p>
+                    <p className="mt-1">Starter catalog</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="editorial-reveal grid grid-cols-[0.72fr_1fr] gap-3 lg:-mb-6" style={{ "--index": 1 } as CSSProperties}>
-              <div className="space-y-3 pt-12">
-                {heroProducts.slice(1, 3).map((product, index) => (
-                  <Link
-                    key={product.slug}
-                    href={`/products/${product.slug}`}
-                    className="group block overflow-hidden rounded-[1.25rem] bg-[var(--muted)]"
-                  >
-                    <div className="relative aspect-[4/5]">
-                      {product.coverImage ? (
-                        <Image
-                          src={product.coverImage}
-                          alt={product.title}
-                          fill
-                          className="object-cover transition duration-700 group-hover:scale-[1.05]"
-                          sizes="(max-width: 768px) 42vw, 18vw"
-                        />
-                      ) : null}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {heroProducts[0] ? (
+            <div className="editorial-reveal grid min-h-[34rem] grid-cols-2 gap-2 sm:grid-cols-4" style={{ "--index": 1 } as CSSProperties}>
+              {heroProducts.map((product, index) => (
                 <Link
-                  href={`/products/${heroProducts[0].slug}`}
-                  className="group block overflow-hidden rounded-[1.65rem] bg-[var(--hero)] shadow-[0_28px_80px_rgba(33,31,27,0.18)]"
+                  key={product.slug}
+                  href={`/products/${product.slug}`}
+                  className={`group relative overflow-hidden border border-white/12 bg-white/8 ${
+                    index === 0 ? "col-span-2 row-span-2" : ""
+                  } ${index === 5 ? "hidden sm:block" : ""}`}
                 >
-                  <div className="relative aspect-[4/5]">
-                    {heroProducts[0].coverImage ? (
-                      <Image
-                        src={heroProducts[0].coverImage}
-                        alt={heroProducts[0].title}
-                        fill
-                        priority
-                        className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                        sizes="(max-width: 768px) 58vw, 32vw"
-                      />
-                    ) : null}
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[rgba(24,22,19,0.78)] to-transparent p-4 text-white">
-                      <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-white/72">{heroProducts[0].id}</p>
-                      <p className="mt-1 text-xl font-bold tracking-normal">{heroProducts[0].title}</p>
-                      <p className="mt-2 text-sm text-white/78">Start {heroProducts[0].startingPrice}</p>
-                    </div>
+                  {product.coverImage ? (
+                    <Image
+                      src={product.coverImage}
+                      alt={product.title}
+                      fill
+                      priority={index === 0}
+                      className="object-cover transition duration-700 group-hover:scale-[1.04]"
+                      sizes={index === 0 ? "(max-width: 768px) 100vw, 48vw" : "(max-width: 768px) 50vw, 18vw"}
+                    />
+                  ) : null}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[rgba(18,17,15,0.9)] to-transparent p-3">
+                    <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-white/64">Style {product.id}</p>
+                    <p className="mt-1 text-sm font-black text-white sm:text-base">{product.title}</p>
+                    {index === 0 ? <p className="mt-1 text-sm text-white/70">Start {product.startingPrice}</p> : null}
                   </div>
                 </Link>
-              ) : null}
+              ))}
             </div>
           </div>
         </CatalogShell>
       </section>
 
-      <section id="categories" className="py-12 md:py-20">
-        <CatalogShell>
+      <section id="new-arrivals" className="bg-[var(--panel)] py-10 md:py-16">
+        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
           <SectionTitle
-            eyebrow="Categories"
-            title="Browse by product type"
-            body="Choose frocks, tops, sets, leggings, or pants. Open any style to see photos, colors, starting price, and MOQ."
+            eyebrow="New wholesale styles"
+            title="Fresh picks for shop buyers"
+            body="Open a style to see photos, starting price, MOQ, fabric, size range, and colors when added."
+            action={<RetailerOrderButton label="Start order" variant="dark" />}
           />
-          <div className="mt-8 grid grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-7">
+            <ProductGrid products={newArrivals.length > 0 ? newArrivals.slice(0, 8) : featuredProducts.slice(0, 8)} />
+          </div>
+        </CatalogShell>
+      </section>
+
+      <section id="categories" className="py-10 md:py-16">
+        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
+          <SectionTitle
+            eyebrow="Available categories"
+            title="Browse categories with styles"
+            body="Only categories with products are shown. Open one, compare photos, and save the styles you like."
+          />
+          <div className={`mt-7 grid gap-3 sm:grid-cols-2 ${categoryCards.length <= 2 ? "lg:grid-cols-2" : "lg:grid-cols-4"}`}>
             {categoryCards.map((category, index) => (
               <Link
                 key={category.slug}
                 href={`/category/${category.slug}`}
-                className={`editorial-reveal group overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[rgba(255,253,248,0.76)] transition duration-500 hover:-translate-y-1 hover:bg-white hover:shadow-[0_24px_60px_rgba(33,31,27,0.08)] ${
-                  index === 0 || index === 5 ? "lg:col-span-2" : ""
+                className={`group relative min-h-72 overflow-hidden border border-[var(--line)] bg-[var(--hero)] ${
+                  categoryCards.length > 2 && (index === 0 || index === 5) ? "lg:col-span-2" : ""
                 }`}
-                style={{ "--index": index } as CSSProperties}
               >
-                <div className="relative aspect-[16/11] bg-[var(--muted)]">
-                  {category.coverImage ? (
-                    <Image
-                      src={category.coverImage}
-                      alt={`${category.name} cover style`}
-                      fill
-                      className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                      sizes={index === 0 || index === 5 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 25vw"}
-                    />
-                  ) : null}
-                </div>
-                <div className="flex items-end justify-between gap-4 p-4">
-                  <div>
-                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--text-soft)]">
-                      {category.count} styles
-                    </p>
-                    <h3 className="mt-2 text-2xl font-bold leading-[1.06] tracking-[-0.005em] text-[var(--text-strong)]">
-                      {category.name}
-                    </h3>
-                  </div>
-                  <span className="text-sm font-bold text-[var(--text-strong)]">Open</span>
+                {category.coverImage ? (
+                  <Image
+                    src={category.coverImage}
+                    alt={`${category.name} cover style`}
+                    fill
+                    className="object-cover opacity-92 transition duration-700 group-hover:scale-[1.04]"
+                    sizes={categoryCards.length <= 2 || index === 0 || index === 5 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 25vw"}
+                  />
+                ) : null}
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(18,17,15,0.82)] via-transparent to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-white/68">{category.count} styles</p>
+                  <h3 className="catalog-heading mt-1 text-4xl font-black leading-[0.9]">{category.name}</h3>
                 </div>
               </Link>
             ))}
@@ -184,105 +172,75 @@ export default function Home() {
         </CatalogShell>
       </section>
 
-      <section id="new-arrivals" className="py-12 md:py-20">
-        <CatalogShell>
+      <section className="bg-[var(--hero)] py-10 text-white md:py-16">
+        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
           <SectionTitle
-            eyebrow="New arrivals"
-            title="New wholesale styles"
-            body="Fresh styles recently added to the catalog. Save what you like and order on WhatsApp after retailer login."
-            action={<RetailerOrderButton label="Start order" />}
+            eyebrow="How retailer orders work"
+            title="Browse. Save. WhatsApp."
+            body="The website is made for repeat buyers who want to compare styles before messaging."
+            action={<RetailerOrderButton label="Order on WhatsApp" variant="light" />}
+            invert
           />
-          <div className="mt-8">
-            <ProductGrid products={newArrivals.length > 0 ? newArrivals : featuredProducts.slice(0, 8)} />
+          <div className="mt-7 grid gap-px bg-white/12 md:grid-cols-4">
+            {[
+              ["01", "Browse styles", "Use categories or new arrivals to scan photos fast."],
+              ["02", "Open product", "Check price, MOQ, fabric, size range, and colors."],
+              ["03", "Save picks", "Keep styles in your shortlist before ordering."],
+              ["04", "Send order", "Send your selected style codes together on WhatsApp."],
+            ].map(([step, title, body]) => (
+              <div key={step} className="bg-[var(--hero)] p-5">
+                <p className="font-mono text-xs font-black text-white/42">{step}</p>
+                <h3 className="mt-8 text-xl font-black uppercase italic tracking-[-0.03em] text-white">{title}</h3>
+                <p className="mt-3 text-sm leading-6 text-white/62">{body}</p>
+              </div>
+            ))}
           </div>
         </CatalogShell>
       </section>
 
-      <section className="py-12 md:py-20">
-        <CatalogShell>
-          <div className="grid gap-8 border-y border-[var(--line)] py-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-            <div>
-              <p className="text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[var(--text-soft)]">Why order from us</p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.06] tracking-[-0.01em] text-[var(--text-strong)] md:text-5xl">
-                Simple wholesale buying for ladies wear retailers.
+      <section id="sale-items" className="bg-[var(--panel)] py-10 md:py-16">
+        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
+          <SectionTitle
+            eyebrow={hasSaleItems ? "Sale styles" : "More styles"}
+            title={hasSaleItems ? "Browse current sale picks" : "Keep browsing the catalog"}
+            body={hasSaleItems ? "Open a sale style to check its photos and wholesale details." : "More wholesale styles from the current catalog."}
+            action={<RetailerOrderButton label="Ask on WhatsApp" variant="dark" />}
+          />
+          <div className="mt-7">
+            {secondaryProducts.length > 0 ? (
+              <ProductGrid products={secondaryProducts.slice(0, 8)} />
+            ) : (
+              <div className="hard-panel px-5 py-8 text-sm leading-6 text-[var(--text-soft)]">
+                More styles will be added soon. New wholesale styles are ready above.
+              </div>
+            )}
+          </div>
+        </CatalogShell>
+      </section>
+
+      <section id="visit-us" className="py-10 md:py-16">
+        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
+          <div className="grid gap-px bg-[var(--line)] lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="bg-[var(--panel)] p-5 sm:p-7">
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-[var(--text-soft)]">Visit or message</p>
+              <h2 className="catalog-heading mt-4 max-w-3xl text-5xl font-black leading-[0.92] text-[var(--text-strong)] md:text-7xl">
+                Built for ladies wear retailers.
               </h2>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.2rem] border border-[var(--line)] bg-[rgba(255,253,248,0.76)] p-5">
-                <p className="text-sm font-bold text-[var(--text-strong)]">See the style before you ask</p>
+            <div className="grid gap-px bg-[var(--line)] sm:grid-cols-2">
+              <div className="bg-[var(--panel)] p-5">
+                <p className="text-sm font-black text-[var(--text-strong)]">Why use the website</p>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                  Each product page shows clear photos, color names when added, price, MOQ, fabric, and size range.
+                  Compare photos, prices, MOQ, and style codes before sending your WhatsApp order.
                 </p>
               </div>
-              <div className="rounded-[1.2rem] bg-[var(--accent-soft)] p-5">
-                <p className="text-sm font-bold text-[var(--text-strong)]">Save styles for one order</p>
-                <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                  Shortlist products as you browse, then send the styles together on WhatsApp.
-                </p>
-              </div>
-              <div className="rounded-[1.2rem] bg-[var(--sand)] p-5">
-                <p className="text-sm font-bold text-[var(--text-strong)]">Made for shop buyers</p>
-                <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                  Best for ladies wear shops, resellers, and repeat wholesale buyers in Sri Lanka.
-                </p>
-              </div>
-              <div className="rounded-[1.2rem] border border-[var(--line)] bg-[rgba(255,253,248,0.76)] p-5">
-                <p className="text-sm font-bold text-[var(--text-strong)]">Order where buyers already chat</p>
-                <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                  Start from the catalog and continue the order on WhatsApp with the style code included.
-                </p>
-              </div>
-            </div>
-          </div>
-        </CatalogShell>
-      </section>
-
-      <section id="sale-items" className="py-12 md:py-20">
-        <CatalogShell>
-          <div className="rounded-[1.6rem] bg-[var(--hero)] p-5 text-white sm:p-7">
-            <SectionTitle
-              eyebrow="Sale items"
-              title="Ask for sale and fast-moving styles"
-              body="Send us a WhatsApp message if you want lower-price picks for quick shop sales."
-              action={<RetailerOrderButton label="Ask on WhatsApp" variant="light" />}
-              invert
-            />
-            <div className="mt-8">
-              {saleItems.length > 0 ? (
-                <ProductGrid products={saleItems} />
-              ) : (
-                <div className="rounded-[1.1rem] border border-white/12 bg-white/8 px-5 py-8 text-sm leading-6 text-white/72">
-                  Sale items are not added yet. New wholesale styles are ready above.
-                </div>
-              )}
-            </div>
-          </div>
-        </CatalogShell>
-      </section>
-
-      <section id="visit-us" className="py-12 md:py-20">
-        <CatalogShell>
-          <div className="grid gap-6 border-y border-[var(--line)] py-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
-            <div>
-              <p className="text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[var(--text-soft)]">Who this is for</p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.06] tracking-[-0.01em] text-[var(--text-strong)] md:text-5xl">
-                For ladies wear shops, resellers, and repeat wholesale buyers.
-              </h2>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.2rem] bg-[var(--accent-soft)] p-5">
-                <p className="text-sm font-bold text-[var(--text-strong)]">Why use the website</p>
-                <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                  It helps you check styles faster before messaging. You can compare photos and save the products you want.
-                </p>
-              </div>
-              <div className="rounded-[1.2rem] border border-[var(--line)] bg-[rgba(255,253,248,0.76)] p-5">
-                <p className="text-sm font-bold text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
+              <div className="bg-[var(--accent-soft)] p-5">
+                <p className="text-sm font-black text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
                   Visit us at {company.address}, or start your order on WhatsApp.
                 </p>
                 <div className="mt-5">
-                  <RetailerOrderButton label="Order on WhatsApp" />
+                  <RetailerOrderButton label="Order now" />
                 </div>
               </div>
             </div>
@@ -290,12 +248,12 @@ export default function Home() {
         </CatalogShell>
       </section>
 
-      <div className="fixed inset-x-3 bottom-3 z-40 rounded-full border border-[var(--line)] bg-[rgba(255,253,248,0.92)] p-2 shadow-[0_18px_48px_rgba(33,31,27,0.18)] backdrop-blur-xl md:hidden">
+      <div className="fixed inset-x-3 bottom-3 z-40 border border-[var(--line)] bg-[rgba(255,253,247,0.94)] p-2 shadow-[0_18px_48px_rgba(18,17,15,0.2)] backdrop-blur-xl md:hidden">
         <div className="grid grid-cols-[1fr_auto] gap-2">
           <RetailerOrderButton label="WhatsApp order" />
           <Link
             href="/shortlist"
-            className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--sand)] px-4 text-sm font-bold text-[var(--text-strong)]"
+            className="inline-flex min-h-11 items-center justify-center bg-[var(--text-strong)] px-4 text-[0.72rem] font-black uppercase tracking-[0.12em] text-white"
           >
             Shortlist
           </Link>

@@ -1,11 +1,13 @@
 import fs from "node:fs";
 import path from "node:path";
+import { v2 as cloudinary } from "cloudinary";
 
 const projectRoot = process.cwd();
 const sourceRoot = path.resolve(projectRoot, "..", "products");
 const publicRoot = path.join(projectRoot, "public", "products");
 const overridesPath = path.join(projectRoot, "data", "product-overrides.json");
 const outputPath = path.join(projectRoot, "data", "generated", "products.generated.json");
+const cloudinaryFolderPrefix = "cityfashion/products";
 
 const allowedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const validCategories = new Set([
@@ -18,6 +20,15 @@ const validCategories = new Set([
   "plaza-pants",
   "printed-tops",
 ]);
+const cloudinaryConfig = {
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+  secure: true,
+};
+
+let cloudinaryConfigured = false;
+let warnedAboutMissingCloudinaryConfig = false;
 
 const toSlug = (value) =>
   value
@@ -80,6 +91,41 @@ const sortEntries = (entries, imageOrder) => {
   });
 };
 
+const hasCloudinaryConfig = () =>
+  Boolean(cloudinaryConfig.cloud_name && cloudinaryConfig.api_key && cloudinaryConfig.api_secret);
+
+const ensureCloudinaryConfig = () => {
+  if (!hasCloudinaryConfig()) {
+    if (!warnedAboutMissingCloudinaryConfig) {
+      console.warn("Cloudinary credentials missing. Reusing saved Cloudinary URLs when available, otherwise using local images.");
+      warnedAboutMissingCloudinaryConfig = true;
+    }
+
+    return false;
+  }
+
+  if (!cloudinaryConfigured) {
+    cloudinary.config(cloudinaryConfig);
+    cloudinaryConfigured = true;
+  }
+
+  return true;
+};
+
+const buildCloudinaryImageUrl = (publicId, version) =>
+  cloudinary.url(publicId, {
+    secure: true,
+    version,
+    transformation: [
+      {
+        crop: "limit",
+        width: 1200,
+        fetch_format: "auto",
+        quality: "auto",
+      },
+    ],
+  });
+
 const copyDirectoryImages = (sourceDir, targetDir, slug, options) => {
   fs.rmSync(targetDir, { recursive: true, force: true });
   ensureDir(targetDir);
@@ -93,79 +139,148 @@ const copyDirectoryImages = (sourceDir, targetDir, slug, options) => {
     const parsed = path.parse(entry.relativeKey);
     const safeName = `${toSlug(parsed.name)}${parsed.ext.toLowerCase()}`;
     const targetPath = path.join(targetDir, safeName);
+    const publicId = `${cloudinaryFolderPrefix}/${slug}/${path.parse(safeName).name}`;
 
     fs.copyFileSync(entry.sourcePath, targetPath);
 
-    return `/products/${slug}/${safeName}`;
+    return {
+      localPath: targetPath,
+      localUrl: `/products/${slug}/${safeName}`,
+      publicId,
+    };
   });
 };
 
-const overrides = loadJson(overridesPath, {});
-
-if (!fs.existsSync(sourceRoot)) {
-  console.log("No ../products folder found. Skipping import.");
-  process.exit(0);
-}
-
-ensureDir(publicRoot);
-
-const sourceFolders = fs
-  .readdirSync(sourceRoot, { withFileTypes: true })
-  .filter((entry) => entry.isDirectory())
-  .sort((a, b) => a.name.localeCompare(b.name));
-
-const sourceFolderNames = new Set(sourceFolders.map((folder) => folder.name));
-const products = [];
-const usedSlugs = new Set();
-
-for (const folder of sourceFolders) {
-  const override = overrides[folder.name] ?? {};
-  const sourceDir = path.join(sourceRoot, folder.name);
-  const category = validCategories.has(override.category) ? override.category : "printed-tops";
-  const slug = override.slug ?? toSlug(override.title ?? `style-${folder.name}`);
-
-  if (override.category && !validCategories.has(override.category)) {
-    console.warn(`Invalid category "${override.category}" for ${folder.name}. Using printed-tops.`);
+const reuseExistingCloudinaryImages = (assets, existingImages) => {
+  if (!existingImages.length) {
+    return [];
   }
 
-  if (usedSlugs.has(slug)) {
-    throw new Error(`Duplicate slug detected: ${slug}`);
-  }
+  let matchedImages = 0;
+  const resolvedImages = assets.map((asset) => {
+    const existingImage = existingImages.find((image) => image.includes(`/${asset.publicId}`));
 
-  usedSlugs.add(slug);
+    if (existingImage) {
+      matchedImages += 1;
+      return existingImage;
+    }
 
-  const images = copyDirectoryImages(sourceDir, path.join(publicRoot, slug), slug, override);
-
-  if (images.length === 0) {
-    console.warn(`No images found for ${folder.name}.`);
-  }
-
-  products.push({
-    id: folder.name,
-    slug,
-    title: override.title ?? `Style ${folder.name}`,
-    category,
-    startingPrice: override.startingPrice ?? "Call for price",
-    moq: override.moq ?? "6 pcs",
-    fabric: override.fabric ?? "",
-    sizeRange: override.sizeRange ?? "",
-    description: override.description ?? "Wholesale style for Sri Lanka retailers.",
-    colors: override.colors ?? [],
-    isNewArrival: override.isNewArrival ?? true,
-    isSaleItem: override.isSaleItem ?? false,
-    sourceFolder: folder.name,
-    notes: override.notes ?? "",
-    images,
+    return asset.localUrl;
   });
-}
 
-for (const overrideKey of Object.keys(overrides)) {
-  if (!sourceFolderNames.has(overrideKey)) {
-    console.warn(`Override exists for "${overrideKey}" but no matching product folder was found.`);
+  return matchedImages > 0 ? resolvedImages : [];
+};
+
+const uploadImagesToCloudinary = async (assets, existingImages = []) => {
+  if (!ensureCloudinaryConfig()) {
+    return reuseExistingCloudinaryImages(assets, existingImages);
   }
-}
 
-ensureDir(path.dirname(outputPath));
-fs.writeFileSync(outputPath, `${JSON.stringify(products, null, 2)}\n`);
+  const uploadedImages = [];
 
-console.log(`Imported ${products.length} product folders.`);
+  for (const asset of assets) {
+    try {
+      const result = await cloudinary.uploader.upload(asset.localPath, {
+        overwrite: true,
+        public_id: asset.publicId,
+        resource_type: "image",
+      });
+
+      uploadedImages.push(buildCloudinaryImageUrl(result.public_id, result.version));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.warn(`Cloudinary upload failed for ${asset.localPath}: ${message}`);
+      uploadedImages.push(asset.localUrl);
+    }
+  }
+
+  return uploadedImages;
+};
+
+const main = async () => {
+  const overrides = loadJson(overridesPath, {});
+  const existingProducts = loadJson(outputPath, []);
+  const existingProductsByFolder = new Map(
+    existingProducts.map((product) => [product.sourceFolder, product]),
+  );
+
+  if (!fs.existsSync(sourceRoot)) {
+    console.log("No ../products folder found. Skipping import.");
+    process.exit(0);
+  }
+
+  ensureDir(publicRoot);
+
+  const sourceFolders = fs
+    .readdirSync(sourceRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const sourceFolderNames = new Set(sourceFolders.map((folder) => folder.name));
+  const products = [];
+  const usedSlugs = new Set();
+
+  for (const folder of sourceFolders) {
+    const override = overrides[folder.name] ?? {};
+    const sourceDir = path.join(sourceRoot, folder.name);
+    const category = validCategories.has(override.category) ? override.category : "printed-tops";
+    const slug = override.slug ?? toSlug(override.title ?? `style-${folder.name}`);
+
+    if (override.category && !validCategories.has(override.category)) {
+      console.warn(`Invalid category "${override.category}" for ${folder.name}. Using printed-tops.`);
+    }
+
+    if (usedSlugs.has(slug)) {
+      throw new Error(`Duplicate slug detected: ${slug}`);
+    }
+
+    usedSlugs.add(slug);
+
+    const copiedAssets = copyDirectoryImages(sourceDir, path.join(publicRoot, slug), slug, override);
+    const images = copiedAssets.map((asset) => asset.localUrl);
+    const existingProduct = existingProductsByFolder.get(folder.name);
+    const cloudinaryImages = await uploadImagesToCloudinary(
+      copiedAssets,
+      existingProduct?.cloudinaryImages ?? [],
+    );
+
+    if (images.length === 0) {
+      console.warn(`No images found for ${folder.name}.`);
+    }
+
+    products.push({
+      id: folder.name,
+      slug,
+      title: override.title ?? `Style ${folder.name}`,
+      category,
+      startingPrice: override.startingPrice ?? "Call for price",
+      moq: override.moq ?? "6 pcs",
+      fabric: override.fabric ?? "",
+      sizeRange: override.sizeRange ?? "",
+      description: override.description ?? "Wholesale style for Sri Lanka retailers.",
+      colors: override.colors ?? [],
+      isNewArrival: override.isNewArrival ?? true,
+      isSaleItem: override.isSaleItem ?? false,
+      sourceFolder: folder.name,
+      notes: override.notes ?? "",
+      images,
+      cloudinaryImages,
+    });
+  }
+
+  for (const overrideKey of Object.keys(overrides)) {
+    if (!sourceFolderNames.has(overrideKey)) {
+      console.warn(`Override exists for "${overrideKey}" but no matching product folder was found.`);
+    }
+  }
+
+  ensureDir(path.dirname(outputPath));
+  fs.writeFileSync(outputPath, `${JSON.stringify(products, null, 2)}\n`);
+
+  console.log(`Imported ${products.length} product folders.`);
+};
+
+await main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

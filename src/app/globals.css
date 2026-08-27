@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f7f5ef;
-  --hero: #181613;
-  --panel: #fffdf8;
-  --panel-strong: #ede7dc;
-  --muted: #ded7ca;
-  --sand: #ebe5d9;
-  --sand-strong: #ddd4c5;
-  --line: rgba(51, 45, 37, 0.14);
-  --accent: #1f8f59;
-  --accent-soft: #dfeee5;
-  --text-strong: #211f1b;
-  --text-soft: #70665b;
-  --whatsapp: #1f8f59;
+  --bg: #f4f1e9;
+  --hero: #12110f;
+  --ink: #171512;
+  --panel: #fffdf7;
+  --panel-strong: #ece6da;
+  --muted: #e4ded3;
+  --sand: #e8e1d3;
+  --sand-strong: #d8cebd;
+  --line: rgba(23, 21, 18, 0.16);
+  --line-strong: rgba(23, 21, 18, 0.28);
+  --accent: #18834e;
+  --accent-soft: #dcebdd;
+  --text-strong: #1b1916;
+  --text-soft: #6f675d;
+  --whatsapp: #18834e;
   --danger: #9d4a3c;
 }
 
@@ -29,9 +31,13 @@ body {
   margin: 0;
   font-family: var(--font-sans), sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(31, 143, 89, 0.1), transparent 25rem),
-    radial-gradient(circle at 80% 12%, rgba(37, 25, 20, 0.08), transparent 22rem),
-    linear-gradient(180deg, #fbfaf6 0%, #f7f5ef 52%, #f4f0e8 100%);
+    linear-gradient(rgba(23, 21, 18, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 21, 18, 0.028) 1px, transparent 1px),
+    linear-gradient(180deg, #fbfaf6 0%, #f4f1e9 46%, #eee8dc 100%);
+  background-size:
+    34px 34px,
+    34px 34px,
+    auto;
   font-variant-numeric: tabular-nums;
 }
 
@@ -104,4 +110,20 @@ img {
     linear-gradient(90deg, rgba(37, 25, 20, 0.12) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(circle at center, black, transparent 92%);
+}
+
+.catalog-heading {
+  font-style: italic;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.hard-panel {
+  border: 1px solid var(--line);
+  background: rgba(255, 253, 247, 0.92);
+}
+
+.dark-panel {
+  background: var(--hero);
+  color: white;
 }

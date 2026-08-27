@@ -8,7 +8,7 @@ type ProductGridProps = {
 
 export function ProductGrid({ products }: ProductGridProps) {
   return (
-    <div className="grid grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+    <div className="grid grid-flow-dense gap-x-3 gap-y-7 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-9">
       {products.map((product, index) => (
         <ProductTile
           key={product.slug}

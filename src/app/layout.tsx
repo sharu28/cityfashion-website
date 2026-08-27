@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { AttributionTracker } from "@/components/attribution-tracker";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { RetailerProvider } from "@/components/retailer-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -85,6 +86,7 @@ export default function RootLayout({
           <div id="main-content">{children}</div>
           <SiteFooter />
         </RetailerProvider>
+        <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />
       </body>

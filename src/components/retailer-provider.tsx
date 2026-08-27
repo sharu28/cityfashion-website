@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { createContext, startTransition, useContext, useEffect, useState } from "react";
 
-import type { RetailerIntent, RetailerSessionPayload } from "@/lib/retailer";
+import { getProduct } from "@/lib/catalog";
+import { trackAnalyticsEvent } from "@/lib/analytics";
+import {
+  buildRetailerWhatsAppLink,
+  type RetailerIntent,
+  type RetailerSessionPayload,
+  type ShortlistItem,
+} from "@/lib/retailer";
 
 type RetailerContextValue = {
   authOpen: boolean;
@@ -32,6 +39,42 @@ const emptySession: RetailerSessionPayload = {
   retailer: null,
   shortlist: [],
 };
+
+const guestShortlistKey = "city-fashion-guest-shortlist";
+
+function mapProductToShortlistItem(productSlug: string): ShortlistItem | null {
+  const product = getProduct(productSlug);
+
+  if (!product) {
+    return null;
+  }
+
+  return {
+    category: product.categoryMeta.name,
+    coverImage: product.coverImage,
+    id: product.id,
+    moq: product.moq,
+    slug: product.slug,
+    startingPrice: product.startingPrice,
+    title: product.title,
+  };
+}
+
+function readGuestShortlist() {
+  try {
+    const slugs = JSON.parse(window.localStorage.getItem(guestShortlistKey) ?? "[]") as string[];
+
+    return slugs
+      .map(mapProductToShortlistItem)
+      .filter((item): item is ShortlistItem => Boolean(item));
+  } catch {
+    return [];
+  }
+}
+
+function writeGuestShortlist(shortlist: ShortlistItem[]) {
+  window.localStorage.setItem(guestShortlistKey, JSON.stringify(shortlist.map((item) => item.slug)));
+}
 
 function intentCopy(intent: RetailerIntent | null) {
   if (intent?.type === "save") {
@@ -76,12 +119,19 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
       throw new Error("Could not refresh retailer session.");
     }
 
-    setSession(payload as RetailerSessionPayload);
+    const nextSession = payload as RetailerSessionPayload;
+
+    setSession(nextSession.enabled ? nextSession : { ...nextSession, shortlist: readGuestShortlist() });
     setIsLoaded(true);
   }
 
   useEffect(() => {
     void refreshSession().catch(() => {
+      setSession({
+        enabled: false,
+        retailer: null,
+        shortlist: readGuestShortlist(),
+      });
       setIsLoaded(true);
     });
   }, []);
@@ -139,6 +189,9 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
       setOtpPhone(payload.phone);
       setMaskedPhone(payload.phone);
       setOtpStep("otp");
+      trackAnalyticsEvent("otp_requested", {
+        intent: intent?.type ?? "login",
+      });
       return true;
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Could not send OTP.");
@@ -173,6 +226,10 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
 
       const nextSession = payload as RetailerSessionPayload;
       setSession(nextSession);
+      trackAnalyticsEvent("login", {
+        intent: intent?.type ?? "login",
+        method: "phone_otp",
+      });
       closeAuth();
       await performPendingIntent(nextSession);
       return true;
@@ -186,9 +243,30 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
 
   async function runShortlistToggle(productSlug: string, sessionOverride?: RetailerSessionPayload) {
     const activeSession = sessionOverride ?? session;
+    const product = mapProductToShortlistItem(productSlug);
+    const wasSaved = activeSession.shortlist.some((item) => item.slug === productSlug);
 
     if (!activeSession.enabled) {
-      openAuth({ productSlug, type: "save" });
+      if (!product) {
+        return;
+      }
+
+      setSession((currentSession) => {
+        const isSaved = currentSession.shortlist.some((item) => item.slug === productSlug);
+        const shortlist = isSaved
+          ? currentSession.shortlist.filter((item) => item.slug !== productSlug)
+          : [product, ...currentSession.shortlist];
+
+        writeGuestShortlist(shortlist);
+        return { ...currentSession, shortlist };
+      });
+      trackAnalyticsEvent("shortlist_updated", {
+        action: wasSaved ? "removed" : "saved",
+        item_category: product.category,
+        item_id: product.id,
+        item_name: product.title,
+        retailer_status: "guest",
+      });
       return;
     }
 
@@ -217,6 +295,16 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
     startTransition(() => {
       setSession(payload as RetailerSessionPayload);
     });
+
+    if (product) {
+      trackAnalyticsEvent("shortlist_updated", {
+        action: wasSaved ? "removed" : "saved",
+        item_category: product.category,
+        item_id: product.id,
+        item_name: product.title,
+        retailer_status: "authenticated",
+      });
+    }
   }
 
   async function toggleShortlist(productSlug: string) {
@@ -231,9 +319,20 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
 
   async function runOrder(productSlug?: string, sessionOverride?: RetailerSessionPayload) {
     const activeSession = sessionOverride ?? session;
+    const currentProduct = productSlug ? mapProductToShortlistItem(productSlug) : null;
 
     if (!activeSession.enabled) {
-      openAuth({ productSlug, type: "order" });
+      trackAnalyticsEvent("whatsapp_order_started", {
+        item_category: currentProduct?.category,
+        item_id: currentProduct?.id,
+        item_name: currentProduct?.title,
+        retailer_status: "guest",
+        shortlist_size: activeSession.shortlist.length,
+      });
+      window.location.href = buildRetailerWhatsAppLink({
+        currentProduct,
+        shortlist: activeSession.shortlist,
+      });
       return;
     }
 
@@ -259,6 +358,13 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
       throw new Error(payload.message ?? "Could not start WhatsApp order.");
     }
 
+    trackAnalyticsEvent("whatsapp_order_started", {
+      item_category: currentProduct?.category,
+      item_id: currentProduct?.id,
+      item_name: currentProduct?.title,
+      retailer_status: "authenticated",
+      shortlist_size: activeSession.shortlist.length,
+    });
     window.location.href = payload.url;
   }
 
@@ -446,12 +552,20 @@ export function useRetailer() {
 }
 
 export function RetailerStatusCard() {
-  const { isLoaded, retailer, shortlist } = useRetailer();
+  const { enabled, isLoaded, retailer, shortlist } = useRetailer();
 
   if (!isLoaded) {
     return (
       <div className="rounded-[1.1rem] border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--text-soft)]">
         Checking retailer access...
+      </div>
+    );
+  }
+
+  if (!enabled) {
+    return (
+      <div className="border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--text-soft)]">
+        Saved on this device: <span className="font-semibold text-[var(--text-strong)]">{shortlist.length}</span>. Send the list on WhatsApp when ready.
       </div>
     );
   }
@@ -476,9 +590,9 @@ export function RetailerShortlistInlineLink() {
   const { shortlist } = useRetailer();
 
   return (
-    <Link href="/shortlist" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[var(--sand)] px-4 py-2 text-sm font-bold text-[var(--text-strong)] transition hover:bg-[var(--sand-strong)] active:scale-[0.98]">
+    <Link href="/shortlist" className="inline-flex min-h-11 items-center gap-2 border border-white/18 px-4 py-2 text-[0.78rem] font-black uppercase tracking-[0.12em] text-white transition hover:bg-white hover:text-[var(--text-strong)] active:scale-[0.98]">
       Shortlist
-      <span className="rounded-full bg-white px-2 py-0.5 text-xs">{shortlist.length}</span>
+      <span className="bg-white px-2 py-0.5 text-xs text-[var(--text-strong)]">{shortlist.length}</span>
     </Link>
   );
 }

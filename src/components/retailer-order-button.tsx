@@ -17,10 +17,10 @@ export function RetailerOrderButton({
 
   const styles =
     variant === "dark"
-      ? "bg-[var(--text-strong)] text-white shadow-[0_12px_28px_rgba(33,31,27,0.16)]"
+      ? "bg-[var(--text-strong)] text-white"
       : variant === "light"
         ? "bg-white text-[var(--text-strong)]"
-        : "bg-[var(--whatsapp)] text-white shadow-[0_14px_30px_rgba(31,143,89,0.24)]";
+        : "bg-[var(--whatsapp)] text-white";
 
   return (
     <button
@@ -28,7 +28,7 @@ export function RetailerOrderButton({
       onClick={() => {
         void startOrder(productSlug);
       }}
-      className={`inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-bold transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 active:translate-y-px active:scale-[0.98] ${styles}`}
+      className={`inline-flex min-h-11 items-center justify-center border border-transparent px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 active:translate-y-px active:scale-[0.98] ${styles}`}
     >
       {label}
     </button>
