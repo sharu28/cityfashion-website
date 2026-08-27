@@ -26,6 +26,14 @@ function flatProperties(properties: AnalyticsProperties) {
   );
 }
 
+function trackVercelEvent(name: string, properties: AnalyticsProperties) {
+  const vercelName = vercelEventNames[name];
+
+  if (vercelName) {
+    track(vercelName, flatProperties(properties));
+  }
+}
+
 export function trackAnalyticsEvent(name: string, properties: AnalyticsProperties = {}) {
   if (typeof window === "undefined") {
     return;
@@ -36,9 +44,48 @@ export function trackAnalyticsEvent(name: string, properties: AnalyticsPropertie
     transport_type: "beacon",
   });
 
-  const vercelName = vercelEventNames[name];
+  trackVercelEvent(name, properties);
+}
 
-  if (vercelName) {
-    track(vercelName, flatProperties(properties));
+export function trackAnalyticsEventBeforeNavigation(
+  name: string,
+  properties: AnalyticsProperties,
+  destination: string,
+) {
+  if (typeof window === "undefined") {
+    return;
   }
+
+  let fallbackId: number | undefined;
+  let hasNavigated = false;
+
+  const navigate = () => {
+    if (hasNavigated) {
+      return;
+    }
+
+    hasNavigated = true;
+
+    if (fallbackId !== undefined) {
+      window.clearTimeout(fallbackId);
+    }
+
+    window.location.assign(destination);
+  };
+
+  trackVercelEvent(name, properties);
+
+  if (!window.gtag) {
+    navigate();
+    return;
+  }
+
+  window.gtag("event", name, {
+    ...properties,
+    event_callback: navigate,
+    event_timeout: 1500,
+    transport_type: "beacon",
+  });
+
+  fallbackId = window.setTimeout(navigate, 1700);
 }

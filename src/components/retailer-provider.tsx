@@ -4,7 +4,7 @@ import Link from "next/link";
 import { createContext, startTransition, useContext, useEffect, useState } from "react";
 
 import { getProduct } from "@/lib/catalog";
-import { trackAnalyticsEvent } from "@/lib/analytics";
+import { trackAnalyticsEvent, trackAnalyticsEventBeforeNavigation } from "@/lib/analytics";
 import {
   buildRetailerWhatsAppLink,
   type RetailerIntent,
@@ -322,17 +322,20 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
     const currentProduct = productSlug ? mapProductToShortlistItem(productSlug) : null;
 
     if (!activeSession.enabled) {
-      trackAnalyticsEvent("whatsapp_order_started", {
-        item_category: currentProduct?.category,
-        item_id: currentProduct?.id,
-        item_name: currentProduct?.title,
-        retailer_status: "guest",
-        shortlist_size: activeSession.shortlist.length,
-      });
-      window.location.href = buildRetailerWhatsAppLink({
-        currentProduct,
-        shortlist: activeSession.shortlist,
-      });
+      trackAnalyticsEventBeforeNavigation(
+        "whatsapp_order_started",
+        {
+          item_category: currentProduct?.category,
+          item_id: currentProduct?.id,
+          item_name: currentProduct?.title,
+          retailer_status: "guest",
+          shortlist_size: activeSession.shortlist.length,
+        },
+        buildRetailerWhatsAppLink({
+          currentProduct,
+          shortlist: activeSession.shortlist,
+        }),
+      );
       return;
     }
 
@@ -358,14 +361,17 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
       throw new Error(payload.message ?? "Could not start WhatsApp order.");
     }
 
-    trackAnalyticsEvent("whatsapp_order_started", {
-      item_category: currentProduct?.category,
-      item_id: currentProduct?.id,
-      item_name: currentProduct?.title,
-      retailer_status: "authenticated",
-      shortlist_size: activeSession.shortlist.length,
-    });
-    window.location.href = payload.url;
+    trackAnalyticsEventBeforeNavigation(
+      "whatsapp_order_started",
+      {
+        item_category: currentProduct?.category,
+        item_id: currentProduct?.id,
+        item_name: currentProduct?.title,
+        retailer_status: "authenticated",
+        shortlist_size: activeSession.shortlist.length,
+      },
+      payload.url,
+    );
   }
 
   async function startOrder(productSlug?: string) {
