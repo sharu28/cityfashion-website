@@ -108,8 +108,13 @@ Supported fields:
 - `sizeRange`
 - `description`
 - `colors`
-- `isNewArrival`
-- `isSaleItem`
+- `odooProductId`
+- `odooDesignKey`
+- `odooSyncMode`
+- `publicationStatus`
+- `newArrivalApproval`
+- `retailerDealApproval`
+- `priceSource`
 - `imageOrder`
 - `sourceSubfolders`
 - `excludeImages`
@@ -138,8 +143,11 @@ What it does:
 Run this after product changes:
 
 ```bash
+npm run sync-odoo-catalog
 npm run import-products
 ```
+
+Review `data/odoo/odoo-catalog.review.json` before changing mappings or approvals. The snapshot and review JSON are local-only and ignored by Git. A normal import or build must not contact Odoo, expose internal stock evidence, or publish candidate flags without an explicit override approval.
 
 Then verify:
 

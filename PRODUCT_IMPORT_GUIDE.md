@@ -13,6 +13,8 @@ The current batch already has starter overrides for `29` imported styles.
 - Generated catalog data: `data/generated/products.generated.json`
 - Current starter overrides: `data/product-overrides.json`
 - Reusable starter template: `data/product-overrides.template.json`
+- Local Odoo snapshot: `data/odoo/odoo-catalog.snapshot.json` (ignored by Git)
+- Local Odoo review: `data/odoo/odoo-catalog.review.json` (ignored by Git)
 
 ## Current staged workflow
 
@@ -70,13 +72,22 @@ Every product should have:
 
 ## Import and verify
 
-Run:
+For an Odoo-backed catalog review, first load the local Odoo connection variables through the existing private credential workflow. Then run:
 
-```bash
+```powershell
+npm run sync-odoo-catalog
+# Review data/odoo/odoo-catalog.review.json locally.
+# Update only explicit mappings and approvals in data/product-overrides.json.
 npm run import-products
+npm run test:catalog-sync
+npm run test:catalog-publication
 npm run check
 npm run build
 ```
+
+Review every proposed Odoo ID and merchandising candidate before editing the override. Use `odooSyncMode: "mapped"` only for a confirmed exact product, or `website-only` for a business-approved exception. New and Retailer Deal approvals are public merchandising decisions; the sync does not make them automatically unless the override explicitly uses `auto`.
+
+If the sync or validation fails, the last good local snapshot remains in place. The import and build do not contact Odoo, and they still work when no snapshot is present. Snapshot and review JSON are local-only. Never copy Odoo quantities, movement dates, costs, supplier details, or internal candidate evidence into product overrides or generated public data.
 
 ## Before push
 

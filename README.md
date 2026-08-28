@@ -68,12 +68,33 @@ CLOUDINARY_API_SECRET=
 
 If those env vars are missing, the importer still copies images into `public/products` and generates a working local-fallback catalog.
 
+## Odoo catalog review
+
+Odoo is the internal source for product identity and merchandising candidates. The website remains a reviewed public catalog: a sync never publishes a product, price, New badge, or Retailer Deal by itself.
+
+Load the local Odoo connection variables and password through the existing private Odoo credential workflow, then run:
+
+```powershell
+npm run sync-odoo-catalog
+# Review data/odoo/odoo-catalog.review.json locally.
+# Update only explicit mappings and approvals in data/product-overrides.json.
+npm run import-products
+npm run test:catalog-sync
+npm run test:catalog-publication
+npm run check
+npm run build
+```
+
+The sync uses read-only Odoo methods. Snapshot and review JSON stay local and are ignored by Git. A failed validation leaves the last good local snapshot unchanged, and normal builds never contact Odoo. Internal quantities, movement dates, costs, and candidate reasoning are not copied into the public generated catalog. Odoo list prices and candidate lanes publish only when the product override explicitly allows them.
+
 ## Verify and deploy
 
 Run:
 
 ```bash
 npm run import-products
+npm run test:catalog-sync
+npm run test:catalog-publication
 npm run check
 npm run build
 ```

@@ -1,9 +1,11 @@
 .codex-skill-bundle/
 .codex-skill-temp-1/
+.playwright-cli/
 .next/
 .npm-cache/
 node_modules/
 tsconfig.tsbuildinfo
+output/playwright/
 __pycache__/
 *.py[cod]
 /data/odoo/*.json
