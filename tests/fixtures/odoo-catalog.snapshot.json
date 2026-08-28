@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-28T00:00:00+00:00",
+  "asOf": "2026-08-28T00:00:00+00:00",
+  "location": {
+    "id": 5,
+    "completeName": "WH/Stock"
+  },
+  "products": [
+    {
+      "odooProductId": 155,
+      "designKey": "D1210",
+      "active": true,
+      "saleOk": true,
+      "listPrice": 2200,
+      "availableQuantity": 17,
+      "newArrivalCandidate": true,
+      "retailerDealCandidate": false
+    }
+  ]
+}

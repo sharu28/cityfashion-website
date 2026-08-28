@@ -1,12 +1,21 @@
 import fs from "node:fs";
 import path from "node:path";
 import { v2 as cloudinary } from "cloudinary";
+import {
+  buildPublicProduct,
+  hasRequiredNewProductFields,
+  isPublishedOverride,
+  resolveMapping,
+  validateOverride,
+  validatePublicProduct,
+} from "./catalog-publication.mjs";
 
 const projectRoot = process.cwd();
 const sourceRoot = path.resolve(projectRoot, "..", "products");
 const publicRoot = path.join(projectRoot, "public", "products");
 const overridesPath = path.join(projectRoot, "data", "product-overrides.json");
 const outputPath = path.join(projectRoot, "data", "generated", "products.generated.json");
+const odooSnapshotPath = path.join(projectRoot, "data", "odoo", "odoo-catalog.snapshot.json");
 const cloudinaryFolderPrefix = "cityfashion/products";
 
 const allowedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
@@ -200,9 +209,17 @@ const uploadImagesToCloudinary = async (assets, existingImages = []) => {
 const main = async () => {
   const overrides = loadJson(overridesPath, {});
   const existingProducts = loadJson(outputPath, []);
+  const odooSnapshot = loadJson(odooSnapshotPath, null);
+  const odooFacts = odooSnapshot?.schemaVersion === 1 && Array.isArray(odooSnapshot.products)
+    ? odooSnapshot.products
+    : [];
   const existingProductsByFolder = new Map(
     existingProducts.map((product) => [product.sourceFolder, product]),
   );
+
+  if (!odooSnapshot) {
+    console.warn("No local Odoo snapshot found. Preserving existing public catalog values.");
+  }
 
   if (!fs.existsSync(sourceRoot)) {
     console.log("No ../products folder found. Skipping import.");
@@ -222,6 +239,39 @@ const main = async () => {
 
   for (const folder of sourceFolders) {
     const override = overrides[folder.name] ?? {};
+    const existingProduct = existingProductsByFolder.get(folder.name) ?? null;
+    const overrideValidation = validateOverride(override, {
+      existingProduct: Boolean(existingProduct),
+    });
+    for (const warning of overrideValidation.warnings) {
+      console.warn(`${folder.name}: ${warning}`);
+    }
+    if (!overrideValidation.valid) {
+      console.warn(`${folder.name}: ${overrideValidation.errors.join("; ")}. Skipping publication.`);
+      continue;
+    }
+    if (!isPublishedOverride(override, existingProduct)) {
+      console.warn(`${folder.name}: draft product skipped.`);
+      continue;
+    }
+
+    const mapping = resolveMapping(override, odooFacts);
+    let mappedFact = mapping.status === "mapped" ? mapping.fact : null;
+    if (mapping.warning && override.odooSyncMode) {
+      console.warn(`${folder.name}: ${mapping.warning}`);
+    }
+    if (!existingProduct) {
+      const validNewMapping = ["mapped", "website-only"].includes(mapping.status);
+      if (!validNewMapping || !hasRequiredNewProductFields(override)) {
+        console.warn(
+          `${folder.name}: new products need publicationStatus, complete public fields, and a valid mapped or website-only mode. Skipping publication.`,
+        );
+        continue;
+      }
+    } else if (mapping.status !== "mapped") {
+      mappedFact = null;
+    }
+
     const sourceDir = path.join(sourceRoot, folder.name);
     const category = validCategories.has(override.category) ? override.category : "printed-tops";
     const slug = override.slug ?? toSlug(override.title ?? `style-${folder.name}`);
@@ -238,34 +288,30 @@ const main = async () => {
 
     const copiedAssets = copyDirectoryImages(sourceDir, path.join(publicRoot, slug), slug, override);
     const images = copiedAssets.map((asset) => asset.localUrl);
-    const existingProduct = existingProductsByFolder.get(folder.name);
     const cloudinaryImages = await uploadImagesToCloudinary(
       copiedAssets,
       existingProduct?.cloudinaryImages ?? [],
     );
 
     if (images.length === 0) {
-      console.warn(`No images found for ${folder.name}.`);
+      console.warn(`No images found for ${folder.name}. Skipping publication.`);
+      continue;
     }
 
-    products.push({
-      id: folder.name,
-      slug,
-      title: override.title ?? `Style ${folder.name}`,
-      category,
-      startingPrice: override.startingPrice ?? "Call for price",
-      moq: override.moq ?? "6 pcs",
-      fabric: override.fabric ?? "",
-      sizeRange: override.sizeRange ?? "",
-      description: override.description ?? "Wholesale style for Sri Lanka retailers.",
-      colors: override.colors ?? [],
-      isNewArrival: override.isNewArrival ?? true,
-      isSaleItem: override.isSaleItem ?? false,
-      sourceFolder: folder.name,
-      notes: override.notes ?? "",
+    const product = buildPublicProduct({
+      folderName: folder.name,
       images,
       cloudinaryImages,
+      override: {
+        ...override,
+        slug,
+        category,
+      },
+      fact: mappedFact,
+      previousProduct: existingProduct,
     });
+    validatePublicProduct(product);
+    products.push(product);
   }
 
   for (const overrideKey of Object.keys(overrides)) {

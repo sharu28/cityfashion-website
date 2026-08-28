@@ -26,8 +26,8 @@ def main() -> None:
     overrides_path = ROOT / "data" / "product-overrides.json"
     products_root = ROOT.parent / "products"
     output_root = ROOT / "data" / "odoo"
-    snapshot_path = output_root / "catalog.snapshot.json"
-    review_path = output_root / "catalog.review.json"
+    snapshot_path = output_root / "odoo-catalog.snapshot.json"
+    review_path = output_root / "odoo-catalog.review.json"
 
     overrides = json.loads(overrides_path.read_text(encoding="utf-8"))
     folder_names = [item.name for item in products_root.iterdir() if item.is_dir()]

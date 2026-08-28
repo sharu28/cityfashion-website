@@ -10,10 +10,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1210",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1210/0f4a36723b36eb31be3ec40885f252aa-1769447494-jyg2lxsh.png",
       "/products/style-1210/img-5860-nbpro-1.png",
@@ -35,7 +32,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595973/cityfashion/products/style-1210/img-5866?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595974/cityfashion/products/style-1210/row-1-column-4?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595975/cityfashion/products/style-1210/row-2-column-1?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1210"
   },
   {
     "id": "1220",
@@ -48,10 +46,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1220",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1220/row-1-column-1-1220.png",
       "/products/style-1220/row-1-column-2-1220.png",
@@ -67,7 +62,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595982/cityfashion/products/style-1220/row-2-column-1-1220?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595984/cityfashion/products/style-1220/row-2-column-2-1220?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595985/cityfashion/products/style-1220/row-2-column-3-1220?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1220"
   },
   {
     "id": "1490",
@@ -80,10 +76,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1490",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1490/1.png",
       "/products/style-1490/2.png",
@@ -113,7 +106,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595998/cityfashion/products/style-1490/img-5292?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595999/cityfashion/products/style-1490/img-5293?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596001/cityfashion/products/style-1490/img-5294?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1490"
   },
   {
     "id": "1570 KY Bamboo",
@@ -126,10 +120,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1570 KY Bamboo",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1570-ky-bamboo/1.png",
       "/products/style-1570-ky-bamboo/10.png",
@@ -163,7 +154,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596029/cityfashion/products/style-1570-ky-bamboo/7?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596031/cityfashion/products/style-1570-ky-bamboo/8?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596035/cityfashion/products/style-1570-ky-bamboo/9?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1570 KY Bamboo"
   },
   {
     "id": "1600",
@@ -176,10 +168,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1600",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1600/row-1-column-1-1600.png",
       "/products/style-1600/row-1-column-2-1600.png",
@@ -195,7 +184,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596044/cityfashion/products/style-1600/row-2-column-1-1600?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596045/cityfashion/products/style-1600/row-2-column-2-1600?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596047/cityfashion/products/style-1600/row-2-column-3-1600?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1600"
   },
   {
     "id": "1610",
@@ -208,10 +198,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1610",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1610/row-1-column-1-1610.png",
       "/products/style-1610/row-1-column-2-1610.png",
@@ -223,7 +210,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596051/cityfashion/products/style-1610/row-1-column-2-1610?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596053/cityfashion/products/style-1610/row-2-column-1-1610?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596055/cityfashion/products/style-1610/row-2-column-2-1610?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1610"
   },
   {
     "id": "1710",
@@ -236,10 +224,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1710",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1710/1.png",
       "/products/style-1710/2.png",
@@ -269,7 +254,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596073/cityfashion/products/style-1710/row-2-column-3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596074/cityfashion/products/style-1710/row-2-column-4-blue-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596074/cityfashion/products/style-1710/row-2-column-4-blue-1?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1710"
   },
   {
     "id": "1780",
@@ -282,10 +268,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1780",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1780/1780-1.png",
       "/products/style-1780/1780-2.png",
@@ -305,7 +288,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596095/cityfashion/products/style-1780/1780-6?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596098/cityfashion/products/style-1780/1780-7?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596101/cityfashion/products/style-1780/1780-8?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1780"
   },
   {
     "id": "1800",
@@ -318,10 +302,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1800",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1800/img-6395.jpg",
       "/products/style-1800/img-6396.jpg",
@@ -351,7 +332,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596116/cityfashion/products/style-1800/row-2-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596117/cityfashion/products/style-1800/row-2-column-3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596118/cityfashion/products/style-1800/row-2-column-4?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1800"
   },
   {
     "id": "1810",
@@ -364,10 +346,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1810",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1810/1.png",
       "/products/style-1810/2.png",
@@ -409,7 +388,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596136/cityfashion/products/style-1810/row-2-column-3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596137/cityfashion/products/style-1810/row-2-column-4?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596138/cityfashion/products/style-1810/row-2-column-5?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1810"
   },
   {
     "id": "1850",
@@ -422,10 +402,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1850",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1850/img-5373.jpg",
       "/products/style-1850/img-5374.jpg",
@@ -435,7 +412,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596139/cityfashion/products/style-1850/img-5373?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596141/cityfashion/products/style-1850/img-5374?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596142/cityfashion/products/style-1850/img-5375?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1850"
   },
   {
     "id": "1880",
@@ -448,10 +426,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1880",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1880/row-1-column-1.jpg",
       "/products/style-1880/row-1-column-2.jpg",
@@ -467,7 +442,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596146/cityfashion/products/style-1880/row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596147/cityfashion/products/style-1880/row-2-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596149/cityfashion/products/style-1880/row-2-column-3?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1880"
   },
   {
     "id": "1900",
@@ -480,10 +456,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "1900",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-1900/shot-1.png",
       "/products/style-1900/shot-2.png",
@@ -505,7 +478,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596160/cityfashion/products/style-1900/shot-7?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596161/cityfashion/products/style-1900/shot-8?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596163/cityfashion/products/style-1900/shot-9?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "1900"
   },
   {
     "id": "3003 V-3",
@@ -518,10 +492,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3003 V-3",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3003-v-3/565e2c24-2ece-485b-9ebf-49efdaf87c5f.png",
       "/products/style-3003-v-3/9cbb8deb-96f3-48e9-82d4-b60e69245cc3.png",
@@ -531,7 +502,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596165/cityfashion/products/style-3003-v-3/565e2c24-2ece-485b-9ebf-49efdaf87c5f?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596168/cityfashion/products/style-3003-v-3/9cbb8deb-96f3-48e9-82d4-b60e69245cc3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596170/cityfashion/products/style-3003-v-3/d7c8c16c-0d4c-40ea-ab84-22f932b4598f?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3003 V-3"
   },
   {
     "id": "3003 V-6",
@@ -544,10 +516,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3003 V-6",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3003-v-6/6aea0d76-f4ee-48a9-bcfa-7a4565ecbd81-1.png",
       "/products/style-3003-v-6/6aea0d76-f4ee-48a9-bcfa-7a4565ecbd81.png",
@@ -559,7 +528,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596172/cityfashion/products/style-3003-v-6/6aea0d76-f4ee-48a9-bcfa-7a4565ecbd81-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596175/cityfashion/products/style-3003-v-6/80414b4d-c106-4b3c-9848-4ec067f83f1a?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596177/cityfashion/products/style-3003-v-6/b41dfc2c-c9d6-432a-9711-ab100ee881bf?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3003 V-6"
   },
   {
     "id": "3017",
@@ -572,10 +542,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3017",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3017/1.png",
       "/products/style-3017/2.png",
@@ -595,7 +562,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596188/cityfashion/products/style-3017/3017-row-2-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596190/cityfashion/products/style-3017/3018-row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596192/cityfashion/products/style-3017/4?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3017"
   },
   {
     "id": "3023",
@@ -608,10 +576,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3023",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3023/1.png",
       "/products/style-3023/2.png",
@@ -629,7 +594,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596199/cityfashion/products/style-3023/3013-row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596201/cityfashion/products/style-3023/3013-row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596203/cityfashion/products/style-3023/3013-row-2-column-2?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3023"
   },
   {
     "id": "3042",
@@ -642,10 +608,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3042",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3042/row-1-column-1.jpg",
       "/products/style-3042/row-1-column-1.png",
@@ -681,7 +644,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596219/cityfashion/products/style-3042/row-2-column-3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596221/cityfashion/products/style-3042/row-2-column-4?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596221/cityfashion/products/style-3042/row-2-column-4?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3042"
   },
   {
     "id": "3063",
@@ -694,10 +658,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3063",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3063/1.png",
       "/products/style-3063/1765175500576-v718x4gone.png",
@@ -721,7 +682,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596238/cityfashion/products/style-3063/e38a28068c46c4cda55ba4e110d44c37-1765177097?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596240/cityfashion/products/style-3063/img-5299?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596243/cityfashion/products/style-3063/img-5300?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3063"
   },
   {
     "id": "3095",
@@ -734,10 +696,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3095",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3095/1765023959760-94uzwo7ytxp.png",
       "/products/style-3095/1765024126883-sdwnmbn6rt.png",
@@ -749,7 +708,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596250/cityfashion/products/style-3095/1765024126883-sdwnmbn6rt?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596251/cityfashion/products/style-3095/3095?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596254/cityfashion/products/style-3095/img-5823?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3095"
   },
   {
     "id": "3105",
@@ -762,10 +722,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3105",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3105/0937edead2bd41ff78ec9cb9e9a6f60b-1767598884.png",
       "/products/style-3105/1767592595339-o03pa47mx5b.png",
@@ -793,7 +750,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596292/cityfashion/products/style-3105/v2-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596294/cityfashion/products/style-3105/v2-3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596294/cityfashion/products/style-3105/v2-4?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3105"
   },
   {
     "id": "3112",
@@ -806,10 +764,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3112",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3112/09e05227-7b02-4451-8b0c-a284447934bc.png",
       "/products/style-3112/1.png",
@@ -833,7 +788,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596309/cityfashion/products/style-3112/4?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596310/cityfashion/products/style-3112/img-5188?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596312/cityfashion/products/style-3112/img-5189?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3112"
   },
   {
     "id": "3113",
@@ -846,10 +802,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3113",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3113/3.png",
       "/products/style-3113/35dafcda-e232-4914-9531-453b1e1800d7-1.png",
@@ -869,7 +822,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596322/cityfashion/products/style-3113/a0776ed2-2f5e-4ea9-b68a-e02b81c1c08b?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596323/cityfashion/products/style-3113/img-5190?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596325/cityfashion/products/style-3113/img-5191?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3113"
   },
   {
     "id": "3127",
@@ -882,10 +836,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3127",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3127/1.png",
       "/products/style-3127/1053251fca57100566ac32c70db2567b-1767509170.png",
@@ -925,7 +876,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596360/cityfashion/products/style-3127/row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596363/cityfashion/products/style-3127/row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596366/cityfashion/products/style-3127/row-2-column-2?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3127"
   },
   {
     "id": "3143",
@@ -938,10 +890,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3143",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3143/1.png",
       "/products/style-3143/2.png",
@@ -961,7 +910,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596378/cityfashion/products/style-3143/row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596382/cityfashion/products/style-3143/row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596384/cityfashion/products/style-3143/row-2-column-2?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3143"
   },
   {
     "id": "3145",
@@ -974,10 +924,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3145",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3145/0e3e406a-9c8f-4f13-9a95-76746bd807d5.png",
       "/products/style-3145/1.png",
@@ -1013,7 +960,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596411/cityfashion/products/style-3145/img-5319?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596413/cityfashion/products/style-3145/img-5320?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596415/cityfashion/products/style-3145/img-5321?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3145"
   },
   {
     "id": "3151",
@@ -1026,10 +974,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3151",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3151/1.png",
       "/products/style-3151/2.png",
@@ -1045,7 +990,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596420/cityfashion/products/style-3151/row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596422/cityfashion/products/style-3151/row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596423/cityfashion/products/style-3151/row-2-column-2?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3151"
   },
   {
     "id": "3168",
@@ -1058,10 +1004,7 @@
     "sizeRange": "",
     "description": "Wholesale style for Sri Lanka retailers.",
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "3168",
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-3168/row-1-column-1.png",
       "/products/style-3168/row-1-column-2.png",
@@ -1073,7 +1016,8 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596427/cityfashion/products/style-3168/row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596429/cityfashion/products/style-3168/row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596431/cityfashion/products/style-3168/row-2-column-2?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "3168"
   },
   {
     "id": "4080",
@@ -1095,10 +1039,7 @@
       "Olive",
       "Mauve"
     ],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "sourceFolder": "4080",
-    "notes": "Use top-level images only. Keep output grids out of the storefront.",
+    "merchandisingLane": "new",
     "images": [
       "/products/style-4080/ref-model.jpeg",
       "/products/style-4080/img-7397-1.png",
@@ -1120,6 +1061,7 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596442/cityfashion/products/style-4080/img-7404?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596443/cityfashion/products/style-4080/img-7409?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596444/cityfashion/products/style-4080/img-7410?_a=BAMAOGWO0"
-    ]
+    ],
+    "sourceFolder": "4080"
   }
 ]

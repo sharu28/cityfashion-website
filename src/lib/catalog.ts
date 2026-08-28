@@ -73,8 +73,7 @@ export type CatalogProduct = {
   sizeRange?: string;
   description: string;
   colors: string[];
-  isNewArrival: boolean;
-  isSaleItem: boolean;
+  merchandisingLane: "new" | "deal" | "standard" | "new-and-deal";
   images: string[];
   cloudinaryImages?: string[];
   sourceFolder?: string;
@@ -85,6 +84,8 @@ export type CatalogProductView = CatalogProduct & {
   categoryMeta: Category;
   coverImage: string | null;
   badges: string[];
+  isNewArrival: boolean;
+  isSaleItem: boolean;
 };
 
 const fallbackCategory: Category = {
@@ -101,7 +102,9 @@ export function getCategory(slug: string) {
 
 const normalizeProduct = (product: CatalogProduct): CatalogProductView => {
   const categoryMeta = getCategory(product.category) ?? fallbackCategory;
-  const badges = [product.isNewArrival ? "New" : null, product.isSaleItem ? "Sale" : null].filter(
+  const isNewArrival = ["new", "new-and-deal"].includes(product.merchandisingLane);
+  const isSaleItem = ["deal", "new-and-deal"].includes(product.merchandisingLane);
+  const badges = [isNewArrival ? "New" : null, isSaleItem ? "Sale" : null].filter(
     (badge): badge is string => Boolean(badge),
   );
   const resolvedImages = product.cloudinaryImages?.length ? product.cloudinaryImages : product.images;
@@ -112,6 +115,8 @@ const normalizeProduct = (product: CatalogProduct): CatalogProductView => {
     categoryMeta,
     coverImage: resolvedImages[0] ?? null,
     badges,
+    isNewArrival,
+    isSaleItem,
   };
 };
 
