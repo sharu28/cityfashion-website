@@ -53,6 +53,7 @@ function mapProductToShortlistItem(productSlug: string): ShortlistItem | null {
     category: product.categoryMeta.name,
     coverImage: product.coverImage,
     id: product.id,
+    merchandisingLane: product.merchandisingLane,
     moq: product.moq,
     slug: product.slug,
     startingPrice: product.startingPrice,
@@ -265,6 +266,7 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
         item_category: product.category,
         item_id: product.id,
         item_name: product.title,
+        merchandising_lane: product.merchandisingLane,
         retailer_status: "guest",
       });
       return;
@@ -302,6 +304,7 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
         item_category: product.category,
         item_id: product.id,
         item_name: product.title,
+        merchandising_lane: product.merchandisingLane,
         retailer_status: "authenticated",
       });
     }
@@ -328,6 +331,7 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
           item_category: currentProduct?.category,
           item_id: currentProduct?.id,
           item_name: currentProduct?.title,
+          merchandising_lane: currentProduct?.merchandisingLane ?? "mixed-shortlist",
           retailer_status: "guest",
           shortlist_size: activeSession.shortlist.length,
         },
@@ -367,6 +371,7 @@ export function RetailerProvider({ children }: { children: React.ReactNode }) {
         item_category: currentProduct?.category,
         item_id: currentProduct?.id,
         item_name: currentProduct?.title,
+        merchandising_lane: currentProduct?.merchandisingLane ?? "mixed-shortlist",
         retailer_status: "authenticated",
         shortlist_size: activeSession.shortlist.length,
       },

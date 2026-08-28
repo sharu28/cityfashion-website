@@ -78,6 +78,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <main className="overflow-hidden pb-28 pt-20 md:pb-16">
       <ProductViewTracker
         category={product.categoryMeta.name}
+        merchandisingLane={product.merchandisingLane}
         productId={product.id}
         productName={product.title}
       />

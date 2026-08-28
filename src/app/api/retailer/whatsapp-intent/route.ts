@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
   await logActivityEvent({
     eventType: "whatsapp_intent",
     metadata: {
+      merchandisingLane: product?.merchandisingLane ?? "mixed-shortlist",
       shortlistCount: session.shortlist.length,
     },
     pagePath: body.pagePath ?? null,

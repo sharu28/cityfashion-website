@@ -83,6 +83,7 @@ export async function POST(request: NextRequest) {
 
   await logActivityEvent({
     eventType: shouldRemove ? "product_unsaved" : "product_saved",
+    metadata: { merchandisingLane: product.merchandisingLane },
     pagePath: body.pagePath ?? null,
     productId: product.id,
     productSlug: product.slug,

@@ -1,4 +1,5 @@
 import { whatsappNumber } from "@/lib/site";
+import type { MerchandisingLane } from "@/lib/catalog";
 import type { Database } from "@/lib/supabase/types";
 
 export type SourceChannel = "direct" | "organic" | "outreach" | "meta" | "influencer" | "referral";
@@ -17,6 +18,7 @@ export type ShortlistItem = {
   category: string;
   coverImage: string | null;
   id: string;
+  merchandisingLane: MerchandisingLane;
   moq: string;
   slug: string;
   startingPrice: string;
@@ -98,11 +100,23 @@ export function buildRetailerWhatsAppLink(args: {
     products.set(args.currentProduct.slug, args.currentProduct);
   }
 
+  const selectedProducts = Array.from(products.values());
+  const hasRetailerDeal = selectedProducts.some((item) =>
+    ["deal", "new-and-deal"].includes(item.merchandisingLane),
+  );
+  const productLines = selectedProducts.map((item) => {
+    const dealLabel =
+      item.merchandisingLane === "deal" || item.merchandisingLane === "new-and-deal"
+        ? " | Retailer Deal"
+        : "";
+    return `- ${item.id} | ${item.title} | MOQ ${item.moq}${dealLabel}`;
+  });
   const lines = [
     "Hello City Fashion, I am a retailer.",
     "Please send order details for these styles:",
-    ...Array.from(products.values()).map((item) => `- ${item.id} | ${item.title} | MOQ ${item.moq}`),
+    ...productLines,
     "Please share colors, prices, fabric, and sizes.",
+    ...(hasRetailerDeal ? ["Please also share the retailer lot terms."] : []),
   ];
 
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;

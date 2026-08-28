@@ -27,6 +27,7 @@ function mapShortlistItem(slug: string): ShortlistItem | null {
     category: product.categoryMeta.name,
     coverImage: product.coverImage,
     id: product.id,
+    merchandisingLane: product.merchandisingLane,
     moq: product.moq,
     slug: product.slug,
     startingPrice: product.startingPrice,
