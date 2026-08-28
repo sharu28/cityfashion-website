@@ -62,6 +62,8 @@ export const categories = [
 
 export type Category = (typeof categories)[number];
 
+export type MerchandisingLane = "deal" | "new" | "new-and-deal" | "standard";
+
 export type CatalogProduct = {
   id: string;
   slug: string;
@@ -73,7 +75,7 @@ export type CatalogProduct = {
   sizeRange?: string;
   description: string;
   colors: string[];
-  merchandisingLane: "new" | "deal" | "standard" | "new-and-deal";
+  merchandisingLane: MerchandisingLane;
   images: string[];
   cloudinaryImages?: string[];
   sourceFolder?: string;
@@ -84,8 +86,20 @@ export type CatalogProductView = CatalogProduct & {
   categoryMeta: Category;
   coverImage: string | null;
   badges: string[];
-  isNewArrival: boolean;
-  isSaleItem: boolean;
+};
+
+const laneBadges: Record<MerchandisingLane, string[]> = {
+  deal: ["Retailer Deal"],
+  new: ["New"],
+  "new-and-deal": ["New", "Retailer Deal"],
+  standard: [],
+};
+
+const laneScore: Record<MerchandisingLane, number> = {
+  "new-and-deal": 3,
+  new: 2,
+  deal: 1,
+  standard: 0,
 };
 
 const fallbackCategory: Category = {
@@ -102,11 +116,6 @@ export function getCategory(slug: string) {
 
 const normalizeProduct = (product: CatalogProduct): CatalogProductView => {
   const categoryMeta = getCategory(product.category) ?? fallbackCategory;
-  const isNewArrival = ["new", "new-and-deal"].includes(product.merchandisingLane);
-  const isSaleItem = ["deal", "new-and-deal"].includes(product.merchandisingLane);
-  const badges = [isNewArrival ? "New" : null, isSaleItem ? "Sale" : null].filter(
-    (badge): badge is string => Boolean(badge),
-  );
   const resolvedImages = product.cloudinaryImages?.length ? product.cloudinaryImages : product.images;
 
   return {
@@ -114,35 +123,23 @@ const normalizeProduct = (product: CatalogProduct): CatalogProductView => {
     images: resolvedImages,
     categoryMeta,
     coverImage: resolvedImages[0] ?? null,
-    badges,
-    isNewArrival,
-    isSaleItem,
+    badges: laneBadges[product.merchandisingLane],
   };
 };
 
-const badgeScore = (product: CatalogProductView) => {
-  if (product.isNewArrival && product.isSaleItem) {
-    return 3;
-  }
-
-  if (product.isNewArrival) {
-    return 2;
-  }
-
-  if (product.isSaleItem) {
-    return 1;
-  }
-
-  return 0;
-};
+const badgeScore = (product: CatalogProductView) => laneScore[product.merchandisingLane];
 
 export const allProducts = (products as CatalogProduct[]).map(normalizeProduct);
 
 export const featuredProducts = [...allProducts].sort((a, b) => badgeScore(b) - badgeScore(a));
 
-export const newArrivals = allProducts.filter((product) => product.isNewArrival);
+export const newArrivals = allProducts.filter((product) =>
+  ["new", "new-and-deal"].includes(product.merchandisingLane),
+);
 
-export const saleItems = allProducts.filter((product) => product.isSaleItem);
+export const retailerDeals = allProducts.filter((product) =>
+  ["deal", "new-and-deal"].includes(product.merchandisingLane),
+);
 
 export const productsByCategory = (slug: string) =>
   allProducts.filter((product) => product.category === slug);

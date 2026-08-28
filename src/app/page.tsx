@@ -13,7 +13,7 @@ import {
   newArrivals,
   populatedCategories,
   productsByCategory,
-  saleItems,
+  retailerDeals,
 } from "@/lib/catalog";
 import { company, formattedWhatsAppNumber, getAbsoluteUrl, siteDescription } from "@/lib/site";
 
@@ -41,8 +41,6 @@ export default function Home() {
       coverImage: products[0]?.coverImage ?? null,
     };
   });
-  const secondaryProducts = saleItems.length > 0 ? saleItems : featuredProducts.slice(8, 16);
-  const hasSaleItems = saleItems.length > 0;
 
   return (
     <main className="overflow-hidden pb-28 md:pb-16">
@@ -198,25 +196,21 @@ export default function Home() {
         </CatalogShell>
       </section>
 
-      <section id="sale-items" className="bg-[var(--panel)] py-10 md:py-16">
-        <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
-          <SectionTitle
-            eyebrow={hasSaleItems ? "Sale styles" : "More styles"}
-            title={hasSaleItems ? "Browse current sale picks" : "Keep browsing the catalog"}
-            body={hasSaleItems ? "Open a sale style to check its photos and wholesale details." : "More wholesale styles from the current catalog."}
-            action={<RetailerOrderButton label="Ask on WhatsApp" variant="dark" />}
-          />
-          <div className="mt-7">
-            {secondaryProducts.length > 0 ? (
-              <ProductGrid products={secondaryProducts.slice(0, 8)} />
-            ) : (
-              <div className="hard-panel px-5 py-8 text-sm leading-6 text-[var(--text-soft)]">
-                More styles will be added soon. New wholesale styles are ready above.
-              </div>
-            )}
-          </div>
-        </CatalogShell>
-      </section>
+      {retailerDeals.length > 0 ? (
+        <section id="retailer-deals" className="bg-[var(--panel)] py-10 md:py-16">
+          <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
+            <SectionTitle
+              eyebrow="Retailer deals"
+              title="Special wholesale lots for retailers"
+              body="Selected styles have special wholesale terms. Open a style and ask on WhatsApp for the lot price and details."
+              action={<RetailerOrderButton label="Ask for deal details" variant="dark" />}
+            />
+            <div className="mt-7">
+              <ProductGrid products={retailerDeals.slice(0, 8)} />
+            </div>
+          </CatalogShell>
+        </section>
+      ) : null}
 
       <section id="visit-us" className="py-10 md:py-16">
         <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">

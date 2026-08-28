@@ -181,6 +181,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               <div className="border-t border-[var(--line)] p-5">
+                {["deal", "new-and-deal"].includes(product.merchandisingLane) ? (
+                  <p className="mb-4 border border-[var(--accent)] bg-[var(--accent-soft)] p-3 text-sm font-bold leading-6 text-[var(--text-strong)]">
+                    This style has special retailer terms. Ask on WhatsApp for the lot price, colors, and order details.
+                  </p>
+                ) : null}
                 <RetailerOrderButton productSlug={product.slug} label="Ask on WhatsApp" />
                 <p className="mt-4 text-sm leading-6 text-[var(--text-soft)]">
                   Save this style first if you want it kept in your shortlist. Send style code{" "}
