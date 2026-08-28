@@ -14,9 +14,14 @@
       "IMG_5865.JPG"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 155,
+    "odooDesignKey": "D1210",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1220": {
     "title": "Style 1220",
@@ -33,9 +38,14 @@
       "row-2-column-3-1220.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 158,
+    "odooDesignKey": "D1220",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1490": {
     "title": "Style 1490",
@@ -52,28 +62,14 @@
       "6.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
-  },
-  "1570 KY Bamboo": {
-    "title": "Style 1570 KY Bamboo",
-    "category": "printed-tops",
-    "startingPrice": "Call for price",
-    "moq": "6 pcs",
-    "description": "Wholesale style for Sri Lanka retailers.",
-    "imageOrder": [
-      "1.png",
-      "10.png",
-      "11.png",
-      "12.png",
-      "13.png",
-      "14.png"
-    ],
-    "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 208,
+    "odooDesignKey": "D1490",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1600": {
     "title": "Style 1600",
@@ -90,9 +86,14 @@
       "row-2-column-3-1600.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 424,
+    "odooDesignKey": "D1600",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1610": {
     "title": "Style 1610",
@@ -107,9 +108,14 @@
       "row-2-column-2-1610.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 431,
+    "odooDesignKey": "D1610",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1710": {
     "title": "Style 1710",
@@ -126,9 +132,14 @@
       "row-1-column-2.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 435,
+    "odooDesignKey": "D1710",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1780": {
     "title": "Style 1780",
@@ -145,9 +156,14 @@
       "1780-6.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 439,
+    "odooDesignKey": "D1780",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1800": {
     "title": "Style 1800",
@@ -164,9 +180,14 @@
       "row-1-column-1.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 438,
+    "odooDesignKey": "D1800",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1810": {
     "title": "Style 1810",
@@ -183,9 +204,14 @@
       "IMG_6402.JPG"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 441,
+    "odooDesignKey": "D1810",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1850": {
     "title": "Style 1850",
@@ -199,9 +225,14 @@
       "IMG_5375.JPG"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 442,
+    "odooDesignKey": "D1850",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1880": {
     "title": "Style 1880",
@@ -218,9 +249,14 @@
       "row-2-column-3.jpg"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 443,
+    "odooDesignKey": "D1880",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "1900": {
     "title": "Style 1900",
@@ -237,42 +273,14 @@
       "shot-6.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
-  },
-  "3003 V-3": {
-    "title": "Style 3003 V-3",
-    "category": "printed-tops",
-    "startingPrice": "Call for price",
-    "moq": "6 pcs",
-    "description": "Wholesale style for Sri Lanka retailers.",
-    "imageOrder": [
-      "565e2c24-2ece-485b-9ebf-49efdaf87c5f.png",
-      "9cbb8deb-96f3-48e9-82d4-b60e69245cc3.png",
-      "d7c8c16c-0d4c-40ea-ab84-22f932b4598f.png"
-    ],
-    "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
-  },
-  "3003 V-6": {
-    "title": "Style 3003 V-6",
-    "category": "printed-tops",
-    "startingPrice": "Call for price",
-    "moq": "6 pcs",
-    "description": "Wholesale style for Sri Lanka retailers.",
-    "imageOrder": [
-      "6aea0d76-f4ee-48a9-bcfa-7a4565ecbd81 (1).png",
-      "6aea0d76-f4ee-48a9-bcfa-7a4565ecbd81.png",
-      "80414b4d-c106-4b3c-9848-4ec067f83f1a.png",
-      "b41dfc2c-c9d6-432a-9711-ab100ee881bf.png"
-    ],
-    "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 444,
+    "odooDesignKey": "D1900",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3017": {
     "title": "Style 3017",
@@ -289,9 +297,14 @@
       "3017-row-2-column-2.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 189,
+    "odooDesignKey": "D3017",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3023": {
     "title": "Style 3023",
@@ -308,9 +321,14 @@
       "3013-row-2-column-1.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 195,
+    "odooDesignKey": "D3023",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3042": {
     "title": "Style 3042",
@@ -327,9 +345,14 @@
       "row-1-column-3.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 216,
+    "odooDesignKey": "D3042",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3063": {
     "title": "Style 3063",
@@ -346,9 +369,14 @@
       "2.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 231,
+    "odooDesignKey": "D3063",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3095": {
     "title": "Style 3095",
@@ -363,9 +391,14 @@
       "IMG_5823.jpg"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 421,
+    "odooDesignKey": "D3095",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3105": {
     "title": "Style 3105",
@@ -382,9 +415,14 @@
       "85e51740a4e8b2ef1f17002357713dc5_1767595377.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 425,
+    "odooDesignKey": "D3105",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3112": {
     "title": "Style 3112",
@@ -401,9 +439,14 @@
       "3.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 460,
+    "odooDesignKey": "D3112",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3113": {
     "title": "Style 3113",
@@ -420,9 +463,14 @@
       "a0776ed2-2f5e-4ea9-b68a-e02b81c1c08b.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 466,
+    "odooDesignKey": "D3113",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3127": {
     "title": "Style 3127",
@@ -439,9 +487,14 @@
       "22e39831-a5fd-4356-badd-45d5306ba3c3 (1).png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 462,
+    "odooDesignKey": "D3127",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3143": {
     "title": "Style 3143",
@@ -458,9 +511,14 @@
       "row-1-column-2.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 491,
+    "odooDesignKey": "D3143",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3145": {
     "title": "Style 3145",
@@ -477,9 +535,14 @@
       "4.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 492,
+    "odooDesignKey": "D3145",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3151": {
     "title": "Style 3151",
@@ -496,9 +559,14 @@
       "row-2-column-2.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 497,
+    "odooDesignKey": "D3151",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "3168": {
     "title": "Style 3168",
@@ -513,9 +581,14 @@
       "row-2-column-2.png"
     ],
     "colors": [],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed."
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 515,
+    "odooDesignKey": "D3168",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   },
   "4080": {
     "title": "Style 4080",
@@ -544,8 +617,80 @@
       "Olive",
       "Mauve"
     ],
-    "isNewArrival": true,
-    "isSaleItem": false,
-    "notes": "Use top-level images only. Keep output grids out of the storefront."
+    "notes": "Use top-level images only. Keep output grids out of the storefront.",
+    "odooProductId": 536,
+    "odooDesignKey": "D4080",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "1570 KY Bamboo": {
+    "title": "Style 1570 KY Bamboo",
+    "category": "printed-tops",
+    "startingPrice": "Call for price",
+    "moq": "6 pcs",
+    "description": "Wholesale style for Sri Lanka retailers.",
+    "imageOrder": [
+      "1.png",
+      "10.png",
+      "11.png",
+      "12.png",
+      "13.png",
+      "14.png"
+    ],
+    "colors": [],
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 227,
+    "odooDesignKey": "D1570",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "3003 V-3": {
+    "title": "Style 3003 V-3",
+    "category": "printed-tops",
+    "startingPrice": "Call for price",
+    "moq": "6 pcs",
+    "description": "Wholesale style for Sri Lanka retailers.",
+    "imageOrder": [
+      "565e2c24-2ece-485b-9ebf-49efdaf87c5f.png",
+      "9cbb8deb-96f3-48e9-82d4-b60e69245cc3.png",
+      "d7c8c16c-0d4c-40ea-ab84-22f932b4598f.png"
+    ],
+    "colors": [],
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 178,
+    "odooDesignKey": "D3003",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "3003 V-6": {
+    "title": "Style 3003 V-6",
+    "category": "printed-tops",
+    "startingPrice": "Call for price",
+    "moq": "6 pcs",
+    "description": "Wholesale style for Sri Lanka retailers.",
+    "imageOrder": [
+      "6aea0d76-f4ee-48a9-bcfa-7a4565ecbd81 (1).png",
+      "6aea0d76-f4ee-48a9-bcfa-7a4565ecbd81.png",
+      "80414b4d-c106-4b3c-9848-4ec067f83f1a.png",
+      "b41dfc2c-c9d6-432a-9711-ab100ee881bf.png"
+    ],
+    "colors": [],
+    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "odooProductId": 178,
+    "odooDesignKey": "D3003",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }
