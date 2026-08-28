@@ -8,7 +8,10 @@
     "build": "npm run check && next build",
     "start": "next start",
     "lint": "eslint .",
-    "import-products": "node scripts/import-products.mjs"
+    "import-products": "node scripts/import-products.mjs",
+    "sync-odoo-catalog": "python scripts/sync-odoo-catalog.py",
+    "test:catalog-sync": "python -m unittest discover -s tests/catalog_sync -p \"test_*.py\" -v",
+    "test:catalog-publication": "node --test tests/catalog-publication.test.mjs"
   },
   "keywords": [],
   "author": "",

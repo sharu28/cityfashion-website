@@ -6,6 +6,8 @@ node_modules/
 tsconfig.tsbuildinfo
 __pycache__/
 *.py[cod]
+/data/odoo/*.json
+!/data/odoo/.gitkeep
 
 .vercel
 .memory-private/
