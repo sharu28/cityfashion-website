@@ -66,6 +66,40 @@
     "sourceFolder": "1220"
   },
   {
+    "id": "1390",
+    "slug": "style-1390-printed-long-frock",
+    "title": "Style 1390 Printed Long Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,500",
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Long printed frock in eight colorful designs for ladies wear retailers.",
+    "colors": [
+      "Blue Teal",
+      "Rust Cream",
+      "Purple Magenta",
+      "Muted Aqua",
+      "Magenta",
+      "Olive Pink",
+      "Mustard",
+      "Pink"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-1390-printed-long-frock/01-d1390-blue-teal-midi-frock.webp",
+      "/products/style-1390-printed-long-frock/02-d1390-rust-cream-midi-frock.webp",
+      "/products/style-1390-printed-long-frock/03-d1390-purple-magenta-midi-frock.webp",
+      "/products/style-1390-printed-long-frock/04-d1390-muted-aqua-midi-frock.webp",
+      "/products/style-1390-printed-long-frock/05-d1390-magenta-feather-midi-frock.webp",
+      "/products/style-1390-printed-long-frock/06-d1390-olive-pink-midi-frock.webp",
+      "/products/style-1390-printed-long-frock/07-d1390-mustard-botanical-midi-frock.webp",
+      "/products/style-1390-printed-long-frock/08-d1390-pink-botanical-midi-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "1390"
+  },
+  {
     "id": "1490",
     "slug": "style-1490",
     "title": "Style 1490",

@@ -47,6 +47,41 @@
     "retailerDealApproval": "no",
     "priceSource": "override"
   },
+  "1390": {
+    "title": "Style 1390 Printed Long Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,500",
+    "moq": "6 pcs",
+    "description": "Long printed frock in eight colorful designs for ladies wear retailers.",
+    "imageOrder": [
+      "01-D1390-blue-teal-midi-frock.webp",
+      "02-D1390-rust-cream-midi-frock.webp",
+      "03-D1390-purple-magenta-midi-frock.webp",
+      "04-D1390-muted-aqua-midi-frock.webp",
+      "05-D1390-magenta-feather-midi-frock.webp",
+      "06-D1390-olive-pink-midi-frock.webp",
+      "07-D1390-mustard-botanical-midi-frock.webp",
+      "08-D1390-pink-botanical-midi-frock.webp"
+    ],
+    "colors": [
+      "Blue Teal",
+      "Rust Cream",
+      "Purple Magenta",
+      "Muted Aqua",
+      "Magenta",
+      "Olive Pink",
+      "Mustard",
+      "Pink"
+    ],
+    "notes": "Website-ready campaign images approved for the storefront.",
+    "odooProductId": 170,
+    "odooDesignKey": "D1390",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
   "1490": {
     "title": "Style 1490",
     "category": "printed-tops",
