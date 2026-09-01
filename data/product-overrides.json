@@ -661,6 +661,41 @@
     "retailerDealApproval": "no",
     "priceSource": "override"
   },
+  "4110": {
+    "title": "Style 4110 Printed Button Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,900",
+    "moq": "6 pcs",
+    "description": "Loose shin-length printed button frock in eight designs for ladies wear retailers.",
+    "imageOrder": [
+      "01-D4110-ivory-charcoal-botanical.webp",
+      "02-D4110-deep-red-cream-abstract-leaf.webp",
+      "03-D4110-white-black-ikat.webp",
+      "04-D4110-ivory-navy-botanical.webp",
+      "05-D4110-ivory-olive-botanical.webp",
+      "06-D4110-white-cobalt-botanical.webp",
+      "07-D4110-deep-green-cream-abstract-leaf.webp",
+      "08-D4110-ivory-lavender-botanical.webp"
+    ],
+    "colors": [
+      "Ivory Charcoal",
+      "Deep Red Cream",
+      "White Black",
+      "Ivory Navy",
+      "Ivory Olive",
+      "White Cobalt",
+      "Deep Green Cream",
+      "Ivory Lavender"
+    ],
+    "notes": "Approved eight-image D4110 campaign; one model and one cafe photoshoot location across all colorways.",
+    "odooProductId": 655,
+    "odooDesignKey": "D4110",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
   "1570 KY Bamboo": {
     "title": "Style 1570 KY Bamboo",
     "category": "printed-tops",

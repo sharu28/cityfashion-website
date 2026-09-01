@@ -1097,5 +1097,39 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596444/cityfashion/products/style-4080/img-7410?_a=BAMAOGWO0"
     ],
     "sourceFolder": "4080"
+  },
+  {
+    "id": "4110",
+    "slug": "style-4110-printed-button-frock",
+    "title": "Style 4110 Printed Button Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,900",
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Loose shin-length printed button frock in eight designs for ladies wear retailers.",
+    "colors": [
+      "Ivory Charcoal",
+      "Deep Red Cream",
+      "White Black",
+      "Ivory Navy",
+      "Ivory Olive",
+      "White Cobalt",
+      "Deep Green Cream",
+      "Ivory Lavender"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-4110-printed-button-frock/01-d4110-ivory-charcoal-botanical.webp",
+      "/products/style-4110-printed-button-frock/02-d4110-deep-red-cream-abstract-leaf.webp",
+      "/products/style-4110-printed-button-frock/03-d4110-white-black-ikat.webp",
+      "/products/style-4110-printed-button-frock/04-d4110-ivory-navy-botanical.webp",
+      "/products/style-4110-printed-button-frock/05-d4110-ivory-olive-botanical.webp",
+      "/products/style-4110-printed-button-frock/06-d4110-white-cobalt-botanical.webp",
+      "/products/style-4110-printed-button-frock/07-d4110-deep-green-cream-abstract-leaf.webp",
+      "/products/style-4110-printed-button-frock/08-d4110-ivory-lavender-botanical.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4110"
   }
 ]
