@@ -70,6 +70,7 @@ export type CatalogProduct = {
   title: string;
   category: string;
   startingPrice: string;
+  unitPriceLkr: number | null;
   moq: string;
   fabric?: string;
   sizeRange?: string;
@@ -86,6 +87,7 @@ export type CatalogProductView = CatalogProduct & {
   categoryMeta: Category;
   coverImage: string | null;
   badges: string[];
+  orderable: boolean;
 };
 
 const laneBadges: Record<MerchandisingLane, string[]> = {
@@ -114,6 +116,10 @@ export function getCategory(slug: string) {
   return categories.find((category) => category.slug === slug);
 }
 
+export function formatLkr(amount: number) {
+  return `Rs. ${amount.toLocaleString("en-LK")}`;
+}
+
 const normalizeProduct = (product: CatalogProduct): CatalogProductView => {
   const categoryMeta = getCategory(product.category) ?? fallbackCategory;
   const resolvedImages = product.cloudinaryImages?.length ? product.cloudinaryImages : product.images;
@@ -124,6 +130,10 @@ const normalizeProduct = (product: CatalogProduct): CatalogProductView => {
     categoryMeta,
     coverImage: resolvedImages[0] ?? null,
     badges: laneBadges[product.merchandisingLane],
+    orderable:
+      Number.isInteger(product.unitPriceLkr) &&
+      Number(product.unitPriceLkr) > 0 &&
+      product.moq === "6 pcs",
   };
 };
 

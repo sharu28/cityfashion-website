@@ -4,6 +4,7 @@ export const PUBLIC_PRODUCT_KEYS = new Set([
   "title",
   "category",
   "startingPrice",
+  "unitPriceLkr",
   "moq",
   "fabric",
   "sizeRange",
@@ -139,8 +140,16 @@ export function buildPublicProduct({
   const fallback = previousProduct ?? {};
   const title = override.title ?? fallback.title ?? `Style ${folderName}`;
   const listPrice = Number(fact?.listPrice ?? 0);
+  const overrideUnitPrice =
+    Number.isInteger(override.unitPriceLkr) && override.unitPriceLkr > 0
+      ? override.unitPriceLkr
+      : null;
+  const unitPriceLkr =
+    override.priceSource === "odoo-list-price" && Number.isInteger(listPrice) && listPrice > 0
+      ? listPrice
+      : (overrideUnitPrice ?? fallback.unitPriceLkr ?? null);
   const startingPrice =
-    override.priceSource === "odoo-list-price" && listPrice > 0
+    override.priceSource === "odoo-list-price" && unitPriceLkr
       ? `Rs. ${listPrice.toLocaleString("en-LK")}`
       : (override.startingPrice ?? fallback.startingPrice ?? "Call for price");
 
@@ -150,6 +159,7 @@ export function buildPublicProduct({
     title,
     category: override.category ?? fallback.category ?? "printed-tops",
     startingPrice,
+    unitPriceLkr,
     moq: override.moq ?? fallback.moq ?? "6 pcs",
     fabric: override.fabric ?? fallback.fabric ?? "",
     sizeRange: override.sizeRange ?? fallback.sizeRange ?? "",
@@ -191,6 +201,12 @@ export function validatePublicProduct(product) {
   }
   if (!Array.isArray(product.cloudinaryImages)) {
     throw new Error("Public product cloudinaryImages must be an array");
+  }
+  if (
+    product.unitPriceLkr !== null &&
+    (!Number.isInteger(product.unitPriceLkr) || product.unitPriceLkr <= 0)
+  ) {
+    throw new Error("Public product unitPriceLkr must be null or a positive integer");
   }
 }
 
