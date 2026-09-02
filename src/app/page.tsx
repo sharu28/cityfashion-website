@@ -30,8 +30,16 @@ export const metadata: Metadata = {
   description: siteDescription,
 };
 
+const homepageNewArrivalSlugs = ["style-4110-printed-button-frock"];
+
 export default function Home() {
   const heroProducts = featuredProducts.slice(0, 6);
+  const homepageNewArrivals = [
+    ...homepageNewArrivalSlugs
+      .map((slug) => newArrivals.find((product) => product.slug === slug))
+      .filter((product): product is (typeof newArrivals)[number] => Boolean(product)),
+    ...newArrivals.filter((product) => !homepageNewArrivalSlugs.includes(product.slug)),
+  ];
   const categoryCards = populatedCategories.map((category) => {
     const products = productsByCategory(category.slug);
 
@@ -129,7 +137,9 @@ export default function Home() {
             action={<RetailerOrderButton label="Start order" variant="dark" />}
           />
           <div className="mt-7">
-            <ProductGrid products={newArrivals.length > 0 ? newArrivals.slice(0, 8) : featuredProducts.slice(0, 8)} />
+            <ProductGrid
+              products={homepageNewArrivals.length > 0 ? homepageNewArrivals.slice(0, 8) : featuredProducts.slice(0, 8)}
+            />
           </div>
         </CatalogShell>
       </section>
