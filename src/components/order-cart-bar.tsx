@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { useOrderCart } from "@/components/order-cart-provider";
 import { formatLkr } from "@/lib/catalog";
 
 export function OrderCartBar() {
   const { isLoaded, summary } = useOrderCart();
+  const pathname = usePathname();
 
-  if (!isLoaded || summary.styleCount === 0) return null;
+  if (!isLoaded || summary.styleCount === 0 || pathname === "/order") return null;
 
   return (
     <div className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl border border-white/15 bg-[rgba(18,17,15,0.96)] p-2 text-white shadow-[0_20px_60px_rgba(18,17,15,0.28)] backdrop-blur-xl">
