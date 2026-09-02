@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { CatalogShell } from "@/components/catalog-shell";
-import { RetailerOrderButton } from "@/components/retailer-order-button";
+import { buildWhatsAppLink } from "@/lib/catalog";
 
 export default function NotFound() {
   return (
@@ -22,7 +22,14 @@ export default function NotFound() {
             >
               Browse new arrivals
             </Link>
-            <RetailerOrderButton label="Ask on WhatsApp" />
+            <a
+              href={buildWhatsAppLink()}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center bg-[var(--whatsapp)] px-6 text-sm font-bold text-white transition active:scale-[0.98]"
+            >
+              Ask on WhatsApp
+            </a>
           </div>
         </section>
       </CatalogShell>

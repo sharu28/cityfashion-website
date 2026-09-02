@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 
 import { CatalogShell } from "@/components/catalog-shell";
 import { ProductBrowser } from "@/components/product-browser";
-import { RetailerOrderButton } from "@/components/retailer-order-button";
 import { SectionTitle } from "@/components/section-title";
 import { getCategory, populatedCategories, productsByCategory } from "@/lib/catalog";
 import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
@@ -81,7 +80,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 eyebrow="Category"
                 title={category.name}
                 body={category.intro}
-                action={<RetailerOrderButton label="Retailer order" variant="light" />}
+                action={
+                  <Link
+                    href="/order"
+                    className="inline-flex min-h-11 items-center justify-center bg-white px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] !text-[#12110f]"
+                  >
+                    View order
+                  </Link>
+                }
                 invert
               />
               <div className="mt-8 grid gap-px bg-white/14 sm:grid-cols-3">
@@ -92,7 +98,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 <div className="bg-[var(--hero)] p-4 sm:col-span-2">
                   <p className="text-[0.62rem] font-black uppercase tracking-[0.18em] text-white/44">Order flow</p>
                   <p className="mt-2 text-sm font-bold leading-6 text-white/72">
-                    Save styles, log in with phone, then send one WhatsApp order.
+                    Add styles, set the quantity, and place one order.
                   </p>
                 </div>
               </div>

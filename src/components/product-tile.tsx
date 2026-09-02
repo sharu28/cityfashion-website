@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import type { CatalogProductView } from "@/lib/catalog";
 
+import { AddToOrderButton } from "@/components/add-to-order-button";
 import { ProductBadges } from "@/components/product-badges";
-import { SaveProductButton } from "@/components/save-product-button";
 
 type ProductTileProps = {
   className?: string;
@@ -22,14 +22,13 @@ export function ProductTile({
   const image = product.coverImage;
 
   return (
-    <Link
-      href={`/products/${product.slug}`}
+    <article
       className={`group relative flex h-full flex-col bg-[var(--panel)] transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 active:translate-y-px active:scale-[0.99] ${className}`.trim()}
     >
-      <div className="absolute right-3 top-3 z-10">
-        <SaveProductButton productSlug={product.slug} />
-      </div>
-      <div className="relative aspect-[4/5] overflow-hidden border border-[var(--line)] bg-white">
+      <Link
+        href={`/products/${product.slug}`}
+        className="relative aspect-[4/5] overflow-hidden border border-[var(--line)] bg-white"
+      >
         {image ? (
           <Image
             src={image}
@@ -44,13 +43,13 @@ export function ProductTile({
             No Image
           </div>
         )}
-      </div>
+      </Link>
       <div className="flex flex-1 flex-col gap-3 border-x border-b border-[var(--line)] px-3 pb-3 pt-3">
         <div className="space-y-2">
-          <div className="space-y-1">
+          <Link href={`/products/${product.slug}`} className="block space-y-1">
             <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[var(--text-soft)]">Style {product.id}</p>
             <h3 className="text-base font-black leading-[1.08] tracking-[-0.01em] text-[var(--text-strong)] sm:text-lg">{product.title}</h3>
-          </div>
+          </Link>
           <ProductBadges badges={product.badges} categoryLabel={product.categoryMeta.shortName} />
         </div>
         {product.colors.length > 0 ? (
@@ -69,7 +68,8 @@ export function ProductTile({
             <p className="mt-1 font-black text-[var(--text-strong)]">{product.moq}</p>
           </div>
         </div>
+        <AddToOrderButton product={product} />
       </div>
-    </Link>
+    </article>
   );
 }

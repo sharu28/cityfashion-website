@@ -3,12 +3,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AddToOrderButton } from "@/components/add-to-order-button";
 import { CatalogShell } from "@/components/catalog-shell";
 import { ProductBadges } from "@/components/product-badges";
 import { ProductGrid } from "@/components/product-grid";
 import { ProductViewTracker } from "@/components/product-view-tracker";
-import { RetailerOrderButton } from "@/components/retailer-order-button";
-import { SaveProductButton } from "@/components/save-product-button";
 import { allProducts, getProduct, getRelatedProducts } from "@/lib/catalog";
 import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
 
@@ -75,7 +74,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const relatedProducts = getRelatedProducts(product);
 
   return (
-    <main className="overflow-hidden pb-28 pt-20 md:pb-16">
+    <main className="overflow-hidden pb-16 pt-20">
       <ProductViewTracker
         category={product.categoryMeta.name}
         merchandisingLane={product.merchandisingLane}
@@ -129,12 +128,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
             <div className="border border-[var(--line)] bg-[var(--panel)]">
-              <div className="flex items-start justify-between gap-4 border-b border-[var(--line)] p-5">
+              <div className="border-b border-[var(--line)] p-5">
                 <div>
                   <p className="font-mono text-[0.72rem] font-black uppercase tracking-[0.16em] text-[var(--text-soft)]">Style {product.id}</p>
                   <ProductBadges badges={product.badges} categoryLabel={product.categoryMeta.name} />
                 </div>
-                <SaveProductButton productSlug={product.slug} />
               </div>
 
               <div className="p-5 sm:p-6">
@@ -187,10 +185,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     This style has special retailer terms. Ask on WhatsApp for the lot price, colors, and order details.
                   </p>
                 ) : null}
-                <RetailerOrderButton productSlug={product.slug} label="Ask on WhatsApp" />
+                <AddToOrderButton product={product} />
                 <p className="mt-4 text-sm leading-6 text-[var(--text-soft)]">
-                  Save this style first if you want it kept in your shortlist. Send style code{" "}
-                  <span className="font-black text-[var(--text-strong)]">{product.id}</span> for faster help.
+                  Add this style to your order. The quantity starts at 6 pieces, and you can change it one piece at a time.
                 </p>
               </div>
             </div>
@@ -198,7 +195,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="bg-[var(--hero)] p-5 text-white">
               <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-white/46">Order help</p>
               <div className="mt-4 grid gap-px bg-white/12 text-sm leading-6 text-white/68">
-                {["Check all product images.", "Save the style or note the colors you need.", "Send this style code on WhatsApp."].map((item, index) => (
+                {["Check all product images.", "Add the style to your order.", "Review your total and place the order."].map((item, index) => (
                   <p key={item} className="bg-[var(--hero)] py-2">
                     <span className="font-mono text-white/38">0{index + 1}</span> {item}
                   </p>
@@ -233,12 +230,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
         ) : null}
       </CatalogShell>
 
-      <div className="fixed inset-x-3 bottom-3 z-40 border border-[var(--line)] bg-[rgba(255,253,247,0.96)] p-2 shadow-[0_18px_48px_rgba(18,17,15,0.2)] backdrop-blur-xl md:hidden">
-        <div className="grid grid-cols-[auto_1fr] gap-2">
-          <SaveProductButton productSlug={product.slug} />
-          <RetailerOrderButton productSlug={product.slug} label={`WhatsApp style ${product.id}`} />
-        </div>
-      </div>
     </main>
   );
 }

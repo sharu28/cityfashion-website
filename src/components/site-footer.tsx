@@ -1,8 +1,7 @@
 import Link from "next/link";
 
 import { CookieSettingsButton } from "@/components/cookie-consent";
-import { RetailerOrderButton } from "@/components/retailer-order-button";
-import { categories } from "@/lib/catalog";
+import { buildWhatsAppLink, categories } from "@/lib/catalog";
 import { company, formattedWhatsAppNumber } from "@/lib/site";
 
 export function SiteFooter() {
@@ -32,7 +31,14 @@ export function SiteFooter() {
               <p className="font-black text-white">{formattedWhatsAppNumber}</p>
               <p>{company.address}</p>
             </div>
-            <RetailerOrderButton label="Retailer order" />
+            <a
+              href={buildWhatsAppLink()}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center justify-center bg-[var(--whatsapp)] px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] text-white"
+            >
+              WhatsApp help
+            </a>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
@@ -42,8 +48,8 @@ export function SiteFooter() {
                 <Link href="/#new-arrivals" className="block hover:text-white">
                   New arrivals
                 </Link>
-                <Link href="/shortlist" className="block hover:text-white">
-                  Shortlist
+                <Link href="/order" className="block hover:text-white">
+                  Your order
                 </Link>
                 <Link href="/#visit-us" className="block hover:text-white">
                   Visit us
@@ -70,7 +76,7 @@ export function SiteFooter() {
               Privacy
             </Link>
             <CookieSettingsButton />
-            <p>Browse styles. Save picks. Order on WhatsApp.</p>
+            <p>Browse styles. Add pieces. Place your order.</p>
           </div>
         </div>
       </div>

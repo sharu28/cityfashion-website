@@ -5,10 +5,9 @@ import type { CSSProperties } from "react";
 
 import { CatalogShell } from "@/components/catalog-shell";
 import { ProductGrid } from "@/components/product-grid";
-import { RetailerOrderButton } from "@/components/retailer-order-button";
-import { RetailerShortlistInlineLink } from "@/components/retailer-provider";
 import { SectionTitle } from "@/components/section-title";
 import {
+  buildWhatsAppLink,
   featuredProducts,
   newArrivals,
   populatedCategories,
@@ -67,7 +66,7 @@ export default function Home() {
                   Pick styles fast. Order for your shop.
                 </h1>
                 <p className="max-w-xl text-pretty text-base leading-7 text-white/68 sm:text-lg">
-                  Browse real product photos, check starting price and MOQ, save styles, and send your order on WhatsApp.
+                  Browse real product photos, check the price, and add styles to your order.
                 </p>
               </div>
 
@@ -75,12 +74,16 @@ export default function Home() {
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <Link
                     href="#new-arrivals"
-                    className="inline-flex min-h-11 items-center justify-center border border-white bg-white px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] text-[var(--text-strong)] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--sand)] active:translate-y-px active:scale-[0.98]"
+                    className="inline-flex min-h-11 items-center justify-center border border-white bg-white px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] !text-[#12110f] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--sand)] active:translate-y-px active:scale-[0.98]"
                   >
                     Browse latest styles
                   </Link>
-                  <RetailerOrderButton label="WhatsApp order" />
-                  <RetailerShortlistInlineLink />
+                  <Link
+                    href="/order"
+                    className="inline-flex min-h-11 items-center justify-center border border-white/18 px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] text-white transition hover:bg-white hover:!text-[#12110f]"
+                  >
+                    View order
+                  </Link>
                 </div>
 
                 <div className="grid gap-0 border border-white/14 text-sm text-white/64 sm:grid-cols-3">
@@ -137,7 +140,14 @@ export default function Home() {
             eyebrow="New wholesale styles"
             title="Fresh picks for shop buyers"
             body="Open a style to see photos, starting price, MOQ, fabric, size range, and colors when added."
-            action={<RetailerOrderButton label="Start order" variant="dark" />}
+            action={
+              <Link
+                href="/order"
+                className="inline-flex min-h-11 items-center justify-center bg-[var(--text-strong)] px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] text-white"
+              >
+                View order
+              </Link>
+            }
           />
           <div className="mt-7">
             <ProductGrid
@@ -152,7 +162,7 @@ export default function Home() {
           <SectionTitle
             eyebrow="Available categories"
             title="Browse categories with styles"
-            body="Only categories with products are shown. Open one, compare photos, and save the styles you like."
+            body="Only categories with products are shown. Open one, compare photos, and add the styles you need."
           />
           <div className={`mt-7 grid gap-3 sm:grid-cols-2 ${categoryCards.length <= 2 ? "lg:grid-cols-2" : "lg:grid-cols-4"}`}>
             {categoryCards.map((category, index) => (
@@ -187,17 +197,24 @@ export default function Home() {
         <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
           <SectionTitle
             eyebrow="How retailer orders work"
-            title="Browse. Save. WhatsApp."
-            body="The website is made for repeat buyers who want to compare styles before messaging."
-            action={<RetailerOrderButton label="Order on WhatsApp" variant="light" />}
+            title="Browse. Add. Place order."
+            body="Choose your styles, check the total, and place your order on the website."
+            action={
+              <Link
+                href="/order"
+                className="inline-flex min-h-11 items-center justify-center bg-white px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] !text-[#12110f]"
+              >
+                View order
+              </Link>
+            }
             invert
           />
           <div className="mt-7 grid gap-px bg-white/12 md:grid-cols-4">
             {[
               ["01", "Browse styles", "Use categories or new arrivals to scan photos fast."],
               ["02", "Open product", "Check price, MOQ, fabric, size range, and colors."],
-              ["03", "Save picks", "Keep styles in your shortlist before ordering."],
-              ["04", "Send order", "Send your selected style codes together on WhatsApp."],
+              ["03", "Add styles", "Set the number of pieces you need."],
+              ["04", "Place order", "Check the total and enter your name and WhatsApp number."],
             ].map(([step, title, body]) => (
               <div key={step} className="bg-[var(--hero)] p-5">
                 <p className="font-mono text-xs font-black text-white/42">{step}</p>
@@ -216,7 +233,16 @@ export default function Home() {
               eyebrow="Retailer deals"
               title="Special wholesale lots for retailers"
               body="Selected styles have special wholesale terms. Open a style and ask on WhatsApp for the lot price and details."
-              action={<RetailerOrderButton label="Ask for deal details" variant="dark" />}
+              action={
+                <a
+                  href={buildWhatsAppLink()}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center justify-center bg-[var(--text-strong)] px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] text-white"
+                >
+                  Ask on WhatsApp
+                </a>
+              }
             />
             <div className="mt-7">
               <ProductGrid products={retailerDeals.slice(0, 8)} />
@@ -238,16 +264,21 @@ export default function Home() {
               <div className="bg-[var(--panel)] p-5">
                 <p className="text-sm font-black text-[var(--text-strong)]">Why use the website</p>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                  Compare photos, prices, MOQ, and style codes before sending your WhatsApp order.
+                  Compare photos, prices, MOQ, and style codes before placing your order.
                 </p>
               </div>
               <div className="bg-[var(--accent-soft)] p-5">
                 <p className="text-sm font-black text-[var(--text-strong)]">{formattedWhatsAppNumber}</p>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">
-                  Visit us at {company.address}, or start your order on WhatsApp.
+                  Visit us at {company.address}, or place your order on the website.
                 </p>
                 <div className="mt-5">
-                  <RetailerOrderButton label="Order now" />
+                  <Link
+                    href="/order"
+                    className="inline-flex min-h-11 items-center justify-center bg-[var(--text-strong)] px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] text-white"
+                  >
+                    View order
+                  </Link>
                 </div>
               </div>
             </div>
@@ -255,17 +286,6 @@ export default function Home() {
         </CatalogShell>
       </section>
 
-      <div className="fixed inset-x-3 bottom-3 z-40 border border-[var(--line)] bg-[rgba(255,253,247,0.94)] p-2 shadow-[0_18px_48px_rgba(18,17,15,0.2)] backdrop-blur-xl md:hidden">
-        <div className="grid grid-cols-[1fr_auto] gap-2">
-          <RetailerOrderButton label="WhatsApp order" />
-          <Link
-            href="/shortlist"
-            className="inline-flex min-h-11 items-center justify-center bg-[var(--text-strong)] px-4 text-[0.72rem] font-black uppercase tracking-[0.12em] text-white"
-          >
-            Shortlist
-          </Link>
-        </div>
-      </div>
     </main>
   );
 }
