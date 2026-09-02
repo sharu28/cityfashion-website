@@ -1,6 +1,7 @@
 .codex-skill-bundle/
 .codex-skill-temp-1/
 .playwright-cli/
+.worktrees/
 .next/
 .npm-cache/
 node_modules/
