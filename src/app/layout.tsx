@@ -4,10 +4,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { AttributionTracker } from "@/components/attribution-tracker";
 import { ConsentAwareVercelAnalytics, CookieConsent } from "@/components/cookie-consent";
 import { GoogleAnalytics } from "@/components/google-analytics";
-import { RetailerProvider } from "@/components/retailer-provider";
+import { OrderCartBar } from "@/components/order-cart-bar";
+import { OrderCartProvider } from "@/components/order-cart-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { company, getAbsoluteUrl, siteDescription, siteName, siteUrl } from "@/lib/site";
+import { getAbsoluteUrl, siteDescription, siteName, siteUrl } from "@/lib/site";
 
 import "./globals.css";
 
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
     "wholesale ladies wear Sri Lanka",
     "Keyzer Street Colombo",
     "retailer catalog",
-    "WhatsApp wholesale order",
+    "online wholesale order",
   ],
   category: "fashion",
   verification: {
@@ -87,12 +88,13 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to catalog
         </a>
-        <RetailerProvider>
+        <OrderCartProvider>
           <AttributionTracker />
           <SiteHeader />
           <div id="main-content">{children}</div>
           <SiteFooter />
-        </RetailerProvider>
+          <OrderCartBar />
+        </OrderCartProvider>
         <CookieConsent />
         <ConsentAwareVercelAnalytics />
       </body>

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { landingCookieName, sourceCookieName } from "@/lib/retailer";
+import { landingCookieName, sourceCookieName } from "@/lib/attribution";
 
 const maxAge = 60 * 60 * 24 * 30;
 

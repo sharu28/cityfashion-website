@@ -1,10 +1,13 @@
+"use client";
+
 import Link from "next/link";
 
-import { RetailerAccountControls } from "@/components/retailer-account-controls";
-import { RetailerOrderButton } from "@/components/retailer-order-button";
+import { useOrderCart } from "@/components/order-cart-provider";
 import { company } from "@/lib/site";
 
 export function SiteHeader() {
+  const { summary } = useOrderCart();
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-[rgba(18,17,15,0.96)] text-white shadow-[0_16px_50px_rgba(18,17,15,0.18)] backdrop-blur-xl">
       <div className="mx-auto max-w-[1500px] px-3 py-3 sm:px-5 lg:px-7">
@@ -22,20 +25,19 @@ export function SiteHeader() {
             <Link className="transition hover:text-white" href="/#new-arrivals">
               New arrivals
             </Link>
-            <Link className="transition hover:text-white" href="/shortlist">
-              Shortlist
+            <Link className="transition hover:text-white" href="/order">
+              Order ({summary.styleCount})
             </Link>
             <Link className="transition hover:text-white" href="/#visit-us">
               Visit
             </Link>
-            <RetailerOrderButton label="WhatsApp order" />
           </nav>
-          <div className="hidden md:block">
-            <RetailerAccountControls />
-          </div>
-          <div className="md:hidden">
-            <RetailerAccountControls />
-          </div>
+          <Link
+            href="/order"
+            className="inline-flex min-h-10 items-center justify-center border border-white/20 px-3 text-[0.7rem] font-black uppercase tracking-[0.1em] text-white md:hidden"
+          >
+            Order ({summary.styleCount})
+          </Link>
         </div>
       </div>
     </header>

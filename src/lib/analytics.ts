@@ -11,9 +11,6 @@ declare global {
 }
 
 const vercelEventNames: Record<string, string> = {
-  login: "Retailer Login Completed",
-  otp_requested: "OTP Requested",
-  shortlist_updated: "Shortlist Updated",
   view_item: "Product Viewed",
   whatsapp_order_started: "WhatsApp Order Started",
 };

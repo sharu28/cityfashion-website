@@ -94,8 +94,47 @@ test("Odoo list price can be published but Odoo cost cannot leak", () => {
     previousProduct: null,
   });
   assert.equal(product.startingPrice, "Rs. 2,200");
+  assert.equal(product.unitPriceLkr, 2200);
   assert.equal("standardPrice" in product, false);
   assert.doesNotThrow(() => validatePublicProduct(product));
+});
+
+test("publishes an authoritative override unit price", () => {
+  const product = buildPublicProduct({
+    folderName: "1390",
+    images: ["/cover.jpg"],
+    override: {
+      title: "Style 1390",
+      category: "frocks",
+      startingPrice: "Rs. 1,500",
+      unitPriceLkr: 1500,
+      moq: "6 pcs",
+      description: "Wholesale style.",
+    },
+    fact: null,
+    previousProduct: null,
+  });
+
+  assert.equal(product.unitPriceLkr, 1500);
+  assert.equal(product.startingPrice, "Rs. 1,500");
+});
+
+test("does not parse a display price into an order price", () => {
+  const product = buildPublicProduct({
+    folderName: "1390",
+    images: ["/cover.jpg"],
+    override: {
+      title: "Style 1390",
+      category: "frocks",
+      startingPrice: "From Rs. 1,500",
+      moq: "6 pcs",
+      description: "Wholesale style.",
+    },
+    fact: null,
+    previousProduct: null,
+  });
+
+  assert.equal(product.unitPriceLkr, null);
 });
 
 test("legacy existing products retain their lane during migration", () => {
