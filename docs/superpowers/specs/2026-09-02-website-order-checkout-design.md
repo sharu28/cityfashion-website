@@ -1,7 +1,7 @@
 # City Fashion Website Order Checkout Design
 
 Date: 2026-09-02
-Status: Approved in chat; awaiting written-spec review
+Status: Approved for implementation planning
 
 ## Purpose
 
