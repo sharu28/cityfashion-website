@@ -1131,5 +1131,35 @@
     ],
     "cloudinaryImages": [],
     "sourceFolder": "4110"
+  },
+  {
+    "id": "4118",
+    "slug": "style-4118-short-top-china",
+    "title": "Style 4118 Short Top China",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,250",
+    "moq": "6 pcs",
+    "fabric": "Cotton",
+    "sizeRange": "M - 2XL",
+    "description": "Loose cotton short top with contrast V-neck trim in six colors for ladies wear retailers.",
+    "colors": [
+      "Peach",
+      "Pink",
+      "Mustard",
+      "Black",
+      "White",
+      "Orange"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-4118-short-top-china/01-d4118-peach.webp",
+      "/products/style-4118-short-top-china/02-d4118-pink.webp",
+      "/products/style-4118-short-top-china/03-d4118-mustard.webp",
+      "/products/style-4118-short-top-china/04-d4118-black.webp",
+      "/products/style-4118-short-top-china/05-d4118-white.webp",
+      "/products/style-4118-short-top-china/06-d4118-orange.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4118"
   }
 ]

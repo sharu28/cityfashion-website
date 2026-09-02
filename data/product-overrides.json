@@ -696,6 +696,40 @@
     "retailerDealApproval": "no",
     "priceSource": "override"
   },
+  "4118": {
+    "slug": "style-4118-short-top-china",
+    "title": "Style 4118 Short Top China",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,250",
+    "moq": "6 pcs",
+    "fabric": "Cotton",
+    "sizeRange": "M - 2XL",
+    "description": "Loose cotton short top with contrast V-neck trim in six colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D4118-peach.webp",
+      "02-D4118-pink.webp",
+      "03-D4118-mustard.webp",
+      "04-D4118-black.webp",
+      "05-D4118-white.webp",
+      "06-D4118-orange.webp"
+    ],
+    "colors": [
+      "Peach",
+      "Pink",
+      "Mustard",
+      "Black",
+      "White",
+      "Orange"
+    ],
+    "notes": "Approved six-image D4118 campaign; one model and one craft-courtyard photoshoot location across all colorways.",
+    "odooProductId": 669,
+    "odooDesignKey": "D4118",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
   "1570 KY Bamboo": {
     "title": "Style 1570 KY Bamboo",
     "category": "printed-tops",
