@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     return {};
   }
 
-  const description = `${category.intro} Browse ${category.name.toLowerCase()} and order on WhatsApp.`;
+  const description = `${category.intro} Browse ${category.name.toLowerCase()} and build your wholesale order online.`;
 
   return {
     title: `${category.name}`,

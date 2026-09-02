@@ -11,7 +11,7 @@ import {
   canTransitionOrder,
   orderStatuses,
   type OrderStatus,
-} from "@/lib/order-admin";
+} from "@/lib/order-admin-shared";
 
 export function AdminSignOutButton() {
   const router = useRouter();

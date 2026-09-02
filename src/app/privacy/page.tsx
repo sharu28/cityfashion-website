@@ -4,7 +4,7 @@ import { formattedWhatsAppNumber, whatsappNumber } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description: "How City Fashion uses retailer account and website measurement data.",
+  description: "How City Fashion uses order and website measurement data.",
 };
 
 export default function PrivacyPage() {
@@ -13,17 +13,17 @@ export default function PrivacyPage() {
       <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--accent)]">City Fashion</p>
       <h1 className="mt-3 text-4xl font-black uppercase italic tracking-[-0.04em] sm:text-6xl">Privacy</h1>
       <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--text-soft)]">
-        This page explains the information used when retailers browse the catalog, save styles, sign in, and start an order on WhatsApp.
+        This page explains the information used when you browse the catalog, place an order, or contact us.
       </p>
 
       <div className="mt-10 space-y-8 text-sm leading-7 text-[var(--text-soft)] sm:text-base">
         <section className="hard-panel p-5 sm:p-7">
           <h2 className="text-xl font-black uppercase tracking-[-0.02em] text-[var(--text-strong)]">Website measurement</h2>
           <p className="mt-3">
-            Google Analytics and Vercel website analytics help us understand visits, product views, shortlist changes, retailer login steps, campaign sources, and WhatsApp order starts. This can include device, browser, approximate location, referring page, and the pages used on this website.
+            Google Analytics and Vercel website analytics help us understand visits, product views, campaign sources, and WhatsApp support clicks. This can include device, browser, approximate location, referring page, and the pages used on this website.
           </p>
           <p className="mt-3">
-            We do not intentionally send phone numbers or one-time-password values to analytics. Google Analytics event-level and user-level data is configured to be retained for 14 months.
+            We do not send your name, WhatsApp number, order reference, or internal order ID to analytics. Google Analytics event-level and user-level data is configured to be retained for 14 months.
           </p>
         </section>
 
@@ -38,9 +38,12 @@ export default function PrivacyPage() {
         </section>
 
         <section className="hard-panel p-5 sm:p-7">
-          <h2 className="text-xl font-black uppercase tracking-[-0.02em] text-[var(--text-strong)]">Retailer account and orders</h2>
+          <h2 className="text-xl font-black uppercase tracking-[-0.02em] text-[var(--text-strong)]">Your order</h2>
           <p className="mt-3">
-            If retailer login is enabled, phone details are used to provide phone OTP access, saved styles, and the gated order flow. When you choose WhatsApp, WhatsApp receives the message and account information you send under its own terms and privacy practices.
+            To process an order, we store your name, WhatsApp number, selected products, quantities, totals, order status, and order timestamps. Our staff use these details to call you, confirm delivery and payment, and complete the order.
+          </p>
+          <p className="mt-3">
+            If you contact us on WhatsApp, WhatsApp receives the message and account information you send under its own terms and privacy practices.
           </p>
         </section>
 
@@ -53,7 +56,7 @@ export default function PrivacyPage() {
             </a>
             .
           </p>
-          <p className="mt-3 text-xs uppercase tracking-[0.12em]">Last updated: 27 August 2026</p>
+          <p className="mt-3 text-xs uppercase tracking-[0.12em]">Last updated: 2 September 2026</p>
         </section>
       </div>
     </main>

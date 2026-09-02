@@ -89,7 +89,7 @@ export default function Home() {
                 <div className="grid gap-0 border border-white/14 text-sm text-white/64 sm:grid-cols-3">
                   <div className="border-b border-white/14 p-3 sm:border-b-0 sm:border-r">
                     <p className="font-black text-white">{formattedWhatsAppNumber}</p>
-                    <p className="mt-1">WhatsApp orders</p>
+                    <p className="mt-1">WhatsApp support</p>
                   </div>
                   <div className="border-b border-white/14 p-3 sm:border-b-0 sm:border-r">
                     <p className="font-black text-white">{company.address}</p>
@@ -211,10 +211,10 @@ export default function Home() {
           />
           <div className="mt-7 grid gap-px bg-white/12 md:grid-cols-4">
             {[
-              ["01", "Browse styles", "Use categories or new arrivals to scan photos fast."],
-              ["02", "Open product", "Check price, MOQ, fabric, size range, and colors."],
-              ["03", "Add styles", "Set the number of pieces you need."],
-              ["04", "Place order", "Check the total and enter your name and WhatsApp number."],
+              ["01", "Browse styles", "Open a style and check the photos and price."],
+              ["02", "Add to order", "Each style starts at 6 pieces."],
+              ["03", "Check your order", "Change quantities and see the product total."],
+              ["04", "Place order", "Enter your name and WhatsApp number."],
             ].map(([step, title, body]) => (
               <div key={step} className="bg-[var(--hero)] p-5">
                 <p className="font-mono text-xs font-black text-white/42">{step}</p>

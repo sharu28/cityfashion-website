@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     "wholesale ladies wear Sri Lanka",
     "Keyzer Street Colombo",
     "retailer catalog",
-    "WhatsApp wholesale order",
+    "online wholesale order",
   ],
   category: "fashion",
   verification: {

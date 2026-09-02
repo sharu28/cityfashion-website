@@ -8,7 +8,8 @@ Wholesale ladies' wear catalog website for Sri Lanka retailers.
 - GitHub repo: `https://github.com/sharu28/cityfashion-website`
 - Deployment: live on Vercel
 - Current generated starter batch: `29` imported products
-- Retailer flow now includes phone OTP gate before saving styles or starting WhatsApp order
+- Customers can build and place an order with only their name and WhatsApp number
+- The owner receives an email alert and manages orders in a private dashboard
 - Google Sheets ops hub is now live for campaigns, prospects, and weekly reporting
 - Source product photos live outside the repo in `../products`
 - Imported assets and generated data must be committed before push
@@ -22,21 +23,22 @@ Wholesale ladies' wear catalog website for Sri Lanka retailers.
 4. Run `npm run check`
 5. Run `npm run dev`
 
-## Retailer auth setup
+## Website order and admin setup
 
-This app now expects Supabase for retailer phone OTP, shortlist storage, and activity events.
+The catalog works without service configuration, but placing an order and opening the owner dashboard require Supabase. Keep all secret values server-side.
 
-Current note: this setup is built but intentionally paused for now while the team focuses on catalog cleanup and first growth ops work.
+1. Create or choose the Supabase project.
+2. Run `supabase/schema.sql` for a new project, or apply `supabase/migrations/202609020001_create_website_orders.sql` to an existing project.
+3. In Supabase Authentication, create one email/password user for the owner. There is no public customer account or OTP flow.
+4. Copy `.env.example` to `.env.local` and fill:
+   - `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for the owner sign-in session.
+   - `SUPABASE_SECRET_KEY` for server-only order creation and dashboard reads.
+   - `ADMIN_EMAIL` with the exact owner account email allowed into `/admin/orders`.
+   - `ORDER_RATE_LIMIT_SALT` with a long random server-only value.
+   - `PAYMENT_INSTRUCTIONS` with the short bank-transfer or pickup text sent after staff confirmation.
+5. For email alerts, add `RESEND_API_KEY`, `ORDER_NOTIFICATION_EMAIL`, and a verified `ORDER_EMAIL_FROM` sender.
 
-1. Create a Supabase project.
-2. Enable phone auth and configure an SMS provider in Supabase Auth.
-3. Run `supabase/schema.sql` in the SQL editor.
-4. Copy `.env.example` to `.env.local`.
-5. Fill:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-
-Without those env vars, the site still builds and browses normally, but retailer login and shortlist actions stay disabled.
+Never expose `SUPABASE_SECRET_KEY`, `RESEND_API_KEY`, or `ORDER_RATE_LIMIT_SALT` with a `NEXT_PUBLIC_` prefix. If order submission is temporarily unavailable, the checkout keeps the cart and shows the City Fashion WhatsApp support link so the customer can still contact staff.
 
 ## Analytics setup
 
@@ -46,7 +48,7 @@ Vercel Analytics and Speed Insights are enabled by default. To enable Google Ana
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
-GA4 receives page views, product views, shortlist changes, OTP requests, completed retailer logins, and WhatsApp order starts. No phone number or OTP value is sent to analytics. `whatsapp_order_started` is the primary GA4 key event and is counted once per session.
+GA4 receives page views, product views, campaign attribution, and WhatsApp support clicks. Do not add customer names, phone numbers, order references, or internal order IDs to analytics events.
 
 The site sends Google Consent Mode v2 signals for analytics and advertising storage. Until a visitor chooses **Allow measurement**, Google storage consent defaults to denied. Visitors can reopen **Cookie settings** from the footer, and `/privacy` documents the measurement and retailer-account data flows.
 
@@ -95,6 +97,8 @@ Run:
 npm run import-products
 npm run test:catalog-sync
 npm run test:catalog-publication
+npm run test:orders-schema
+npm test
 npm run check
 npm run build
 ```
@@ -110,7 +114,8 @@ git push origin main
 ## Related docs
 
 - `AGENTS.md` -> repo rules and current implementation guidance
-- `supabase/schema.sql` -> retailer auth, shortlist, and event tables
+- `supabase/schema.sql` -> current database schema, including private website orders
+- `supabase/migrations/202609020001_create_website_orders.sql` -> reviewed website-order migration
 - `../cityfashion-ops/ops-hub/README.md` -> Google Sheets ops hub structure
 - `.memory/PROJECT.md` -> stable project truth
 - `.memory/STATE.md` -> current working context and resume point

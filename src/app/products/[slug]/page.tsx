@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   }
 
   const detailLine = [product.fabric, product.sizeRange].filter(Boolean).join(". ");
-  const description = `${product.description} Starting price ${product.startingPrice}. MOQ ${product.moq}.${detailLine ? ` ${detailLine}.` : ""}`;
+  const description = `${product.description} Starting price ${product.startingPrice}. MOQ ${product.moq}.${detailLine ? ` ${detailLine}.` : ""} Add it to your wholesale order online.`;
 
   return {
     title: `${product.title}`,
