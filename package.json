@@ -13,7 +13,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:catalog-sync": "python -m unittest discover -s tests/catalog_sync -p \"test_*.py\" -v",
-    "test:catalog-publication": "node --test tests/catalog-publication.test.mjs"
+    "test:catalog-publication": "node --test tests/catalog-publication.test.mjs",
+    "test:orders-schema": "node --test tests/orders-schema.test.mjs"
   },
   "keywords": [],
   "author": "",
