@@ -30,7 +30,10 @@ export const metadata: Metadata = {
   description: siteDescription,
 };
 
-const homepageNewArrivalSlugs = ["style-4110-printed-button-frock"];
+const homepageNewArrivalSlugs = [
+  "style-4118-short-top-china",
+  "style-4110-printed-button-frock",
+];
 
 export default function Home() {
   const heroProducts = featuredProducts.slice(0, 6);
