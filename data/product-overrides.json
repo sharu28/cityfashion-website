@@ -2,7 +2,7 @@
   "1210": {
     "title": "Style 1210",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -18,7 +18,7 @@
     "odooProductId": 155,
     "odooDesignKey": "D1210",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -26,7 +26,7 @@
   "1220": {
     "title": "Style 1220",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -42,7 +42,7 @@
     "odooProductId": 158,
     "odooDesignKey": "D1220",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -52,6 +52,7 @@
     "category": "frocks",
     "startingPrice": "Rs. 1,500",
     "moq": "6 pcs",
+    "sizeRange": "M - 2XL",
     "description": "Long printed frock in eight colorful designs for ladies wear retailers.",
     "imageOrder": [
       "01-D1390-blue-teal-midi-frock.webp",
@@ -85,7 +86,7 @@
   "1490": {
     "title": "Style 1490",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -109,7 +110,7 @@
   "1600": {
     "title": "Style 1600",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -125,7 +126,7 @@
     "odooProductId": 424,
     "odooDesignKey": "D1600",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -133,7 +134,7 @@
   "1610": {
     "title": "Style 1610",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -147,7 +148,7 @@
     "odooProductId": 431,
     "odooDesignKey": "D1610",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -155,7 +156,7 @@
   "1710": {
     "title": "Style 1710",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,050",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -179,7 +180,7 @@
   "1780": {
     "title": "Style 1780",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -203,7 +204,7 @@
   "1800": {
     "title": "Style 1800",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -219,7 +220,7 @@
     "odooProductId": 438,
     "odooDesignKey": "D1800",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -227,7 +228,7 @@
   "1810": {
     "title": "Style 1810",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -243,7 +244,7 @@
     "odooProductId": 441,
     "odooDesignKey": "D1810",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -251,7 +252,7 @@
   "1850": {
     "title": "Style 1850",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -264,7 +265,7 @@
     "odooProductId": 442,
     "odooDesignKey": "D1850",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -272,7 +273,7 @@
   "1880": {
     "title": "Style 1880",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -288,7 +289,7 @@
     "odooProductId": 443,
     "odooDesignKey": "D1880",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -296,7 +297,7 @@
   "1900": {
     "title": "Style 1900",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -320,7 +321,7 @@
   "3017": {
     "title": "Style 3017",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 3,450",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -344,7 +345,7 @@
   "3023": {
     "title": "Style 3023",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -368,7 +369,7 @@
   "3042": {
     "title": "Style 3042",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 3,450",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -392,7 +393,7 @@
   "3063": {
     "title": "Style 3063",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,900",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -408,7 +409,7 @@
     "odooProductId": 231,
     "odooDesignKey": "D3063",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -416,7 +417,7 @@
   "3095": {
     "title": "Style 3095",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 3,250",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -438,7 +439,7 @@
   "3105": {
     "title": "Style 3105",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 3,250",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -462,7 +463,7 @@
   "3112": {
     "title": "Style 3112",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 3,100",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -478,7 +479,7 @@
     "odooProductId": 460,
     "odooDesignKey": "D3112",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -486,7 +487,7 @@
   "3113": {
     "title": "Style 3113",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 3,100",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -502,7 +503,7 @@
     "odooProductId": 466,
     "odooDesignKey": "D3113",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -510,7 +511,7 @@
   "3127": {
     "title": "Style 3127",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,900",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -534,7 +535,7 @@
   "3143": {
     "title": "Style 3143",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,700",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -558,7 +559,7 @@
   "3145": {
     "title": "Style 3145",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,050",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -574,7 +575,7 @@
     "odooProductId": 492,
     "odooDesignKey": "D3145",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -582,7 +583,7 @@
   "3151": {
     "title": "Style 3151",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,900",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -606,7 +607,7 @@
   "3168": {
     "title": "Style 3168",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,500",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -620,7 +621,7 @@
     "odooProductId": 515,
     "odooDesignKey": "D3168",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
@@ -630,6 +631,7 @@
     "category": "embroidered-tops",
     "startingPrice": "Rs. 1,950",
     "moq": "6 pcs",
+    "sizeRange": "M - 2XL",
     "description": "Easy-selling embroidered top for retail shops.",
     "imageOrder": [
       "ref_model.jpeg",
@@ -666,6 +668,7 @@
     "category": "frocks",
     "startingPrice": "Rs. 1,900",
     "moq": "6 pcs",
+    "sizeRange": "M - 2XL",
     "description": "Loose shin-length printed button frock in eight designs for ladies wear retailers.",
     "imageOrder": [
       "01-D4110-ivory-charcoal-botanical.webp",
@@ -733,7 +736,7 @@
   "1570 KY Bamboo": {
     "title": "Style 1570 KY Bamboo",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 1,600",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -757,7 +760,7 @@
   "3003 V-3": {
     "title": "Style 3003 V-3",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,450",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -778,7 +781,7 @@
   "3003 V-6": {
     "title": "Style 3003 V-6",
     "category": "printed-tops",
-    "startingPrice": "Call for price",
+    "startingPrice": "Rs. 2,450",
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
