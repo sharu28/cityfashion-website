@@ -9,14 +9,12 @@ import { SaveProductButton } from "@/components/save-product-button";
 type ProductTileProps = {
   className?: string;
   imageSizes?: string;
-  priority?: boolean;
   product: CatalogProductView;
 };
 
 export function ProductTile({
   className = "",
   imageSizes = "(max-width: 768px) 100vw, 25vw",
-  priority = false,
   product,
 }: ProductTileProps) {
   const image = product.coverImage;
@@ -36,7 +34,6 @@ export function ProductTile({
             alt={product.title}
             fill
             className="object-cover transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-            priority={priority}
             sizes={imageSizes}
           />
         ) : (

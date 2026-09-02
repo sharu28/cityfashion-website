@@ -11,7 +11,8 @@
     "import-products": "node scripts/import-products.mjs",
     "sync-odoo-catalog": "python scripts/sync-odoo-catalog.py",
     "test:catalog-sync": "python -m unittest discover -s tests/catalog_sync -p \"test_*.py\" -v",
-    "test:catalog-publication": "node --test tests/catalog-publication.test.mjs"
+    "test:catalog-publication": "node --test tests/catalog-publication.test.mjs",
+    "test:image-performance": "node --test tests/image-performance.test.mjs"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +26,8 @@
     "cloudinary": "^2.9.0",
     "next": "^16.2.1",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",

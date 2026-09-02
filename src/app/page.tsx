@@ -114,7 +114,7 @@ export default function Home() {
                       src={product.coverImage}
                       alt={product.title}
                       fill
-                      priority={index === 0}
+                      preload={index === 0}
                       className="object-cover transition duration-700 group-hover:scale-[1.04]"
                       sizes={index === 0 ? "(max-width: 768px) 100vw, 48vw" : "(max-width: 768px) 50vw, 18vw"}
                     />

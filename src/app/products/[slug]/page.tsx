@@ -118,7 +118,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                       alt={`${product.title} image ${index + 1}`}
                       fill
                       className="object-cover"
-                      priority={index === 0}
+                      preload={index === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                     />
                   </div>

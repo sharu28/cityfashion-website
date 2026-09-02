@@ -78,6 +78,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="dns-prefetch" href="//res.cloudinary.com" />
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${sans.variable} ${mono.variable} bg-[var(--bg)] text-[var(--text-strong)] antialiased`}>
         <GoogleAnalytics />
         <a href="#main-content" className="skip-link">

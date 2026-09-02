@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { v2 as cloudinary } from "cloudinary";
+import sharp from "sharp";
 import {
   buildPublicProduct,
   hasRequiredNewProductFields,
@@ -17,6 +18,9 @@ const overridesPath = path.join(projectRoot, "data", "product-overrides.json");
 const outputPath = path.join(projectRoot, "data", "generated", "products.generated.json");
 const odooSnapshotPath = path.join(projectRoot, "data", "odoo", "odoo-catalog.snapshot.json");
 const cloudinaryFolderPrefix = "cityfashion/products";
+const fallbackImageWidth = 1600;
+const fallbackImageHeight = 2000;
+const fallbackImageQuality = 80;
 
 const allowedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const validCategories = new Set([
@@ -135,7 +139,7 @@ const buildCloudinaryImageUrl = (publicId, version) =>
     ],
   });
 
-const copyDirectoryImages = (sourceDir, targetDir, slug, options) => {
+const copyDirectoryImages = async (sourceDir, targetDir, slug, options) => {
   fs.rmSync(targetDir, { recursive: true, force: true });
   ensureDir(targetDir);
 
@@ -144,20 +148,42 @@ const copyDirectoryImages = (sourceDir, targetDir, slug, options) => {
     options.imageOrder ?? [],
   );
 
-  return entries.map((entry) => {
+  const usedNames = new Set();
+  const assets = [];
+
+  for (const entry of entries) {
     const parsed = path.parse(entry.relativeKey);
-    const safeName = `${toSlug(parsed.name)}${parsed.ext.toLowerCase()}`;
+    const safeName = `${toSlug(parsed.name)}.webp`;
+
+    if (usedNames.has(safeName)) {
+      console.warn(`Duplicate source image name skipped for ${slug}: ${entry.relativeKey}`);
+      continue;
+    }
+
+    usedNames.add(safeName);
+
     const targetPath = path.join(targetDir, safeName);
     const publicId = `${cloudinaryFolderPrefix}/${slug}/${path.parse(safeName).name}`;
 
-    fs.copyFileSync(entry.sourcePath, targetPath);
+    await sharp(entry.sourcePath)
+      .rotate()
+      .resize({
+        width: fallbackImageWidth,
+        height: fallbackImageHeight,
+        fit: "inside",
+        withoutEnlargement: true,
+      })
+      .webp({ quality: fallbackImageQuality, effort: 4 })
+      .toFile(targetPath);
 
-    return {
+    assets.push({
       localPath: targetPath,
       localUrl: `/products/${slug}/${safeName}`,
       publicId,
-    };
-  });
+    });
+  }
+
+  return assets;
 };
 
 const reuseExistingCloudinaryImages = (assets, existingImages) => {
@@ -286,7 +312,7 @@ const main = async () => {
 
     usedSlugs.add(slug);
 
-    const copiedAssets = copyDirectoryImages(sourceDir, path.join(publicRoot, slug), slug, override);
+    const copiedAssets = await copyDirectoryImages(sourceDir, path.join(publicRoot, slug), slug, override);
     const images = copiedAssets.map((asset) => asset.localUrl);
     const cloudinaryImages = await uploadImagesToCloudinary(
       copiedAssets,
@@ -318,6 +344,16 @@ const main = async () => {
     if (!sourceFolderNames.has(overrideKey)) {
       console.warn(`Override exists for "${overrideKey}" but no matching product folder was found.`);
     }
+  }
+
+  const publishedSlugs = new Set(products.map((product) => product.slug));
+  const staleProductDirectories = fs
+    .readdirSync(publicRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && !publishedSlugs.has(entry.name));
+
+  for (const directory of staleProductDirectories) {
+    fs.rmSync(path.join(publicRoot, directory.name), { recursive: true, force: true });
+    console.log(`Removed unpublished generated assets: ${directory.name}`);
   }
 
   ensureDir(path.dirname(outputPath));
