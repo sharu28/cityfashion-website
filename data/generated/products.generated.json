@@ -683,5 +683,39 @@
     ],
     "cloudinaryImages": [],
     "sourceFolder": "4118"
+  },
+  {
+    "id": "4120",
+    "slug": "style-4120-collared-gathered-long-top",
+    "title": "Style 4120 Collared Gathered Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,250",
+    "moq": "6 pcs",
+    "fabric": "Cotton",
+    "sizeRange": "M - 2XL",
+    "description": "Cotton collared long top with three-quarter sleeves and a gathered waist in seven colors. Top only; trousers not included.",
+    "colors": [
+      "Deep red / wine",
+      "Beige / light cream",
+      "Pale blush / peach",
+      "Black",
+      "Light pink",
+      "White / ivory",
+      "Rust / burnt orange"
+    ],
+    "merchandisingLane": "standard",
+    "images": [
+      "/products/style-4120-collared-gathered-long-top/d4120-01-deep-red-approved-v3.webp",
+      "/products/style-4120-collared-gathered-long-top/d4120-02-beige-approved-v2.webp",
+      "/products/style-4120-collared-gathered-long-top/d4120-03-pale-blush-approved-v3.webp",
+      "/products/style-4120-collared-gathered-long-top/d4120-04-black-approved-v3.webp",
+      "/products/style-4120-collared-gathered-long-top/d4120-05-light-pink-approved-v2.webp",
+      "/products/style-4120-collared-gathered-long-top/d4120-06-white-ivory-approved-v2.webp",
+      "/products/style-4120-collared-gathered-long-top/d4120-07-burnt-orange-approved-v2.webp",
+      "/products/style-4120-collared-gathered-long-top/d4120-08-red-collar-material-detail-approved-v1.webp",
+      "/products/style-4120-collared-gathered-long-top/d4120-09-beige-gathers-material-detail-approved-v1.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4120"
   }
 ]
