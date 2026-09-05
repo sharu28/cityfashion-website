@@ -7,7 +7,7 @@ City Fashion website built with Next.js.
 - Business: Sri Lankan wholesale ladies' wear supplier for retailers
 - Main goal: help buyers browse styles fast and move into WhatsApp orders
 - Primary launch domain: `https://cityfashion.shop`
-- WhatsApp number: `+94742216040`
+- WhatsApp number: `+94783232414`
 - Address: `131 Keyzer Street, Colombo 11`
 
 ## Current repo reality

@@ -1,5 +1,5 @@
-export const whatsappNumber = "94742216040";
-export const formattedWhatsAppNumber = "+94 74 221 6040";
+export const whatsappNumber = "94783232414";
+export const formattedWhatsAppNumber = "+94 78 323 2414";
 export const siteUrl = "https://cityfashion.shop";
 export const siteName = "City Fashion";
 export const siteDescription =

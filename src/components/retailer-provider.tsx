@@ -496,7 +496,7 @@ function RetailerPhoneForm() {
           type="tel"
           inputMode="tel"
           autoComplete="tel"
-          placeholder="074 221 6040"
+          placeholder="078 323 2414"
           value={phone}
           onChange={(event) => setPhone(event.target.value)}
           className="w-full rounded-[1rem] border border-[var(--line)] bg-white px-4 py-3 text-base text-[var(--text-strong)] outline-none transition focus:border-[var(--whatsapp)]"

@@ -11,7 +11,7 @@ This file is the public-safe fact base for the project.
 - Primary domain: `https://cityfashion.shop`
 - GitHub repo: `https://github.com/sharu28/cityfashion-website`
 - Deployment: Vercel
-- WhatsApp number: `+94742216040`
+- WhatsApp number: `+94783232414`
 - Address: `131 Keyzer Street, Colombo 11`
 - Main audience: small and mid-sized ladies' wear retailers in Sri Lanka
 - Main user flow:
