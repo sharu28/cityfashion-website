@@ -143,7 +143,7 @@ export default function Home() {
             action={
               <Link
                 href="/order"
-                className="inline-flex min-h-11 items-center justify-center bg-[var(--text-strong)] px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] text-white"
+                className="inline-flex min-h-11 items-center justify-center bg-[var(--text-strong)] px-5 text-[0.78rem] font-black uppercase tracking-[0.12em] !text-white"
               >
                 View order
               </Link>
