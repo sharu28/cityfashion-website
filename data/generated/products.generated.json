@@ -655,6 +655,32 @@
     "sourceFolder": "4110"
   },
   {
+    "id": "4117",
+    "slug": "style-4117-button-front-gathered-long-top",
+    "title": "Style 4117 Button-Front Gathered Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,600",
+    "moq": "6 pcs",
+    "fabric": "Soft cotton",
+    "sizeRange": "M - 2XL",
+    "description": "Soft cotton button-front gathered long top with three-quarter sleeves in four colors. Top only; trousers not included.",
+    "colors": [
+      "Beige / tan",
+      "Soft pink",
+      "Lime green",
+      "Coral pink"
+    ],
+    "merchandisingLane": "standard",
+    "images": [
+      "/products/style-4117-button-front-gathered-long-top/01-d4117-beige-tan.webp",
+      "/products/style-4117-button-front-gathered-long-top/02-d4117-soft-pink.webp",
+      "/products/style-4117-button-front-gathered-long-top/03-d4117-lime-green.webp",
+      "/products/style-4117-button-front-gathered-long-top/04-d4117-coral-pink.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4117"
+  },
+  {
     "id": "4118",
     "slug": "style-4118-short-top-china",
     "title": "Style 4118 Short Top China",

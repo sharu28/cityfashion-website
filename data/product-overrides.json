@@ -699,6 +699,37 @@
     "retailerDealApproval": "no",
     "priceSource": "override"
   },
+  "4117": {
+    "slug": "style-4117-button-front-gathered-long-top",
+    "title": "Style 4117 Button-Front Gathered Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,600",
+    "unitPriceLkr": 1600,
+    "moq": "6 pcs",
+    "fabric": "Soft cotton",
+    "sizeRange": "M - 2XL",
+    "description": "Soft cotton button-front gathered long top with three-quarter sleeves in four colors. Top only; trousers not included.",
+    "imageOrder": [
+      "01-D4117-beige-tan.webp",
+      "02-D4117-soft-pink.webp",
+      "03-D4117-lime-green.webp",
+      "04-D4117-coral-pink.webp"
+    ],
+    "colors": [
+      "Beige / tan",
+      "Soft pink",
+      "Lime green",
+      "Coral pink"
+    ],
+    "notes": "User-approved four-color City Fashion campaign. One original model and one muted-green courtyard location across all colorways. Top only; trousers excluded.",
+    "odooProductId": 670,
+    "odooDesignKey": "D4117",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "no",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
   "4120": {
     "slug": "style-4120-collared-gathered-long-top",
     "title": "Style 4120 Collared Gathered Long Top",
