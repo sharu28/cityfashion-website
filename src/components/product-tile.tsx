@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import type { CatalogProductView } from "@/lib/catalog";
 
 import { AddToOrderButton } from "@/components/add-to-order-button";
 import { ProductBadges } from "@/components/product-badges";
+import { ProductImageCarousel } from "@/components/product-image-carousel";
 
 type ProductTileProps = {
   className?: string;
@@ -17,30 +17,16 @@ export function ProductTile({
   imageSizes = "(max-width: 768px) 100vw, 25vw",
   product,
 }: ProductTileProps) {
-  const image = product.coverImage;
-
   return (
     <article
-      className={`group relative flex h-full flex-col bg-[var(--panel)] transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 active:translate-y-px active:scale-[0.99] ${className}`.trim()}
+      className={`group relative flex flex-col self-start bg-[var(--panel)] transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 active:translate-y-px active:scale-[0.99] ${className}`.trim()}
     >
-      <Link
+      <ProductImageCarousel
         href={`/products/${product.slug}`}
-        className="relative aspect-[4/5] overflow-hidden border border-[var(--line)] bg-white"
-      >
-        {image ? (
-          <Image
-            src={image}
-            alt={product.title}
-            fill
-            className="object-cover transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-            sizes={imageSizes}
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center text-sm font-black uppercase tracking-[0.18em] text-[var(--text-soft)]">
-            No Image
-          </div>
-        )}
-      </Link>
+        imageSizes={imageSizes}
+        images={product.images}
+        title={product.title}
+      />
       <div className="flex flex-1 flex-col gap-3 border-x border-b border-[var(--line)] px-3 pb-3 pt-3">
         <div className="space-y-2">
           <Link href={`/products/${product.slug}`} className="block space-y-1">
