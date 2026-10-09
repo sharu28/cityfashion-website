@@ -90,8 +90,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
-      "2.png",
       "3.png",
       "4.png",
       "5.png",
@@ -105,7 +103,14 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png",
+      "2.png",
+      "IMG_5290.JPG",
+      "IMG_5291.JPG",
+      "IMG_5292.JPG"
+    ]
   },
   "1600": {
     "title": "Style 1600",
@@ -325,7 +330,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
       "2.png",
       "3.png",
       "3017-row-1-column-1.png",
@@ -340,7 +344,10 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png"
+    ]
   },
   "3023": {
     "title": "Style 3023",
@@ -349,8 +356,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
-      "2.png",
       "3.png",
       "3013-row-1-column-1.png",
       "3013-row-1-column-2.png",
@@ -364,7 +369,11 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png",
+      "2.png"
+    ]
   },
   "3042": {
     "title": "Style 3042",
@@ -422,9 +431,7 @@
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
       "1765023959760-94uzwo7ytxp.png",
-      "1765024126883-sdwnmbn6rt.png",
-      "3095.png",
-      "IMG_5823.jpg"
+      "1765024126883-sdwnmbn6rt.png"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -434,7 +441,11 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "3095.png",
+      "IMG_5823.jpg"
+    ]
   },
   "3105": {
     "title": "Style 3105",
@@ -458,7 +469,13 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "V2-1.png",
+      "V2-2.png",
+      "V2-3.png",
+      "V2-4.png"
+    ]
   },
   "3112": {
     "title": "Style 3112",
@@ -515,7 +532,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
       "1053251fca57100566ac32c70db2567b_1767509170.png",
       "129c8687-08c6-4bbe-9c62-875600e3c3ef.png",
       "1767505598111-nrc4gqcajp.png",
@@ -530,7 +546,11 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png",
+      "IMG_5228.JPG"
+    ]
   },
   "3143": {
     "title": "Style 3143",
@@ -539,9 +559,7 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
       "2.png",
-      "IMG_5312.JPG",
       "IMG_5313.JPG",
       "row-1-column-1.png",
       "row-1-column-2.png"
@@ -554,7 +572,11 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png",
+      "IMG_5312.JPG"
+    ]
   },
   "3145": {
     "title": "Style 3145",
@@ -587,7 +609,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
       "2.png",
       "row-1-column-1.png",
       "row-1-column-2.png",
@@ -602,7 +623,10 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png"
+    ]
   },
   "3168": {
     "title": "Style 3168",

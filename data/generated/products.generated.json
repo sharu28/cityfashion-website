@@ -46,32 +46,22 @@
     "colors": [],
     "merchandisingLane": "new",
     "images": [
-      "/products/style-1490/1.webp",
-      "/products/style-1490/2.webp",
       "/products/style-1490/3.webp",
       "/products/style-1490/4.webp",
       "/products/style-1490/5.webp",
       "/products/style-1490/6.webp",
       "/products/style-1490/7.webp",
       "/products/style-1490/8.webp",
-      "/products/style-1490/img-5290.webp",
-      "/products/style-1490/img-5291.webp",
-      "/products/style-1490/img-5292.webp",
       "/products/style-1490/img-5293.webp",
       "/products/style-1490/img-5294.webp"
     ],
     "cloudinaryImages": [
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595987/cityfashion/products/style-1490/1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595988/cityfashion/products/style-1490/2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595988/cityfashion/products/style-1490/3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595989/cityfashion/products/style-1490/4?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595990/cityfashion/products/style-1490/5?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595991/cityfashion/products/style-1490/6?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595993/cityfashion/products/style-1490/7?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595994/cityfashion/products/style-1490/8?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595995/cityfashion/products/style-1490/img-5290?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595996/cityfashion/products/style-1490/img-5291?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595998/cityfashion/products/style-1490/img-5292?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776595999/cityfashion/products/style-1490/img-5293?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596001/cityfashion/products/style-1490/img-5294?_a=BAMAOGWO0"
     ],
@@ -302,7 +292,6 @@
     "colors": [],
     "merchandisingLane": "new",
     "images": [
-      "/products/style-3017/1.webp",
       "/products/style-3017/2.webp",
       "/products/style-3017/3.webp",
       "/products/style-3017/3017-row-1-column-1.webp",
@@ -312,7 +301,6 @@
       "/products/style-3017/4.webp"
     ],
     "cloudinaryImages": [
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596179/cityfashion/products/style-3017/1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596180/cityfashion/products/style-3017/2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596181/cityfashion/products/style-3017/3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596183/cityfashion/products/style-3017/3017-row-1-column-1?_a=BAMAOGWO0",
@@ -336,8 +324,6 @@
     "colors": [],
     "merchandisingLane": "new",
     "images": [
-      "/products/style-3023/1.webp",
-      "/products/style-3023/2.webp",
       "/products/style-3023/3.webp",
       "/products/style-3023/3013-row-1-column-1.webp",
       "/products/style-3023/3013-row-1-column-2.webp",
@@ -345,8 +331,6 @@
       "/products/style-3023/3013-row-2-column-2.webp"
     ],
     "cloudinaryImages": [
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596194/cityfashion/products/style-3023/1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596195/cityfashion/products/style-3023/2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596196/cityfashion/products/style-3023/3?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596198/cityfashion/products/style-3023/3013-row-1-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596199/cityfashion/products/style-3023/3013-row-1-column-2?_a=BAMAOGWO0",
@@ -403,15 +387,11 @@
     "merchandisingLane": "new",
     "images": [
       "/products/style-3095/1765023959760-94uzwo7ytxp.webp",
-      "/products/style-3095/1765024126883-sdwnmbn6rt.webp",
-      "/products/style-3095/3095.webp",
-      "/products/style-3095/img-5823.webp"
+      "/products/style-3095/1765024126883-sdwnmbn6rt.webp"
     ],
     "cloudinaryImages": [
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596247/cityfashion/products/style-3095/1765023959760-94uzwo7ytxp?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596250/cityfashion/products/style-3095/1765024126883-sdwnmbn6rt?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596251/cityfashion/products/style-3095/3095?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596254/cityfashion/products/style-3095/img-5823?_a=BAMAOGWO0"
+      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596250/cityfashion/products/style-3095/1765024126883-sdwnmbn6rt?_a=BAMAOGWO0"
     ],
     "sourceFolder": "3095"
   },
@@ -435,11 +415,7 @@
       "/products/style-3105/649fbec6-7f60-48c7-a74c-e1cf7298e510.webp",
       "/products/style-3105/85e51740a4e8b2ef1f17002357713dc5-1767595377.webp",
       "/products/style-3105/generated-image-september-03-2025-1-54pm.webp",
-      "/products/style-3105/generated-image-september-03-2025-11-27am.webp",
-      "/products/style-3105/v2-1.webp",
-      "/products/style-3105/v2-2.webp",
-      "/products/style-3105/v2-3.webp",
-      "/products/style-3105/v2-4.webp"
+      "/products/style-3105/generated-image-september-03-2025-11-27am.webp"
     ],
     "cloudinaryImages": [
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596263/cityfashion/products/style-3105/0937edead2bd41ff78ec9cb9e9a6f60b-1767598884?_a=BAMAOGWO0",
@@ -449,11 +425,7 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596285/cityfashion/products/style-3105/649fbec6-7f60-48c7-a74c-e1cf7298e510?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596289/cityfashion/products/style-3105/85e51740a4e8b2ef1f17002357713dc5-1767595377?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596290/cityfashion/products/style-3105/generated-image-september-03-2025-1-54pm?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596291/cityfashion/products/style-3105/generated-image-september-03-2025-11-27am?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596292/cityfashion/products/style-3105/v2-1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596292/cityfashion/products/style-3105/v2-2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596294/cityfashion/products/style-3105/v2-3?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596294/cityfashion/products/style-3105/v2-4?_a=BAMAOGWO0"
+      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596291/cityfashion/products/style-3105/generated-image-september-03-2025-11-27am?_a=BAMAOGWO0"
     ],
     "sourceFolder": "3105"
   },
@@ -470,7 +442,6 @@
     "colors": [],
     "merchandisingLane": "new",
     "images": [
-      "/products/style-3127/1.webp",
       "/products/style-3127/1053251fca57100566ac32c70db2567b-1767509170.webp",
       "/products/style-3127/129c8687-08c6-4bbe-9c62-875600e3c3ef.webp",
       "/products/style-3127/1767505598111-nrc4gqcajp.webp",
@@ -482,7 +453,6 @@
       "/products/style-3127/4a707367-224f-4ec8-b71a-6da58c300f7e.webp",
       "/products/style-3127/4e52a099858abca96126132c1bba4b8e-1767508978-pn4d22zg.webp",
       "/products/style-3127/dbe3e8fa-ba9f-4d46-b63f-58d5b2273d20.webp",
-      "/products/style-3127/img-5228.webp",
       "/products/style-3127/img-5229.webp",
       "/products/style-3127/row-1-column-1.webp",
       "/products/style-3127/row-1-column-2.webp",
@@ -490,7 +460,6 @@
       "/products/style-3127/row-2-column-2.webp"
     ],
     "cloudinaryImages": [
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596326/cityfashion/products/style-3127/1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596328/cityfashion/products/style-3127/1053251fca57100566ac32c70db2567b-1767509170?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596331/cityfashion/products/style-3127/129c8687-08c6-4bbe-9c62-875600e3c3ef?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596333/cityfashion/products/style-3127/1767505598111-nrc4gqcajp?_a=BAMAOGWO0",
@@ -502,7 +471,6 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596345/cityfashion/products/style-3127/4a707367-224f-4ec8-b71a-6da58c300f7e?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596348/cityfashion/products/style-3127/4e52a099858abca96126132c1bba4b8e-1767508978-pn4d22zg?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596351/cityfashion/products/style-3127/dbe3e8fa-ba9f-4d46-b63f-58d5b2273d20?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596352/cityfashion/products/style-3127/img-5228?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596353/cityfashion/products/style-3127/img-5229?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596357/cityfashion/products/style-3127/row-1-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596360/cityfashion/products/style-3127/row-1-column-2?_a=BAMAOGWO0",
@@ -524,9 +492,7 @@
     "colors": [],
     "merchandisingLane": "new",
     "images": [
-      "/products/style-3143/1.webp",
       "/products/style-3143/2.webp",
-      "/products/style-3143/img-5312.webp",
       "/products/style-3143/img-5313.webp",
       "/products/style-3143/row-1-column-1.webp",
       "/products/style-3143/row-1-column-2.webp",
@@ -534,9 +500,7 @@
       "/products/style-3143/row-2-column-2.webp"
     ],
     "cloudinaryImages": [
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596367/cityfashion/products/style-3143/1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596368/cityfashion/products/style-3143/2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596370/cityfashion/products/style-3143/img-5312?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596372/cityfashion/products/style-3143/img-5313?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596375/cityfashion/products/style-3143/row-1-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596378/cityfashion/products/style-3143/row-1-column-2?_a=BAMAOGWO0",
@@ -558,7 +522,6 @@
     "colors": [],
     "merchandisingLane": "new",
     "images": [
-      "/products/style-3151/1.webp",
       "/products/style-3151/2.webp",
       "/products/style-3151/row-1-column-1.webp",
       "/products/style-3151/row-1-column-2.webp",
@@ -566,7 +529,6 @@
       "/products/style-3151/row-2-column-2.webp"
     ],
     "cloudinaryImages": [
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596416/cityfashion/products/style-3151/1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596417/cityfashion/products/style-3151/2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596419/cityfashion/products/style-3151/row-1-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596420/cityfashion/products/style-3151/row-1-column-2?_a=BAMAOGWO0",
