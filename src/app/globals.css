@@ -95,6 +95,18 @@ img {
   }
 }
 
+@keyframes product-tile-image-enter {
+  from {
+    opacity: 0.68;
+    transform: scale(1.015);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .grain {
   position: relative;
 }

@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import type { CatalogProductView } from "@/lib/catalog";
 
 import { ProductBadges } from "@/components/product-badges";
+import { ProductImageCarousel } from "@/components/product-image-carousel";
 import { SaveProductButton } from "@/components/save-product-button";
 
 type ProductTileProps = {
@@ -17,8 +17,6 @@ export function ProductTile({
   imageSizes = "(max-width: 768px) 100vw, 25vw",
   product,
 }: ProductTileProps) {
-  const image = product.coverImage;
-
   return (
     <Link
       href={`/products/${product.slug}`}
@@ -27,21 +25,7 @@ export function ProductTile({
       <div className="absolute right-3 top-3 z-10">
         <SaveProductButton productSlug={product.slug} />
       </div>
-      <div className="relative aspect-[4/5] overflow-hidden border border-[var(--line)] bg-white">
-        {image ? (
-          <Image
-            src={image}
-            alt={product.title}
-            fill
-            className="object-cover transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-            sizes={imageSizes}
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center text-sm font-black uppercase tracking-[0.18em] text-[var(--text-soft)]">
-            No Image
-          </div>
-        )}
-      </div>
+      <ProductImageCarousel imageSizes={imageSizes} images={product.images} title={product.title} />
       <div className="flex flex-1 flex-col gap-3 border-x border-b border-[var(--line)] px-3 pb-3 pt-3">
         <div className="space-y-2">
           <div className="space-y-1">
