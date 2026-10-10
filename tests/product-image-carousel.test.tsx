@@ -62,4 +62,12 @@ describe("ProductImageCarousel", () => {
 
     expect(screen.getByRole("img")).toHaveAccessibleName("Style 1390, photo 1 of 3");
   });
+
+  it("renders a plain frame when the parent card already links", () => {
+    render(<ProductImageCarousel imageSizes="25vw" images={images} title="Style 3017" />);
+
+    expect(screen.queryByRole("link")).toBeNull();
+    fireEvent.pointerEnter(screen.getByRole("img").parentElement!, { pointerType: "mouse" });
+    expect(screen.getByRole("img")).toHaveAccessibleName("Style 3017, photo 2 of 3");
+  });
 });
