@@ -92,8 +92,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
-      "2.png",
       "3.png",
       "4.png",
       "5.png",
@@ -107,7 +105,14 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png",
+      "2.png",
+      "IMG_5290.JPG",
+      "IMG_5291.JPG",
+      "IMG_5292.JPG"
+    ]
   },
   "1600": {
     "title": "Style 1600",
@@ -331,7 +336,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
       "2.png",
       "3.png",
       "3017-row-1-column-1.png",
@@ -346,7 +350,10 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png"
+    ]
   },
   "3023": {
     "title": "Style 3023",
@@ -356,8 +363,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
-      "2.png",
       "3.png",
       "3013-row-1-column-1.png",
       "3013-row-1-column-2.png",
@@ -371,7 +376,11 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png",
+      "2.png"
+    ]
   },
   "3042": {
     "title": "Style 3042",
@@ -431,9 +440,7 @@
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
       "1765023959760-94uzwo7ytxp.png",
-      "1765024126883-sdwnmbn6rt.png",
-      "3095.png",
-      "IMG_5823.jpg"
+      "1765024126883-sdwnmbn6rt.png"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -443,7 +450,11 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "3095.png",
+      "IMG_5823.jpg"
+    ]
   },
   "3105": {
     "title": "Style 3105",
@@ -468,7 +479,13 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "V2-1.png",
+      "V2-2.png",
+      "V2-3.png",
+      "V2-4.png"
+    ]
   },
   "3112": {
     "title": "Style 3112",
@@ -526,7 +543,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
       "1053251fca57100566ac32c70db2567b_1767509170.png",
       "129c8687-08c6-4bbe-9c62-875600e3c3ef.png",
       "1767505598111-nrc4gqcajp.png",
@@ -541,7 +557,11 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png",
+      "IMG_5228.JPG"
+    ]
   },
   "3143": {
     "title": "Style 3143",
@@ -551,9 +571,7 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
       "2.png",
-      "IMG_5312.JPG",
       "IMG_5313.JPG",
       "row-1-column-1.png",
       "row-1-column-2.png"
@@ -566,7 +584,11 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png",
+      "IMG_5312.JPG"
+    ]
   },
   "3145": {
     "title": "Style 3145",
@@ -600,7 +622,6 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "1.png",
       "2.png",
       "row-1-column-1.png",
       "row-1-column-2.png",
@@ -615,7 +636,10 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "1.png"
+    ]
   },
   "3168": {
     "title": "Style 3168",
@@ -711,6 +735,76 @@
     "odooSyncMode": "mapped",
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "4117": {
+    "slug": "style-4117-button-front-gathered-long-top",
+    "title": "Style 4117 Button-Front Gathered Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,600",
+    "unitPriceLkr": 1600,
+    "moq": "6 pcs",
+    "fabric": "Soft cotton",
+    "sizeRange": "M - 2XL",
+    "description": "Soft cotton button-front gathered long top with three-quarter sleeves in four colors. Top only; trousers not included.",
+    "imageOrder": [
+      "01-D4117-beige-tan.webp",
+      "02-D4117-soft-pink.webp",
+      "03-D4117-lime-green.webp",
+      "04-D4117-coral-pink.webp"
+    ],
+    "colors": [
+      "Beige / tan",
+      "Soft pink",
+      "Lime green",
+      "Coral pink"
+    ],
+    "notes": "User-approved four-color City Fashion campaign. One original model and one muted-green courtyard location across all colorways. Top only; trousers excluded.",
+    "odooProductId": 670,
+    "odooDesignKey": "D4117",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "no",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "4120": {
+    "slug": "style-4120-collared-gathered-long-top",
+    "title": "Style 4120 Collared Gathered Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,250",
+    "unitPriceLkr": 1250,
+    "moq": "6 pcs",
+    "fabric": "Cotton",
+    "sizeRange": "M - 2XL",
+    "description": "Cotton collared long top with three-quarter sleeves and a gathered waist in seven colors. Top only; trousers not included.",
+    "imageOrder": [
+      "D4120-01-deep-red-approved-v3.webp",
+      "D4120-02-beige-approved-v2.webp",
+      "D4120-03-pale-blush-approved-v3.webp",
+      "D4120-04-black-approved-v3.webp",
+      "D4120-05-light-pink-approved-v2.webp",
+      "D4120-06-white-ivory-approved-v2.webp",
+      "D4120-07-burnt-orange-approved-v2.webp",
+      "D4120-08-red-collar-material-detail-approved-v1.webp",
+      "D4120-09-beige-gathers-material-detail-approved-v1.webp"
+    ],
+    "colors": [
+      "Deep red / wine",
+      "Beige / light cream",
+      "Pale blush / peach",
+      "Black",
+      "Light pink",
+      "White / ivory",
+      "Rust / burnt orange"
+    ],
+    "notes": "User approved seven generated colorway portraits and two generated material details. All original phone photos, including folded shirts, excluded. Commercial details confirmed 2026-09-04.",
+    "odooProductId": 675,
+    "odooDesignKey": "D4120",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "no",
     "retailerDealApproval": "no",
     "priceSource": "override"
   },
