@@ -100,7 +100,7 @@
     "odooProductId": 208,
     "odooDesignKey": "D1490",
     "odooSyncMode": "mapped",
-    "publicationStatus": "published",
+    "publicationStatus": "draft",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override",
@@ -330,11 +330,13 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "2.png",
-      "3.png",
       "3017-row-1-column-1.png",
       "3017-row-2-column-1.png",
-      "3017-row-2-column-2.png"
+      "3017-row-2-column-2.png",
+      "2.png",
+      "3.png",
+      "3018-row-1-column-2.png",
+      "4.png"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -356,10 +358,11 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "3.png",
       "3013-row-1-column-1.png",
       "3013-row-1-column-2.png",
-      "3013-row-2-column-1.png"
+      "3013-row-2-column-1.png",
+      "3013-row-2-column-2.png",
+      "3.png"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -535,8 +538,19 @@
       "1053251fca57100566ac32c70db2567b_1767509170.png",
       "129c8687-08c6-4bbe-9c62-875600e3c3ef.png",
       "1767505598111-nrc4gqcajp.png",
+      "22e39831-a5fd-4356-badd-45d5306ba3c3 (1).png",
+      "3261339cbd91b3a67019dd9660bab7cf_1767509490.png",
+      "4a707367-224f-4ec8-b71a-6da58c300f7e.png",
+      "4e52a099858abca96126132c1bba4b8e_1767508978_pn4d22zg.png",
+      "dbe3e8fa-ba9f-4d46-b63f-58d5b2273d20.png",
+      "row-1-column-1.png",
+      "row-1-column-2.png",
+      "row-2-column-1.png",
+      "row-2-column-2.png",
       "2.png",
-      "22e39831-a5fd-4356-badd-45d5306ba3c3 (1).png"
+      "3.png",
+      "4.png",
+      "IMG_5229.JPG"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -559,10 +573,12 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "2.png",
-      "IMG_5313.JPG",
       "row-1-column-1.png",
-      "row-1-column-2.png"
+      "row-1-column-2.png",
+      "row-2-column-1.png",
+      "row-2-column-2.png",
+      "2.png",
+      "IMG_5313.JPG"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -609,11 +625,11 @@
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
-      "2.png",
       "row-1-column-1.png",
       "row-1-column-2.png",
       "row-2-column-1.png",
-      "row-2-column-2.png"
+      "row-2-column-2.png",
+      "2.png"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
