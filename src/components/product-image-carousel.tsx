@@ -53,7 +53,9 @@ export function ProductImageCarousel({
     setActiveIndex(0);
   };
 
+  const coverImage = images[0];
   const activeImage = images[activeIndex];
+  const nextImage = isHovering ? images[(activeIndex + 1) % images.length] : undefined;
   const frameProps = {
     className: "relative block aspect-[4/5] overflow-hidden border border-[var(--line)] bg-white",
     onPointerEnter: (event: PointerEvent<HTMLElement>) => startCarousel(event.pointerType),
@@ -62,14 +64,31 @@ export function ProductImageCarousel({
   const frameContent = (
     <>
       {activeImage ? (
-        <Image
-          key={activeImage}
-          src={activeImage}
-          alt={`${title}, photo ${activeIndex + 1} of ${images.length}`}
-          fill
-          className="animate-[product-tile-image-enter_420ms_cubic-bezier(0.16,1,0.3,1)] object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] motion-reduce:animate-none motion-reduce:transition-none"
-          sizes={imageSizes}
-        />
+        <>
+          {/* Cover stays underneath so a still-loading hover photo never shows a blank frame. */}
+          {activeIndex > 0 ? (
+            <Image src={coverImage} alt="" aria-hidden fill className="object-cover" sizes={imageSizes} />
+          ) : null}
+          <Image
+            key={activeImage}
+            src={activeImage}
+            alt={`${title}, photo ${activeIndex + 1} of ${images.length}`}
+            fill
+            className="animate-[product-tile-image-enter_420ms_cubic-bezier(0.16,1,0.3,1)] object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] motion-reduce:animate-none motion-reduce:transition-none"
+            sizes={imageSizes}
+          />
+          {nextImage && nextImage !== activeImage ? (
+            <Image
+              src={nextImage}
+              alt=""
+              aria-hidden
+              fill
+              loading="eager"
+              className="pointer-events-none object-cover opacity-0"
+              sizes={imageSizes}
+            />
+          ) : null}
+        </>
       ) : (
         <div className="flex h-full items-center justify-center text-sm font-black uppercase tracking-[0.18em] text-[var(--text-soft)]">
           No Image
