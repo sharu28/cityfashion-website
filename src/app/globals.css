@@ -9,7 +9,6 @@
   --line: #e6e6e6;
   --line-strong: #111111;
   --fill: #f5f5f3;
-  --hero-tint: #ece6dd;
   --panel: #ffffff;
   --whatsapp: #18834e;
   --danger: #a33a2a;
@@ -125,14 +124,14 @@
   }
 }
 
-/* Hero: a slow push-in on the photo on screen, and a ticker that runs sideways. */
-.ken-burns {
-  animation: ken-burns 7s ease-out both;
+/* Hero: the photo on screen drifts in slowly, and the active marker fills while its style is on screen. */
+.hero-drift {
+  animation: hero-drift 7s ease-out both;
 }
 
-@keyframes ken-burns {
+@keyframes hero-drift {
   from {
-    transform: scale(1.12);
+    transform: scale(1.06);
   }
 
   to {
@@ -140,17 +139,20 @@
   }
 }
 
-.marquee-track {
-  animation: marquee 28s linear infinite;
+.hero-progress {
+  transform-origin: left;
+  animation-name: hero-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
 }
 
-@keyframes marquee {
+@keyframes hero-progress {
   from {
-    transform: translateX(0);
+    transform: scaleX(0);
   }
 
   to {
-    transform: translateX(-50%);
+    transform: scaleX(1);
   }
 }
 

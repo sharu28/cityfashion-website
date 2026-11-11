@@ -30,5 +30,5 @@ test("only the actual lead image is preloaded", () => {
 
   assert.doesNotMatch(productGrid, /priority=/);
   assert.doesNotMatch(homePage, /preload=/);
-  assert.match(homeHero, /preload=\{index === 0\}/);
+  assert.match(homeHero, /preload=\{panel === 0 && index === 0\}/);
 });
