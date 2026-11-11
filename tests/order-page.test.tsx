@@ -109,6 +109,17 @@ describe("OrderPage", () => {
     expect(screen.getByText("M 2 · L 2 · XL 2 · 2XL 1")).toBeInTheDocument();
   });
 
+  it("keeps showing the saved sizes while a change is under 6", async () => {
+    const user = userEvent.setup();
+    renderOrderPage();
+
+    await user.click(await screen.findByRole("button", { name: "Remove one piece, size M" }));
+
+    expect(screen.getByText("Minimum 6 pieces for this style")).toBeInTheDocument();
+    expect(screen.getByText("M 1 · L 2 · XL 2 · 2XL 1")).toBeInTheDocument();
+    expect(localStorage.getItem(storageKey)).toContain('"quantity":6');
+  });
+
   it("keeps the single quantity control for a style without sizes", async () => {
     const user = userEvent.setup();
     renderWith([{ productSlug: "style-1710", quantity: 6 }]);

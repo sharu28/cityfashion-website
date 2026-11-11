@@ -278,7 +278,8 @@ function OrderLineItem({ product, lineTotalLkr }: { product: CatalogProductView;
         {line.isSized ? (
           <div className="mt-3">
             <div className="flex items-center justify-between gap-3 text-sm">
-              <p>{formatSplit(split, line.sizes)}</p>
+              {/* What is saved in the order; an unsaved draft under 6 shows only in the rows below. */}
+              <p>{formatSplit(line.split, line.sizes)}</p>
               <button
                 type="button"
                 aria-expanded={showSizes}
