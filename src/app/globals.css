@@ -25,39 +25,42 @@
   --order-bar-h: 0px;
 }
 
-* {
-  box-sizing: border-box;
-}
+/* Element resets live in the base layer so Tailwind utilities (for example a link's text colour) win. */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-sans), system-ui, sans-serif;
-  font-variant-numeric: tabular-nums;
-}
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-img {
-  display: block;
-}
+  img {
+    display: block;
+  }
 
-::selection {
-  background: rgba(17, 17, 17, 0.12);
-}
+  ::selection {
+    background: rgba(17, 17, 17, 0.12);
+  }
 
-:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 3px;
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
 }
 
 .skip-link {

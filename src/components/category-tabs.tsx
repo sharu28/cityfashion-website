@@ -8,7 +8,7 @@ type CategoryTabsProps = {
 };
 
 const chipBase =
-  "inline-flex min-h-10 shrink-0 items-center border px-4 text-xs font-medium uppercase tracking-[0.08em] transition-colors";
+  "inline-flex min-h-10 shrink-0 items-center whitespace-nowrap border px-4 text-xs font-medium uppercase tracking-[0.08em] transition-colors";
 
 export function CategoryTabs({ activeSlug, className = "" }: CategoryTabsProps) {
   const tabs = [
