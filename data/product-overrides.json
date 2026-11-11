@@ -951,5 +951,102 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "4060": {
+    "title": "Style 4060 Printed Button Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,600",
+    "moq": "6 pcs",
+    "description": "Knee-length button-front frock with a band collar and gathered tier in seven prints for ladies wear retailers.",
+    "imageOrder": [
+      "01-D4060-mustard-leaf-button-frock.png",
+      "02-D4060-sage-green-leaf-button-frock.png",
+      "03-D4060-mauve-leaf-button-frock.png",
+      "04-D4060-red-leaf-button-frock.png",
+      "05-D4060-olive-tulip-button-frock.png",
+      "06-D4060-pink-tulip-button-frock.png",
+      "07-D4060-brown-tulip-button-frock.png"
+    ],
+    "colors": [
+      "Mustard Leaf",
+      "Sage Green Leaf",
+      "Mauve Leaf",
+      "Red Leaf",
+      "Olive Tulip",
+      "Pink Tulip",
+      "Brown Tulip"
+    ],
+    "notes": "Seven-picture D4060 set made 2026-11-12 from the dummy and folded phone photos: one model, one cafe location, a different pose and footwear in each picture. Price from the median wholesale invoice price.",
+    "odooProductId": 457,
+    "odooDesignKey": "D4060",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "4000": {
+    "title": "Style 4000 Golden Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,850",
+    "moq": "6 pcs",
+    "description": "Long gold-printed frock with a stand collar, buttons and a decorated yoke in three colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D4000-navy-gold-golden-frock.png",
+      "02-D4000-black-gold-golden-frock.png",
+      "03-D4000-white-gold-golden-frock.png"
+    ],
+    "colors": [
+      "Navy Gold",
+      "Black Gold",
+      "White Gold"
+    ],
+    "notes": "Three-picture D4000 set made 2026-11-12 from the dummy photos: one model, one garden location. Price from the median wholesale invoice price.",
+    "odooProductId": 446,
+    "odooDesignKey": "D4000",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "1205": {
+    "title": "Style 1205 Printed Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,850",
+    "moq": "6 pcs",
+    "description": "Straight-cut long top with a mandarin collar and three-quarter sleeves in ten prints for ladies wear retailers.",
+    "imageOrder": [
+      "01-D1205-red-blue-floral-long-top.png",
+      "02-D1205-white-navy-motif-long-top.png",
+      "03-D1205-pink-grey-motif-long-top.png",
+      "04-D1205-pastel-watercolour-long-top.png",
+      "05-D1205-teal-navy-leaf-long-top.png",
+      "06-D1205-yellow-orange-floral-long-top.png",
+      "07-D1205-grey-blue-floral-long-top.png",
+      "08-D1205-lilac-rose-long-top.png",
+      "09-D1205-blue-batik-long-top.png",
+      "10-D1205-rust-brown-floral-long-top.png"
+    ],
+    "colors": [
+      "Red Blue Floral",
+      "White Navy Motif",
+      "Pink Grey Motif",
+      "Pastel Watercolour",
+      "Teal Navy Leaf",
+      "Yellow Orange Floral",
+      "Grey Blue Floral",
+      "Lilac Rose",
+      "Blue Batik",
+      "Rust Brown Floral"
+    ],
+    "notes": "D1205 set made 2026-11-12 from the dummy and folded phone photos: one model, one veranda location, a different pose and footwear in each picture. Models wear plain black trousers that are not part of the product. Price from the median wholesale invoice price.",
+    "odooProductId": 152,
+    "odooDesignKey": "D1205",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }
