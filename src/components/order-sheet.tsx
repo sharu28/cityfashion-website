@@ -69,7 +69,7 @@ function SheetBody({
   }
 
   return (
-    <div className="order-sheet-panel absolute inset-x-0 bottom-0 max-h-[85dvh] overflow-y-auto bg-white p-5 md:inset-auto md:left-1/2 md:top-1/2 md:w-[420px] md:-translate-x-1/2 md:-translate-y-1/2">
+    <div className="order-sheet-panel absolute inset-x-0 bottom-0 max-h-[85dvh] overflow-y-auto bg-white p-5 text-[var(--ink)] md:inset-auto md:left-1/2 md:top-1/2 md:w-[420px] md:-translate-x-1/2 md:-translate-y-1/2">
       <div className="flex gap-4">
         {product.coverImage ? (
           <div className="relative aspect-[3/4] w-16 shrink-0 bg-[var(--fill)]">

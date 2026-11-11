@@ -81,6 +81,26 @@ describe("ProductTile", () => {
     expect(screen.getByRole("button", { name: /7 in order/ })).toBeInTheDocument();
   });
 
+  it("sets its own dark text so the sheet stays readable inside the black deals band", async () => {
+    const user = userEvent.setup();
+    render(
+      <OrderCartProvider>
+        <OrderSizesProvider>
+          <Loaded />
+          <div className="text-white">
+            <ProductTile product={product("1390")} invert />
+          </div>
+        </OrderSizesProvider>
+      </OrderCartProvider>,
+    );
+    await waitFor(() => expect(screen.getByTestId("loaded")).toHaveTextContent("yes"));
+    await user.click(screen.getByRole("button", { name: "Add to order" }));
+    await user.click(screen.getByRole("button", { name: /6 in order/ }));
+
+    const panel = screen.getByRole("dialog").querySelector(".order-sheet-panel");
+    expect(panel).toHaveClass("text-[var(--ink)]");
+  });
+
   it("disables Done while the sheet is under six pieces", async () => {
     const user = userEvent.setup();
     await renderTile("1390");
