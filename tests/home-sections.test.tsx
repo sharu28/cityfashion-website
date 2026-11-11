@@ -17,7 +17,8 @@ function renderHome() {
   );
 }
 
-describe("home page", () => {
+// The home page renders the whole catalog, which can take over 5 s in jsdom when the suite runs in parallel.
+describe("home page", { timeout: 15_000 }, () => {
   it("shows new arrivals and all styles", () => {
     const { container } = renderHome();
 
