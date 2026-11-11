@@ -1,16 +1,14 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { CatalogShell } from "@/components/catalog-shell";
-import { ProductBadges } from "@/components/product-badges";
 import { ProductGrid } from "@/components/product-grid";
+import { ProductOrderPanel } from "@/components/product-order-panel";
+import { ProductPhotoStrip } from "@/components/product-photo-strip";
 import { ProductViewTracker } from "@/components/product-view-tracker";
-import { RetailerOrderButton } from "@/components/retailer-order-button";
-import { SaveProductButton } from "@/components/save-product-button";
-import { allProducts, getProduct, getRelatedProducts } from "@/lib/catalog";
-import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
+import { SectionTitle } from "@/components/section-title";
+import { allProducts, buildWhatsAppLink, getProduct, getRelatedProducts } from "@/lib/catalog";
+import { getAbsoluteUrl, siteName } from "@/lib/site";
 
 type ProductPageProps = {
   params: Promise<{
@@ -35,7 +33,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   }
 
   const detailLine = [product.fabric, product.sizeRange].filter(Boolean).join(". ");
-  const description = `${product.description} Starting price ${product.startingPrice}. MOQ ${product.moq}.${detailLine ? ` ${detailLine}.` : ""}`;
+  const description = `${product.description} Starting price ${product.startingPrice}. MOQ ${product.moq}.${detailLine ? ` ${detailLine}.` : ""} Add it to your wholesale order online.`;
 
   return {
     title: `${product.title}`,
@@ -73,172 +71,113 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   const relatedProducts = getRelatedProducts(product);
+  const isDeal = ["deal", "new-and-deal"].includes(product.merchandisingLane);
+  const facts = [
+    { label: "Minimum order", value: `${product.moq || "6 pcs"} (any sizes)` },
+    { label: "Fabric", value: product.fabric || "Ask us" },
+    { label: "Sizes", value: product.sizeRange || "Ask us" },
+  ];
 
   return (
-    <main className="overflow-hidden pb-28 pt-20 md:pb-16">
+    <main className="pb-10">
       <ProductViewTracker
         category={product.categoryMeta.name}
         merchandisingLane={product.merchandisingLane}
         productId={product.id}
         productName={product.title}
       />
-      <CatalogShell className="max-w-[1500px] px-3 sm:px-5 lg:px-7">
-        <div className="mb-5 flex flex-wrap items-center gap-2 pt-5 text-sm font-bold text-[var(--text-soft)]">
-          <Link href="/" className="hover:text-[var(--text-strong)]">
-            Home
-          </Link>
-          <span>/</span>
-          <Link href={`/category/${product.categoryMeta.slug}`} className="hover:text-[var(--text-strong)]">
-            {product.categoryMeta.name}
-          </Link>
-          <span>/</span>
-          <span className="text-[var(--text-strong)]">{product.title}</span>
-        </div>
 
-        <div className="grid min-w-0 gap-4 lg:grid-cols-[1.08fr_0.92fr]">
-          <section className="min-w-0">
-            <div className="mb-3 flex items-end justify-between gap-4 sm:hidden">
-              <div>
-                <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-[var(--text-soft)]">Product photos</p>
-                <p className="mt-1 text-sm font-black text-[var(--text-strong)]">Swipe to view all colors</p>
+      <nav aria-label="Breadcrumb" className="mx-auto max-w-[1440px] px-4 py-3 text-xs text-[var(--text-soft)] sm:px-6 lg:px-10">
+        <Link href="/" className="hover:text-[var(--ink)]">
+          Home
+        </Link>
+        <span className="mx-1.5">/</span>
+        <Link href={`/category/${product.categoryMeta.slug}`} className="hover:text-[var(--ink)]">
+          {product.categoryMeta.name}
+        </Link>
+      </nav>
+
+      <div className="mx-auto max-w-[1440px] lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-12 lg:px-10">
+        <section aria-label="Photos" className="min-w-0">
+          <div className="mx-auto w-full lg:max-w-[calc((100dvh-7rem)*0.75)]">
+            <ProductPhotoStrip
+              images={product.images}
+              title={product.title}
+              imageSizes="(max-width: 1024px) 100vw, 50vw"
+              eagerFirst
+            />
+          </div>
+        </section>
+
+        <aside className="min-w-0 px-4 pt-5 sm:px-6 lg:sticky lg:top-20 lg:self-start lg:px-0 lg:pt-0">
+          <p className="label text-[var(--text-soft)]">
+            Style {product.id}
+            {isDeal ? <span className="ml-2 bg-[var(--ink)] px-1.5 py-0.5 text-white">Deal</span> : null}
+          </p>
+          <h1 className="mt-2 text-balance text-2xl font-semibold leading-tight tracking-[-0.01em] sm:text-3xl">{product.title}</h1>
+          <p className="mt-2 text-lg font-semibold">
+            {product.startingPrice} <span className="text-sm font-normal text-[var(--text-soft)]">/ piece</span>
+          </p>
+
+          <dl className="mt-5 divide-y divide-[var(--line)] border-y border-[var(--line)] text-sm">
+            {facts.map((fact) => (
+              <div key={fact.label} className="flex justify-between gap-4 py-2.5">
+                <dt className="text-[var(--text-soft)]">{fact.label}</dt>
+                <dd className="text-right font-medium">{fact.value}</dd>
               </div>
-              <p className="font-mono text-xs font-black text-[var(--text-soft)]">{product.images.length} photos</p>
-            </div>
-            <div className="flex w-full max-w-full snap-x snap-mandatory gap-3 overflow-x-auto pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0">
-              {product.images.map((image, index) => (
-                <div
-                  key={image}
-                  className={`w-[84vw] max-w-[32rem] shrink-0 snap-center overflow-hidden border border-[var(--line)] bg-white sm:w-auto sm:max-w-none ${
-                    index === 0 ? "sm:col-span-2" : ""
-                  }`}
-                >
-                  <div className="relative aspect-[4/5]">
-                    <Image
-                      src={image}
-                      alt={`${product.title} image ${index + 1}`}
-                      fill
-                      className="object-cover"
-                      preload={index === 0}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+            ))}
+          </dl>
 
-          <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
-            <div className="border border-[var(--line)] bg-[var(--panel)]">
-              <div className="flex items-start justify-between gap-4 border-b border-[var(--line)] p-5">
-                <div>
-                  <p className="font-mono text-[0.72rem] font-black uppercase tracking-[0.16em] text-[var(--text-soft)]">Style {product.id}</p>
-                  <ProductBadges badges={product.badges} categoryLabel={product.categoryMeta.name} />
-                </div>
-                <SaveProductButton productSlug={product.slug} />
-              </div>
-
-              <div className="p-5 sm:p-6">
-                <h1 className="catalog-heading text-balance text-5xl font-black leading-[0.92] text-[var(--text-strong)] md:text-7xl">
-                  {product.title}
-                </h1>
-                <p className="mt-4 text-pretty text-sm leading-6 text-[var(--text-soft)]">{product.description}</p>
-              </div>
-
-              <div className="grid grid-cols-2 border-y border-[var(--line)] text-sm">
-                <div className="border-r border-b border-[var(--line)] p-4">
-                  <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-[var(--text-soft)]">Starting price</p>
-                  <p className="mt-2 text-xl font-black text-[var(--text-strong)]">{product.startingPrice}</p>
-                </div>
-                <div className="border-b border-[var(--line)] p-4">
-                  <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-[var(--text-soft)]">MOQ</p>
-                  <p className="mt-2 text-xl font-black text-[var(--text-strong)]">{product.moq}</p>
-                </div>
-                <div className="border-r border-[var(--line)] p-4">
-                  <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-[var(--text-soft)]">Fabric</p>
-                  <p className="mt-2 text-base font-black text-[var(--text-strong)]">{product.fabric || "Ask on WhatsApp"}</p>
-                </div>
-                <div className="p-4">
-                  <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-[var(--text-soft)]">Size range</p>
-                  <p className="mt-2 text-base font-black text-[var(--text-strong)]">{product.sizeRange || "Ask on WhatsApp"}</p>
-                </div>
-              </div>
-
-              <div className="p-5">
-                <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-[var(--text-soft)]">Available colors</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {product.colors.length > 0 ? (
-                    product.colors.map((color) => (
-                      <span
-                        key={color}
-                        className="border border-[var(--line)] bg-[var(--sand)] px-3 py-2 text-sm font-black text-[var(--text-strong)]"
-                      >
-                        {color}
-                      </span>
-                    ))
-                  ) : (
-                    <span className="text-sm leading-6 text-[var(--text-soft)]">Ask on WhatsApp for available colors.</span>
-                  )}
-                </div>
-              </div>
-
-              <div className="border-t border-[var(--line)] p-5">
-                {["deal", "new-and-deal"].includes(product.merchandisingLane) ? (
-                  <p className="mb-4 border border-[var(--accent)] bg-[var(--accent-soft)] p-3 text-sm font-bold leading-6 text-[var(--text-strong)]">
-                    This style has special retailer terms. Ask on WhatsApp for the lot price, colors, and order details.
-                  </p>
-                ) : null}
-                <RetailerOrderButton productSlug={product.slug} label="Ask on WhatsApp" />
-                <p className="mt-4 text-sm leading-6 text-[var(--text-soft)]">
-                  Save this style first if you want it kept in your shortlist. Send style code{" "}
-                  <span className="font-black text-[var(--text-strong)]">{product.id}</span> for faster help.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-[var(--hero)] p-5 text-white">
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-white/46">Order help</p>
-              <div className="mt-4 grid gap-px bg-white/12 text-sm leading-6 text-white/68">
-                {["Check all product images.", "Save the style or note the colors you need.", "Send this style code on WhatsApp."].map((item, index) => (
-                  <p key={item} className="bg-[var(--hero)] py-2">
-                    <span className="font-mono text-white/38">0{index + 1}</span> {item}
-                  </p>
+          <div className="mt-5">
+            <p className="label text-[var(--text-soft)]">
+              {product.colors.length > 0 ? `${product.colors.length} colours` : "Colours"}
+            </p>
+            {product.colors.length > 0 ? (
+              <ul className="mt-2 flex flex-wrap gap-1.5">
+                {product.colors.map((color) => (
+                  <li key={color} className="border border-[var(--line)] px-2.5 py-1 text-xs">
+                    {color}
+                  </li>
                 ))}
-              </div>
-              <p className="mt-4 font-black text-white">{formattedWhatsAppNumber}</p>
-              <p className="mt-1 text-sm text-white/62">131 Keyzer Street, Colombo 11</p>
-            </div>
-          </aside>
-        </div>
+              </ul>
+            ) : null}
+            <p className="mt-2 text-xs text-[var(--text-soft)]">Our staff confirm colours with you on WhatsApp.</p>
+          </div>
 
-        {relatedProducts.length > 0 ? (
-          <section className="mt-12">
-            <div className="flex flex-col gap-3 border-t border-[var(--line)] pt-5 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-[var(--text-soft)]">More styles</p>
-                <h2 className="catalog-heading mt-2 text-4xl font-black leading-[0.95] text-[var(--text-strong)] md:text-6xl">
-                  More from {product.categoryMeta.name}
-                </h2>
-              </div>
-              <Link
-                href={`/category/${product.categoryMeta.slug}`}
-                className="text-sm font-black uppercase tracking-[0.12em] text-[var(--text-strong)] underline decoration-[var(--accent)] underline-offset-4"
-              >
-                View category
-              </Link>
-            </div>
-            <div className="mt-8">
-              <ProductGrid products={relatedProducts} />
-            </div>
-          </section>
-        ) : null}
-      </CatalogShell>
+          <div className="mt-6">
+            <ProductOrderPanel product={product} />
+          </div>
 
-      <div className="fixed inset-x-3 bottom-3 z-40 border border-[var(--line)] bg-[rgba(255,253,247,0.96)] p-2 shadow-[0_18px_48px_rgba(18,17,15,0.2)] backdrop-blur-xl md:hidden">
-        <div className="grid grid-cols-[auto_1fr] gap-2">
-          <SaveProductButton productSlug={product.slug} />
-          <RetailerOrderButton productSlug={product.slug} label={`WhatsApp style ${product.id}`} />
-        </div>
+          {isDeal ? (
+            <p className="mt-4 border border-[var(--ink)] p-3 text-sm leading-6">
+              This style has special retailer terms. Ask on WhatsApp for the lot price, colors, and order details.
+            </p>
+          ) : null}
+
+          {/* Styles without a price already show a big WhatsApp button in the order panel. */}
+          {product.orderable ? (
+            <a
+              href={buildWhatsAppLink(product)}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--whatsapp)] underline underline-offset-4"
+            >
+              Ask on WhatsApp
+            </a>
+          ) : null}
+
+          {product.description ? (
+            <p className="mt-4 text-pretty text-sm leading-6 text-[var(--text-soft)]">{product.description}</p>
+          ) : null}
+        </aside>
       </div>
+
+      {relatedProducts.length > 0 ? (
+        <section className="mx-auto mt-16 max-w-[1440px] space-y-4">
+          <SectionTitle title={`More from ${product.categoryMeta.name}`} seeAllHref={`/category/${product.categoryMeta.slug}`} />
+          <ProductGrid products={relatedProducts} />
+        </section>
+      ) : null}
     </main>
   );
 }

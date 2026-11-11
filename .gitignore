@@ -16,3 +16,12 @@ __pycache__/
 .memory-private/
 .env.local
 supabase/.temp/
+
+# Cloudflare / OpenNext
+.open-next/
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+test-results/
+playwright-report/

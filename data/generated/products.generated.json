@@ -43,6 +43,7 @@
     "title": "Style 1390 Printed Long Frock",
     "category": "frocks",
     "startingPrice": "Rs. 1,500",
+    "unitPriceLkr": 1500,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "M - 2XL",
@@ -111,6 +112,7 @@
     "title": "Style 1570 KY Bamboo",
     "category": "printed-tops",
     "startingPrice": "Rs. 1,600",
+    "unitPriceLkr": 1600,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -159,6 +161,7 @@
     "title": "Style 1710",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,050",
+    "unitPriceLkr": 2050,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -203,6 +206,7 @@
     "title": "Style 1780",
     "category": "printed-tops",
     "startingPrice": "Rs. 1,700",
+    "unitPriceLkr": 1700,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -237,6 +241,7 @@
     "title": "Style 1900",
     "category": "printed-tops",
     "startingPrice": "Rs. 1,700",
+    "unitPriceLkr": 1700,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -273,6 +278,7 @@
     "title": "Style 3003 V-3",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,450",
+    "unitPriceLkr": 2450,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -297,6 +303,7 @@
     "title": "Style 3003 V-6",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,450",
+    "unitPriceLkr": 2450,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -323,6 +330,7 @@
     "title": "Style 3017",
     "category": "printed-tops",
     "startingPrice": "Rs. 3,450",
+    "unitPriceLkr": 3450,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -333,19 +341,13 @@
       "/products/style-3017/3017-row-1-column-1.webp",
       "/products/style-3017/3017-row-2-column-1.webp",
       "/products/style-3017/3017-row-2-column-2.webp",
-      "/products/style-3017/2.webp",
-      "/products/style-3017/3.webp",
-      "/products/style-3017/3018-row-1-column-2.webp",
-      "/products/style-3017/4.webp"
+      "/products/style-3017/3018-row-1-column-2.webp"
     ],
     "cloudinaryImages": [
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596183/cityfashion/products/style-3017/3017-row-1-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596186/cityfashion/products/style-3017/3017-row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596188/cityfashion/products/style-3017/3017-row-2-column-2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596180/cityfashion/products/style-3017/2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596181/cityfashion/products/style-3017/3?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596190/cityfashion/products/style-3017/3018-row-1-column-2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596192/cityfashion/products/style-3017/4?_a=BAMAOGWO0"
+      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596190/cityfashion/products/style-3017/3018-row-1-column-2?_a=BAMAOGWO0"
     ],
     "sourceFolder": "3017"
   },
@@ -355,6 +357,7 @@
     "title": "Style 3023",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,700",
+    "unitPriceLkr": 2700,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -365,15 +368,13 @@
       "/products/style-3023/3013-row-1-column-1.webp",
       "/products/style-3023/3013-row-1-column-2.webp",
       "/products/style-3023/3013-row-2-column-1.webp",
-      "/products/style-3023/3013-row-2-column-2.webp",
-      "/products/style-3023/3.webp"
+      "/products/style-3023/3013-row-2-column-2.webp"
     ],
     "cloudinaryImages": [
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596198/cityfashion/products/style-3023/3013-row-1-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596199/cityfashion/products/style-3023/3013-row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596201/cityfashion/products/style-3023/3013-row-2-column-1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596203/cityfashion/products/style-3023/3013-row-2-column-2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596196/cityfashion/products/style-3023/3?_a=BAMAOGWO0"
+      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596203/cityfashion/products/style-3023/3013-row-2-column-2?_a=BAMAOGWO0"
     ],
     "sourceFolder": "3023"
   },
@@ -383,6 +384,7 @@
     "title": "Style 3042",
     "category": "printed-tops",
     "startingPrice": "Rs. 3,450",
+    "unitPriceLkr": 3450,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -417,6 +419,7 @@
     "title": "Style 3095",
     "category": "printed-tops",
     "startingPrice": "Rs. 3,250",
+    "unitPriceLkr": 3250,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -439,6 +442,7 @@
     "title": "Style 3105",
     "category": "printed-tops",
     "startingPrice": "Rs. 3,250",
+    "unitPriceLkr": 3250,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -473,6 +477,7 @@
     "title": "Style 3127",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,900",
+    "unitPriceLkr": 2900,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -492,9 +497,6 @@
       "/products/style-3127/row-1-column-2.webp",
       "/products/style-3127/row-2-column-1.webp",
       "/products/style-3127/row-2-column-2.webp",
-      "/products/style-3127/2.webp",
-      "/products/style-3127/3.webp",
-      "/products/style-3127/4.webp",
       "/products/style-3127/img-5229.webp"
     ],
     "cloudinaryImages": [
@@ -510,9 +512,6 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596360/cityfashion/products/style-3127/row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596363/cityfashion/products/style-3127/row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596366/cityfashion/products/style-3127/row-2-column-2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596334/cityfashion/products/style-3127/2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596339/cityfashion/products/style-3127/3?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596343/cityfashion/products/style-3127/4?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596353/cityfashion/products/style-3127/img-5229?_a=BAMAOGWO0"
     ],
     "sourceFolder": "3127"
@@ -523,6 +522,7 @@
     "title": "Style 3143",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,700",
+    "unitPriceLkr": 2700,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -534,7 +534,6 @@
       "/products/style-3143/row-1-column-2.webp",
       "/products/style-3143/row-2-column-1.webp",
       "/products/style-3143/row-2-column-2.webp",
-      "/products/style-3143/2.webp",
       "/products/style-3143/img-5313.webp"
     ],
     "cloudinaryImages": [
@@ -542,7 +541,6 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596378/cityfashion/products/style-3143/row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596382/cityfashion/products/style-3143/row-2-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596384/cityfashion/products/style-3143/row-2-column-2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596368/cityfashion/products/style-3143/2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596372/cityfashion/products/style-3143/img-5313?_a=BAMAOGWO0"
     ],
     "sourceFolder": "3143"
@@ -553,6 +551,7 @@
     "title": "Style 3151",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,900",
+    "unitPriceLkr": 2900,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "",
@@ -563,15 +562,13 @@
       "/products/style-3151/row-1-column-1.webp",
       "/products/style-3151/row-1-column-2.webp",
       "/products/style-3151/row-2-column-1.webp",
-      "/products/style-3151/row-2-column-2.webp",
-      "/products/style-3151/2.webp"
+      "/products/style-3151/row-2-column-2.webp"
     ],
     "cloudinaryImages": [
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596419/cityfashion/products/style-3151/row-1-column-1?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596420/cityfashion/products/style-3151/row-1-column-2?_a=BAMAOGWO0",
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596422/cityfashion/products/style-3151/row-2-column-1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596423/cityfashion/products/style-3151/row-2-column-2?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596417/cityfashion/products/style-3151/2?_a=BAMAOGWO0"
+      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596423/cityfashion/products/style-3151/row-2-column-2?_a=BAMAOGWO0"
     ],
     "sourceFolder": "3151"
   },
@@ -637,6 +634,7 @@
     "title": "Style 4080",
     "category": "embroidered-tops",
     "startingPrice": "Rs. 1,950",
+    "unitPriceLkr": 1950,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "M - 2XL",
@@ -654,25 +652,11 @@
     "merchandisingLane": "new",
     "images": [
       "/products/style-4080/ref-model.webp",
-      "/products/style-4080/img-7397-1.webp",
-      "/products/style-4080/img-7398-1.webp",
-      "/products/style-4080/img-7399-1.webp",
-      "/products/style-4080/img-7401-1.webp",
-      "/products/style-4080/img-7402-1.webp",
-      "/products/style-4080/img-7404.webp",
-      "/products/style-4080/img-7409.webp",
-      "/products/style-4080/img-7410.webp"
+      "/products/style-4080/img-7398-1.webp"
     ],
     "cloudinaryImages": [
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596432/cityfashion/products/style-4080/ref-model?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596433/cityfashion/products/style-4080/img-7397-1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596434/cityfashion/products/style-4080/img-7398-1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596439/cityfashion/products/style-4080/img-7399-1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596440/cityfashion/products/style-4080/img-7401-1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596441/cityfashion/products/style-4080/img-7402-1?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596442/cityfashion/products/style-4080/img-7404?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596443/cityfashion/products/style-4080/img-7409?_a=BAMAOGWO0",
-      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596444/cityfashion/products/style-4080/img-7410?_a=BAMAOGWO0"
+      "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596434/cityfashion/products/style-4080/img-7398-1?_a=BAMAOGWO0"
     ],
     "sourceFolder": "4080"
   },
@@ -682,6 +666,7 @@
     "title": "Style 4110 Printed Button Frock",
     "category": "frocks",
     "startingPrice": "Rs. 1,900",
+    "unitPriceLkr": 1900,
     "moq": "6 pcs",
     "fabric": "",
     "sizeRange": "M - 2XL",
@@ -742,6 +727,7 @@
     "title": "Style 4118 Short Top China",
     "category": "printed-tops",
     "startingPrice": "Rs. 1,250",
+    "unitPriceLkr": 1250,
     "moq": "6 pcs",
     "fabric": "Cotton",
     "sizeRange": "M - 2XL",

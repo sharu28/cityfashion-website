@@ -1,56 +1,58 @@
 import Link from "next/link";
 
-import type { CatalogProductView } from "@/lib/catalog";
-
-import { ProductBadges } from "@/components/product-badges";
-import { ProductImageCarousel } from "@/components/product-image-carousel";
-import { SaveProductButton } from "@/components/save-product-button";
+import { AddToOrderButton } from "@/components/add-to-order-button";
+import { ProductPhotoStrip } from "@/components/product-photo-strip";
+import { buildWhatsAppLink, type CatalogProductView, formatLkr } from "@/lib/catalog";
 
 type ProductTileProps = {
   className?: string;
   imageSizes?: string;
   product: CatalogProductView;
+  /** Use the inverted colours inside the black deals band. */
+  invert?: boolean;
 };
 
-export function ProductTile({
-  className = "",
-  imageSizes = "(max-width: 768px) 100vw, 25vw",
-  product,
-}: ProductTileProps) {
+export const tileImageSizes = "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw";
+
+export function ProductTile({ className = "", imageSizes = tileImageSizes, product, invert = false }: ProductTileProps) {
+  const href = `/products/${product.slug}`;
+  const isDeal = product.merchandisingLane === "deal" || product.merchandisingLane === "new-and-deal";
+  const soft = invert ? "text-white/65" : "text-[var(--text-soft)]";
+
   return (
-    <Link
-      href={`/products/${product.slug}`}
-      className={`group relative flex h-full flex-col bg-[var(--panel)] transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 active:translate-y-px active:scale-[0.99] ${className}`.trim()}
-    >
-      <div className="absolute right-3 top-3 z-10">
-        <SaveProductButton productSlug={product.slug} />
-      </div>
-      <ProductImageCarousel imageSizes={imageSizes} images={product.images} title={product.title} />
-      <div className="flex flex-1 flex-col gap-3 border-x border-b border-[var(--line)] px-3 pb-3 pt-3">
-        <div className="space-y-2">
-          <div className="space-y-1">
-            <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[var(--text-soft)]">Style {product.id}</p>
-            <h3 className="text-base font-black leading-[1.08] tracking-[-0.01em] text-[var(--text-strong)] sm:text-lg">{product.title}</h3>
-          </div>
-          <ProductBadges badges={product.badges} categoryLabel={product.categoryMeta.shortName} />
-        </div>
-        {product.colors.length > 0 ? (
-          <div className="flex items-center gap-2 text-xs text-[var(--text-soft)]" aria-label={`${product.colors.length} available colors`}>
-            <span className="font-black text-[var(--text-strong)]">{product.colors.length} colors</span>
-            <span className="truncate">{product.colors.slice(0, 3).join(", ")}</span>
+    <article className={`min-w-0 ${className}`.trim()}>
+      <ProductPhotoStrip href={href} images={product.images} title={product.title} imageSizes={imageSizes}>
+        {isDeal ? (
+          <span className="label pointer-events-none absolute left-2 top-2 bg-white px-1.5 py-1 text-[0.625rem] text-[var(--ink)]">
+            Deal
+          </span>
+        ) : null}
+        {product.orderable ? (
+          <div className="absolute bottom-2 right-2">
+            <AddToOrderButton product={product} />
           </div>
         ) : null}
-        <div className="mt-auto grid grid-cols-2 border-t border-[var(--line)] pt-3 text-sm">
-          <div className="border-r border-[var(--line)] pr-3">
-            <p className="text-[0.62rem] font-black uppercase tracking-[0.14em] text-[var(--text-soft)]">Start</p>
-            <p className="mt-1 font-black text-[var(--text-strong)]">{product.startingPrice}</p>
-          </div>
-          <div className="pl-3">
-            <p className="text-[0.62rem] font-black uppercase tracking-[0.14em] text-[var(--text-soft)]">MOQ</p>
-            <p className="mt-1 font-black text-[var(--text-strong)]">{product.moq}</p>
-          </div>
-        </div>
+      </ProductPhotoStrip>
+
+      <div className="space-y-0.5 px-2.5 pb-1 pt-2 text-xs leading-[1.45] sm:text-[0.8125rem]">
+        <Link href={href} className="line-clamp-2 text-[0.8125rem] font-medium hover:underline hover:underline-offset-2 sm:text-sm">
+          {product.title}
+        </Link>
+        <p className="font-semibold">{product.startingPrice || (product.unitPriceLkr ? formatLkr(product.unitPriceLkr) : "Ask price")}</p>
+        <p className={soft}>
+          Min {product.moq || "6 pcs"} · {product.fabric || "Fabric: ask us"}
+        </p>
+        {product.colors.length > 0 ? (
+          <p className={soft}>
+            {product.colors.length} {product.colors.length === 1 ? "colour" : "colours"}
+          </p>
+        ) : null}
+        {!product.orderable ? (
+          <a href={buildWhatsAppLink(product)} target="_blank" rel="noreferrer" className="mt-1 inline-block font-semibold text-[var(--whatsapp)] underline underline-offset-2">
+            Ask price on WhatsApp
+          </a>
+        ) : null}
       </div>
-    </Link>
+    </article>
   );
 }

@@ -51,6 +51,7 @@
     "title": "Style 1390 Printed Long Frock",
     "category": "frocks",
     "startingPrice": "Rs. 1,500",
+    "unitPriceLkr": 1500,
     "moq": "6 pcs",
     "sizeRange": "M - 2XL",
     "description": "Long printed frock in eight colorful designs for ladies wear retailers.",
@@ -87,6 +88,7 @@
     "title": "Style 1490 Printed Long Frock",
     "category": "frocks",
     "startingPrice": "Rs. 1,700",
+    "unitPriceLkr": 1700,
     "moq": "6 pcs",
     "description": "Long printed frock with contrast bands and three-quarter sleeves in eight prints for ladies wear retailers.",
     "imageOrder": [
@@ -183,6 +185,7 @@
     "title": "Style 1710",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,050",
+    "unitPriceLkr": 2050,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -207,6 +210,7 @@
     "title": "Style 1780",
     "category": "printed-tops",
     "startingPrice": "Rs. 1,700",
+    "unitPriceLkr": 1700,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -324,6 +328,7 @@
     "title": "Style 1900",
     "category": "printed-tops",
     "startingPrice": "Rs. 1,700",
+    "unitPriceLkr": 1700,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -348,16 +353,14 @@
     "title": "Style 3017",
     "category": "printed-tops",
     "startingPrice": "Rs. 3,450",
+    "unitPriceLkr": 3450,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
       "3017-row-1-column-1.png",
       "3017-row-2-column-1.png",
       "3017-row-2-column-2.png",
-      "2.png",
-      "3.png",
-      "3018-row-1-column-2.png",
-      "4.png"
+      "3018-row-1-column-2.png"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -369,21 +372,24 @@
     "retailerDealApproval": "no",
     "priceSource": "override",
     "excludeImages": [
-      "1.png"
+      "1.png",
+      "2.png",
+      "3.png",
+      "4.png"
     ]
   },
   "3023": {
     "title": "Style 3023",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,700",
+    "unitPriceLkr": 2700,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
       "3013-row-1-column-1.png",
       "3013-row-1-column-2.png",
       "3013-row-2-column-1.png",
-      "3013-row-2-column-2.png",
-      "3.png"
+      "3013-row-2-column-2.png"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -396,13 +402,15 @@
     "priceSource": "override",
     "excludeImages": [
       "1.png",
-      "2.png"
+      "2.png",
+      "3.png"
     ]
   },
   "3042": {
     "title": "Style 3042",
     "category": "printed-tops",
     "startingPrice": "Rs. 3,450",
+    "unitPriceLkr": 3450,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -451,6 +459,7 @@
     "title": "Style 3095",
     "category": "printed-tops",
     "startingPrice": "Rs. 3,250",
+    "unitPriceLkr": 3250,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -475,6 +484,7 @@
     "title": "Style 3105",
     "category": "printed-tops",
     "startingPrice": "Rs. 3,250",
+    "unitPriceLkr": 3250,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -553,6 +563,7 @@
     "title": "Style 3127",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,900",
+    "unitPriceLkr": 2900,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -568,9 +579,6 @@
       "row-1-column-2.png",
       "row-2-column-1.png",
       "row-2-column-2.png",
-      "2.png",
-      "3.png",
-      "4.png",
       "IMG_5229.JPG"
     ],
     "colors": [],
@@ -584,6 +592,9 @@
     "priceSource": "override",
     "excludeImages": [
       "1.png",
+      "2.png",
+      "3.png",
+      "4.png",
       "IMG_5228.JPG"
     ]
   },
@@ -591,6 +602,7 @@
     "title": "Style 3143",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,700",
+    "unitPriceLkr": 2700,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -598,7 +610,6 @@
       "row-1-column-2.png",
       "row-2-column-1.png",
       "row-2-column-2.png",
-      "2.png",
       "IMG_5313.JPG"
     ],
     "colors": [],
@@ -612,6 +623,7 @@
     "priceSource": "override",
     "excludeImages": [
       "1.png",
+      "2.png",
       "IMG_5312.JPG"
     ]
   },
@@ -643,14 +655,14 @@
     "title": "Style 3151",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,900",
+    "unitPriceLkr": 2900,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
       "row-1-column-1.png",
       "row-1-column-2.png",
       "row-2-column-1.png",
-      "row-2-column-2.png",
-      "2.png"
+      "row-2-column-2.png"
     ],
     "colors": [],
     "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
@@ -662,7 +674,8 @@
     "retailerDealApproval": "no",
     "priceSource": "override",
     "excludeImages": [
-      "1.png"
+      "1.png",
+      "2.png"
     ]
   },
   "3168": {
@@ -691,19 +704,13 @@
     "title": "Style 4080",
     "category": "embroidered-tops",
     "startingPrice": "Rs. 1,950",
+    "unitPriceLkr": 1950,
     "moq": "6 pcs",
     "sizeRange": "M - 2XL",
     "description": "Easy-selling embroidered top for retail shops.",
     "imageOrder": [
       "ref_model.jpeg",
-      "IMG_7397 (1).png",
-      "IMG_7398 (1).png",
-      "IMG_7399 (1).png",
-      "IMG_7401 (1).png",
-      "IMG_7402 (1).png",
-      "IMG_7404.png",
-      "IMG_7409.png",
-      "IMG_7410.png"
+      "IMG_7398 (1).png"
     ],
     "colors": [
       "Brown",
@@ -722,12 +729,22 @@
     "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
-    "priceSource": "override"
+    "priceSource": "override",
+    "excludeImages": [
+      "IMG_7397 (1).png",
+      "IMG_7399 (1).png",
+      "IMG_7401 (1).png",
+      "IMG_7402 (1).png",
+      "IMG_7404.png",
+      "IMG_7409.png",
+      "IMG_7410.png"
+    ]
   },
   "4110": {
     "title": "Style 4110 Printed Button Frock",
     "category": "frocks",
     "startingPrice": "Rs. 1,900",
+    "unitPriceLkr": 1900,
     "moq": "6 pcs",
     "sizeRange": "M - 2XL",
     "description": "Loose shin-length printed button frock in eight designs for ladies wear retailers.",
@@ -835,6 +852,7 @@
     "title": "Style 4118 Short Top China",
     "category": "printed-tops",
     "startingPrice": "Rs. 1,250",
+    "unitPriceLkr": 1250,
     "moq": "6 pcs",
     "fabric": "Cotton",
     "sizeRange": "M - 2XL",
@@ -868,6 +886,7 @@
     "title": "Style 1570 KY Bamboo",
     "category": "printed-tops",
     "startingPrice": "Rs. 1,600",
+    "unitPriceLkr": 1600,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -892,6 +911,7 @@
     "title": "Style 3003 V-3",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,450",
+    "unitPriceLkr": 2450,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [
@@ -913,6 +933,7 @@
     "title": "Style 3003 V-6",
     "category": "printed-tops",
     "startingPrice": "Rs. 2,450",
+    "unitPriceLkr": 2450,
     "moq": "6 pcs",
     "description": "Wholesale style for Sri Lanka retailers.",
     "imageOrder": [

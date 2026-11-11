@@ -1,0 +1,49 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cityfashion-website",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  // Keep the *.workers.dev address for checks; the public domain is added below.
+  "workers_dev": true,
+  "preview_urls": false,
+  // The Worker answers for the public domain. Routes only apply to DNS records set to
+  // Proxied (orange cloud). www redirects to cityfashion.shop in next.config.ts.
+  "routes": [
+    { "pattern": "cityfashion.shop/*", "zone_name": "cityfashion.shop" },
+    { "pattern": "www.cityfashion.shop/*", "zone_name": "cityfashion.shop" }
+  ],
+  "d1_databases": [
+    {
+      "binding": "ORDERS_DB",
+      "database_name": "cityfashion-orders",
+      "database_id": "07cacc6e-2edf-461b-96c7-7318f8f8dd47",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Owner's new-order email, sent by Cloudflare Email Routing. Free because it only
+  // goes to a verified destination address (Email Routing > Destination addresses).
+  // The sender must be on cityfashion.shop with Email Routing turned on.
+  "send_email": [
+    {
+      "name": "ORDER_EMAIL"
+    }
+  ],
+  // Public, non-secret settings. The one secret (ORDER_RATE_LIMIT_SALT) is added
+  // with `npx wrangler secret put ORDER_RATE_LIMIT_SALT` and never stored in this file.
+  "vars": {
+    "ADMIN_EMAIL": "sharukesh.seker@gmail.com",
+    "ORDER_NOTIFICATION_EMAIL": "sharukesh.seker@gmail.com",
+    "ORDER_EMAIL_FROM": "City Fashion Orders <orders@cityfashion.shop>",
+    "CF_ACCESS_TEAM_DOMAIN": "",
+    "CF_ACCESS_AUD": "",
+    "PAYMENT_INSTRUCTIONS": ""
+  }
+}

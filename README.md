@@ -6,9 +6,11 @@ Wholesale ladies' wear catalog website for Sri Lanka retailers.
 
 - Primary public domain: `https://cityfashion.shop`
 - GitHub repo: `https://github.com/sharu28/cityfashion-website`
-- Deployment: live on Vercel
+- Hosting: Cloudflare Worker `cityfashion-website` (OpenNext build of the Next.js app)
+- Orders: Cloudflare D1 database `cityfashion-orders`; owner dashboard behind Cloudflare Access
 - Current generated starter batch: `29` imported products
-- Retailer flow now includes phone OTP gate before saving styles or starting WhatsApp order
+- Customers can build and place an order with only their name and WhatsApp number
+- The owner receives an email alert and manages orders in a private dashboard
 - Google Sheets ops hub is now live for campaigns, prospects, and weekly reporting
 - Source product photos live outside the repo in `../products`
 - Imported assets and generated data must be committed before push
@@ -22,33 +24,51 @@ Wholesale ladies' wear catalog website for Sri Lanka retailers.
 4. Run `npm run check`
 5. Run `npm run dev`
 
-## Retailer auth setup
+## Website orders, email and the owner dashboard
 
-This app now expects Supabase for retailer phone OTP, shortlist storage, and activity events.
+The site runs as one Cloudflare Worker. Orders are stored in Cloudflare D1 and the owner gets an email through Cloudflare Email Routing (the Worker's `send_email` binding). It is free because it only sends to a verified destination address. `/admin/orders` is protected by Cloudflare Access: only the owner email in `ADMIN_EMAIL` can sign in, with a one-time code sent by email. The Worker also checks the Access token itself.
 
-Current note: this setup is built but intentionally paused for now while the team focuses on catalog cleanup and first growth ops work.
+Settings live in `wrangler.jsonc` (`vars`, not secret) and in Worker secrets:
 
-1. Create a Supabase project.
-2. Enable phone auth and configure an SMS provider in Supabase Auth.
-3. Run `supabase/schema.sql` in the SQL editor.
-4. Copy `.env.example` to `.env.local`.
-5. Fill:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+| Name | Where | What |
+| --- | --- | --- |
+| `ORDERS_DB` | `wrangler.jsonc` D1 binding | the `cityfashion-orders` database |
+| `ORDER_EMAIL` | `wrangler.jsonc` send_email binding | sends the new-order email |
+| `ADMIN_EMAIL` | var | the one email allowed into `/admin/orders` |
+| `ORDER_NOTIFICATION_EMAIL` | var | who gets the new-order email (comma-separated; each must be a verified destination address in Email Routing) |
+| `ORDER_EMAIL_FROM` | var | a sender on `cityfashion.shop`, which needs Email Routing turned on |
+| `CF_ACCESS_TEAM_DOMAIN` | var | e.g. `https://<team>.cloudflareaccess.com` |
+| `CF_ACCESS_AUD` | var | the Access application's Audience (AUD) tag |
+| `PAYMENT_INSTRUCTIONS` | var | short bank-transfer text sent after staff confirm |
+| `ORDER_RATE_LIMIT_SALT` | secret | `npx wrangler secret put ORDER_RATE_LIMIT_SALT` (long random text) |
 
-Without those env vars, the site still builds and browses normally, but retailer login and shortlist actions stay disabled.
+Email setup, once `cityfashion.shop` is on Cloudflare: **Email > Email Routing**, turn it on (it adds Cloudflare's MX records), then add `ORDER_NOTIFICATION_EMAIL` under **Destination addresses** and click the link Cloudflare emails to it. Until then orders are still saved and shown in the dashboard; only the email fails (logged in the Worker).
+
+Never put secret values in the repo. If order storage is not available, the checkout keeps the cart and shows the WhatsApp support link.
+
+For `npm run dev`, copy `.dev.vars.example` to `.dev.vars`, run `npm run db:migrate:local` once, and set `ADMIN_DEV_BYPASS=1` to open the dashboard locally. The bypass never works in a built Worker.
+
+### Clearing a test order
+
+Open it in `/admin/orders`, set **Status** to **Cancelled** and **Save changes**. Cancelled orders stay in the list for the record. To remove one completely:
+
+```bash
+npx wrangler d1 execute cityfashion-orders --remote --command "DELETE FROM orders WHERE public_number = 1001"
+```
+
+(Order items are removed with it.)
 
 ## Analytics setup
 
-Vercel Analytics and Speed Insights are enabled by default. To enable Google Analytics 4, create a GA4 web data stream for `https://cityfashion.shop` and add its measurement ID locally and in Vercel:
+Cloudflare Web Analytics loads after a visitor allows measurement, when `NEXT_PUBLIC_CF_BEACON_TOKEN` is set at build time. To enable Google Analytics 4, create a GA4 web data stream for `https://cityfashion.shop` and set its measurement ID at build time:
 
 ```bash
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
-GA4 receives page views, product views, shortlist changes, OTP requests, completed retailer logins, and WhatsApp order starts. No phone number or OTP value is sent to analytics. `whatsapp_order_started` is the primary GA4 key event and is counted once per session.
+GA4 receives page views, product views, campaign attribution, and WhatsApp support clicks. Do not add customer names, phone numbers, order references, or internal order IDs to analytics events.
 
-The site sends Google Consent Mode v2 signals for analytics and advertising storage. Until a visitor chooses **Allow measurement**, Google storage consent defaults to denied. Visitors can reopen **Cookie settings** from the footer, and `/privacy` documents the measurement and retailer-account data flows.
+The site sends Google Consent Mode v2 signals for analytics and advertising storage. Until a visitor chooses **Allow**, Google storage consent defaults to denied. Visitors can reopen **Cookie settings** from the footer, and `/privacy` documents the measurement and retailer-account data flows.
 
 ## Product import flow
 
@@ -95,6 +115,8 @@ Run:
 npm run import-products
 npm run test:catalog-sync
 npm run test:catalog-publication
+npm test
+npm run test:e2e
 npm run check
 npm run build
 ```
@@ -110,7 +132,9 @@ git push origin main
 ## Related docs
 
 - `AGENTS.md` -> repo rules and current implementation guidance
-- `supabase/schema.sql` -> retailer auth, shortlist, and event tables
+- `migrations/` -> D1 schema for website orders (`npm run db:migrate:remote` applies it)
+- `docs/superpowers/specs/2026-10-10-cloudflare-migration-design.md` -> Cloudflare hosting design
+- `docs/screenshots/` -> what customers and the owner see, step by step
 - `../cityfashion-ops/ops-hub/README.md` -> Google Sheets ops hub structure
 - `.memory/PROJECT.md` -> stable project truth
 - `.memory/STATE.md` -> current working context and resume point

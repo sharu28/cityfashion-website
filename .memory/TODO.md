@@ -2,14 +2,12 @@
 
 ## Now
 
+- [ ] Cut over cityfashion.shop to Cloudflare (D1, secrets, DNS, Access, disconnect Vercel).  
+  owner: agent + user | status: active | context: `docs/superpowers/plans/2026-11-11-cloudflare-migration.md`
+- [ ] After the nameserver switch: turn on Email Routing for cityfashion.shop and verify the owner's Gmail as a destination address.  
+  owner: user | status: active | context: `README.md`
 - [ ] Ask the owner for the fabric (and size range) of style 1490, then fill `fabric` and `sizeRange` in `data/product-overrides.json`. Both are blank on the live page. The owner asked to be reminded.  
   owner: user | status: reminder | context: `data/product-overrides.json` key `1490`
-- [ ] Create the Supabase project and enable phone auth for retailer OTP.  
-  owner: user | status: active | context: `supabase/schema.sql`
-- [ ] Add Supabase env vars locally and in Vercel.  
-  owner: user | status: active | context: `.env.example`
-- [ ] QA retailer signup, shortlist save, and WhatsApp order flow on mobile.  
-  owner: agent | status: active | context: `src/components/retailer-provider.tsx`
 - [ ] Seed `existing_retailers`, `campaigns`, and `weekly_reports` in the live Google Sheets ops hub.  
   owner: agent | status: active | context: `../cityfashion-ops/ops-hub/README.md`
 - [ ] Review highest-priority messy product folders and pick usable images.  
@@ -33,7 +31,7 @@
   owner: agent | status: backlog | context: `.memory/EXPERIMENTS.md`
 - [ ] Use the new sidecar programs to generate low-risk launch, SEO, and catalog process tasks while product cleanup waits.  
   owner: agent | status: queued | context: `../cityfashion-ops/programs/`
-- [ ] Populate the first real weekly growth report once Supabase and analytics inputs are available.  
+- [ ] Populate the first real weekly growth report once order and analytics inputs are available.  
   owner: agent | status: queued | context: `../cityfashion-ops/outputs/2026-04-01-reporting-draft.md`
 
 ## Later
@@ -52,6 +50,9 @@
 
 ## Done Recently
 
+- [x] Moved order storage to D1, admin to Cloudflare Access, email to the Resend HTTP API; added Playwright order E2E tests.  
+  owner: agent | status: done | context: `tests/e2e/`
+
 - [x] Launched `cityfashion.shop` on Vercel.  
   owner: agent | status: done | context: `README.md`
 - [x] Added launch polish, metadata, analytics, sitemap, robots, and share images.  
@@ -60,7 +61,5 @@
   owner: agent | status: done | context: `PRODUCT_REVIEW_NOTES.md`
 - [x] Scaffolded the first Paperclip sidecar workspace and program files in `../cityfashion-ops`.  
   owner: agent | status: done | context: `.memory/EXPERIMENTS.md`
-- [x] Added retailer OTP, server-side shortlist, gated WhatsApp order flow, and Supabase setup docs.  
-  owner: agent | status: done | context: `README.md`
 - [x] Created the first live Google Sheets ops hub and API write path.  
   owner: agent | status: done | context: `../cityfashion-ops/ops-hub/README.md`

@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Schibsted_Grotesk } from "next/font/google";
 
 import { AttributionTracker } from "@/components/attribution-tracker";
-import { ConsentAwareVercelAnalytics, CookieConsent } from "@/components/cookie-consent";
+import { ConsentAwareCloudflareAnalytics, CookieConsent } from "@/components/cookie-consent";
 import { GoogleAnalytics } from "@/components/google-analytics";
-import { RetailerProvider } from "@/components/retailer-provider";
+import { OrderCartBar } from "@/components/order-cart-bar";
+import { OrderCartProvider } from "@/components/order-cart-provider";
+import { OrderSizesProvider } from "@/components/order-sizes-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { company, getAbsoluteUrl, siteDescription, siteName, siteUrl } from "@/lib/site";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
+import { getAbsoluteUrl, siteDescription, siteName, siteUrl } from "@/lib/site";
 
 import "./globals.css";
 
-const sans = Geist({
+const sans = Schibsted_Grotesk({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
 });
 
@@ -63,7 +67,7 @@ export const metadata: Metadata = {
     "wholesale ladies wear Sri Lanka",
     "Keyzer Street Colombo",
     "retailer catalog",
-    "WhatsApp wholesale order",
+    "online wholesale order",
   ],
   category: "fashion",
   verification: {
@@ -87,14 +91,18 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to catalog
         </a>
-        <RetailerProvider>
-          <AttributionTracker />
-          <SiteHeader />
-          <div id="main-content">{children}</div>
-          <SiteFooter />
-        </RetailerProvider>
+        <OrderCartProvider>
+          <OrderSizesProvider>
+            <AttributionTracker />
+            <SiteHeader />
+            <div id="main-content">{children}</div>
+            <SiteFooter />
+            <OrderCartBar />
+            <WhatsAppFloat />
+          </OrderSizesProvider>
+        </OrderCartProvider>
         <CookieConsent />
-        <ConsentAwareVercelAnalytics />
+        <ConsentAwareCloudflareAnalytics />
       </body>
     </html>
   );

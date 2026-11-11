@@ -1,41 +1,55 @@
+"use client";
+
 import Link from "next/link";
 
-import { RetailerAccountControls } from "@/components/retailer-account-controls";
-import { RetailerOrderButton } from "@/components/retailer-order-button";
+import { useOrderCart } from "@/components/order-cart-provider";
+import { populatedCategories } from "@/lib/catalog";
 import { company } from "@/lib/site";
 
 export function SiteHeader() {
+  const { summary } = useOrderCart();
+  const styleCount = summary.styleCount;
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-[rgba(18,17,15,0.96)] text-white shadow-[0_16px_50px_rgba(18,17,15,0.18)] backdrop-blur-xl">
-      <div className="mx-auto max-w-[1500px] px-3 py-3 sm:px-5 lg:px-7">
-        <div className="flex items-center justify-between gap-3">
-          <Link href="/" className="flex items-center gap-3" aria-label={`${company.name} home`}>
-            <span className="flex h-10 w-10 items-center justify-center border border-white/18 bg-white text-sm font-black tracking-[-0.04em] text-[var(--text-strong)]">
-              CF
-            </span>
-            <span className="text-sm font-black uppercase italic tracking-[-0.02em] text-white sm:text-base">{company.name}</span>
+    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-14 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
+        <Link href="/" aria-label={`${company.name} home`} className="text-[0.95rem] font-bold uppercase tracking-[0.22em]">
+          {company.name}
+        </Link>
+
+        <nav aria-label="Main" className="hidden items-center gap-6 text-xs font-medium uppercase tracking-[0.1em] lg:flex">
+          <Link href="/#new-arrivals" className="hover:underline hover:underline-offset-4">
+            New arrivals
           </Link>
-          <nav className="hidden items-center gap-5 text-[0.72rem] font-black uppercase tracking-[0.12em] text-white/78 md:flex">
-            <Link className="transition hover:text-white" href="/#categories">
-              Categories
+          {populatedCategories.map((category) => (
+            <Link key={category.slug} href={`/category/${category.slug}`} className="hover:underline hover:underline-offset-4">
+              {category.shortName}
             </Link>
-            <Link className="transition hover:text-white" href="/#new-arrivals">
-              New arrivals
-            </Link>
-            <Link className="transition hover:text-white" href="/shortlist">
-              Shortlist
-            </Link>
-            <Link className="transition hover:text-white" href="/#visit-us">
-              Visit
-            </Link>
-            <RetailerOrderButton label="WhatsApp order" />
-          </nav>
-          <div className="hidden md:block">
-            <RetailerAccountControls />
-          </div>
-          <div className="md:hidden">
-            <RetailerAccountControls />
-          </div>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-1">
+          <Link href="/#all-styles" aria-label="Search styles" className="flex h-11 w-11 items-center justify-center">
+            <svg aria-hidden width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+          </Link>
+          <Link
+            href="/order"
+            aria-label={`Order, ${styleCount} ${styleCount === 1 ? "style" : "styles"}`}
+            className="relative flex h-11 w-11 items-center justify-center"
+          >
+            <svg aria-hidden width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <path d="M5 8h14l-1 12H6z" />
+              <path d="M9 8a3 3 0 0 1 6 0" />
+            </svg>
+            {styleCount > 0 ? (
+              <span className="absolute right-0.5 top-1 flex h-4 min-w-4 items-center justify-center bg-[var(--ink)] px-1 text-[0.625rem] font-semibold text-white">
+                {styleCount}
+              </span>
+            ) : null}
+          </Link>
         </div>
       </div>
     </header>

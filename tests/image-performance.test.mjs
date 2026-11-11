@@ -4,10 +4,12 @@ import test from "node:test";
 
 const read = (path) => fs.readFileSync(path, "utf8");
 
-test("Next image optimization stays enabled with bounded responsive widths", () => {
+test("images stay resized through the Cloudinary loader with bounded responsive widths", () => {
   const config = read("next.config.ts");
 
   assert.doesNotMatch(config, /unoptimized\s*:\s*true/);
+  assert.match(config, /loader:\s*"custom"/);
+  assert.match(config, /loaderFile:\s*"\.\/src\/lib\/image-loader\.ts"/);
   assert.match(config, /deviceSizes:\s*\[360, 480, 640, 750, 828, 1080, 1200\]/);
   assert.match(config, /imageSizes:\s*\[160, 240, 320\]/);
 });
@@ -26,7 +28,9 @@ test("product imports create bounded WebP fallbacks", () => {
 test("only the actual lead image is preloaded", () => {
   const productGrid = read("src/components/product-grid.tsx");
   const homePage = read("src/app/page.tsx");
+  const homeHero = read("src/components/hero-carousel.tsx");
 
   assert.doesNotMatch(productGrid, /priority=/);
-  assert.match(homePage, /preload=\{index === 0\}/);
+  assert.doesNotMatch(homePage, /preload=/);
+  assert.match(homeHero, /preload=\{panel === 0 && index === 0\}/);
 });

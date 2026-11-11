@@ -10,15 +10,15 @@ This file is the public-safe fact base for the project.
 
 - Primary domain: `https://cityfashion.shop`
 - GitHub repo: `https://github.com/sharu28/cityfashion-website`
-- Deployment: Vercel
+- Hosting: Cloudflare Worker `cityfashion-website` (OpenNext); orders in D1 `cityfashion-orders`; `/admin/*` behind Cloudflare Access; order email via Cloudflare Email Routing (`send_email` binding)
 - WhatsApp number: `+94783232414`
 - Address: `131 Keyzer Street, Colombo 11`
 - Main audience: small and mid-sized ladies' wear retailers in Sri Lanka
 - Main user flow:
   1. browse category or new arrivals
   2. open product
-  3. view all colors
-  4. order on WhatsApp
+  3. add styles to the order (6 pieces minimum, one piece at a time)
+  4. place the order with name + WhatsApp number; staff call to confirm
 
 ## Product and UX constraints
 
