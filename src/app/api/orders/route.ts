@@ -7,9 +7,9 @@ import {
   normalizeSriLankaMobile,
   OrderValidationError,
 } from "@/lib/order-domain";
-import { getOrdersDb } from "@/lib/cloudflare-bindings";
+import { getOrderEmailSender, getOrdersDb } from "@/lib/cloudflare-bindings";
 import { createD1OrderRepository } from "@/lib/d1-order-repository";
-import { createResendOrderNotifier } from "@/lib/order-email";
+import { createCloudflareOrderNotifier } from "@/lib/order-email";
 import { OrderRateLimitError, submitOrder } from "@/lib/order-service";
 
 const maxBodyBytes = 20 * 1024;
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
     const receipt = await submitOrder(payload, {
       catalog: allProducts,
       identityHash,
-      notifier: createResendOrderNotifier(),
+      notifier: createCloudflareOrderNotifier(getOrderEmailSender()),
       repository: createD1OrderRepository(getOrdersDb()),
     });
 

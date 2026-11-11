@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import { accessToken, formatLkr, pickTwoStyles, queryD1, screenshotter, sentEmails, sizedStyleFromCatalog } from "./helpers";
+import { accessToken, formatLkr, pickTwoStyles, queryD1, screenshotter, sentEmailDetail, sentEmails, sentEmailText, sizedStyleFromCatalog } from "./helpers";
 
 // One full order, the way a retailer places it, then the owner's side of it.
 // Selectors use roles and visible labels only, so a visual redesign does not break them.
@@ -117,10 +117,11 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   const emails = (await sentEmails()).filter((email) => email.subject === `New order ${reference}`);
   expect(emails).toHaveLength(1);
   expect(emails[0].to).toEqual(["owner@example.test"]);
-  expect(emails[0].authorization).toBe("Bearer re_e2e_fake_key_not_real");
-  expect(emails[0].text).toContain(customerName);
-  expect(emails[0].text).toContain(formatLkr(finalTotal));
-  expect(emails[0].text).toContain(`/admin/orders/${order.id}`);
+  expect(emails[0].from).toContain("orders@example.test");
+  const emailText = (await sentEmailDetail(emails[0].messageId)).text ?? "";
+  expect(emailText).toContain(customerName);
+  expect(emailText).toContain(formatLkr(finalTotal));
+  expect(emailText).toContain(`/admin/orders/${order.id}`);
 
   // 8. The owner sees it in the dashboard (signed in through Access).
   const owner = await browser.newContext({
@@ -209,7 +210,7 @@ test("pieces per size reach the database, the email and the dashboard", async ({
   ]);
 
   await expect
-    .poll(async () => (await sentEmails()).find((email) => email.subject === `New order ${reference}`)?.text ?? "")
+    .poll(async () => sentEmailText(`New order ${reference}`))
     .toContain("Sizes: M 2 · L 2 · XL 3");
 
   const owner = await browser.newContext({

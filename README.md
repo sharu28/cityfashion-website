@@ -26,21 +26,23 @@ Wholesale ladies' wear catalog website for Sri Lanka retailers.
 
 ## Website orders, email and the owner dashboard
 
-The site runs as one Cloudflare Worker. Orders are stored in Cloudflare D1 and the owner gets an email through Resend. `/admin/orders` is protected by Cloudflare Access: only the owner email in `ADMIN_EMAIL` can sign in, with a one-time code sent by email. The Worker also checks the Access token itself.
+The site runs as one Cloudflare Worker. Orders are stored in Cloudflare D1 and the owner gets an email through Cloudflare Email Routing (the Worker's `send_email` binding). It is free because it only sends to a verified destination address. `/admin/orders` is protected by Cloudflare Access: only the owner email in `ADMIN_EMAIL` can sign in, with a one-time code sent by email. The Worker also checks the Access token itself.
 
 Settings live in `wrangler.jsonc` (`vars`, not secret) and in Worker secrets:
 
 | Name | Where | What |
 | --- | --- | --- |
 | `ORDERS_DB` | `wrangler.jsonc` D1 binding | the `cityfashion-orders` database |
+| `ORDER_EMAIL` | `wrangler.jsonc` send_email binding | sends the new-order email |
 | `ADMIN_EMAIL` | var | the one email allowed into `/admin/orders` |
-| `ORDER_NOTIFICATION_EMAIL` | var | who gets the new-order email (comma-separated) |
-| `ORDER_EMAIL_FROM` | var | a sender on a domain verified in Resend |
+| `ORDER_NOTIFICATION_EMAIL` | var | who gets the new-order email (comma-separated; each must be a verified destination address in Email Routing) |
+| `ORDER_EMAIL_FROM` | var | a sender on `cityfashion.shop`, which needs Email Routing turned on |
 | `CF_ACCESS_TEAM_DOMAIN` | var | e.g. `https://<team>.cloudflareaccess.com` |
 | `CF_ACCESS_AUD` | var | the Access application's Audience (AUD) tag |
 | `PAYMENT_INSTRUCTIONS` | var | short bank-transfer text sent after staff confirm |
-| `RESEND_API_KEY` | secret | `npx wrangler secret put RESEND_API_KEY` |
 | `ORDER_RATE_LIMIT_SALT` | secret | `npx wrangler secret put ORDER_RATE_LIMIT_SALT` (long random text) |
+
+Email setup, once `cityfashion.shop` is on Cloudflare: **Email > Email Routing**, turn it on (it adds Cloudflare's MX records), then add `ORDER_NOTIFICATION_EMAIL` under **Destination addresses** and click the link Cloudflare emails to it. Until then orders are still saved and shown in the dashboard; only the email fails (logged in the Worker).
 
 Never put secret values in the repo. If order storage is not available, the checkout keeps the cart and shows the WhatsApp support link.
 

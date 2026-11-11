@@ -15,8 +15,6 @@ export const workerVars = {
   ADMIN_EMAIL: adminEmail,
   ORDER_NOTIFICATION_EMAIL: adminEmail,
   ORDER_EMAIL_FROM: "City Fashion Test <orders@example.test>",
-  RESEND_API_KEY: "re_e2e_fake_key_not_real",
-  RESEND_API_BASE_URL: mockUrl,
   ORDER_RATE_LIMIT_SALT: "e2e-only-salt-not-a-secret",
   CF_ACCESS_TEAM_DOMAIN: mockUrl,
   CF_ACCESS_AUD: accessAudience,

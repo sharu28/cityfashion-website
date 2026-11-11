@@ -4,9 +4,7 @@
 
 - [ ] Cut over cityfashion.shop to Cloudflare (D1, secrets, DNS, Access, disconnect Vercel).  
   owner: agent + user | status: active | context: `docs/superpowers/plans/2026-11-11-cloudflare-migration.md`
-- [ ] Recreate Namecheap email forwarding in Cloudflare Email Routing before the nameserver switch.  
-  owner: user | status: active | context: `.memory/STATE.md`
-- [ ] Verify cityfashion.shop as a Resend sending domain.  
+- [ ] After the nameserver switch: turn on Email Routing for cityfashion.shop and verify the owner's Gmail as a destination address.  
   owner: user | status: active | context: `README.md`
 - [ ] Seed `existing_retailers`, `campaigns`, and `weekly_reports` in the live Google Sheets ops hub.  
   owner: agent | status: active | context: `../cityfashion-ops/ops-hub/README.md`

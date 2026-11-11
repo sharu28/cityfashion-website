@@ -2,6 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+> **Change 2026-11-11 (owner's choice):** order email moved from Resend to Cloudflare Email Routing (`ORDER_EMAIL` send_email binding, free to verified destination addresses, no API key). Resend notes below are kept as history; Task 9 is updated.
+
 **Goal:** Run cityfashion.shop on a Cloudflare Worker with orders stored in D1, the owner dashboard behind Cloudflare Access, and Playwright tests that prove an order goes from cart to D1 to email to dashboard.
 
 **Architecture:** `@opennextjs/cloudflare` builds the Next.js 16 app into one Worker. Route handlers reach the D1 binding `ORDERS_DB` through `getCloudflareContext()`. Admin pages and admin API routes verify the `Cf-Access-Jwt-Assertion` JWT themselves (jose, remote JWKS). The order email goes to the Resend HTTP API through `fetch`, with a base-URL override so local tests can point it at a mock.
@@ -107,9 +109,9 @@
 ### Task 9: Deploy (each outward step needs the owner's yes)
 
 1. Owner logs in (`npx wrangler login`). Create D1, put its id in `wrangler.jsonc`, `npm run db:migrate:remote`.
-2. Owner types secrets: `npx wrangler secret put RESEND_API_KEY`, `ORDER_RATE_LIMIT_SALT`.
-3. `npm run deploy` → verify on `workers.dev` (pages, sitemap, robots, images, test order, admin locked).
+2. Secret `ORDER_RATE_LIMIT_SALT` (random, set by the agent with the owner's yes). Done.
+3. `npm run deploy` → verify on `workers.dev` (pages, sitemap, robots, images, admin locked). Done. Order email cannot work until step 5.
 4. Add zone `cityfashion.shop`, compare DNS records with Namecheap/Vercel; owner switches nameservers at Namecheap.
-5. When the zone is active: Worker custom domains for apex + www; Access application on `/admin*` and `/api/admin*`; set `CF_ACCESS_AUD`; redeploy.
+5. When the zone is active: Worker custom domains for apex + www; Email Routing on (replaces the Namecheap eforward MX; owner uses no domain email) and the owner's Gmail verified as a destination address; Access application on `/admin*` and `/api/admin*`; set `CF_ACCESS_TEAM_DOMAIN` + `CF_ACCESS_AUD`; redeploy.
 6. Verify live; connect Workers Builds to GitHub `main`; disconnect Vercel domains and Git.
 7. Live TEST order with the owner's go-ahead; confirm email + dashboard; show how to cancel it.

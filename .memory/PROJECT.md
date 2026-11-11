@@ -10,7 +10,7 @@ This file is the public-safe fact base for the project.
 
 - Primary domain: `https://cityfashion.shop`
 - GitHub repo: `https://github.com/sharu28/cityfashion-website`
-- Hosting: Cloudflare Worker `cityfashion-website` (OpenNext); orders in D1 `cityfashion-orders`; `/admin/*` behind Cloudflare Access; order email via Resend
+- Hosting: Cloudflare Worker `cityfashion-website` (OpenNext); orders in D1 `cityfashion-orders`; `/admin/*` behind Cloudflare Access; order email via Cloudflare Email Routing (`send_email` binding)
 - WhatsApp number: `+94783232414`
 - Address: `131 Keyzer Street, Colombo 11`
 - Main audience: small and mid-sized ladies' wear retailers in Sri Lanka

@@ -19,12 +19,20 @@
       "migrations_dir": "migrations"
     }
   ],
-  // Public, non-secret settings. Secrets (RESEND_API_KEY, ORDER_RATE_LIMIT_SALT)
-  // are added with `npx wrangler secret put <NAME>` and never stored in this file.
+  // Owner's new-order email, sent by Cloudflare Email Routing. Free because it only
+  // goes to a verified destination address (Email Routing > Destination addresses).
+  // The sender must be on cityfashion.shop with Email Routing turned on.
+  "send_email": [
+    {
+      "name": "ORDER_EMAIL"
+    }
+  ],
+  // Public, non-secret settings. The one secret (ORDER_RATE_LIMIT_SALT) is added
+  // with `npx wrangler secret put ORDER_RATE_LIMIT_SALT` and never stored in this file.
   "vars": {
     "ADMIN_EMAIL": "sharukesh.seker@gmail.com",
     "ORDER_NOTIFICATION_EMAIL": "sharukesh.seker@gmail.com",
-    "ORDER_EMAIL_FROM": "City Fashion Orders <onboarding@resend.dev>",
+    "ORDER_EMAIL_FROM": "City Fashion Orders <orders@cityfashion.shop>",
     "CF_ACCESS_TEAM_DOMAIN": "",
     "CF_ACCESS_AUD": "",
     "PAYMENT_INSTRUCTIONS": ""

@@ -4,7 +4,7 @@ import path from "node:path";
 
 import type { Page, TestInfo } from "@playwright/test";
 
-import { adminEmail, mockUrl, persistDir } from "../../scripts/e2e/test-values.mjs";
+import { adminEmail, mockUrl, persistDir, workerUrl } from "../../scripts/e2e/test-values.mjs";
 
 type GeneratedProduct = {
   id: string;
@@ -62,11 +62,41 @@ export async function accessToken(email = adminEmail, overrides: { aud?: string 
   return ((await response.json()) as { token: string }).token;
 }
 
-export type SentEmail = { id: string; to: string[]; subject: string; text: string; html: string; authorization: string };
+export type SentEmail = { messageId: string; from: string; to: string[]; subject: string };
+export type SentEmailDetail = SentEmail & { text?: string; html?: string };
+
+// `wrangler dev` does not send email: the send_email binding stores each message,
+// and the local explorer API lists them.
+const sentEmailApi = new URL("/cdn-cgi/local/explorer/api/local/email/sending", workerUrl);
 
 export async function sentEmails() {
-  const response = await fetch(new URL("/__emails", mockUrl));
-  return (await response.json()) as SentEmail[];
+  const emails: SentEmail[] = [];
+  let cursor: string | undefined;
+  do {
+    const url = new URL(sentEmailApi);
+    url.searchParams.set("per_page", "100");
+    if (cursor) url.searchParams.set("cursor", cursor);
+    const body = (await (await fetch(url)).json()) as {
+      result: SentEmail[];
+      result_info?: { cursor?: string; has_more?: boolean };
+    };
+    emails.push(...body.result);
+    cursor = body.result_info?.has_more ? body.result_info.cursor : undefined;
+  } while (cursor);
+  return emails;
+}
+
+export async function sentEmailDetail(messageId: string) {
+  const url = new URL(sentEmailApi);
+  url.searchParams.set("email_id", messageId);
+  const body = (await (await fetch(url)).json()) as { result: SentEmailDetail };
+  return body.result;
+}
+
+/** The text of the one email with this subject, or "" while none has arrived. */
+export async function sentEmailText(subject: string) {
+  const email = (await sentEmails()).find((entry) => entry.subject === subject);
+  return email ? ((await sentEmailDetail(email.messageId)).text ?? "") : "";
 }
 
 /** Reads the local D1 database the Worker is using. */

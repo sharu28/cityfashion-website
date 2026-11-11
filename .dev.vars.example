@@ -1,5 +1,5 @@
 # Copy to .dev.vars for `npm run dev` / `npm run preview`. .dev.vars is git-ignored.
-# Use test values only. Leave RESEND_API_KEY empty to skip sending email locally.
+# Use test values only. Order email is never sent locally: wrangler stores it and lists it at
+# http://127.0.0.1:8787/cdn-cgi/local/explorer/api/local/email/sending (with `npm run preview`).
 ORDER_RATE_LIMIT_SALT=local-dev-salt-change-me
-RESEND_API_KEY=
 ADMIN_DEV_BYPASS=1

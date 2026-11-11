@@ -175,7 +175,7 @@ npm run dev
 - `src/app/admin/orders/**`, `src/app/api/admin/**`, and `src/lib/order-admin.ts` for the owner dashboard
 - `src/lib/d1-order-repository.ts` for atomic order creation, numbering and rate limits on D1
 - `src/lib/cloudflare-access.ts` and `src/lib/admin-auth.ts` for the owner sign-in check (Cloudflare Access)
-- `src/lib/order-email.ts` for the owner's new-order email (Resend HTTP API)
+- `src/lib/order-email.ts` for the owner's new-order email (Cloudflare `send_email` binding, Email Routing)
 - `next.config.ts` for host redirects (www and old domains to `cityfashion.shop`)
 - `src/lib/catalog.ts` and `src/lib/site.ts` for catalog and site constants
 - `migrations/**` for the D1 order tables
@@ -194,7 +194,7 @@ Important:
 - Always run `npm run import-products` before pushing
 - Commit generated assets in `public/products`
 - Commit generated data in `data/generated/products.generated.json`
-- Worker vars live in `wrangler.jsonc`; secrets (`RESEND_API_KEY`, `ORDER_RATE_LIMIT_SALT`) only via `npx wrangler secret put`
+- Worker vars live in `wrangler.jsonc`; the one secret (`ORDER_RATE_LIMIT_SALT`) only via `npx wrangler secret put`; order email uses the `ORDER_EMAIL` send_email binding (no key)
 - Schema changes: add a new file in `migrations/`, then `npm run db:migrate:remote`
 - Before pushing order or admin changes, run `npm test` and `npm run test:e2e` (the E2E run builds the Worker and uses only fake local values)
 - GitHub: push as `sharu28` (`gh auth switch --hostname github.com --user sharu28`); `ceylonmobility` cannot see this repo

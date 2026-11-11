@@ -3,7 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 import { mockUrl, workerUrl } from "./scripts/e2e/test-values.mjs";
 
 // End-to-end tests run against the real Worker build (`wrangler dev`) with a local D1,
-// a fake Resend API and fake Cloudflare Access keys. See scripts/e2e/.
+// the local send_email simulator and fake Cloudflare Access keys. See scripts/e2e/.
 export default defineConfig({
   testDir: "tests/e2e",
   fullyParallel: false,

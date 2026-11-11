@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
 
-const { createResendOrderNotifier } = await import("@/lib/order-email");
+const { createCloudflareOrderNotifier, parseEmailAddress } = await import("@/lib/order-email");
 
 const order = {
   id: "0b0b0b0b-0000-4000-8000-000000000001",
@@ -32,8 +32,7 @@ const order = {
 };
 
 const env = {
-  RESEND_API_KEY: "re_test_not_a_real_key",
-  ORDER_EMAIL_FROM: "Orders <orders@example.com>",
+  ORDER_EMAIL_FROM: "City Fashion Orders <orders@example.com>",
   ORDER_NOTIFICATION_EMAIL: "owner@example.com",
 };
 
@@ -43,52 +42,55 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.unstubAllEnvs();
-  vi.unstubAllGlobals();
 });
 
 describe("order email", () => {
-  it("posts the order to the Resend API", async () => {
-    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "email-1" }), { status: 200 }));
-    vi.stubGlobal("fetch", fetchMock);
+  it("sends the order through the Cloudflare email binding", async () => {
+    const sender = { send: vi.fn().mockResolvedValue({ messageId: "<m1@example.com>" }) };
 
-    await createResendOrderNotifier().sendNewOrder(order);
+    await createCloudflareOrderNotifier(sender).sendNewOrder(order);
 
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    const [url, init] = fetchMock.mock.calls[0];
-    expect(url).toBe("https://api.resend.com/emails");
-    expect(init.headers.Authorization).toBe("Bearer re_test_not_a_real_key");
-    const body = JSON.parse(init.body);
-    expect(body).toMatchObject({
-      from: "Orders <orders@example.com>",
+    expect(sender.send).toHaveBeenCalledTimes(1);
+    const message = sender.send.mock.calls[0][0];
+    expect(message).toMatchObject({
+      from: { email: "orders@example.com", name: "City Fashion Orders" },
       to: ["owner@example.com"],
       subject: "New order CF-1001",
     });
-    expect(body.text).toContain("Style 1390 (1390) — 6 × Rs. 1,500 = Rs. 9,000");
-    expect(body.text).toContain("Sizes: M 2 · L 2 · XL 2");
-    expect(body.text).toContain("Sizes: staff to confirm");
-    expect(body.html).toContain("Sizes: M 2 · L 2 · XL 2");
-    expect(body.html).toContain("Test &lt;Shop&gt;");
-    expect(body.html).not.toContain("Test <Shop>");
+    expect(message.text).toContain("Style 1390 (1390) — 6 × Rs. 1,500 = Rs. 9,000");
+    expect(message.text).toContain("Sizes: M 2 · L 2 · XL 2");
+    expect(message.text).toContain("Sizes: staff to confirm");
+    expect(message.html).toContain("Sizes: M 2 · L 2 · XL 2");
+    expect(message.html).toContain("Test &lt;Shop&gt;");
+    expect(message.html).not.toContain("Test <Shop>");
   });
 
-  it("uses the test base URL when one is set", async () => {
-    vi.stubEnv("RESEND_API_BASE_URL", "http://127.0.0.1:8788/");
-    const fetchMock = vi.fn().mockResolvedValue(new Response("{}", { status: 200 }));
-    vi.stubGlobal("fetch", fetchMock);
+  it("reports the Cloudflare error code when sending fails", async () => {
+    const failure = Object.assign(new Error("Sender domain not verified"), { code: "E_SENDER_NOT_VERIFIED" });
+    const sender = { send: vi.fn().mockRejectedValue(failure) };
 
-    await createResendOrderNotifier().sendNewOrder(order);
-
-    expect(fetchMock.mock.calls[0][0]).toBe("http://127.0.0.1:8788/emails");
+    await expect(createCloudflareOrderNotifier(sender).sendNewOrder(order)).rejects.toThrow(
+      /Cloudflare email failed \(E_SENDER_NOT_VERIFIED\): Sender domain not verified/,
+    );
   });
 
-  it("fails loudly when Resend rejects the email", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response("domain not verified", { status: 403 })));
+  it("fails when the binding or addresses are missing", async () => {
+    await expect(createCloudflareOrderNotifier(undefined).sendNewOrder(order)).rejects.toThrow(/not configured/);
 
-    await expect(createResendOrderNotifier().sendNewOrder(order)).rejects.toThrow(/Resend returned 403/);
+    vi.stubEnv("ORDER_NOTIFICATION_EMAIL", "");
+    const sender = { send: vi.fn() };
+    await expect(createCloudflareOrderNotifier(sender).sendNewOrder(order)).rejects.toThrow(/not configured/);
+    expect(sender.send).not.toHaveBeenCalled();
   });
 
-  it("fails when email is not configured", async () => {
-    vi.stubEnv("RESEND_API_KEY", "");
-    await expect(createResendOrderNotifier().sendNewOrder(order)).rejects.toThrow(/not configured/);
+  it("reads sender addresses with or without a name", () => {
+    expect(parseEmailAddress("City Fashion Orders <orders@cityfashion.shop>")).toEqual({
+      email: "orders@cityfashion.shop",
+      name: "City Fashion Orders",
+    });
+    expect(parseEmailAddress('"Orders" <orders@cityfashion.shop>')).toEqual({ email: "orders@cityfashion.shop", name: "Orders" });
+    expect(parseEmailAddress("orders@cityfashion.shop")).toBe("orders@cityfashion.shop");
+    expect(parseEmailAddress("<orders@cityfashion.shop>")).toBe("orders@cityfashion.shop");
+    expect(parseEmailAddress("not an address")).toBeNull();
   });
 });
