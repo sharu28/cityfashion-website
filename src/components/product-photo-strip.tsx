@@ -160,6 +160,8 @@ export function ProductPhotoStrip({
                 aria-label={`Photo ${index + 1} of ${count}`}
                 aria-current={index === active ? "true" : undefined}
                 onClick={() => goTo(index)}
+                // Keyboard users move with Previous/Next; one stop per marker would bury the grid in tab stops.
+                tabIndex={-1}
                 // 24px tap area around a small square marker.
                 className="group/marker -my-2 flex h-6 w-3.5 items-center justify-center"
               >

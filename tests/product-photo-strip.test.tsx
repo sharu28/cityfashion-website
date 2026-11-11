@@ -37,6 +37,15 @@ describe("ProductPhotoStrip", () => {
     errors.mockRestore();
   });
 
+  it("keeps photo markers out of the keyboard tab order", () => {
+    render(<ProductPhotoStrip images={photos(4)} title="Printed frock" imageSizes="50vw" />);
+
+    for (const marker of screen.getAllByRole("button", { name: /^Photo \d of 4$/ })) {
+      expect(marker).toHaveAttribute("tabindex", "-1");
+    }
+    expect(screen.getByRole("button", { name: "Next photo" })).not.toHaveAttribute("tabindex", "-1");
+  });
+
   it("scrolls to a photo when its marker is tapped", async () => {
     const user = userEvent.setup();
     const { container } = render(<ProductPhotoStrip images={photos(4)} title="Printed frock" imageSizes="50vw" />);
