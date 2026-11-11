@@ -16,6 +16,11 @@ export type AdminAccess =
  * private even if the Access rule is ever removed by mistake.
  */
 export async function getAdminAccess(): Promise<AdminAccess> {
+  // Read the request first so Next.js always renders admin routes per request,
+  // even when the Access settings were empty at build time.
+  const headerStore = await headers();
+  const cookieStore = await cookies();
+
   const adminEmail = process.env.ADMIN_EMAIL?.trim() ?? "";
   const teamDomain = process.env.CF_ACCESS_TEAM_DOMAIN?.trim() ?? "";
   const audience = process.env.CF_ACCESS_AUD?.trim() ?? "";
@@ -30,8 +35,6 @@ export async function getAdminAccess(): Promise<AdminAccess> {
 
   if (!adminEmail || !teamDomain || !audience) return { status: "unconfigured" };
 
-  const headerStore = await headers();
-  const cookieStore = await cookies();
   const token =
     headerStore.get("cf-access-jwt-assertion") ?? cookieStore.get("CF_Authorization")?.value ?? null;
 

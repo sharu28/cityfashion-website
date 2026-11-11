@@ -8,6 +8,8 @@ import { getOrdersDb } from "@/lib/cloudflare-bindings";
 import { listOrders } from "@/lib/order-admin";
 import { formatLkr } from "@/lib/catalog";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Website orders",
   robots: { index: false, follow: false },

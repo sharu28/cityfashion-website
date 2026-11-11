@@ -19,7 +19,6 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "test:e2e:screens": "node scripts/e2e/capture-screens.mjs",
     "test:catalog-sync": "python -m unittest discover -s tests/catalog_sync -p \"test_*.py\" -v",
     "test:catalog-publication": "node --test tests/catalog-publication.test.mjs",
     "test:image-performance": "node --test tests/image-performance.test.mjs"

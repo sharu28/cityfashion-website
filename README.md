@@ -6,7 +6,8 @@ Wholesale ladies' wear catalog website for Sri Lanka retailers.
 
 - Primary public domain: `https://cityfashion.shop`
 - GitHub repo: `https://github.com/sharu28/cityfashion-website`
-- Deployment: live on Vercel
+- Hosting: Cloudflare Worker `cityfashion-website` (OpenNext build of the Next.js app)
+- Orders: Cloudflare D1 database `cityfashion-orders`; owner dashboard behind Cloudflare Access
 - Current generated starter batch: `29` imported products
 - Customers can build and place an order with only their name and WhatsApp number
 - The owner receives an email alert and manages orders in a private dashboard
@@ -23,26 +24,41 @@ Wholesale ladies' wear catalog website for Sri Lanka retailers.
 4. Run `npm run check`
 5. Run `npm run dev`
 
-## Website order and admin setup
+## Website orders, email and the owner dashboard
 
-The catalog works without service configuration, but placing an order and opening the owner dashboard require Supabase. Keep all secret values server-side.
+The site runs as one Cloudflare Worker. Orders are stored in Cloudflare D1 and the owner gets an email through Resend. `/admin/orders` is protected by Cloudflare Access: only the owner email in `ADMIN_EMAIL` can sign in, with a one-time code sent by email. The Worker also checks the Access token itself.
 
-1. Create or choose the Supabase project.
-2. Run `supabase/schema.sql` for a new project, or apply `supabase/migrations/202609020001_create_website_orders.sql` to an existing project.
-3. In Supabase Authentication, create one email/password user for the owner. There is no public customer account or OTP flow.
-4. Copy `.env.example` to `.env.local` and fill:
-   - `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for the owner sign-in session.
-   - `SUPABASE_SECRET_KEY` for server-only order creation and dashboard reads.
-   - `ADMIN_EMAIL` with the exact owner account email allowed into `/admin/orders`.
-   - `ORDER_RATE_LIMIT_SALT` with a long random server-only value.
-   - `PAYMENT_INSTRUCTIONS` with the short bank-transfer or pickup text sent after staff confirmation.
-5. For email alerts, add `RESEND_API_KEY`, `ORDER_NOTIFICATION_EMAIL`, and a verified `ORDER_EMAIL_FROM` sender.
+Settings live in `wrangler.jsonc` (`vars`, not secret) and in Worker secrets:
 
-Never expose `SUPABASE_SECRET_KEY`, `RESEND_API_KEY`, or `ORDER_RATE_LIMIT_SALT` with a `NEXT_PUBLIC_` prefix. If order submission is temporarily unavailable, the checkout keeps the cart and shows the City Fashion WhatsApp support link so the customer can still contact staff.
+| Name | Where | What |
+| --- | --- | --- |
+| `ORDERS_DB` | `wrangler.jsonc` D1 binding | the `cityfashion-orders` database |
+| `ADMIN_EMAIL` | var | the one email allowed into `/admin/orders` |
+| `ORDER_NOTIFICATION_EMAIL` | var | who gets the new-order email (comma-separated) |
+| `ORDER_EMAIL_FROM` | var | a sender on a domain verified in Resend |
+| `CF_ACCESS_TEAM_DOMAIN` | var | e.g. `https://<team>.cloudflareaccess.com` |
+| `CF_ACCESS_AUD` | var | the Access application's Audience (AUD) tag |
+| `PAYMENT_INSTRUCTIONS` | var | short bank-transfer text sent after staff confirm |
+| `RESEND_API_KEY` | secret | `npx wrangler secret put RESEND_API_KEY` |
+| `ORDER_RATE_LIMIT_SALT` | secret | `npx wrangler secret put ORDER_RATE_LIMIT_SALT` (long random text) |
+
+Never put secret values in the repo. If order storage is not available, the checkout keeps the cart and shows the WhatsApp support link.
+
+For `npm run dev`, copy `.dev.vars.example` to `.dev.vars`, run `npm run db:migrate:local` once, and set `ADMIN_DEV_BYPASS=1` to open the dashboard locally. The bypass never works in a built Worker.
+
+### Clearing a test order
+
+Open it in `/admin/orders`, set **Status** to **Cancelled** and **Save changes**. Cancelled orders stay in the list for the record. To remove one completely:
+
+```bash
+npx wrangler d1 execute cityfashion-orders --remote --command "DELETE FROM orders WHERE public_number = 1001"
+```
+
+(Order items are removed with it.)
 
 ## Analytics setup
 
-Vercel Analytics and Speed Insights are enabled by default. To enable Google Analytics 4, create a GA4 web data stream for `https://cityfashion.shop` and add its measurement ID locally and in Vercel:
+Cloudflare Web Analytics loads after a visitor allows measurement, when `NEXT_PUBLIC_CF_BEACON_TOKEN` is set at build time. To enable Google Analytics 4, create a GA4 web data stream for `https://cityfashion.shop` and set its measurement ID at build time:
 
 ```bash
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
@@ -97,8 +113,8 @@ Run:
 npm run import-products
 npm run test:catalog-sync
 npm run test:catalog-publication
-npm run test:orders-schema
 npm test
+npm run test:e2e
 npm run check
 npm run build
 ```
@@ -114,8 +130,9 @@ git push origin main
 ## Related docs
 
 - `AGENTS.md` -> repo rules and current implementation guidance
-- `supabase/schema.sql` -> current database schema, including private website orders
-- `supabase/migrations/202609020001_create_website_orders.sql` -> reviewed website-order migration
+- `migrations/` -> D1 schema for website orders (`npm run db:migrate:remote` applies it)
+- `docs/superpowers/specs/2026-10-10-cloudflare-migration-design.md` -> Cloudflare hosting design
+- `docs/screenshots/` -> what customers and the owner see, step by step
 - `../cityfashion-ops/ops-hub/README.md` -> Google Sheets ops hub structure
 - `.memory/PROJECT.md` -> stable project truth
 - `.memory/STATE.md` -> current working context and resume point

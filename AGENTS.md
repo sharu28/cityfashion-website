@@ -173,24 +173,31 @@ npm run dev
 - `src/components/order-cart-provider.tsx` and `src/lib/order-cart.ts` for the browser cart
 - `src/app/api/orders/route.ts` and `src/lib/order-service.ts` for secure order submission
 - `src/app/admin/orders/**`, `src/app/api/admin/**`, and `src/lib/order-admin.ts` for the owner dashboard
-- `src/lib/supabase/**` for server and owner-session database clients
-- `src/proxy.ts` for host redirect behavior
+- `src/lib/d1-order-repository.ts` for atomic order creation, numbering and rate limits on D1
+- `src/lib/cloudflare-access.ts` and `src/lib/admin-auth.ts` for the owner sign-in check (Cloudflare Access)
+- `src/lib/order-email.ts` for the owner's new-order email (Resend HTTP API)
+- `next.config.ts` for host redirects (www and old domains to `cityfashion.shop`)
 - `src/lib/catalog.ts` and `src/lib/site.ts` for catalog and site constants
-- `supabase/schema.sql` and `supabase/migrations/**` for order tables, policies, and atomic order creation
+- `migrations/**` for the D1 order tables
+- `wrangler.jsonc` and `open-next.config.ts` for the Cloudflare Worker
+- `tests/e2e/**` and `scripts/e2e/**` for the end-to-end order tests
 - `data/product-overrides.json` for business-managed product metadata
 - `scripts/import-products.mjs` for import rules
 
 ## Deployment Notes
 
-This project is live on Vercel and connected to GitHub.
+This project runs on a Cloudflare Worker (`cityfashion-website`) built with `@opennextjs/cloudflare`. Pushes to `main` on GitHub deploy through Cloudflare Workers Builds. `npm run deploy` deploys from this PC (needs `npx wrangler login`).
 
 Important:
 
-- Vercel can only deploy files inside the repo
+- Cloudflare can only deploy files inside the repo
 - Always run `npm run import-products` before pushing
 - Commit generated assets in `public/products`
 - Commit generated data in `data/generated/products.generated.json`
-- Add the documented Supabase, admin, Resend, rate-limit, and payment environment variables before expecting orders and the dashboard to work
+- Worker vars live in `wrangler.jsonc`; secrets (`RESEND_API_KEY`, `ORDER_RATE_LIMIT_SALT`) only via `npx wrangler secret put`
+- Schema changes: add a new file in `migrations/`, then `npm run db:migrate:remote`
+- Before pushing order or admin changes, run `npm test` and `npm run test:e2e` (the E2E run builds the Worker and uses only fake local values)
+- GitHub: push as `sharu28` (`gh auth switch --hostname github.com --user sharu28`); `ceylonmobility` cannot see this repo
 
 Typical publish flow:
 

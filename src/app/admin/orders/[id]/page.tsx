@@ -8,6 +8,8 @@ import { requireAdmin } from "@/lib/admin-auth";
 import { getOrdersDb } from "@/lib/cloudflare-bindings";
 import { AdminOrderNotFoundError, getOrder } from "@/lib/order-admin";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Order details",
   robots: { index: false, follow: false },

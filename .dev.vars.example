@@ -1,0 +1,5 @@
+# Copy to .dev.vars for `npm run dev` / `npm run preview`. .dev.vars is git-ignored.
+# Use test values only. Leave RESEND_API_KEY empty to skip sending email locally.
+ORDER_RATE_LIMIT_SALT=local-dev-salt-change-me
+RESEND_API_KEY=
+ADMIN_DEV_BYPASS=1
