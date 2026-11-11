@@ -11,6 +11,15 @@
   "observability": {
     "enabled": true
   },
+  // Keep the *.workers.dev address for checks; the public domain is added below.
+  "workers_dev": true,
+  "preview_urls": false,
+  // The Worker answers for the public domain. Routes only apply to DNS records set to
+  // Proxied (orange cloud). www redirects to cityfashion.shop in next.config.ts.
+  "routes": [
+    { "pattern": "cityfashion.shop/*", "zone_name": "cityfashion.shop" },
+    { "pattern": "www.cityfashion.shop/*", "zone_name": "cityfashion.shop" }
+  ],
   "d1_databases": [
     {
       "binding": "ORDERS_DB",
