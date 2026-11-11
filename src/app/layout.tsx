@@ -6,6 +6,7 @@ import { ConsentAwareVercelAnalytics, CookieConsent } from "@/components/cookie-
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { OrderCartBar } from "@/components/order-cart-bar";
 import { OrderCartProvider } from "@/components/order-cart-provider";
+import { OrderSizesProvider } from "@/components/order-sizes-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
@@ -91,12 +92,14 @@ export default function RootLayout({
           Skip to catalog
         </a>
         <OrderCartProvider>
-          <AttributionTracker />
-          <SiteHeader />
-          <div id="main-content">{children}</div>
-          <SiteFooter />
-          <OrderCartBar />
-          <WhatsAppFloat />
+          <OrderSizesProvider>
+            <AttributionTracker />
+            <SiteHeader />
+            <div id="main-content">{children}</div>
+            <SiteFooter />
+            <OrderCartBar />
+            <WhatsAppFloat />
+          </OrderSizesProvider>
         </OrderCartProvider>
         <CookieConsent />
         <ConsentAwareVercelAnalytics />
