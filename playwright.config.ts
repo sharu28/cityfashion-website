@@ -9,7 +9,8 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   retries: 0,
-  timeout: process.env.CAPTURE_SCREENSHOTS === "1" ? 300_000 : 90_000,
+  // Each D1 check starts a wrangler process (~20 s each on a busy PC), so the full order test needs room.
+  timeout: process.env.CAPTURE_SCREENSHOTS === "1" ? 300_000 : 180_000,
   expect: { timeout: 15_000 },
   reporter: [["list"]],
   use: {
