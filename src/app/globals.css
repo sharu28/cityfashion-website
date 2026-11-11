@@ -1,22 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f4f1e9;
-  --hero: #12110f;
-  --ink: #171512;
-  --panel: #fffdf7;
-  --panel-strong: #ece6da;
-  --muted: #e4ded3;
-  --sand: #e8e1d3;
-  --sand-strong: #d8cebd;
-  --line: rgba(23, 21, 18, 0.16);
-  --line-strong: rgba(23, 21, 18, 0.28);
-  --accent: #18834e;
-  --accent-soft: #dcebdd;
-  --text-strong: #1b1916;
-  --text-soft: #6f675d;
+  /* Quiet Gallery palette */
+  --bg: #ffffff;
+  --ink: #111111;
+  --text-strong: #111111;
+  --text-soft: #6b6b6b;
+  --line: #e6e6e6;
+  --line-strong: #111111;
+  --fill: #f5f5f3;
+  --panel: #ffffff;
   --whatsapp: #18834e;
-  --danger: #9d4a3c;
+  --danger: #a33a2a;
+
+  /* Kept so admin pages that still use the old names keep rendering. */
+  --hero: #111111;
+  --panel-strong: #f5f5f3;
+  --muted: #f5f5f3;
+  --sand: #f5f5f3;
+  --sand-strong: #e6e6e6;
+  --accent: #111111;
+  --accent-soft: #f5f5f3;
+
+  --order-bar-h: 0px;
 }
 
 * {
@@ -25,19 +31,14 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: var(--font-sans), sans-serif;
-  background:
-    linear-gradient(rgba(23, 21, 18, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(23, 21, 18, 0.028) 1px, transparent 1px),
-    linear-gradient(180deg, #fbfaf6 0%, #f4f1e9 46%, #eee8dc 100%);
-  background-size:
-    34px 34px,
-    34px 34px,
-    auto;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-variant-numeric: tabular-nums;
 }
 
@@ -51,12 +52,12 @@ img {
 }
 
 ::selection {
-  background: rgba(31, 143, 89, 0.18);
+  background: rgba(17, 17, 17, 0.12);
 }
 
 :focus-visible {
-  outline: 2px solid var(--whatsapp);
-  outline-offset: 4px;
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
 }
 
 .skip-link {
@@ -65,12 +66,11 @@ img {
   top: 1rem;
   z-index: 80;
   transform: translateY(-140%);
-  border-radius: 999px;
-  background: var(--text-strong);
+  background: var(--ink);
   color: white;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   transition: transform 180ms ease;
 }
 
@@ -78,64 +78,79 @@ img {
   transform: translateY(0);
 }
 
-.editorial-reveal {
-  animation: editorial-reveal 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--index, 0) * 70ms);
+/* Small uppercase section and badge labels. */
+.label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-@keyframes editorial-reveal {
+.hairline {
+  border-color: var(--line);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.fade-in {
+  animation: fade-in 280ms ease-out both;
+}
+
+@keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(18px);
   }
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
     transform: translateY(0);
   }
 }
 
-@keyframes product-tile-image-enter {
-  from {
-    opacity: 0.68;
-    transform: scale(1.015);
+dialog.order-sheet {
+  margin: 0;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+dialog.order-sheet::backdrop {
+  background: rgba(17, 17, 17, 0.45);
+}
+
+dialog.order-sheet[open] > .order-sheet-panel {
+  animation: sheet-up 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  to {
-    opacity: 1;
-    transform: scale(1);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-}
-
-.grain {
-  position: relative;
-}
-
-.grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.045;
-  background-image:
-    linear-gradient(rgba(37, 25, 20, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 25, 20, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: radial-gradient(circle at center, black, transparent 92%);
-}
-
-.catalog-heading {
-  font-style: italic;
-  letter-spacing: -0.035em;
-  text-transform: uppercase;
-}
-
-.hard-panel {
-  border: 1px solid var(--line);
-  background: rgba(255, 253, 247, 0.92);
-}
-
-.dark-panel {
-  background: var(--hero);
-  color: white;
 }

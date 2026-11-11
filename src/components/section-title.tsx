@@ -1,28 +1,44 @@
+import Link from "next/link";
+
 type SectionTitleProps = {
-  eyebrow: string;
   title: string;
+  /** Optional small line above or beside the title. */
+  eyebrow?: string;
   body?: string;
   action?: React.ReactNode;
+  seeAllHref?: string;
   invert?: boolean;
+  as?: "h1" | "h2" | "h3";
+  id?: string;
 };
 
-export function SectionTitle({ eyebrow, title, body, action, invert = false }: SectionTitleProps) {
+export function SectionTitle({
+  title,
+  eyebrow,
+  body,
+  action,
+  seeAllHref,
+  invert = false,
+  as: Heading = "h2",
+  id,
+}: SectionTitleProps) {
+  const soft = invert ? "text-white/70" : "text-[var(--text-soft)]";
+
   return (
-    <div className="flex flex-col gap-5 border-t border-current/15 pt-5 md:flex-row md:items-end md:justify-between">
-      <div className="max-w-2xl space-y-3">
-        <p className={`text-[0.68rem] font-black uppercase tracking-[0.22em] ${invert ? "text-white/58" : "text-[var(--text-soft)]"}`}>
-          {eyebrow}
-        </p>
-        <h2 className={`catalog-heading text-balance text-4xl font-black leading-[0.95] md:text-6xl ${invert ? "text-white" : "text-[var(--text-strong)]"}`}>
+    <div className="flex items-end justify-between gap-4 px-4 sm:px-6 lg:px-10">
+      <div className="min-w-0 space-y-1">
+        {eyebrow ? <p className={`label ${soft}`}>{eyebrow}</p> : null}
+        <Heading id={id} className="label text-[0.8125rem]">
           {title}
-        </h2>
-        {body ? (
-          <p className={`max-w-xl text-pretty text-sm leading-6 md:text-base ${invert ? "text-white/68" : "text-[var(--text-soft)]"}`}>
-            {body}
-          </p>
-        ) : null}
+        </Heading>
+        {body ? <p className={`max-w-xl text-sm leading-6 ${soft}`}>{body}</p> : null}
       </div>
       {action}
+      {seeAllHref ? (
+        <Link href={seeAllHref} className="shrink-0 text-xs underline underline-offset-4">
+          See all
+        </Link>
+      ) : null}
     </div>
   );
 }

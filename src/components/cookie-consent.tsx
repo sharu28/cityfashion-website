@@ -64,29 +64,32 @@ export function CookieConsent() {
   }
 
   return (
-    <div className="fixed inset-x-3 bottom-3 z-[90] mx-auto max-w-2xl border border-white/15 bg-[var(--hero)] p-4 text-white shadow-2xl sm:bottom-5 sm:p-5" role="dialog" aria-label="Cookie choices" aria-live="polite">
-      <p className="text-sm font-black uppercase tracking-[0.12em]">Your privacy choices</p>
-      <p className="mt-2 text-sm leading-6 text-white/72">
-        We use Google Analytics to understand which styles and campaigns help retailers reach a WhatsApp order. You can allow measurement or use only necessary site features.
-      </p>
-      <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
-        <button
-          type="button"
-          onClick={() => saveChoice("accepted")}
-          className="bg-[var(--accent)] px-4 py-3 text-sm font-black uppercase tracking-[0.08em] text-white hover:brightness-110"
-        >
-          Allow measurement
-        </button>
-        <button
-          type="button"
-          onClick={() => saveChoice("declined")}
-          className="border border-white/24 px-4 py-3 text-sm font-black uppercase tracking-[0.08em] text-white hover:border-white/50"
-        >
-          Only necessary
-        </button>
-        <Link href="/privacy" className="px-2 py-2 text-sm font-bold text-white/68 underline underline-offset-4 hover:text-white">
-          Privacy details
-        </Link>
+    // Sits under the sticky header so it never covers the order bar or the WhatsApp button.
+    <div className="fixed inset-x-0 top-14 z-[45] border-b border-[var(--line)] bg-white px-4 py-3 text-[var(--ink)] sm:px-6 lg:px-10" role="dialog" aria-label="Cookie choices" aria-live="polite">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <p className="text-xs leading-5 text-[var(--text-soft)]">
+          <span className="font-semibold text-[var(--ink)]">Your privacy choices. </span>
+          We use Google Analytics to understand which styles and campaigns help retailers reach a WhatsApp order. You can allow measurement or use only necessary site features.
+        </p>
+        <div className="flex shrink-0 flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => saveChoice("accepted")}
+            className="min-h-10 bg-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.08em] text-white"
+          >
+            Allow measurement
+          </button>
+          <button
+            type="button"
+            onClick={() => saveChoice("declined")}
+            className="min-h-10 border border-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.08em]"
+          >
+            Only necessary
+          </button>
+          <Link href="/privacy" className="px-1 text-xs underline underline-offset-4">
+            Privacy details
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -134,7 +137,7 @@ export function CookieSettingsButton() {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event(openConsentEvent))}
-      className="text-left hover:text-white"
+      className="text-left hover:text-[var(--ink)]"
     >
       Cookie settings
     </button>
