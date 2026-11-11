@@ -4,7 +4,7 @@ import type { CatalogProductView } from "@/lib/catalog";
 
 import { AddToOrderButton } from "@/components/add-to-order-button";
 import { ProductBadges } from "@/components/product-badges";
-import { ProductImageCarousel } from "@/components/product-image-carousel";
+import { ProductPhotoStrip } from "@/components/product-photo-strip";
 
 type ProductTileProps = {
   className?: string;
@@ -21,7 +21,7 @@ export function ProductTile({
     <article
       className={`group relative flex flex-col self-start bg-[var(--panel)] transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 active:translate-y-px active:scale-[0.99] ${className}`.trim()}
     >
-      <ProductImageCarousel
+      <ProductPhotoStrip
         href={`/products/${product.slug}`}
         imageSizes={imageSizes}
         images={product.images}
