@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getAdminAccess } from "@/lib/admin-auth";
+import { getOrdersDb } from "@/lib/cloudflare-bindings";
 import {
   type AdminOrderPatch,
   AdminOrderNotFoundError,
@@ -13,9 +14,7 @@ const allowedKeys = new Set(["status", "deliveryChargeLkr", "privateNote"]);
 
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const access = await getAdminAccess();
-  if (access.status === "signed_out") return NextResponse.json({ message: "Sign in required" }, { status: 401 });
-  if (access.status === "forbidden") return NextResponse.json({ message: "Access denied" }, { status: 403 });
-  if (access.status === "unconfigured") return NextResponse.json({ message: "Admin access is not configured" }, { status: 503 });
+  if (access.status !== "allowed") return NextResponse.json({ message: "Access denied" }, { status: 403 });
 
   const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
   if (!body || Array.isArray(body) || Object.keys(body).some((key) => !allowedKeys.has(key))) {
@@ -45,7 +44,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
 
   try {
     const { id } = await params;
-    return NextResponse.json(await updateOrder(id, patch));
+    return NextResponse.json(await updateOrder(getOrdersDb(), id, patch));
   } catch (error) {
     if (error instanceof AdminOrderValidationError) {
       return NextResponse.json({ message: error.message }, { status: 400 });

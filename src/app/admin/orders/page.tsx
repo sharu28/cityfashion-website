@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AdminSignOutButton } from "@/components/admin-order-detail";
 import { CatalogShell } from "@/components/catalog-shell";
 import { requireAdmin } from "@/lib/admin-auth";
+import { getOrdersDb } from "@/lib/cloudflare-bindings";
 import { listOrders } from "@/lib/order-admin";
 import { formatLkr } from "@/lib/catalog";
 
@@ -22,7 +23,7 @@ function formatOrderDate(value: string) {
 
 export default async function AdminOrdersPage() {
   await requireAdmin();
-  const orders = await listOrders();
+  const orders = await listOrders(getOrdersDb());
 
   return (
     <main className="pb-16 pt-24">

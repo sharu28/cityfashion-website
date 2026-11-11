@@ -1,7 +1,5 @@
 import "server-only";
 
-import { Resend } from "resend";
-
 import type { OrderNotifier } from "@/lib/order-service";
 import { siteUrl } from "@/lib/site";
 
@@ -60,14 +58,27 @@ export function createResendOrderNotifier(): OrderNotifier {
         <p><a href="${escapeHtml(adminUrl)}">Open order</a></p>
       `;
 
-      const result = await new Resend(apiKey).emails.send({
-        from,
-        to,
-        subject: `New order ${order.reference}`,
-        text,
-        html,
+      // Resend HTTP API. RESEND_API_BASE_URL is only set by the local test setup.
+      const baseUrl = (process.env.RESEND_API_BASE_URL || "https://api.resend.com").replace(/\/$/, "");
+      const response = await fetch(`${baseUrl}/emails`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+          "Idempotency-Key": `order-${order.id}`,
+        },
+        body: JSON.stringify({
+          from,
+          to: to.split(",").map((address) => address.trim()).filter(Boolean),
+          subject: `New order ${order.reference}`,
+          text,
+          html,
+        }),
       });
-      if (result.error) throw result.error;
+      if (!response.ok) {
+        const detail = await response.text().catch(() => "");
+        throw new Error(`Resend returned ${response.status}: ${detail.slice(0, 300)}`);
+      }
     },
   };
 }

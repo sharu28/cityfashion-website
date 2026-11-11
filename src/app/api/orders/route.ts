@@ -7,13 +7,10 @@ import {
   normalizeSriLankaMobile,
   OrderValidationError,
 } from "@/lib/order-domain";
+import { getOrdersDb } from "@/lib/cloudflare-bindings";
+import { createD1OrderRepository } from "@/lib/d1-order-repository";
 import { createResendOrderNotifier } from "@/lib/order-email";
-import {
-  createSupabaseOrderRepository,
-  OrderRateLimitError,
-  submitOrder,
-} from "@/lib/order-service";
-import { getSupabaseServiceEnv } from "@/lib/supabase/env";
+import { OrderRateLimitError, submitOrder } from "@/lib/order-service";
 
 const maxBodyBytes = 20 * 1024;
 const recoveryMessage =
@@ -23,11 +20,8 @@ function response(message: string, status: number) {
   return NextResponse.json({ message }, { status });
 }
 
-function firstForwardedIp(request: Request) {
-  const forwarded =
-    request.headers.get("x-vercel-forwarded-for") ??
-    request.headers.get("x-forwarded-for");
-  return forwarded?.split(",")[0]?.trim() || "unknown";
+function clientIp(request: Request) {
+  return request.headers.get("cf-connecting-ip")?.trim() || "unknown";
 }
 
 function validationMessage(code: OrderValidationError["code"]) {
@@ -54,9 +48,11 @@ export async function POST(request: Request) {
     return response("Check your order and try again", 400);
   }
 
-  const serviceEnv = getSupabaseServiceEnv();
   const rateLimitSalt = process.env.ORDER_RATE_LIMIT_SALT;
-  if (!serviceEnv || !rateLimitSalt) return response(recoveryMessage, 503);
+  if (!rateLimitSalt) {
+    console.error("ORDER_RATE_LIMIT_SALT is not set; website orders are off.");
+    return response(recoveryMessage, 503);
+  }
 
   try {
     const phoneValue =
@@ -67,14 +63,14 @@ export async function POST(request: Request) {
       typeof phoneValue === "string" ? phoneValue : "",
     );
     const identityHash = createHash("sha256")
-      .update(`${rateLimitSalt}|${firstForwardedIp(request)}|${normalizedPhone}`)
+      .update(`${rateLimitSalt}|${clientIp(request)}|${normalizedPhone}`)
       .digest("hex");
 
     const receipt = await submitOrder(payload, {
       catalog: allProducts,
       identityHash,
       notifier: createResendOrderNotifier(),
-      repository: createSupabaseOrderRepository(),
+      repository: createD1OrderRepository(getOrdersDb()),
     });
 
     return NextResponse.json(receipt, { status: 201 });

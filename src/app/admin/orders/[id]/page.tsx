@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { AdminOrderDetailEditor, AdminSignOutButton } from "@/components/admin-order-detail";
 import { CatalogShell } from "@/components/catalog-shell";
 import { requireAdmin } from "@/lib/admin-auth";
+import { getOrdersDb } from "@/lib/cloudflare-bindings";
 import { AdminOrderNotFoundError, getOrder } from "@/lib/order-admin";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
   const { id } = await params;
   let order;
   try {
-    order = await getOrder(id);
+    order = await getOrder(getOrdersDb(), id);
   } catch (error) {
     if (error instanceof AdminOrderNotFoundError) notFound();
     throw error;

@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         <section className="hard-panel p-5 sm:p-7">
           <h2 className="text-xl font-black uppercase tracking-[-0.02em] text-[var(--text-strong)]">Website measurement</h2>
           <p className="mt-3">
-            Google Analytics and Vercel website analytics help us understand visits, product views, campaign sources, and WhatsApp support clicks. This can include device, browser, approximate location, referring page, and the pages used on this website.
+            Google Analytics and Cloudflare Web Analytics help us understand visits, product views, campaign sources, and WhatsApp support clicks. This can include device, browser, approximate location, referring page, and the pages used on this website.
           </p>
           <p className="mt-3">
             We do not send your name, WhatsApp number, order reference, or internal order ID to analytics. Google Analytics event-level and user-level data is configured to be retained for 14 months.
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
             “Allow measurement” permits Google analytics and advertising storage. “Only necessary” denies those storage permissions. Google tags receive these choices through Google Consent Mode and adjust their behaviour. You can reopen Cookie settings in the footer at any time.
           </p>
           <p className="mt-3">
-            When measurement is not allowed, Vercel Analytics and Speed Insights are not loaded. Google may still receive limited cookieless consent and measurement signals when storage is denied.
+            When measurement is not allowed, Cloudflare Web Analytics is not loaded. Google may still receive limited cookieless consent and measurement signals when storage is denied.
           </p>
         </section>
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
 import { formatLkr } from "@/lib/catalog";
@@ -14,23 +13,14 @@ import {
 } from "@/lib/order-admin-shared";
 
 export function AdminSignOutButton() {
-  const router = useRouter();
-  const [isBusy, setIsBusy] = useState(false);
-
+  // Ends the Cloudflare Access session for this site.
   return (
-    <button
-      type="button"
-      disabled={isBusy}
-      onClick={async () => {
-        setIsBusy(true);
-        await fetch("/api/admin/auth", { method: "DELETE" }).catch(() => undefined);
-        router.replace("/admin/login");
-        router.refresh();
-      }}
-      className="inline-flex min-h-11 items-center justify-center border border-[var(--line)] px-4 text-sm font-black text-[var(--text-strong)] disabled:opacity-60"
+    <a
+      href="/cdn-cgi/access/logout"
+      className="inline-flex min-h-11 items-center justify-center border border-[var(--line)] px-4 text-sm font-black text-[var(--text-strong)]"
     >
-      {isBusy ? "Signing out..." : "Sign out"}
-    </button>
+      Sign out
+    </a>
   );
 }
 

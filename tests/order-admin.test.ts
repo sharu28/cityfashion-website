@@ -4,7 +4,7 @@ import {
   buildPaymentWhatsAppLink,
   calculateFinalTotal,
   canTransitionOrder,
-} from "@/lib/order-admin";
+} from "@/lib/order-admin-shared";
 
 describe("admin order rules", () => {
   it("allows only the approved status graph", () => {

@@ -1,4 +1,3 @@
-import type { Json } from "@/lib/supabase/types";
 import {
   normalizeSriLankaMobile,
   type OrderReceipt,
@@ -50,15 +49,6 @@ export class OrderRateLimitError extends Error {
     super("order_rate_limited");
     this.name = "OrderRateLimitError";
   }
-}
-
-export function isOrderRateLimitDatabaseError(error: unknown) {
-  return Boolean(
-    error &&
-      typeof error === "object" &&
-      Reflect.get(error, "code") === "P0001" &&
-      Reflect.get(error, "message") === "order_rate_limited",
-  );
 }
 
 export async function submitOrder(
@@ -115,37 +105,4 @@ export async function submitOrder(
   }
 
   return receipt;
-}
-
-export function createSupabaseOrderRepository(): OrderRepository {
-  return {
-    async create(input) {
-      const { createSupabaseServiceClient } = await import("@/lib/supabase/service");
-      const client = createSupabaseServiceClient();
-      const { data, error } = await client.rpc("create_website_order", {
-        p_customer_name: input.customerName,
-        p_idempotency_key: input.idempotencyKey,
-        p_identity_hash: input.identityHash,
-        p_items: input.items as unknown as Json,
-        p_whatsapp_phone: input.whatsappPhone,
-      });
-
-      if (error) {
-        if (isOrderRateLimitDatabaseError(error)) throw new OrderRateLimitError();
-        throw error;
-      }
-
-      const row = data?.[0];
-      if (!row) throw new Error("Order storage returned no receipt.");
-
-      return {
-        id: row.id,
-        publicNumber: row.public_number,
-        reference: `CF-${row.public_number}`,
-        productTotalLkr: row.product_total_lkr,
-        createdAt: row.created_at,
-        duplicate: row.duplicate,
-      };
-    },
-  };
 }

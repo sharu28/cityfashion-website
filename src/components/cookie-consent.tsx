@@ -1,8 +1,7 @@
 "use client";
 
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import Link from "next/link";
+import Script from "next/script";
 import { useEffect, useState } from "react";
 
 const consentKey = "cityfashion_cookie_consent";
@@ -92,7 +91,9 @@ export function CookieConsent() {
   );
 }
 
-export function ConsentAwareVercelAnalytics() {
+const cloudflareBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN?.trim() ?? "";
+
+export function ConsentAwareCloudflareAnalytics() {
   const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
@@ -117,15 +118,16 @@ export function ConsentAwareVercelAnalytics() {
     };
   }, []);
 
-  if (!isEnabled) {
+  if (!isEnabled || !cloudflareBeaconToken) {
     return null;
   }
 
   return (
-    <>
-      <Analytics />
-      <SpeedInsights />
-    </>
+    <Script
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      strategy="afterInteractive"
+      data-cf-beacon={JSON.stringify({ token: cloudflareBeaconToken })}
+    />
   );
 }
 

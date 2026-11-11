@@ -4,10 +4,12 @@ import test from "node:test";
 
 const read = (path) => fs.readFileSync(path, "utf8");
 
-test("Next image optimization stays enabled with bounded responsive widths", () => {
+test("images stay resized through the Cloudinary loader with bounded responsive widths", () => {
   const config = read("next.config.ts");
 
   assert.doesNotMatch(config, /unoptimized\s*:\s*true/);
+  assert.match(config, /loader:\s*"custom"/);
+  assert.match(config, /loaderFile:\s*"\.\/src\/lib\/image-loader\.ts"/);
   assert.match(config, /deviceSizes:\s*\[360, 480, 640, 750, 828, 1080, 1200\]/);
   assert.match(config, /imageSizes:\s*\[160, 240, 320\]/);
 });

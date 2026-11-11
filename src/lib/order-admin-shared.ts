@@ -1,8 +1,32 @@
-import type { Database } from "@/lib/supabase/types";
+export type OrderStatus = "new" | "confirmed" | "paid" | "completed" | "cancelled";
 
-export type OrderStatus = Database["public"]["Enums"]["website_order_status"];
-type OrderRow = Database["public"]["Tables"]["orders"]["Row"];
-type OrderItemRow = Database["public"]["Tables"]["order_items"]["Row"];
+export type OrderRow = {
+  id: string;
+  public_number: number;
+  idempotency_key: string;
+  customer_name: string;
+  whatsapp_phone: string;
+  product_total_lkr: number;
+  delivery_charge_lkr: number | null;
+  /** Computed: product total + delivery charge, or null until delivery is set. */
+  final_total_lkr: number | null;
+  status: OrderStatus;
+  private_note: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type OrderItemRow = {
+  id: string;
+  order_id: string;
+  product_id: string;
+  product_slug: string;
+  product_title: string;
+  unit_price_lkr: number;
+  quantity: number;
+  line_total_lkr: number;
+  created_at: string;
+};
 
 export type AdminOrderListItem = Pick<
   OrderRow,

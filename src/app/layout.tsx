@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { AttributionTracker } from "@/components/attribution-tracker";
-import { ConsentAwareVercelAnalytics, CookieConsent } from "@/components/cookie-consent";
+import { ConsentAwareCloudflareAnalytics, CookieConsent } from "@/components/cookie-consent";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { OrderCartBar } from "@/components/order-cart-bar";
 import { OrderCartProvider } from "@/components/order-cart-provider";
@@ -96,7 +96,7 @@ export default function RootLayout({
           <OrderCartBar />
         </OrderCartProvider>
         <CookieConsent />
-        <ConsentAwareVercelAnalytics />
+        <ConsentAwareCloudflareAnalytics />
       </body>
     </html>
   );

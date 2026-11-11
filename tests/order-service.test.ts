@@ -5,10 +5,7 @@ import {
   normalizeSriLankaMobile,
   OrderValidationError,
 } from "@/lib/order-domain";
-import {
-  isOrderRateLimitDatabaseError,
-  submitOrder,
-} from "@/lib/order-service";
+import { submitOrder } from "@/lib/order-service";
 
 const catalog = [
   {
@@ -144,11 +141,5 @@ describe("order service", () => {
 
     expect(result.duplicate).toBe(true);
     expect(notifier.sendNewOrder).not.toHaveBeenCalled();
-  });
-
-  it("maps only the exact database rate-limit error", () => {
-    expect(isOrderRateLimitDatabaseError({ code: "P0001", message: "order_rate_limited" })).toBe(true);
-    expect(isOrderRateLimitDatabaseError({ code: "P0001", message: "other" })).toBe(false);
-    expect(isOrderRateLimitDatabaseError({ code: "22000", message: "order_rate_limited" })).toBe(false);
   });
 });
