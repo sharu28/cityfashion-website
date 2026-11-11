@@ -154,14 +154,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </p>
           ) : null}
 
-          <a
-            href={buildWhatsAppLink(product)}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--whatsapp)] underline underline-offset-4"
-          >
-            Ask on WhatsApp
-          </a>
+          {/* Styles without a price already show a big WhatsApp button in the order panel. */}
+          {product.orderable ? (
+            <a
+              href={buildWhatsAppLink(product)}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--whatsapp)] underline underline-offset-4"
+            >
+              Ask on WhatsApp
+            </a>
+          ) : null}
 
           {product.description ? (
             <p className="mt-4 text-pretty text-sm leading-6 text-[var(--text-soft)]">{product.description}</p>
