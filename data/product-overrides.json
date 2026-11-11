@@ -1048,5 +1048,104 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "445": {
+    "title": "Style 445 Lungi Top Set",
+    "category": "lungi-sets",
+    "startingPrice": "Rs. 1,950",
+    "moq": "6 pcs",
+    "description": "Silk top and lungi set with gold embroidery in ten colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D445-teal-silk-lungi-top-set.png",
+      "02-D445-navy-silk-lungi-top-set.png",
+      "03-D445-grey-silk-lungi-top-set.png",
+      "04-D445-cream-silk-lungi-top-set.png",
+      "05-D445-black-silk-lungi-top-set.png",
+      "06-D445-dusty-pink-silk-lungi-top-set.png",
+      "07-D445-green-silk-lungi-top-set.png",
+      "08-D445-orange-silk-lungi-top-set.png",
+      "09-D445-red-silk-lungi-top-set.png",
+      "10-D445-magenta-silk-lungi-top-set.png"
+    ],
+    "colors": [
+      "Teal",
+      "Navy",
+      "Grey",
+      "Cream",
+      "Black",
+      "Dusty Pink",
+      "Green",
+      "Orange",
+      "Red",
+      "Magenta"
+    ],
+    "notes": "Ten-picture D445 set made 2026-11-12 from the dummy and folded phone photos. One model and one courtyard location, a different pose and footwear in each picture. Linked to the top (D445); the lungi D444 is a separate Odoo product. Price is an estimate: top and lungi wholesale medians added together, from only a few invoices.",
+    "odooProductId": 88,
+    "odooDesignKey": "D445",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "1630": {
+    "title": "Style 1630 Pleated Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,500",
+    "moq": "6 pcs",
+    "description": "Long pleated frock with a band collar and cream buttons in seven colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D1630-mustard-yellow-pleated-frock.png",
+      "02-D1630-coral-pleated-frock.png",
+      "03-D1630-sky-blue-pleated-frock.png",
+      "04-D1630-navy-pleated-frock.png",
+      "05-D1630-lilac-pleated-frock.png",
+      "06-D1630-peach-pink-pleated-frock.png",
+      "07-D1630-grey-pleated-frock.png"
+    ],
+    "colors": [
+      "Mustard Yellow",
+      "Coral",
+      "Sky Blue",
+      "Navy",
+      "Lilac",
+      "Peach Pink",
+      "Grey"
+    ],
+    "notes": "Seven-picture D1630 set made 2026-11-12 from the dummy and folded phone photos. One model and one paddy-field lane, a different pose and footwear in each picture. Price is the median of 3 wholesale invoices. The maroon dotted-print dress in the photo folder looks like design D1610 and is not included.",
+    "odooProductId": 430,
+    "odooDesignKey": "D1630",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "2035": {
+    "title": "Style 2035 Printed Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,800",
+    "moq": "6 pcs",
+    "description": "Calf-length printed frock with a round neck, button placket and pleated waist in four prints for ladies wear retailers.",
+    "imageOrder": [
+      "01-D2035-green-diamond-printed-frock.png",
+      "02-D2035-pink-motif-printed-frock.png",
+      "03-D2035-mustard-olive-printed-frock.png",
+      "04-D2035-lime-leaf-printed-frock.png"
+    ],
+    "colors": [
+      "Green Diamond",
+      "Pink Motif",
+      "Mustard Olive",
+      "Lime Leaf"
+    ],
+    "notes": "Four-picture D2035 set made 2026-11-12 from the dummy photos. One model and one tea estate location. Price is an estimate: no wholesale invoices exist, so it is about 70 percent of the retail price.",
+    "odooProductId": 135,
+    "odooDesignKey": "D2035",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }

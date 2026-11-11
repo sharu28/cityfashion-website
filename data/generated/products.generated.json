@@ -156,6 +156,39 @@
     "sourceFolder": "1570 KY Bamboo"
   },
   {
+    "id": "1630",
+    "slug": "style-1630-pleated-frock",
+    "title": "Style 1630 Pleated Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,500",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Long pleated frock with a band collar and cream buttons in seven colors for ladies wear retailers.",
+    "colors": [
+      "Mustard Yellow",
+      "Coral",
+      "Sky Blue",
+      "Navy",
+      "Lilac",
+      "Peach Pink",
+      "Grey"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-1630-pleated-frock/01-d1630-mustard-yellow-pleated-frock.webp",
+      "/products/style-1630-pleated-frock/02-d1630-coral-pleated-frock.webp",
+      "/products/style-1630-pleated-frock/03-d1630-sky-blue-pleated-frock.webp",
+      "/products/style-1630-pleated-frock/04-d1630-navy-pleated-frock.webp",
+      "/products/style-1630-pleated-frock/05-d1630-lilac-pleated-frock.webp",
+      "/products/style-1630-pleated-frock/06-d1630-peach-pink-pleated-frock.webp",
+      "/products/style-1630-pleated-frock/07-d1630-grey-pleated-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "1630"
+  },
+  {
     "id": "1710",
     "slug": "style-1710",
     "title": "Style 1710",
@@ -271,6 +304,33 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596163/cityfashion/products/style-1900/shot-9?_a=BAMAOGWO0"
     ],
     "sourceFolder": "1900"
+  },
+  {
+    "id": "2035",
+    "slug": "style-2035-printed-frock",
+    "title": "Style 2035 Printed Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,800",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Calf-length printed frock with a round neck, button placket and pleated waist in four prints for ladies wear retailers.",
+    "colors": [
+      "Green Diamond",
+      "Pink Motif",
+      "Mustard Olive",
+      "Lime Leaf"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-2035-printed-frock/01-d2035-green-diamond-printed-frock.webp",
+      "/products/style-2035-printed-frock/02-d2035-pink-motif-printed-frock.webp",
+      "/products/style-2035-printed-frock/03-d2035-mustard-olive-printed-frock.webp",
+      "/products/style-2035-printed-frock/04-d2035-lime-leaf-printed-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "2035"
   },
   {
     "id": "3003 V-3",
@@ -785,5 +845,44 @@
     ],
     "cloudinaryImages": [],
     "sourceFolder": "4120"
+  },
+  {
+    "id": "445",
+    "slug": "style-445-lungi-top-set",
+    "title": "Style 445 Lungi Top Set",
+    "category": "lungi-sets",
+    "startingPrice": "Rs. 1,950",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Silk top and lungi set with gold embroidery in ten colors for ladies wear retailers.",
+    "colors": [
+      "Teal",
+      "Navy",
+      "Grey",
+      "Cream",
+      "Black",
+      "Dusty Pink",
+      "Green",
+      "Orange",
+      "Red",
+      "Magenta"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-445-lungi-top-set/01-d445-teal-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/02-d445-navy-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/03-d445-grey-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/04-d445-cream-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/05-d445-black-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/06-d445-dusty-pink-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/07-d445-green-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/08-d445-orange-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/09-d445-red-silk-lungi-top-set.webp",
+      "/products/style-445-lungi-top-set/10-d445-magenta-silk-lungi-top-set.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "445"
   }
 ]
