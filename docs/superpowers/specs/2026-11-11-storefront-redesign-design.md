@@ -76,7 +76,15 @@ Success means a buyer who taps a WhatsApp link can:
   so the e2e test has to be updated with `shop-cloudflare` and should not be worked around in the UI.
   To keep that change small: the order bar link keeps the text "View order · N style(s)", the `/order`
   heading stays "Check your styles", and `/order` keeps its quantity controls inline (see Order page).
-  *(Builder's call.)*
+  *(Builder's call.)* The full list of names that test reads is in the shared notes
+  (`cloudflare-migration-notes.md`), and all of them stay: product links whose name contains the
+  product title, product page `<h1>` = product title, a product-page button whose name starts with
+  "Add to order", the order bar link "View order · N style(s) · Rs. X", the `/order` heading "Check
+  your styles", "Name", "WhatsApp number" and "Place order", and the receipt `<h1>` with the reference
+  plus "Our staff will contact you shortly". The only planned breaks are sized-style quantities (per
+  size) and "Quantity" becoming a typed field instead of a text output. Agree both with
+  `shop-cloudflare` and update the e2e test together.
+- Add an `<h1>` to the category page (it has none today).
 - Build on `main` as it is now and rebase after `shop-cloudflare` lands. `shop-cloudflare` replaces the
   image loader (a Cloudinary custom loader) and its version of `tests/image-performance.test.mjs`.
   Image code here must go through `next/image` and the shared `sizes` strings so either pipeline
@@ -133,7 +141,12 @@ switch the picker on later.
 - **WhatsApp button:** a small round green button fixed bottom-right on every storefront page. It sits
   above the order bar when that bar shows.
 - **Order bar:** shows once the order has at least one style, on every page except `/order`. It is a
-  full-width black bar pinned to the bottom with "3 styles · 18 pcs · Rs 30,600" and "View order →".
+  full-width black bar pinned to the bottom. The link text stays exactly
+  "View order · 3 styles · Rs. 30,600" (the format the e2e test reads), with the piece count
+  ("18 pcs") as separate small text outside the link.
+- **Cookie choice box:** it must not cover the order bar or the WhatsApp button on phones. Make it a
+  compact strip that sits above the order bar, or move it to the top (builder's choice).
+- **Prices:** keep the existing `formatLkr` format, "Rs. 1,900".
 - **Footer:** address, WhatsApp number and category links, in plain small type.
 
 ### Home (`/`)
