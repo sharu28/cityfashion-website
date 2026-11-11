@@ -5,6 +5,7 @@ import { accessToken, formatLkr, pickTwoStyles, queryD1, screenshotter, sentEmai
 // One full order, the way a retailer places it, then the owner's side of it.
 // Selectors use roles and visible labels only, so a visual redesign does not break them.
 
+// The first style comes in M - 2XL (size picker); the second has no size range (one quantity).
 const [firstStyle, secondStyle] = pickTwoStyles();
 const phoneByProject: Record<string, string> = { phone: "077 123 4567", desktop: "0712345678" };
 const normalizedByProject: Record<string, string> = { phone: "+94771234567", desktop: "+94712345678" };
@@ -13,7 +14,8 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   const shot = screenshotter(page, testInfo, "order-flow");
   const customerName = `TEST order ${testInfo.project.name}`;
   const whatsapp = phoneByProject[testInfo.project.name];
-  const quantity = page.getByLabel("Quantity");
+  // The single quantity box (unsized styles); size rows are labelled "Quantity, size M" and so on.
+  const quantity = page.getByLabel("Quantity", { exact: true });
 
   // 1. Browse: home page, then a category.
   await page.goto("/");
@@ -36,22 +38,32 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   await expect(page.getByRole("heading", { level: 1, name: firstStyle.title })).toBeVisible();
   await shot("product");
 
-  // 3. Add to order: starts at 6 pieces, changes one piece at a time, never below 6.
-  await page.getByRole("button", { name: "Add to order" }).first().click();
-  await expect(quantity.first()).toHaveText("6");
-  await expect(page.getByRole("button", { name: "Remove one piece" }).first()).toBeDisabled();
-  await page.getByRole("button", { name: "Add one piece" }).first().click();
-  await page.getByRole("button", { name: "Add one piece" }).first().click();
-  await expect(quantity.first()).toHaveText("8");
-  await page.getByRole("button", { name: "Remove one piece" }).first().click();
-  await expect(quantity.first()).toHaveText("7");
+  // 3. Add to order. The first style comes in sizes: it starts at 6 pieces in a mix of sizes,
+  //    and the buyer changes sizes one piece at a time, then updates the order.
+  const panelButton = page.getByRole("button", { name: /^(Add to order|Update order) · / });
+  const sizeQuantity = (size: string) => page.getByLabel(`Quantity, size ${size}`, { exact: true });
+  await expect(panelButton).toHaveText(/Add to order · 6 pcs/);
+  await expect(sizeQuantity("M")).toHaveValue("1");
+  await expect(sizeQuantity("L")).toHaveValue("2");
+  await expect(sizeQuantity("XL")).toHaveValue("2");
+  await expect(sizeQuantity("2XL")).toHaveValue("1");
+  await panelButton.click();
   await expect(page.getByRole("link", { name: /View order · 1 style/ })).toBeVisible();
+  await page.getByRole("button", { name: "Add one piece, size M", exact: true }).click();
+  await page.getByRole("button", { name: "Add one piece, size M", exact: true }).click();
+  await expect(sizeQuantity("M")).toHaveValue("3");
+  await page.getByRole("button", { name: "Remove one piece, size M", exact: true }).click();
+  await expect(sizeQuantity("M")).toHaveValue("2");
+  await expect(panelButton).toHaveText(/Update order · 7 pcs/);
+  await panelButton.click();
+  await expect(page.getByText("In your order: 7 pcs")).toBeVisible();
   await shot("added-to-order");
 
-  // A second style from another category.
+  // A second style from another category, with one quantity (staff confirm sizes).
   await page.goto(`/products/${secondStyle.slug}`);
-  await page.getByRole("button", { name: "Add to order" }).first().click();
-  await expect(quantity.first()).toHaveText("6");
+  await expect(quantity).toHaveValue("6");
+  await expect(page.getByRole("button", { name: "Remove one piece", exact: true })).toBeDisabled();
+  await panelButton.click();
   const expectedTotal = 7 * Number(firstStyle.unitPriceLkr) + 6 * Number(secondStyle.unitPriceLkr);
   const cartLink = page.getByRole("link", { name: /View order · 2 styles/ });
   await expect(cartLink).toContainText(formatLkr(expectedTotal));
@@ -61,10 +73,10 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   await cartLink.click();
   await expect(page).toHaveURL(/\/order$/);
   await expect(page.getByRole("heading", { name: "Check your styles" })).toBeVisible();
-  await expect(quantity).toHaveCount(2);
-  await expect(quantity.nth(0)).toHaveText("7");
-  await page.getByRole("button", { name: "Add one piece" }).nth(1).click();
-  await expect(quantity.nth(1)).toHaveText("7");
+  await expect(page.getByText("M 2 · L 2 · XL 2 · 2XL 1")).toBeVisible();
+  await expect(quantity).toHaveValue("6");
+  await page.getByRole("button", { name: "Add one piece", exact: true }).click();
+  await expect(quantity).toHaveValue("7");
   const finalTotal = 7 * Number(firstStyle.unitPriceLkr) + 7 * Number(secondStyle.unitPriceLkr);
   await expect(page.getByText(formatLkr(finalTotal), { exact: true }).first()).toBeVisible();
   await shot("cart", { fullPage: true });
@@ -112,6 +124,18 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
       }))
       .sort((a, b) => a.product_slug.localeCompare(b.product_slug)),
   );
+  // The sizes the buyer picked on the product page are stored; the unsized style has none.
+  const breakdowns = queryD1<{ product_slug: string; size_breakdown: string | null }>(
+    `SELECT product_slug, size_breakdown FROM order_items WHERE order_id = '${order.id}'`,
+  );
+  const breakdownOf = (slug: string) => breakdowns.find((row) => row.product_slug === slug)?.size_breakdown ?? null;
+  expect(JSON.parse(breakdownOf(firstStyle.slug) ?? "null")).toEqual([
+    { size: "M", quantity: 2 },
+    { size: "L", quantity: 2 },
+    { size: "XL", quantity: 2 },
+    { size: "2XL", quantity: 1 },
+  ]);
+  expect(breakdownOf(secondStyle.slug)).toBeNull();
 
   // 7. The owner got exactly one email for it.
   const emails = (await sentEmails()).filter((email) => email.subject === `New order ${reference}`);
@@ -121,6 +145,7 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   const emailText = (await sentEmailDetail(emails[0].messageId)).text ?? "";
   expect(emailText).toContain(customerName);
   expect(emailText).toContain(formatLkr(finalTotal));
+  expect(emailText).toContain("Sizes: M 2 · L 2 · XL 2 · 2XL 1");
   expect(emailText).toContain(`/admin/orders/${order.id}`);
 
   // 8. The owner sees it in the dashboard (signed in through Access).
@@ -142,6 +167,7 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   await expect(ownerPage.getByRole("heading", { level: 1, name: reference })).toBeVisible();
   await expect(ownerPage.getByRole("heading", { name: customerName })).toBeVisible();
   await expect(ownerPage.getByText(firstStyle.title).first()).toBeVisible();
+  await expect(ownerPage.getByText("Sizes: M 2 · L 2 · XL 2 · 2XL 1")).toBeVisible();
   await ownerShot("order-detail", { fullPage: true });
 
   // The owner can mark it as cancelled (how a test order is cleared away).
@@ -154,7 +180,7 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
 
 test("placing the same order twice keeps one order and sends one email", async ({ page }, testInfo) => {
   await page.goto(`/products/${firstStyle.slug}`);
-  await page.getByRole("button", { name: "Add to order" }).first().click();
+  await page.getByRole("button", { name: /^Add to order · / }).click();
   await page.goto("/order");
 
   const before = (await sentEmails()).length;
@@ -180,7 +206,7 @@ test("placing the same order twice keeps one order and sends one email", async (
 });
 
 test("pieces per size reach the database, the email and the dashboard", async ({ page, browser }, testInfo) => {
-  // Until the size picker is on the product page, the order is sent the way the page will send it.
+  // The API contract for sizes, sent directly (the first test covers the product-page picker).
   const sizedStyle = sizedStyleFromCatalog();
   const payload = {
     customerName: `TEST sizes ${testInfo.project.name}`,

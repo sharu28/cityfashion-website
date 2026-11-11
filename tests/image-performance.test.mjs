@@ -28,7 +28,9 @@ test("product imports create bounded WebP fallbacks", () => {
 test("only the actual lead image is preloaded", () => {
   const productGrid = read("src/components/product-grid.tsx");
   const homePage = read("src/app/page.tsx");
+  const homeHero = read("src/components/hero-carousel.tsx");
 
   assert.doesNotMatch(productGrid, /priority=/);
-  assert.match(homePage, /preload=\{index === 0\}/);
+  assert.doesNotMatch(homePage, /preload=/);
+  assert.match(homeHero, /preload=\{panel === 0 && index === 0\}/);
 });

@@ -10,15 +10,15 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
-      <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--accent)]">City Fashion</p>
-      <h1 className="mt-3 text-4xl font-black uppercase italic tracking-[-0.04em] sm:text-6xl">Privacy</h1>
+      <p className="label text-[var(--text-soft)]">City Fashion</p>
+      <h1 className="mt-2 text-4xl font-semibold tracking-[-0.02em] sm:text-5xl">Privacy</h1>
       <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--text-soft)]">
         This page explains the information used when you browse the catalog, place an order, or contact us.
       </p>
 
       <div className="mt-10 space-y-8 text-sm leading-7 text-[var(--text-soft)] sm:text-base">
-        <section className="hard-panel p-5 sm:p-7">
-          <h2 className="text-xl font-black uppercase tracking-[-0.02em] text-[var(--text-strong)]">Website measurement</h2>
+        <section className="border-t border-[var(--line)] pt-6">
+          <h2 className="label text-[0.8125rem] text-[var(--ink)]">Website measurement</h2>
           <p className="mt-3">
             Google Analytics and Cloudflare Web Analytics help us understand visits, product views, campaign sources, and WhatsApp support clicks. This can include device, browser, approximate location, referring page, and the pages used on this website.
           </p>
@@ -27,18 +27,18 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <section className="hard-panel p-5 sm:p-7">
-          <h2 className="text-xl font-black uppercase tracking-[-0.02em] text-[var(--text-strong)]">Your choices</h2>
+        <section className="border-t border-[var(--line)] pt-6">
+          <h2 className="label text-[0.8125rem] text-[var(--ink)]">Your choices</h2>
           <p className="mt-3">
-            “Allow measurement” permits Google analytics and advertising storage. “Only necessary” denies those storage permissions. Google tags receive these choices through Google Consent Mode and adjust their behaviour. You can reopen Cookie settings in the footer at any time.
+            “Allow” permits Google analytics and advertising storage. “Only necessary” denies those storage permissions. Google tags receive these choices through Google Consent Mode and adjust their behaviour. You can reopen Cookie settings in the footer at any time.
           </p>
           <p className="mt-3">
             When measurement is not allowed, Cloudflare Web Analytics is not loaded. Google may still receive limited cookieless consent and measurement signals when storage is denied.
           </p>
         </section>
 
-        <section className="hard-panel p-5 sm:p-7">
-          <h2 className="text-xl font-black uppercase tracking-[-0.02em] text-[var(--text-strong)]">Your order</h2>
+        <section className="border-t border-[var(--line)] pt-6">
+          <h2 className="label text-[0.8125rem] text-[var(--ink)]">Your order</h2>
           <p className="mt-3">
             To process an order, we store your name, WhatsApp number, selected products, quantities, totals, order status, and order timestamps. Our staff use these details to call you, confirm delivery and payment, and complete the order.
           </p>
@@ -47,11 +47,11 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <section className="hard-panel p-5 sm:p-7">
-          <h2 className="text-xl font-black uppercase tracking-[-0.02em] text-[var(--text-strong)]">Questions</h2>
+        <section className="border-t border-[var(--line)] pt-6">
+          <h2 className="label text-[0.8125rem] text-[var(--ink)]">Questions</h2>
           <p className="mt-3">
             Contact City Fashion at 131 Keyzer Street, Colombo 11, or on{" "}
-            <a className="font-black text-[var(--accent)] underline underline-offset-4" href={`https://wa.me/${whatsappNumber}`}>
+            <a className="font-semibold text-[var(--ink)] underline underline-offset-4" href={`https://wa.me/${whatsappNumber}`}>
               WhatsApp {formattedWhatsAppNumber}
             </a>
             .

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { CatalogShell } from "@/components/catalog-shell";
 import { OrderPage } from "@/components/order-page";
 
 export const metadata: Metadata = {
@@ -11,10 +10,8 @@ export const metadata: Metadata = {
 
 export default function WebsiteOrderPage() {
   return (
-    <main className="overflow-hidden pb-16 pt-20">
-      <CatalogShell className="max-w-[1200px] px-3 pt-6 sm:px-5 lg:px-7">
-        <OrderPage />
-      </CatalogShell>
+    <main className="pb-16">
+      <OrderPage />
     </main>
   );
 }

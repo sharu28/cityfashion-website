@@ -20,11 +20,14 @@ const products = JSON.parse(
 ) as GeneratedProduct[];
 
 /** Two orderable styles from different categories, read from the live catalog data. */
+/** Two orderable styles from different categories: the first comes in M - 2XL, the second has no size range. */
 export function pickTwoStyles() {
   const orderable = products.filter((product) => Number.isInteger(product.unitPriceLkr) && Number(product.unitPriceLkr) > 0);
-  const first = orderable[0];
-  const second = orderable.find((product) => product.category !== first.category) ?? orderable[1];
-  if (!first || !second) throw new Error("The catalog needs two orderable styles for this test.");
+  const first = orderable.find((product) => /^M\s*-\s*2XL$/i.test(product.sizeRange?.trim() ?? ""));
+  const second = orderable.find((product) => product.category !== first?.category && !product.sizeRange?.trim());
+  if (!first || !second) {
+    throw new Error("The catalog needs an orderable M - 2XL style and an orderable unsized style in another category.");
+  }
   return [first, second] as const;
 }
 
