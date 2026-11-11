@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 import { CategoryTabs } from "@/components/category-tabs";
+import { HeroCarousel, type HeroSlide } from "@/components/hero-carousel";
 import { ProductBrowser } from "@/components/product-browser";
 import { ProductGrid } from "@/components/product-grid";
 import { ProductTile } from "@/components/product-tile";
@@ -42,62 +42,20 @@ export default function Home() {
     ...newArrivals.filter((product) => !homepageNewArrivalSlugs.includes(product.slug)),
   ];
   const arrivals = (homepageNewArrivals.length > 0 ? homepageNewArrivals : featuredProducts).slice(0, 8);
-  // Three new styles side by side on a computer; only the first shows (and preloads) on a phone.
-  const heroProducts = [...arrivals, ...featuredProducts]
+  // The newest styles with a photo take turns in the hero.
+  const heroSlides: HeroSlide[] = [...arrivals, ...featuredProducts]
     .filter((product, index, list) => product.coverImage && list.findIndex((p) => p.slug === product.slug) === index)
-    .slice(0, 3);
+    .slice(0, 5)
+    .map((product) => ({
+      slug: product.slug,
+      title: product.title,
+      image: product.coverImage as string,
+      price: product.startingPrice,
+    }));
 
   return (
     <main>
-      <section aria-labelledby="hero-title" className="relative">
-        <div className="grid aspect-[4/5] grid-cols-1 bg-[var(--fill)] sm:aspect-[16/10] sm:grid-cols-3 lg:aspect-auto lg:h-[min(86vh,880px)]">
-          {heroProducts.map((product, index) => (
-            <Link
-              key={product.slug}
-              href={`/products/${product.slug}`}
-              tabIndex={-1}
-              aria-hidden
-              className={`relative overflow-hidden ${index > 0 ? "hidden sm:block" : ""}`}
-            >
-              <Image
-                src={product.coverImage as string}
-                alt=""
-                fill
-                preload={index === 0}
-                {...(index === 0 ? {} : { loading: "lazy" as const })}
-                sizes="(max-width: 640px) 100vw, 34vw"
-                className="object-cover object-top transition-transform duration-700 hover:scale-[1.02]"
-              />
-            </Link>
-          ))}
-        </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 px-4 pb-8 text-white sm:px-6 sm:pb-10 lg:px-10 lg:pb-14">
-          <p className="label text-white/85">Wholesale ladies wear · Colombo 11</p>
-          <h1 id="hero-title" className="mt-3 max-w-xl text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.02em] sm:text-5xl lg:text-7xl">
-            Fresh styles for your shop
-          </h1>
-          <p className="mt-3 max-w-md text-sm leading-6 text-white/85 sm:text-base">
-            Order from 6 pieces a style. Our staff call to confirm delivery and payment.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="#new-arrivals"
-              className="inline-flex min-h-12 items-center justify-center bg-white px-6 text-sm font-semibold text-[var(--ink)]"
-            >
-              Shop new styles
-            </Link>
-            <a
-              href={buildWhatsAppLink()}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 items-center justify-center border border-white/70 px-6 text-sm font-semibold text-white hover:bg-white/10"
-            >
-              Ask on WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel slides={heroSlides} />
 
       <CategoryTabs className="mt-6" />
 

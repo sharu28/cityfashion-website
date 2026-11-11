@@ -64,32 +64,34 @@ export function CookieConsent() {
   }
 
   return (
-    // Sits under the sticky header so it never covers the order bar or the WhatsApp button.
-    <div className="fixed inset-x-0 top-14 z-[45] border-b border-[var(--line)] bg-white px-4 py-3 text-[var(--ink)] sm:px-6 lg:px-10" role="dialog" aria-label="Cookie choices" aria-live="polite">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <p className="text-xs leading-5 text-[var(--text-soft)]">
-          <span className="font-semibold text-[var(--ink)]">Your privacy choices. </span>
-          We use Google Analytics to understand which styles and campaigns help retailers reach a WhatsApp order. You can allow measurement or use only necessary site features.
-        </p>
-        <div className="flex shrink-0 flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={() => saveChoice("accepted")}
-            className="min-h-10 bg-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.08em] text-white"
-          >
-            Allow measurement
-          </button>
-          <button
-            type="button"
-            onClick={() => saveChoice("declined")}
-            className="min-h-10 border border-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.08em]"
-          >
-            Only necessary
-          </button>
-          <Link href="/privacy" className="px-1 text-xs underline underline-offset-4">
-            Privacy details
-          </Link>
-        </div>
+    // A small card in the bottom-left corner: clear of the header, the order bar and the WhatsApp button.
+    <div
+      className="fixed bottom-[calc(0.75rem+var(--order-bar-h,0px))] left-3 right-[5.25rem] z-[45] border border-[var(--line)] bg-white p-3 text-[var(--ink)] shadow-[0_8px_24px_rgba(0,0,0,0.08)] sm:bottom-[calc(1.25rem+var(--order-bar-h,0px))] sm:left-5 sm:right-auto sm:w-[22rem]"
+      role="dialog"
+      aria-label="Cookie choices"
+      aria-live="polite"
+    >
+      <p className="text-xs leading-5 text-[var(--text-soft)]">
+        We use Google Analytics to see which styles buyers like.{" "}
+        <Link href="/privacy" className="text-[var(--ink)] underline underline-offset-2">
+          Privacy
+        </Link>
+      </p>
+      <div className="mt-2.5 flex gap-2">
+        <button
+          type="button"
+          onClick={() => saveChoice("accepted")}
+          className="min-h-10 flex-1 bg-[var(--ink)] px-3 text-xs font-semibold text-white"
+        >
+          Allow
+        </button>
+        <button
+          type="button"
+          onClick={() => saveChoice("declined")}
+          className="min-h-10 flex-1 border border-[var(--ink)] px-3 text-xs font-semibold"
+        >
+          Only necessary
+        </button>
       </div>
     </div>
   );

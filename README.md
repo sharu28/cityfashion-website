@@ -50,7 +50,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 
 GA4 receives page views, product views, campaign attribution, and WhatsApp support clicks. Do not add customer names, phone numbers, order references, or internal order IDs to analytics events.
 
-The site sends Google Consent Mode v2 signals for analytics and advertising storage. Until a visitor chooses **Allow measurement**, Google storage consent defaults to denied. Visitors can reopen **Cookie settings** from the footer, and `/privacy` documents the measurement and retailer-account data flows.
+The site sends Google Consent Mode v2 signals for analytics and advertising storage. Until a visitor chooses **Allow**, Google storage consent defaults to denied. Visitors can reopen **Cookie settings** from the footer, and `/privacy` documents the measurement and retailer-account data flows.
 
 ## Product import flow
 

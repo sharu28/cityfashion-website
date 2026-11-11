@@ -30,7 +30,7 @@ export default function PrivacyPage() {
         <section className="border-t border-[var(--line)] pt-6">
           <h2 className="label text-[0.8125rem] text-[var(--ink)]">Your choices</h2>
           <p className="mt-3">
-            “Allow measurement” permits Google analytics and advertising storage. “Only necessary” denies those storage permissions. Google tags receive these choices through Google Consent Mode and adjust their behaviour. You can reopen Cookie settings in the footer at any time.
+            “Allow” permits Google analytics and advertising storage. “Only necessary” denies those storage permissions. Google tags receive these choices through Google Consent Mode and adjust their behaviour. You can reopen Cookie settings in the footer at any time.
           </p>
           <p className="mt-3">
             When measurement is not allowed, Vercel Analytics and Speed Insights are not loaded. Google may still receive limited cookieless consent and measurement signals when storage is denied.
