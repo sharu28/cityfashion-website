@@ -35,6 +35,40 @@
     "sourceFolder": "1390"
   },
   {
+    "id": "1490",
+    "slug": "style-1490-printed-long-frock",
+    "title": "Style 1490 Printed Long Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,700",
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Long printed frock with contrast bands and three-quarter sleeves in eight prints for ladies wear retailers.",
+    "colors": [
+      "Coral Circles",
+      "Brown Floral",
+      "Yellow Floral",
+      "Teal Circles",
+      "Blue Abstract",
+      "Purple Floral",
+      "Teal Orange Circles",
+      "Orange Feather"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-1490-printed-long-frock/01-d1490-coral-circles-long-frock.webp",
+      "/products/style-1490-printed-long-frock/02-d1490-brown-floral-long-frock.webp",
+      "/products/style-1490-printed-long-frock/03-d1490-yellow-floral-long-frock.webp",
+      "/products/style-1490-printed-long-frock/04-d1490-teal-circles-long-frock.webp",
+      "/products/style-1490-printed-long-frock/05-d1490-blue-abstract-long-frock.webp",
+      "/products/style-1490-printed-long-frock/06-d1490-purple-floral-long-frock.webp",
+      "/products/style-1490-printed-long-frock/07-d1490-teal-orange-circles-long-frock.webp",
+      "/products/style-1490-printed-long-frock/08-d1490-orange-feather-long-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "1490"
+  },
+  {
     "id": "1570 KY Bamboo",
     "slug": "style-1570-ky-bamboo",
     "title": "Style 1570 KY Bamboo",

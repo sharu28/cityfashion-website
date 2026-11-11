@@ -85,33 +85,54 @@
     "priceSource": "override"
   },
   "1490": {
-    "title": "Style 1490",
-    "category": "printed-tops",
+    "title": "Style 1490 Printed Long Frock",
+    "category": "frocks",
     "startingPrice": "Rs. 1,700",
     "unitPriceLkr": 1700,
     "moq": "6 pcs",
-    "description": "Wholesale style for Sri Lanka retailers.",
+    "description": "Long printed frock with contrast bands and three-quarter sleeves in eight prints for ladies wear retailers.",
     "imageOrder": [
-      "3.png",
-      "4.png",
-      "5.png",
-      "6.png"
+      "01-D1490-coral-circles-long-frock.png",
+      "02-D1490-brown-floral-long-frock.png",
+      "03-D1490-yellow-floral-long-frock.png",
+      "04-D1490-teal-circles-long-frock.png",
+      "05-D1490-blue-abstract-long-frock.png",
+      "06-D1490-purple-floral-long-frock.png",
+      "07-D1490-teal-orange-circles-long-frock.png",
+      "08-D1490-orange-feather-long-frock.png"
     ],
-    "colors": [],
-    "notes": "Review category, cover image order, and remove collage or duplicate images if needed.",
+    "colors": [
+      "Coral Circles",
+      "Brown Floral",
+      "Yellow Floral",
+      "Teal Circles",
+      "Blue Abstract",
+      "Purple Floral",
+      "Teal Orange Circles",
+      "Orange Feather"
+    ],
+    "notes": "Eight-picture D1490 set made 2026-11-11 from the dummy and folded phone photos: one model, one leafy-wall location, a different pose and footwear in each picture. Raw phone photos stay in the folder and are excluded.",
     "odooProductId": 208,
     "odooDesignKey": "D1490",
     "odooSyncMode": "mapped",
-    "publicationStatus": "draft",
+    "publicationStatus": "published",
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override",
     "excludeImages": [
       "1.png",
       "2.png",
+      "3.png",
+      "4.png",
+      "5.png",
+      "6.png",
+      "7.png",
+      "8.png",
       "IMG_5290.JPG",
       "IMG_5291.JPG",
-      "IMG_5292.JPG"
+      "IMG_5292.JPG",
+      "IMG_5293.JPG",
+      "IMG_5294.JPG"
     ]
   },
   "1600": {

@@ -6,6 +6,8 @@
   owner: agent + user | status: active | context: `docs/superpowers/plans/2026-11-11-cloudflare-migration.md`
 - [ ] After the nameserver switch: turn on Email Routing for cityfashion.shop and verify the owner's Gmail as a destination address.  
   owner: user | status: active | context: `README.md`
+- [ ] Ask the owner for the fabric (and size range) of style 1490, then fill `fabric` and `sizeRange` in `data/product-overrides.json`. Both are blank on the live page. The owner asked to be reminded.  
+  owner: user | status: reminder | context: `data/product-overrides.json` key `1490`
 - [ ] Seed `existing_retailers`, `campaigns`, and `weekly_reports` in the live Google Sheets ops hub.  
   owner: agent | status: active | context: `../cityfashion-ops/ops-hub/README.md`
 - [ ] Review highest-priority messy product folders and pick usable images.  
