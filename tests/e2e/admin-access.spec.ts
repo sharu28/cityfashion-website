@@ -8,7 +8,7 @@ test("the dashboard is hidden without an Access sign-in", async ({ page }, testI
   const response = await page.goto("/admin/orders");
   expect(response?.status()).toBe(404);
   await expect(page.getByRole("heading", { name: "Website orders" })).toHaveCount(0);
-  await screenshotter(page, testInfo, "admin")("locked");
+  await screenshotter(page, testInfo, "admin-locked")("not-signed-in");
 });
 
 test("the dashboard is hidden for someone who is not the owner", async ({ browser }, testInfo) => {

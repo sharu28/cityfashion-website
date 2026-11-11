@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { OrderQuantityControl } from "@/components/order-quantity-control";
 import { useOrderCart } from "@/components/order-cart-provider";
@@ -23,6 +23,11 @@ export function OrderPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [receipt, setReceipt] = useState<OrderReceipt | null>(null);
+
+  // The form sits low on a phone; bring the order number into view once it is placed.
+  useEffect(() => {
+    if (receipt) window.scrollTo({ top: 0 });
+  }, [receipt]);
   const idempotency = useRef<{ cartSignature: string; key: string } | null>(null);
   const productBySlug = useMemo(
     () => new Map(allProducts.map((product) => [product.slug, product])),

@@ -39,7 +39,7 @@ export function screenshotter(page: Page, testInfo: TestInfo, folder: string) {
       testInfo.project.name,
       `${String(step).padStart(2, "0")}-${name}.png`,
     );
-    await page.waitForLoadState("networkidle").catch(() => undefined);
+    await page.waitForLoadState("networkidle", { timeout: 8_000 }).catch(() => undefined);
     await page.screenshot({ path: file, fullPage: options.fullPage ?? false, animations: "disabled" });
   };
 }

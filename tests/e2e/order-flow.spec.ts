@@ -72,11 +72,14 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   // 5. Checkout with name and WhatsApp number only.
   await page.getByLabel("Name").fill(customerName);
   await page.getByLabel("WhatsApp number").fill(whatsapp);
+  await page.getByRole("button", { name: "Place order" }).scrollIntoViewIfNeeded();
   await shot("checkout-filled");
   await page.getByRole("button", { name: "Place order" }).click();
 
   const referenceHeading = page.getByRole("heading", { level: 1, name: /^CF-\d{4,}$/ });
   await expect(referenceHeading).toBeVisible();
+  // The customer must see their order number without scrolling (the form sits low on a phone).
+  await expect(referenceHeading).toBeInViewport();
   await expect(page.getByText("Our staff will contact you shortly")).toBeVisible();
   const reference = (await referenceHeading.textContent())!.trim();
   const publicNumber = Number(reference.slice(3));
