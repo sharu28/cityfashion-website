@@ -64,8 +64,9 @@ export function ProductOrderPanel({ product }: ProductOrderPanelProps) {
         )}
       </div>
 
-      {/* Sticky on phones so the main action is always in reach. */}
-      <div className="sticky bottom-0 z-10 -mx-4 border-t border-[var(--line)] bg-white px-4 py-3 sm:static sm:mx-0 sm:border-0 sm:p-0">
+      {/* Sticky on phones so the main action is always in reach. It sits above the order bar and leaves
+          room on the right for the round WhatsApp button. */}
+      <div className="sticky bottom-[var(--order-bar-h,0px)] z-10 -mx-4 border-t border-[var(--line)] bg-white py-3 pl-4 pr-[5rem] sm:static sm:mx-0 sm:border-0 sm:p-0">
         <button
           type="button"
           onClick={save}
