@@ -28,7 +28,7 @@ function prefersReducedMotion() {
  * Uses native scroll-snap so vertical page scrolling that starts on a photo keeps working.
  */
 export function ProductPhotoStrip({
-  images,
+  images: rawImages,
   title,
   imageSizes,
   href,
@@ -39,6 +39,8 @@ export function ProductPhotoStrip({
 }: ProductPhotoStripProps) {
   const stripRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  // Some styles list the same photo twice; show it once.
+  const images = Array.from(new Set(rawImages));
   const count = images.length;
   const aspectClass = aspect === "4/5" ? "aspect-[4/5]" : "aspect-[3/4]";
 

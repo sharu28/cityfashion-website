@@ -27,6 +27,16 @@ describe("ProductPhotoStrip", () => {
     expect(screen.getByRole("button", { name: "Photo 4 of 4" })).not.toHaveAttribute("aria-current");
   });
 
+  it("shows a repeated photo only once", () => {
+    const errors = vi.spyOn(console, "error").mockImplementation(() => {});
+    render(<ProductPhotoStrip images={["/p/1.webp", "/p/2.webp", "/p/1.webp"]} title="Printed frock" imageSizes="50vw" />);
+
+    expect(screen.getAllByRole("img")).toHaveLength(2);
+    expect(screen.getByRole("button", { name: "Photo 2 of 2" })).toBeInTheDocument();
+    expect(errors).not.toHaveBeenCalled();
+    errors.mockRestore();
+  });
+
   it("scrolls to a photo when its marker is tapped", async () => {
     const user = userEvent.setup();
     const { container } = render(<ProductPhotoStrip images={photos(4)} title="Printed frock" imageSizes="50vw" />);
