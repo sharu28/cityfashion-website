@@ -6,8 +6,8 @@ import { company, formattedWhatsAppNumber } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-16 border-t border-[var(--line)] bg-white pb-28 text-sm">
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr] lg:px-10">
+    <footer className="border-t border-[var(--line)] bg-white pb-[calc(1.5rem+var(--order-bar-h,0px))] text-sm">
+      <div className="mx-auto grid max-w-[1440px] gap-10 px-4 py-12 sm:px-6 md:grid-cols-[2fr_1fr_1fr] lg:px-10">
         <div className="space-y-3">
           <p className="text-[0.95rem] font-bold uppercase tracking-[0.22em]">{company.name}</p>
           <p className="max-w-xs leading-6 text-[var(--text-soft)]">

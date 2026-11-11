@@ -29,9 +29,9 @@ const homepageNewArrivalSlugs = [
 ];
 
 const orderingSteps = [
-  "Tap + on a style. It adds 6 pieces in a mix of sizes.",
-  "Change sizes or pieces in your order if you want.",
-  "Send your name and WhatsApp number. Our staff call to confirm.",
+  { title: "Pick your styles", body: "Tap + on a style. It adds 6 pieces in a mix of sizes." },
+  { title: "Check your order", body: "Change sizes or pieces if you want. 6 pieces or more a style." },
+  { title: "Send your details", body: "Just your name and WhatsApp number. Our staff call to confirm." },
 ];
 
 export default function Home() {
@@ -42,38 +42,60 @@ export default function Home() {
     ...newArrivals.filter((product) => !homepageNewArrivalSlugs.includes(product.slug)),
   ];
   const arrivals = (homepageNewArrivals.length > 0 ? homepageNewArrivals : featuredProducts).slice(0, 8);
-  const heroImages = [arrivals[0]?.coverImage ?? featuredProducts[0]?.coverImage].filter(
-    (src): src is string => Boolean(src),
-  );
+  // Three new styles side by side on a computer; only the first shows (and preloads) on a phone.
+  const heroProducts = [...arrivals, ...featuredProducts]
+    .filter((product, index, list) => product.coverImage && list.findIndex((p) => p.slug === product.slug) === index)
+    .slice(0, 3);
 
   return (
-    <main className="pb-16">
-      <section className="relative lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-stretch">
-        <div className="relative aspect-[4/5] bg-[var(--fill)] lg:order-2 lg:aspect-auto lg:min-h-[min(82vh,860px)]">
-          {heroImages.map((src, index) => (
-            <Image
-              key={src}
-              src={src}
-              alt="New City Fashion styles"
-              fill
-              preload={index === 0}
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              className="object-cover object-top"
-            />
+    <main>
+      <section aria-labelledby="hero-title" className="relative">
+        <div className="grid aspect-[4/5] grid-cols-1 bg-[var(--fill)] sm:aspect-[16/10] sm:grid-cols-3 lg:aspect-auto lg:h-[min(86vh,880px)]">
+          {heroProducts.map((product, index) => (
+            <Link
+              key={product.slug}
+              href={`/products/${product.slug}`}
+              tabIndex={-1}
+              aria-hidden
+              className={`relative overflow-hidden ${index > 0 ? "hidden sm:block" : ""}`}
+            >
+              <Image
+                src={product.coverImage as string}
+                alt=""
+                fill
+                preload={index === 0}
+                {...(index === 0 ? {} : { loading: "lazy" as const })}
+                sizes="(max-width: 640px) 100vw, 34vw"
+                className="object-cover object-top transition-transform duration-700 hover:scale-[1.02]"
+              />
+            </Link>
           ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0 lg:hidden" />
         </div>
-        <div className="absolute inset-x-0 bottom-0 px-4 pb-8 text-white sm:px-6 lg:static lg:flex lg:flex-col lg:justify-end lg:px-10 lg:pb-14 lg:text-[var(--ink)]">
-          <p className="label text-white/80 lg:text-[var(--text-soft)]">Wholesale ladies wear · Colombo</p>
-          <h1 className="mt-3 max-w-md text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.02em] sm:text-5xl lg:text-6xl">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 px-4 pb-8 text-white sm:px-6 sm:pb-10 lg:px-10 lg:pb-14">
+          <p className="label text-white/85">Wholesale ladies wear · Colombo 11</p>
+          <h1 id="hero-title" className="mt-3 max-w-xl text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.02em] sm:text-5xl lg:text-7xl">
             Fresh styles for your shop
           </h1>
-          <Link
-            href="#new-arrivals"
-            className="mt-6 inline-flex min-h-12 items-center justify-center bg-white px-6 text-sm font-semibold text-[var(--ink)] lg:self-start lg:bg-[var(--ink)] lg:text-white"
-          >
-            Shop new styles
-          </Link>
+          <p className="mt-3 max-w-md text-sm leading-6 text-white/85 sm:text-base">
+            Order from 6 pieces a style. Our staff call to confirm delivery and payment.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href="#new-arrivals"
+              className="inline-flex min-h-12 items-center justify-center bg-white px-6 text-sm font-semibold text-[var(--ink)]"
+            >
+              Shop new styles
+            </Link>
+            <a
+              href={buildWhatsAppLink()}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center border border-white/70 px-6 text-sm font-semibold text-white hover:bg-white/10"
+            >
+              Ask on WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 
@@ -126,35 +148,49 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="how-ordering-works" className="mt-16 border-y border-[var(--line)] py-8">
-        <div className="px-4 sm:px-6 lg:px-10">
+      <section aria-labelledby="how-ordering-works" className="mt-20 bg-[var(--fill)] py-14 sm:py-16">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
           <h2 id="how-ordering-works" className="label">
             How ordering works
           </h2>
-          <ol className="mt-4 grid gap-4 text-sm leading-6 sm:grid-cols-3">
+          <ol className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-10">
             {orderingSteps.map((step, index) => (
-              <li key={step} className="flex gap-3">
-                <span className="label text-[var(--text-soft)]">{index + 1}</span>
-                <span>{step}</span>
+              <li key={step.title} className="border-t border-[var(--ink)] pt-5">
+                <p className="text-sm text-[var(--text-soft)]">0{index + 1}</p>
+                <p className="mt-3 text-xl font-semibold tracking-[-0.01em]">{step.title}</p>
+                <p className="mt-2 max-w-xs text-sm leading-6 text-[var(--text-soft)]">{step.body}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section id="visit-us" aria-labelledby="visit-us-title" className="px-4 py-10 sm:px-6 lg:px-10">
-        <h2 id="visit-us-title" className="label">
-          Visit or message us
-        </h2>
-        <p className="mt-3 text-sm leading-6 text-[var(--text-soft)]">{company.address}</p>
-        <a
-          href={buildWhatsAppLink()}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-4 inline-flex min-h-12 items-center justify-center bg-[var(--whatsapp)] px-6 text-sm font-semibold text-white"
-        >
-          WhatsApp {formattedWhatsAppNumber}
-        </a>
+      <section id="visit-us" aria-labelledby="visit-us-title" className="bg-[var(--ink)] py-14 text-white sm:py-16">
+        <div className="mx-auto grid max-w-[1440px] gap-8 px-4 sm:px-6 md:grid-cols-[1.3fr_1fr] md:items-end lg:px-10">
+          <div>
+            <p className="label text-white/60">Visit or message us</p>
+            <h2 id="visit-us-title" className="mt-3 max-w-lg text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl">
+              Come to our shop, or send us a message any time.
+            </h2>
+            <p className="mt-4 text-sm text-white/70">{company.address}</p>
+          </div>
+          <div className="flex flex-col gap-3 md:items-end">
+            <a
+              href={buildWhatsAppLink()}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 bg-[var(--whatsapp)] px-6 text-sm font-semibold text-white md:min-w-72"
+            >
+              WhatsApp {formattedWhatsAppNumber}
+            </a>
+            <Link
+              href="/order"
+              className="inline-flex min-h-12 items-center justify-center border border-white/40 px-6 text-sm font-semibold text-white hover:bg-white/10 md:min-w-72"
+            >
+              View your order
+            </Link>
+          </div>
+        </div>
       </section>
     </main>
   );
