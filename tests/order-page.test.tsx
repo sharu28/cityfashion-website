@@ -4,17 +4,25 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { OrderPage } from "@/components/order-page";
 import { OrderCartProvider } from "@/components/order-cart-provider";
+import { OrderSizesProvider } from "@/components/order-sizes-provider";
 
 const storageKey = "city-fashion-order-cart-v1";
+const sizesKey = "city-fashion-order-sizes-v1";
 const productSlug = "style-1390-printed-long-frock";
 
-function renderOrderPage() {
-  localStorage.setItem(storageKey, JSON.stringify([{ productSlug, quantity: 6 }]));
+function renderWith(entries: Array<{ productSlug: string; quantity: number }>) {
+  localStorage.setItem(storageKey, JSON.stringify(entries));
   return render(
     <OrderCartProvider>
-      <OrderPage />
+      <OrderSizesProvider>
+        <OrderPage />
+      </OrderSizesProvider>
     </OrderCartProvider>,
   );
+}
+
+function renderOrderPage() {
+  return renderWith([{ productSlug, quantity: 6 }]);
 }
 
 describe("OrderPage", () => {
@@ -80,5 +88,42 @@ describe("OrderPage", () => {
     expect(await screen.findByText(/We could not place your order/)).toBeVisible();
     expect(screen.getByText("Style 1390 Printed Long Frock")).toBeVisible();
     await waitFor(() => expect(localStorage.getItem(storageKey)).toContain(productSlug));
+  });
+
+  it("lists sizes inline for a sized style", async () => {
+    localStorage.setItem(sizesKey, JSON.stringify({ [productSlug]: { M: 1, L: 2, XL: 2, "2XL": 1 } }));
+    renderOrderPage();
+
+    expect(await screen.findByRole("heading", { name: "Check your styles" })).toBeInTheDocument();
+    expect(screen.getByText("M 1 · L 2 · XL 2 · 2XL 1")).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: "Quantity, size L" })).toHaveValue("2");
+  });
+
+  it("saves a size change straight to the order", async () => {
+    const user = userEvent.setup();
+    renderOrderPage();
+
+    await user.click(await screen.findByRole("button", { name: "Add one piece, size M" }));
+
+    await waitFor(() => expect(localStorage.getItem(storageKey)).toContain('"quantity":7'));
+    expect(screen.getByText("M 2 · L 2 · XL 2 · 2XL 1")).toBeInTheDocument();
+  });
+
+  it("keeps the single quantity control for a style without sizes", async () => {
+    const user = userEvent.setup();
+    renderWith([{ productSlug: "style-1710", quantity: 6 }]);
+
+    await user.click(await screen.findByRole("button", { name: "Add one piece" }));
+
+    expect(screen.getByRole("textbox", { name: "Quantity" })).toHaveValue("7");
+    await waitFor(() => expect(localStorage.getItem(storageKey)).toContain('"quantity":7'));
+  });
+
+  it("shows a way back to the styles when the order is empty", async () => {
+    renderWith([]);
+
+    expect(await screen.findByText("Your order is empty")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Browse styles" })).toBeInTheDocument();
+    expect(screen.getAllByRole("article").length).toBeGreaterThan(0);
   });
 });
