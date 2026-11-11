@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { HERO_SLIDE_MS, HeroCarousel, type HeroSlide } from "@/components/hero-carousel";
+import { HERO_SLIDE_MS, HERO_VARIANTS, HeroCarousel as BaseHeroCarousel, type HeroSlide } from "@/components/hero-carousel";
 
 const slides: HeroSlide[] = [
   { slug: "style-1", title: "Style 1", image: "/p/1.webp", price: "Rs. 1,000" },
@@ -13,7 +13,9 @@ function shownStyle() {
   return screen.getByRole("link", { name: /^See Style \d/ });
 }
 
-describe("HeroCarousel", () => {
+describe.each(HERO_VARIANTS)("HeroCarousel (%s)", (variant) => {
+  const HeroCarousel = (props: { slides: HeroSlide[] }) => <BaseHeroCarousel {...props} variant={variant} />;
+
   beforeEach(() => vi.useFakeTimers());
   afterEach(() => {
     vi.useRealTimers();

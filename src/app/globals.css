@@ -125,6 +125,35 @@
   }
 }
 
+/* Hero: a slow push-in on the photo on screen, and a ticker that runs sideways. */
+.ken-burns {
+  animation: ken-burns 7s ease-out both;
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.12);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 dialog.order-sheet {
   margin: 0;
   max-width: none;
