@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { type PointerEvent, type ReactNode, useRef, useState } from "react";
+import { type PointerEvent, type ReactNode, useEffect, useRef, useState } from "react";
 
 const maxMarkers = 8;
+/** How long each photo shows while the mouse rests on a card. */
+export const HOVER_PHOTO_MS = 1400;
 
 type ProductPhotoStripProps = {
   images: string[];
@@ -24,7 +26,7 @@ function prefersReducedMotion() {
 }
 
 /**
- * Swipe sideways on a phone, move the mouse across on a computer.
+ * Swipe sideways on a phone. On a computer, resting the mouse on the card plays the photos slowly.
  * Uses native scroll-snap so vertical page scrolling that starts on a photo keeps working.
  */
 export function ProductPhotoStrip({
@@ -39,6 +41,7 @@ export function ProductPhotoStrip({
 }: ProductPhotoStripProps) {
   const stripRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
   // Some styles list the same photo twice; show it once.
   const images = Array.from(new Set(rawImages));
   const count = images.length;
@@ -58,15 +61,36 @@ export function ProductPhotoStrip({
     setActive(Math.max(0, Math.min(count - 1, Math.round(strip.scrollLeft / strip.clientWidth))));
   }
 
-  function onPointerMove(event: PointerEvent<HTMLDivElement>) {
+  // Play the photos one by one while a mouse rests on the card. Moving the mouse does not change the photo.
+  useEffect(() => {
+    if (!isHovering || count < 2 || prefersReducedMotion()) return;
+    const timer = window.setInterval(() => {
+      setActive((current) => {
+        const next = (current + 1) % count;
+        const strip = stripRef.current;
+        if (strip) strip.scrollTo({ left: next * strip.clientWidth, behavior: "smooth" });
+        return next;
+      });
+    }, HOVER_PHOTO_MS);
+    return () => window.clearInterval(timer);
+  }, [isHovering, count]);
+
+  function onPointerEnter(event: PointerEvent<HTMLDivElement>) {
+    if (event.pointerType === "mouse") setIsHovering(true);
+  }
+
+  function onPointerLeave(event: PointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== "mouse") return;
+    setIsHovering(false);
     const strip = stripRef.current;
-    if (event.pointerType !== "mouse" || !strip || count < 2) return;
-    const rect = strip.getBoundingClientRect();
-    if (rect.width === 0) return;
-    const index = Math.max(0, Math.min(count - 1, Math.floor(((event.clientX - rect.left) / rect.width) * count)));
-    if (index === active) return;
-    strip.scrollLeft = index * strip.clientWidth;
-    setActive(index);
+    if (strip) strip.scrollTo({ left: 0, behavior: "auto" });
+    setActive(0);
+  }
+
+  /** A tap or click on an arrow or marker hands control to the buyer, so the slideshow stops. */
+  function pick(index: number) {
+    setIsHovering(false);
+    goTo(index);
   }
 
   if (count === 0) {
@@ -79,13 +103,12 @@ export function ProductPhotoStrip({
   }
 
   return (
-    <div className="group/strip">
+    <div className="group/strip" onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave}>
       <div className={`relative ${aspectClass} overflow-hidden bg-[var(--fill)]`}>
         <div
           ref={stripRef}
           data-photo-strip
           onScroll={onScroll}
-          onPointerMove={onPointerMove}
           style={{ touchAction: "pan-x pan-y" }}
           className="no-scrollbar flex h-full snap-x snap-mandatory overflow-x-auto overscroll-x-contain"
         >
@@ -121,7 +144,7 @@ export function ProductPhotoStrip({
             <button
               type="button"
               aria-label="Previous photo"
-              onClick={() => goTo(active - 1)}
+              onClick={() => pick(active - 1)}
               disabled={active === 0}
               className="absolute left-0 top-1/2 hidden h-11 w-9 -translate-y-1/2 items-center justify-center bg-white/90 opacity-0 transition-opacity focus-visible:opacity-100 disabled:hidden group-hover/strip:opacity-100 md:flex"
             >
@@ -132,7 +155,7 @@ export function ProductPhotoStrip({
             <button
               type="button"
               aria-label="Next photo"
-              onClick={() => goTo(active + 1)}
+              onClick={() => pick(active + 1)}
               disabled={active === count - 1}
               className="absolute right-0 top-1/2 hidden h-11 w-9 -translate-y-1/2 items-center justify-center bg-white/90 opacity-0 transition-opacity focus-visible:opacity-100 disabled:hidden group-hover/strip:opacity-100 md:flex"
             >
@@ -159,7 +182,7 @@ export function ProductPhotoStrip({
                 type="button"
                 aria-label={`Photo ${index + 1} of ${count}`}
                 aria-current={index === active ? "true" : undefined}
-                onClick={() => goTo(index)}
+                onClick={() => pick(index)}
                 // Keyboard users move with Previous/Next; one stop per marker would bury the grid in tab stops.
                 tabIndex={-1}
                 // 24px tap area around a small square marker.

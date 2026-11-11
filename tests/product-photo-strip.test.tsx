@@ -1,8 +1,8 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { ProductPhotoStrip } from "@/components/product-photo-strip";
+import { HOVER_PHOTO_MS, ProductPhotoStrip } from "@/components/product-photo-strip";
 
 const photos = (count: number) => Array.from({ length: count }, (_, index) => `/p/${index + 1}.webp`);
 
@@ -14,6 +14,8 @@ function stripOf(container: HTMLElement) {
 
 function sizeStrip(strip: HTMLElement, width: number) {
   Object.defineProperty(strip, "clientWidth", { configurable: true, value: width });
+  // jsdom has no element scrollTo; record the target like a browser would.
+  if (!strip.scrollTo) strip.scrollTo = ((options: ScrollToOptions) => { strip.scrollLeft = options.left ?? 0; }) as typeof strip.scrollTo;
   strip.getBoundingClientRect = () =>
     ({ left: 0, top: 0, width, height: width, right: width, bottom: width, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
 }
@@ -76,24 +78,70 @@ describe("ProductPhotoStrip", () => {
     expect(screen.getByText("1 / 16")).toBeInTheDocument();
   });
 
-  it("picks the photo under the mouse on desktop", () => {
+  it("plays the photos slowly while the mouse rests on the card", () => {
+    vi.useFakeTimers();
+    try {
+      const { container } = render(<ProductPhotoStrip images={photos(3)} title="Printed frock" imageSizes="50vw" />);
+      sizeStrip(stripOf(container), 200);
+      const card = container.firstElementChild as HTMLElement;
+
+      fireEvent.pointerEnter(card, { pointerType: "mouse" });
+      act(() => vi.advanceTimersByTime(HOVER_PHOTO_MS - 50));
+      expect(screen.getByRole("button", { name: "Photo 1 of 3" })).toHaveAttribute("aria-current", "true");
+
+      act(() => vi.advanceTimersByTime(100));
+      expect(screen.getByRole("button", { name: "Photo 2 of 3" })).toHaveAttribute("aria-current", "true");
+
+      act(() => vi.advanceTimersByTime(HOVER_PHOTO_MS * 2));
+      expect(screen.getByRole("button", { name: "Photo 1 of 3" })).toHaveAttribute("aria-current", "true");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("does not change photo when the mouse just moves across", () => {
     const { container } = render(<ProductPhotoStrip images={photos(4)} title="Printed frock" imageSizes="50vw" />);
     const strip = stripOf(container);
     sizeStrip(strip, 200);
 
     fireEvent.pointerMove(strip, { pointerType: "mouse", clientX: 150 });
 
-    expect(strip.scrollLeft).toBe(600);
+    expect(strip.scrollLeft).toBe(0);
+    expect(screen.getByRole("button", { name: "Photo 1 of 4" })).toHaveAttribute("aria-current", "true");
   });
 
-  it("ignores touch pointer moves so swiping stays native", () => {
-    const { container } = render(<ProductPhotoStrip images={photos(4)} title="Printed frock" imageSizes="50vw" />);
-    const strip = stripOf(container);
-    sizeStrip(strip, 200);
+  it("stops and goes back to the first photo when the mouse leaves", () => {
+    vi.useFakeTimers();
+    try {
+      const { container } = render(<ProductPhotoStrip images={photos(3)} title="Printed frock" imageSizes="50vw" />);
+      sizeStrip(stripOf(container), 200);
+      const card = container.firstElementChild as HTMLElement;
 
-    fireEvent.pointerMove(strip, { pointerType: "touch", clientX: 150 });
+      fireEvent.pointerEnter(card, { pointerType: "mouse" });
+      act(() => vi.advanceTimersByTime(HOVER_PHOTO_MS + 10));
+      fireEvent.pointerLeave(card, { pointerType: "mouse" });
+      act(() => vi.advanceTimersByTime(HOVER_PHOTO_MS * 3));
 
-    expect(strip.scrollLeft).toBe(0);
+      expect(screen.getByRole("button", { name: "Photo 1 of 3" })).toHaveAttribute("aria-current", "true");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("does not play photos on touch", () => {
+    vi.useFakeTimers();
+    try {
+      const { container } = render(<ProductPhotoStrip images={photos(3)} title="Printed frock" imageSizes="50vw" />);
+      sizeStrip(stripOf(container), 200);
+      const card = container.firstElementChild as HTMLElement;
+
+      fireEvent.pointerEnter(card, { pointerType: "touch" });
+      act(() => vi.advanceTimersByTime(HOVER_PHOTO_MS * 2));
+
+      expect(screen.getByRole("button", { name: "Photo 1 of 3" })).toHaveAttribute("aria-current", "true");
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("lets the page scroll up and down from a photo", () => {
