@@ -14,8 +14,6 @@ function stripOf(container: HTMLElement) {
 
 function sizeStrip(strip: HTMLElement, width: number) {
   Object.defineProperty(strip, "clientWidth", { configurable: true, value: width });
-  // jsdom has no element scrollTo; record the target like a browser would.
-  if (!strip.scrollTo) strip.scrollTo = ((options: ScrollToOptions) => { strip.scrollLeft = options.left ?? 0; }) as typeof strip.scrollTo;
   strip.getBoundingClientRect = () =>
     ({ left: 0, top: 0, width, height: width, right: width, bottom: width, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
 }
