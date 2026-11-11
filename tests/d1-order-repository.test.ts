@@ -91,6 +91,56 @@ describe("D1 order repository", () => {
     ]);
   });
 
+  it("stores pieces per size as JSON and leaves it empty when sizes are not picked", async () => {
+    const order = await repository.create(
+      input({
+        items: [
+          {
+            productId: "1390",
+            productSlug: "style-1390",
+            productTitle: "Style 1390",
+            unitPriceLkr: 1500,
+            quantity: 6,
+            lineTotalLkr: 9000,
+            sizes: [
+              { size: "M", quantity: 2 },
+              { size: "L", quantity: 4 },
+            ],
+          },
+          { productId: "1710", productSlug: "style-1710", productTitle: "Style 1710", unitPriceLkr: 2000, quantity: 6, lineTotalLkr: 12000 },
+        ],
+      }),
+    );
+    const { results } = await db
+      .prepare("SELECT product_slug, size_breakdown FROM order_items WHERE order_id = ? ORDER BY product_slug")
+      .bind(order.id)
+      .all<{ product_slug: string; size_breakdown: string | null }>();
+    expect(results).toEqual([
+      { product_slug: "style-1390", size_breakdown: '[{"size":"M","quantity":2},{"size":"L","quantity":4}]' },
+      { product_slug: "style-1710", size_breakdown: null },
+    ]);
+  });
+
+  it("refuses sizes that do not add up to the style total", async () => {
+    await expect(
+      repository.create(
+        input({
+          items: [
+            {
+              productId: "1390",
+              productSlug: "style-1390",
+              productTitle: "Style 1390",
+              unitPriceLkr: 1500,
+              quantity: 6,
+              lineTotalLkr: 9000,
+              sizes: [{ size: "M", quantity: 5 }],
+            },
+          ],
+        }),
+      ),
+    ).rejects.toMatchObject({ code: "invalid_order_items" });
+  });
+
   it("returns the first order for a repeated idempotency key", async () => {
     const order = input();
     const first = await repository.create(order);

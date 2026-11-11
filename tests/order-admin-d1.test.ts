@@ -26,7 +26,19 @@ async function placeOrder(name: string, minute: number, identity: string) {
     identityHash: identity.repeat(64),
     productTotalLkr: 9000,
     items: [
-      { productId: "1390", productSlug: "style-1390", productTitle: "Style 1390", unitPriceLkr: 1500, quantity: 6, lineTotalLkr: 9000 },
+      {
+        productId: "1390",
+        productSlug: "style-1390",
+        productTitle: "Style 1390",
+        unitPriceLkr: 1500,
+        quantity: 6,
+        lineTotalLkr: 9000,
+        sizes: [
+          { size: "M", quantity: 2 },
+          { size: "L", quantity: 2 },
+          { size: "XL", quantity: 2 },
+        ],
+      },
     ],
   });
 }
@@ -57,7 +69,17 @@ describe("admin orders on D1", () => {
 
     expect(order).toMatchObject({ reference: "CF-1001", final_total_lkr: null, delivery_charge_lkr: null });
     expect(order.items).toHaveLength(1);
-    expect(order.items[0]).toMatchObject({ product_title: "Style 1390", quantity: 6, line_total_lkr: 9000 });
+    expect(order.items[0]).toMatchObject({
+      product_title: "Style 1390",
+      quantity: 6,
+      line_total_lkr: 9000,
+      sizes: [
+        { size: "M", quantity: 2 },
+        { size: "L", quantity: 2 },
+        { size: "XL", quantity: 2 },
+      ],
+    });
+    expect(order.items[0]).not.toHaveProperty("size_breakdown");
   });
 
   it("saves an allowed change and computes the final total", async () => {

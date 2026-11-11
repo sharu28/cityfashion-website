@@ -14,7 +14,21 @@ const order = {
   duplicate: false,
   customerName: "Test <Shop>",
   whatsappPhone: "+94771234567",
-  items: [{ productId: "1390", productTitle: "Style 1390", unitPriceLkr: 1500, quantity: 6, lineTotalLkr: 9000 }],
+  items: [
+    {
+      productId: "1390",
+      productTitle: "Style 1390",
+      unitPriceLkr: 1500,
+      quantity: 6,
+      lineTotalLkr: 9000,
+      sizes: [
+        { size: "M", quantity: 2 },
+        { size: "L", quantity: 2 },
+        { size: "XL", quantity: 2 },
+      ],
+    },
+    { productId: "1710", productTitle: "Style 1710", unitPriceLkr: 2000, quantity: 6, lineTotalLkr: 12000 },
+  ],
 };
 
 const env = {
@@ -50,6 +64,9 @@ describe("order email", () => {
       subject: "New order CF-1001",
     });
     expect(body.text).toContain("Style 1390 (1390) — 6 × Rs. 1,500 = Rs. 9,000");
+    expect(body.text).toContain("Sizes: M 2 · L 2 · XL 2");
+    expect(body.text).toContain("Sizes: staff to confirm");
+    expect(body.html).toContain("Sizes: M 2 · L 2 · XL 2");
     expect(body.html).toContain("Test &lt;Shop&gt;");
     expect(body.html).not.toContain("Test <Shop>");
   });

@@ -2,6 +2,7 @@ import "server-only";
 
 import type { OrderNotifier } from "@/lib/order-service";
 import { siteUrl } from "@/lib/site";
+import { formatSizeBreakdown } from "@/lib/sizes";
 
 function escapeHtml(value: string | number) {
   return String(value)
@@ -28,7 +29,8 @@ export function createResendOrderNotifier(): OrderNotifier {
 
       const lines = order.items.map(
         (item) =>
-          `${item.productTitle} (${item.productId}) — ${item.quantity} × ${formatLkr(item.unitPriceLkr)} = ${formatLkr(item.lineTotalLkr)}`,
+          `${item.productTitle} (${item.productId}) — ${item.quantity} × ${formatLkr(item.unitPriceLkr)} = ${formatLkr(item.lineTotalLkr)}
+  Sizes: ${formatSizeBreakdown(item.sizes) || "staff to confirm"}`,
       );
       const adminUrl = `${siteUrl}/admin/orders/${encodeURIComponent(order.id)}`;
       const text = [
@@ -45,7 +47,7 @@ export function createResendOrderNotifier(): OrderNotifier {
       const htmlLines = order.items
         .map(
           (item) =>
-            `<li><strong>${escapeHtml(item.productTitle)}</strong> (${escapeHtml(item.productId)}) — ${escapeHtml(item.quantity)} × ${escapeHtml(formatLkr(item.unitPriceLkr))} = ${escapeHtml(formatLkr(item.lineTotalLkr))}</li>`,
+            `<li><strong>${escapeHtml(item.productTitle)}</strong> (${escapeHtml(item.productId)}) — ${escapeHtml(item.quantity)} × ${escapeHtml(formatLkr(item.unitPriceLkr))} = ${escapeHtml(formatLkr(item.lineTotalLkr))}<br>Sizes: ${escapeHtml(formatSizeBreakdown(item.sizes) || "staff to confirm")}</li>`,
         )
         .join("");
       const html = `

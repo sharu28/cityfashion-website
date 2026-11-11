@@ -69,6 +69,16 @@ function validate(input: CreateOrderInput) {
     ) {
       throw new OrderStorageValidationError("invalid_order_items");
     }
+    if (item.sizes !== undefined) {
+      const sizeTotal = item.sizes.reduce((sum, entry) => sum + entry.quantity, 0);
+      if (
+        item.sizes.length === 0 ||
+        item.sizes.some((entry) => !entry.size?.trim() || !Number.isInteger(entry.quantity) || entry.quantity <= 0) ||
+        sizeTotal !== item.quantity
+      ) {
+        throw new OrderStorageValidationError("invalid_order_items");
+      }
+    }
     total += item.unitPriceLkr * item.quantity;
     if (total > maxTotalLkr) throw new OrderStorageValidationError("order_total_too_large");
   }
@@ -131,8 +141,8 @@ export function createD1OrderRepository(
           db
             .prepare(
               `INSERT INTO order_items (id, order_id, product_id, product_slug, product_title,
-                                        unit_price_lkr, quantity, line_total_lkr, created_at)
-               SELECT ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9
+                                        unit_price_lkr, quantity, line_total_lkr, size_breakdown, created_at)
+               SELECT ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?10, ?9
                WHERE EXISTS (SELECT 1 FROM orders WHERE id = ?2)`,
             )
             .bind(
@@ -145,6 +155,7 @@ export function createD1OrderRepository(
               item.quantity,
               item.unitPriceLkr * item.quantity,
               createdAt,
+              item.sizes ? JSON.stringify(item.sizes.map(({ size, quantity }) => ({ size, quantity }))) : null,
             ),
         ),
       ];

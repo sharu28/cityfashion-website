@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { OrderQuantityControl } from "@/components/order-quantity-control";
 import { useOrderCart } from "@/components/order-cart-provider";
 import { allProducts, formatLkr } from "@/lib/catalog";
+import { toOrderItem } from "@/lib/order-cart";
 import {
   buildOrderSupportWhatsAppLink,
   type OrderReceipt,
@@ -103,7 +104,7 @@ export function OrderPage() {
       customerName,
       whatsappNumber,
       idempotencyKey: activeKey,
-      items: entries.map(({ productSlug, quantity }) => ({ productSlug, quantity })),
+      items: entries.map(toOrderItem),
     };
 
     setIsSubmitting(true);

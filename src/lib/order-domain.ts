@@ -1,10 +1,19 @@
 import { whatsappNumber } from "@/lib/site";
+import type { SizeQuantity } from "@/lib/sizes";
+
+export type PlaceOrderItem = {
+  productSlug: string;
+  /** Total pieces for the style, at least 6. */
+  quantity: number;
+  /** Optional pieces per size; zero sizes dropped; they add up to `quantity`. */
+  sizes?: SizeQuantity[];
+};
 
 export type PlaceOrderPayload = {
   customerName: string;
   whatsappNumber: string;
   idempotencyKey: string;
-  items: Array<{ productSlug: string; quantity: number }>;
+  items: PlaceOrderItem[];
 };
 
 export type OrderReceipt = {
@@ -42,6 +51,28 @@ export function normalizeSriLankaMobile(value: string) {
   }
 
   return `+94${local}`;
+}
+
+function validateSizes(value: unknown, quantity: number): SizeQuantity[] | undefined {
+  if (value === undefined || value === null) return undefined;
+  if (!Array.isArray(value) || value.length === 0) throw new OrderValidationError("invalid_items");
+
+  const seen = new Set<string>();
+  const sizes: SizeQuantity[] = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) throw new OrderValidationError("invalid_items");
+    const size = Reflect.get(entry, "size");
+    const count = Reflect.get(entry, "quantity");
+    if (typeof size !== "string" || size.trim() === "" || seen.has(size.trim()) || !Number.isInteger(count) || Number(count) < 0) {
+      throw new OrderValidationError("invalid_items");
+    }
+    seen.add(size.trim());
+    if (Number(count) > 0) sizes.push({ size: size.trim(), quantity: Number(count) });
+  }
+
+  const total = sizes.reduce((sum, entry) => sum + entry.quantity, 0);
+  if (sizes.length === 0 || total !== quantity) throw new OrderValidationError("invalid_items");
+  return sizes;
 }
 
 export function validatePlaceOrderPayload(value: unknown): PlaceOrderPayload {
@@ -90,7 +121,8 @@ export function validatePlaceOrderPayload(value: unknown): PlaceOrderPayload {
     }
 
     seenSlugs.add(productSlug);
-    return { productSlug, quantity: Number(quantity) };
+    const sizes = validateSizes(Reflect.get(item, "sizes"), Number(quantity));
+    return sizes ? { productSlug, quantity: Number(quantity), sizes } : { productSlug, quantity: Number(quantity) };
   });
 
   return {

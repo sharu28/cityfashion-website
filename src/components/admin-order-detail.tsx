@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import { formatLkr } from "@/lib/catalog";
+import { formatSizeBreakdown } from "@/lib/sizes";
 import {
   type AdminOrderDetail,
   buildPaymentWhatsAppLink,
@@ -75,6 +76,9 @@ export function AdminOrderDetailEditor({ initialOrder }: { initialOrder: AdminOr
                 <p className="mt-1 font-black text-[var(--text-strong)]">{item.product_title}</p>
                 <p className="mt-1 text-sm text-[var(--text-soft)]">
                   {item.quantity} × {formatLkr(item.unit_price_lkr)}
+                </p>
+                <p className="mt-1 text-sm font-black text-[var(--text-strong)]">
+                  Sizes: {formatSizeBreakdown(item.sizes) || "confirm with customer"}
                 </p>
               </div>
               <p className="font-black text-[var(--text-strong)]">{formatLkr(item.line_total_lkr)}</p>

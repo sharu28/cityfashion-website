@@ -4,6 +4,7 @@ import {
   OrderValidationError,
   validatePlaceOrderPayload,
 } from "@/lib/order-domain";
+import { orderedSizes, parseSizeRange, type SizeQuantity } from "@/lib/sizes";
 
 export type OrderRepository = {
   create(input: {
@@ -19,6 +20,7 @@ export type OrderRepository = {
       unitPriceLkr: number;
       quantity: number;
       lineTotalLkr: number;
+      sizes?: SizeQuantity[];
     }>;
   }): Promise<OrderReceipt>;
 };
@@ -33,6 +35,7 @@ export type OrderNotifier = {
       unitPriceLkr: number;
       quantity: number;
       lineTotalLkr: number;
+      sizes?: SizeQuantity[];
     }>;
   }): Promise<void>;
 };
@@ -42,6 +45,8 @@ export type OrderCatalogProduct = {
   slug: string;
   title: string;
   unitPriceLkr: number | null;
+  /** Catalog size range, e.g. "M - 2XL". Sizes in an order must come from it. */
+  sizeRange?: string;
 };
 
 export class OrderRateLimitError extends Error {
@@ -70,6 +75,15 @@ export async function submitOrder(
       throw new OrderValidationError("style_unavailable");
     }
 
+    let sizes: SizeQuantity[] | undefined;
+    if (item.sizes) {
+      const catalogSizes = parseSizeRange(product.sizeRange);
+      if (item.sizes.some((entry) => !catalogSizes.includes(entry.size))) {
+        throw new OrderValidationError("invalid_items");
+      }
+      sizes = orderedSizes(item.sizes, catalogSizes);
+    }
+
     const unitPriceLkr = Number(product.unitPriceLkr);
     return {
       productId: product.id,
@@ -78,6 +92,7 @@ export async function submitOrder(
       unitPriceLkr,
       quantity: item.quantity,
       lineTotalLkr: unitPriceLkr * item.quantity,
+      ...(sizes ? { sizes } : {}),
     };
   });
   const productTotalLkr = items.reduce((total, item) => total + item.lineTotalLkr, 0);

@@ -1,3 +1,5 @@
+import type { SizeQuantity } from "@/lib/sizes";
+
 export type OrderStatus = "new" | "confirmed" | "paid" | "completed" | "cancelled";
 
 export type OrderRow = {
@@ -25,6 +27,8 @@ export type OrderItemRow = {
   unit_price_lkr: number;
   quantity: number;
   line_total_lkr: number;
+  /** Pieces per size, or null when sizes are confirmed by staff. */
+  sizes: SizeQuantity[] | null;
   created_at: string;
 };
 

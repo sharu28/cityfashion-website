@@ -13,6 +13,22 @@ import {
 export * from "@/lib/order-admin-shared";
 
 type StoredOrderRow = Omit<OrderRow, "final_total_lkr">;
+type StoredOrderItemRow = Omit<OrderItemRow, "sizes"> & { size_breakdown: string | null };
+
+function parseSizes(value: string | null): OrderItemRow["sizes"] {
+  if (!value) return null;
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (!Array.isArray(parsed)) return null;
+    const sizes = parsed.filter(
+      (entry): entry is { size: string; quantity: number } =>
+        Boolean(entry) && typeof entry.size === "string" && Number.isInteger(entry.quantity),
+    );
+    return sizes.length ? sizes.map(({ size, quantity }) => ({ size, quantity })) : null;
+  } catch {
+    return null;
+  }
+}
 
 function withFinalTotal(row: StoredOrderRow): OrderRow {
   return { ...row, final_total_lkr: calculateFinalTotal(row.product_total_lkr, row.delivery_charge_lkr) };
@@ -42,14 +58,14 @@ export async function getOrder(db: D1Database, id: string): Promise<AdminOrderDe
     db
       .prepare("SELECT * FROM order_items WHERE order_id = ? ORDER BY created_at, product_title")
       .bind(id)
-      .all<OrderItemRow>(),
+      .all<StoredOrderItemRow>(),
   ]);
 
   if (!order) throw new AdminOrderNotFoundError();
 
   return {
     ...withFinalTotal(order),
-    items: items.results,
+    items: items.results.map(({ size_breakdown, ...item }) => ({ ...item, sizes: parseSizes(size_breakdown) })),
     reference: `CF-${order.public_number}`,
     paymentInstructions: process.env.PAYMENT_INSTRUCTIONS?.trim() ?? "",
   };

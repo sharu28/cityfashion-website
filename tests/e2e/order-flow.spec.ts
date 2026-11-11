@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import { accessToken, formatLkr, pickTwoStyles, queryD1, screenshotter, sentEmails } from "./helpers";
+import { accessToken, formatLkr, pickTwoStyles, queryD1, screenshotter, sentEmails, sizedStyleFromCatalog } from "./helpers";
 
 // One full order, the way a retailer places it, then the owner's side of it.
 // Selectors use roles and visible labels only, so a visual redesign does not break them.
@@ -176,4 +176,54 @@ test("placing the same order twice keeps one order and sends one email", async (
   const rows = queryD1<{ n: number }>(`SELECT count(*) AS n FROM orders WHERE idempotency_key = '${payload.idempotencyKey}'`);
   expect(rows[0].n).toBe(1);
   await expect.poll(async () => (await sentEmails()).length).toBe(before + 1);
+});
+
+test("pieces per size reach the database, the email and the dashboard", async ({ page, browser }, testInfo) => {
+  // Until the size picker is on the product page, the order is sent the way the page will send it.
+  const sizedStyle = sizedStyleFromCatalog();
+  const payload = {
+    customerName: `TEST sizes ${testInfo.project.name}`,
+    whatsappNumber: testInfo.project.name === "phone" ? "0770000011" : "0770000012",
+    idempotencyKey: crypto.randomUUID(),
+    items: [
+      {
+        productSlug: sizedStyle.slug,
+        quantity: 7,
+        sizes: [
+          { size: "XL", quantity: 3 },
+          { size: "M", quantity: 2 },
+          { size: "L", quantity: 2 },
+        ],
+      },
+    ],
+  };
+  const response = await page.request.post("/api/orders", { data: payload });
+  expect(response.status()).toBe(201);
+  const { id, reference } = (await response.json()) as { id: string; reference: string };
+
+  const [row] = queryD1<{ size_breakdown: string }>(`SELECT size_breakdown FROM order_items WHERE order_id = '${id}'`);
+  expect(JSON.parse(row.size_breakdown)).toEqual([
+    { size: "M", quantity: 2 },
+    { size: "L", quantity: 2 },
+    { size: "XL", quantity: 3 },
+  ]);
+
+  await expect
+    .poll(async () => (await sentEmails()).find((email) => email.subject === `New order ${reference}`)?.text ?? "")
+    .toContain("Sizes: M 2 · L 2 · XL 3");
+
+  const owner = await browser.newContext({
+    ...testInfo.project.use,
+    extraHTTPHeaders: { "Cf-Access-Jwt-Assertion": await accessToken() },
+  });
+  const ownerPage = await owner.newPage();
+  await ownerPage.goto(`/admin/orders/${id}`);
+  await expect(ownerPage.getByText("Sizes: M 2 · L 2 · XL 3")).toBeVisible();
+  await owner.close();
+
+  // A size the style does not come in is refused.
+  const bad = await page.request.post("/api/orders", {
+    data: { ...payload, idempotencyKey: crypto.randomUUID(), items: [{ productSlug: sizedStyle.slug, quantity: 6, sizes: [{ size: "XS", quantity: 6 }] }] },
+  });
+  expect(bad.status()).toBe(400);
 });
