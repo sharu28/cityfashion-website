@@ -105,7 +105,7 @@ export function ProductPhotoStrip({
             return (
               <div key={image} className="relative h-full w-full shrink-0 snap-start">
                 {href ? (
-                  <Link href={href} tabIndex={index === 0 ? undefined : -1} className="block h-full w-full" aria-label={label}>
+                  <Link href={href} tabIndex={index === 0 ? undefined : -1} className="relative block h-full w-full" aria-label={label}>
                     {photo}
                   </Link>
                 ) : (
