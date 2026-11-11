@@ -10,9 +10,17 @@ const cartKey = "city-fashion-order-cart-v1";
 let line: OrderLine;
 let cart: ReturnType<typeof useOrderCart>;
 
-function Harness({ slug, sizeRange }: { slug: string; sizeRange: string }) {
-  line = useOrderLine({ slug, sizeRange });
-  cart = useOrderCart();
+type CartValue = ReturnType<typeof useOrderCart>;
+
+function capture(nextLine: OrderLine, nextCart: CartValue) {
+  line = nextLine;
+  cart = nextCart;
+}
+
+function Harness({ slug, sizeRange, onRender }: { slug: string; sizeRange: string; onRender: typeof capture }) {
+  const line = useOrderLine({ slug, sizeRange });
+  const cart = useOrderCart();
+  onRender(line, cart);
   return (
     <div>
       <output data-testid="loaded">{cart.isLoaded ? "yes" : "no"}</output>
@@ -26,7 +34,7 @@ async function renderLine(slug: string, sizeRange: string) {
   render(
     <OrderCartProvider>
       <OrderSizesProvider>
-        <Harness slug={slug} sizeRange={sizeRange} />
+        <Harness slug={slug} sizeRange={sizeRange} onRender={capture} />
       </OrderSizesProvider>
     </OrderCartProvider>,
   );
