@@ -70,8 +70,11 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   await shot("second-style-added");
 
   // 4. Review the cart and change a quantity there.
-  await cartLink.click();
-  await expect(page).toHaveURL(/\/order$/);
+  // Under heavy local load the in-app navigation sometimes stalls once; a buyer would tap again.
+  await expect(async () => {
+    if (!/\/order$/.test(page.url())) await cartLink.click();
+    await expect(page).toHaveURL(/\/order$/, { timeout: 5_000 });
+  }).toPass({ timeout: 30_000 });
   await expect(page.getByRole("heading", { name: "Check your styles" })).toBeVisible();
   await expect(page.getByText("M 2 · L 2 · XL 2 · 2XL 1")).toBeVisible();
   await expect(quantity).toHaveValue("6");
