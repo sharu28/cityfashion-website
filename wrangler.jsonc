@@ -15,17 +15,16 @@
     {
       "binding": "ORDERS_DB",
       "database_name": "cityfashion-orders",
-      // Replaced with the real id after `wrangler d1 create cityfashion-orders`.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "07cacc6e-2edf-461b-96c7-7318f8f8dd47",
       "migrations_dir": "migrations"
     }
   ],
   // Public, non-secret settings. Secrets (RESEND_API_KEY, ORDER_RATE_LIMIT_SALT)
   // are added with `npx wrangler secret put <NAME>` and never stored in this file.
   "vars": {
-    "ADMIN_EMAIL": "sharukeshk.seker@gmail.com",
-    "ORDER_NOTIFICATION_EMAIL": "sharukeshk.seker@gmail.com",
-    "ORDER_EMAIL_FROM": "City Fashion Orders <orders@cityfashion.shop>",
+    "ADMIN_EMAIL": "sharukesh.seker@gmail.com",
+    "ORDER_NOTIFICATION_EMAIL": "sharukesh.seker@gmail.com",
+    "ORDER_EMAIL_FROM": "City Fashion Orders <onboarding@resend.dev>",
     "CF_ACCESS_TEAM_DOMAIN": "",
     "CF_ACCESS_AUD": "",
     "PAYMENT_INSTRUCTIONS": ""

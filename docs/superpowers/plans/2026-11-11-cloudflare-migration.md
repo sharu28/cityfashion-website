@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - Worker name `cityfashion-website`; D1 database `cityfashion-orders`, binding `ORDERS_DB`; migrations in `migrations/`.
-- Owner allow list: `sharukeshk.seker@gmail.com` (`ADMIN_EMAIL`).
+- Owner allow list: `sharukesh.seker@gmail.com` (`ADMIN_EMAIL`).
 - Public order numbers start at 1001; reference format `CF-<number>`.
 - Rate limit: at most 5 attempts per identity in 15 minutes; attempts older than 7 days pruned.
 - Identity hash = sha256(`ORDER_RATE_LIMIT_SALT|CF-Connecting-IP|normalized phone`).

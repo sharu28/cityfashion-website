@@ -13,7 +13,7 @@ Success means:
 
 - `cityfashion.shop` and `www.cityfashion.shop` are served by a Cloudflare Worker
 - A retailer can place an order; it is stored in D1 and the owner gets the email alert
-- `/admin/orders` opens only for `sharukeshk.seker@gmail.com` after a Cloudflare Access email code
+- `/admin/orders` opens only for `sharukesh.seker@gmail.com` after a Cloudflare Access email code
 - URLs, sitemap, robots, canonical/host redirects and share images behave as today
 - No downtime during the DNS switch
 - Vercel is disconnected and all Supabase code and packages are removed
@@ -24,7 +24,7 @@ Success means:
 | --- | --- |
 | Hosting | `@opennextjs/cloudflare` on Cloudflare Workers, one Worker named `cityfashion-website` |
 | Order storage | Cloudflare D1 database `cityfashion-orders`, bound to the Worker |
-| Owner login | Cloudflare Access (email one-time code), allow list: `sharukeshk.seker@gmail.com` |
+| Owner login | Cloudflare Access (email one-time code), allow list: `sharukesh.seker@gmail.com` |
 | Order email | Resend, unchanged; API key becomes a Worker secret |
 | Deploy tooling | Wrangler (stable, used by OpenNext) for build/deploy and D1 migrations |
 | Account setup tooling | `cf` CLI (open beta) for Access, DNS zone and Web Analytics; dashboard as fallback |
@@ -123,7 +123,7 @@ Prices still come from the server catalog inside `submitOrder()`; the client can
 ## Owner dashboard and Access
 
 - Cloudflare Access self-hosted application covering `cityfashion.shop/admin*` and
-  `cityfashion.shop/api/admin*`, policy "Allow: emails = sharukeshk.seker@gmail.com",
+  `cityfashion.shop/api/admin*`, policy "Allow: emails = sharukesh.seker@gmail.com",
   identity via one-time PIN, session 24 hours.
 - Defense in depth: `src/lib/cloudflare-access.ts` verifies the `Cf-Access-Jwt-Assertion` JWT
   against the team's JWKS (`https://<team>.cloudflareaccess.com/cdn-cgi/access/certs`), checks
@@ -182,7 +182,7 @@ DNS (minutes). After step 5: redeploy is on Cloudflare only; fixes roll forward.
 
 These need the owner's own logins and cannot be done by the agent:
 
-- Log in to Cloudflare (`sharukeshk.seker@gmail.com`) in the browser when `wrangler login` / `cf`
+- Log in to Cloudflare (`sharukesh.seker@gmail.com`) in the browser when `wrangler login` / `cf`
   login opens, and approve
 - Change nameservers at Namecheap to the pair Cloudflare assigns
 - Provide the Resend API key as a Worker secret (typed into the `wrangler secret put` prompt)
