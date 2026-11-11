@@ -1,5 +1,43 @@
 [
   {
+    "id": "1205",
+    "slug": "style-1205-printed-long-top",
+    "title": "Style 1205 Printed Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 1,850",
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Straight-cut long top with a mandarin collar and three-quarter sleeves in ten prints for ladies wear retailers.",
+    "colors": [
+      "Red Blue Floral",
+      "White Navy Motif",
+      "Pink Grey Motif",
+      "Pastel Watercolour",
+      "Teal Navy Leaf",
+      "Yellow Orange Floral",
+      "Grey Blue Floral",
+      "Lilac Rose",
+      "Blue Batik",
+      "Rust Brown Floral"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-1205-printed-long-top/01-d1205-red-blue-floral-long-top.webp",
+      "/products/style-1205-printed-long-top/02-d1205-white-navy-motif-long-top.webp",
+      "/products/style-1205-printed-long-top/03-d1205-pink-grey-motif-long-top.webp",
+      "/products/style-1205-printed-long-top/04-d1205-pastel-watercolour-long-top.webp",
+      "/products/style-1205-printed-long-top/05-d1205-teal-navy-leaf-long-top.webp",
+      "/products/style-1205-printed-long-top/06-d1205-yellow-orange-floral-long-top.webp",
+      "/products/style-1205-printed-long-top/07-d1205-grey-blue-floral-long-top.webp",
+      "/products/style-1205-printed-long-top/08-d1205-lilac-rose-long-top.webp",
+      "/products/style-1205-printed-long-top/09-d1205-blue-batik-long-top.webp",
+      "/products/style-1205-printed-long-top/10-d1205-rust-brown-floral-long-top.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "1205"
+  },
+  {
     "id": "1390",
     "slug": "style-1390-printed-long-frock",
     "title": "Style 1390 Printed Long Frock",
@@ -536,6 +574,62 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596417/cityfashion/products/style-3151/2?_a=BAMAOGWO0"
     ],
     "sourceFolder": "3151"
+  },
+  {
+    "id": "4000",
+    "slug": "style-4000-golden-frock",
+    "title": "Style 4000 Golden Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,850",
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Long gold-printed frock with a stand collar, buttons and a decorated yoke in three colors for ladies wear retailers.",
+    "colors": [
+      "Navy Gold",
+      "Black Gold",
+      "White Gold"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-4000-golden-frock/01-d4000-navy-gold-golden-frock.webp",
+      "/products/style-4000-golden-frock/02-d4000-black-gold-golden-frock.webp",
+      "/products/style-4000-golden-frock/03-d4000-white-gold-golden-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4000"
+  },
+  {
+    "id": "4060",
+    "slug": "style-4060-printed-button-frock",
+    "title": "Style 4060 Printed Button Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,600",
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Knee-length button-front frock with a band collar and gathered tier in seven prints for ladies wear retailers.",
+    "colors": [
+      "Mustard Leaf",
+      "Sage Green Leaf",
+      "Mauve Leaf",
+      "Red Leaf",
+      "Olive Tulip",
+      "Pink Tulip",
+      "Brown Tulip"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-4060-printed-button-frock/01-d4060-mustard-leaf-button-frock.webp",
+      "/products/style-4060-printed-button-frock/02-d4060-sage-green-leaf-button-frock.webp",
+      "/products/style-4060-printed-button-frock/03-d4060-mauve-leaf-button-frock.webp",
+      "/products/style-4060-printed-button-frock/04-d4060-red-leaf-button-frock.webp",
+      "/products/style-4060-printed-button-frock/05-d4060-olive-tulip-button-frock.webp",
+      "/products/style-4060-printed-button-frock/06-d4060-pink-tulip-button-frock.webp",
+      "/products/style-4060-printed-button-frock/07-d4060-brown-tulip-button-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4060"
   },
   {
     "id": "4080",
