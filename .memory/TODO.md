@@ -2,6 +2,8 @@
 
 ## Now
 
+- [ ] Ask the owner for the fabric (and size range) of style 1490, then fill `fabric` and `sizeRange` in `data/product-overrides.json`. Both are blank on the live page. The owner asked to be reminded.  
+  owner: user | status: reminder | context: `data/product-overrides.json` key `1490`
 - [ ] Create the Supabase project and enable phone auth for retailer OTP.  
   owner: user | status: active | context: `supabase/schema.sql`
 - [ ] Add Supabase env vars locally and in Vercel.  
