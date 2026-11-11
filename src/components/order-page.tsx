@@ -44,12 +44,25 @@ export function OrderPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [receipt, setReceipt] = useState<OrderReceipt | null>(null);
+  // Styles whose size rows show an unsaved change under 6 pieces. The order waits until they are fixed.
+  const [shortStyles, setShortStyles] = useState<ReadonlySet<string>>(() => new Set());
   const idempotency = useRef<{ cartSignature: string; key: string } | null>(null);
   const productBySlug = useMemo(
     () => new Map(allProducts.map((product) => [product.slug, product])),
     [],
   );
   const cartSignature = JSON.stringify(entries);
+  const hasShortStyle = summary.lines.some((line) => shortStyles.has(line.productSlug));
+
+  function markShort(slug: string, isShort: boolean) {
+    setShortStyles((current) => {
+      if (current.has(slug) === isShort) return current;
+      const next = new Set(current);
+      if (isShort) next.add(slug);
+      else next.delete(slug);
+      return next;
+    });
+  }
 
   if (receipt) {
     return (
@@ -164,7 +177,14 @@ export function OrderPage() {
           {summary.lines.map((line) => {
             const product = productBySlug.get(line.productSlug);
             if (!product) return null;
-            return <OrderLineItem key={line.productSlug} product={product} lineTotalLkr={line.lineTotalLkr} />;
+            return (
+              <OrderLineItem
+                key={line.productSlug}
+                product={product}
+                lineTotalLkr={line.lineTotalLkr}
+                onShortChange={(isShort) => markShort(line.productSlug, isShort)}
+              />
+            );
           })}
         </div>
 
@@ -230,9 +250,15 @@ export function OrderPage() {
             </p>
           ) : null}
 
+          {hasShortStyle ? (
+            <p className="text-sm leading-6 text-[var(--danger)]">
+              Each style needs 6 pieces or more before you place the order.
+            </p>
+          ) : null}
+
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || hasShortStyle}
             className="flex min-h-12 w-full items-center justify-center bg-[var(--ink)] px-6 text-sm font-semibold uppercase tracking-[0.08em] text-white disabled:opacity-60"
           >
             {isSubmitting ? "Placing order..." : "Place order"}
@@ -244,7 +270,15 @@ export function OrderPage() {
   );
 }
 
-function OrderLineItem({ product, lineTotalLkr }: { product: CatalogProductView; lineTotalLkr: number }) {
+function OrderLineItem({
+  product,
+  lineTotalLkr,
+  onShortChange,
+}: {
+  product: CatalogProductView;
+  lineTotalLkr: number;
+  onShortChange: (isShort: boolean) => void;
+}) {
   const line = useOrderLine(product);
   const [showSizes, setShowSizes] = useState(false);
   // A size change that drops under 6 stays here as a draft until it is valid again.
@@ -253,8 +287,14 @@ function OrderLineItem({ product, lineTotalLkr }: { product: CatalogProductView;
   const href = `/products/${product.slug}`;
 
   function changeSplit(next: SizeSplit) {
-    if (sumSplit(next) >= MIN_ORDER_QUANTITY && line.setSplit(next)) setDraft(null);
-    else setDraft(next);
+    const saved = sumSplit(next) >= MIN_ORDER_QUANTITY && line.setSplit(next);
+    setDraft(saved ? null : next);
+    onShortChange(!saved);
+  }
+
+  function remove() {
+    onShortChange(false);
+    line.remove();
   }
 
   return (
@@ -301,7 +341,7 @@ function OrderLineItem({ product, lineTotalLkr }: { product: CatalogProductView;
 
         <button
           type="button"
-          onClick={line.remove}
+          onClick={remove}
           className="mt-2 min-h-11 text-xs text-[var(--danger)] underline underline-offset-4"
         >
           Remove

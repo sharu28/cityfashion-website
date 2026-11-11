@@ -120,6 +120,21 @@ describe("OrderPage", () => {
     expect(localStorage.getItem(storageKey)).toContain('"quantity":6');
   });
 
+  it("blocks placing the order while a size change is under 6", async () => {
+    const user = userEvent.setup();
+    renderOrderPage();
+
+    await user.click(await screen.findByRole("button", { name: "Remove one piece, size M" }));
+
+    expect(screen.getByRole("button", { name: "Place order" })).toBeDisabled();
+    expect(screen.getByText("Each style needs 6 pieces or more before you place the order.")).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Add one piece, size L" }));
+
+    expect(screen.getByRole("button", { name: "Place order" })).toBeEnabled();
+    expect(screen.queryByText("Each style needs 6 pieces or more before you place the order.")).not.toBeInTheDocument();
+  });
+
   it("keeps the single quantity control for a style without sizes", async () => {
     const user = userEvent.setup();
     renderWith([{ productSlug: "style-1710", quantity: 6 }]);
