@@ -189,6 +189,33 @@
     "sourceFolder": "1630"
   },
   {
+    "id": "1750",
+    "slug": "style-1750-printed-shirt-and-pant-set",
+    "title": "Style 1750 Printed Shirt and Pant Set",
+    "category": "top-and-pant-sets",
+    "startingPrice": "Rs. 2,275",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Printed long shirt and straight pant set in four prints for ladies wear retailers.",
+    "colors": [
+      "Navy Floral",
+      "Maroon White Abstract",
+      "Black White Leaf",
+      "Teal Maroon Swirl"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-1750-printed-shirt-and-pant-set/01-d1750-navy-floral-shirt-pant-set.webp",
+      "/products/style-1750-printed-shirt-and-pant-set/02-d1750-maroon-white-abstract-shirt-pant-set.webp",
+      "/products/style-1750-printed-shirt-and-pant-set/03-d1750-black-white-leaf-shirt-pant-set.webp",
+      "/products/style-1750-printed-shirt-and-pant-set/04-d1750-teal-maroon-swirl-shirt-pant-set.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "1750"
+  },
+  {
     "id": "1710",
     "slug": "style-1710",
     "title": "Style 1710",
@@ -503,6 +530,39 @@
     "sourceFolder": "3042"
   },
   {
+    "id": "3060",
+    "slug": "style-3060-bandhani-print-frock",
+    "title": "Style 3060 Bandhani Print Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 2,350",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Printed frock with a decorated yoke and a gathered skirt in five colors for ladies wear retailers.",
+    "colors": [
+      "Rust Red",
+      "Purple",
+      "Green",
+      "Wine",
+      "Black Brown"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-3060-bandhani-print-frock/01-d3060-rust-bandhani-frock.webp",
+      "/products/style-3060-bandhani-print-frock/02-d3060-purple-bandhani-frock.webp",
+      "/products/style-3060-bandhani-print-frock/03-d3060-green-bandhani-frock.webp",
+      "/products/style-3060-bandhani-print-frock/04-d3060-wine-bandhani-frock.webp",
+      "/products/style-3060-bandhani-print-frock/05-d3060-black-brown-bandhani-frock.webp",
+      "/products/style-3060-bandhani-print-frock/06-d3060-rust-bandhani-frock-close.webp",
+      "/products/style-3060-bandhani-print-frock/07-d3060-purple-bandhani-frock-doorway.webp",
+      "/products/style-3060-bandhani-print-frock/08-d3060-green-bandhani-frock-close.webp",
+      "/products/style-3060-bandhani-print-frock/09-d3060-black-brown-bandhani-frock-close.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "3060"
+  },
+  {
     "id": "3095",
     "slug": "style-3095",
     "title": "Style 3095",
@@ -751,6 +811,39 @@
     ],
     "cloudinaryImages": [],
     "sourceFolder": "4060"
+  },
+  {
+    "id": "4070",
+    "slug": "style-4070-embroidered-ruffle-tunic",
+    "title": "Style 4070 Embroidered Ruffle Tunic",
+    "category": "embroidered-tops",
+    "startingPrice": "Rs. 1,500",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Knee-length button-front tunic with embroidered cuffs and a ruffle hem in seven colors for ladies wear retailers.",
+    "colors": [
+      "Coral Red",
+      "Maroon",
+      "Mustard",
+      "White",
+      "Cream",
+      "Sage Green",
+      "Soft Pink"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-4070-embroidered-ruffle-tunic/01-d4070-coral-red-embroidered-tunic.webp",
+      "/products/style-4070-embroidered-ruffle-tunic/02-d4070-maroon-embroidered-tunic.webp",
+      "/products/style-4070-embroidered-ruffle-tunic/03-d4070-mustard-embroidered-tunic.webp",
+      "/products/style-4070-embroidered-ruffle-tunic/04-d4070-white-embroidered-tunic.webp",
+      "/products/style-4070-embroidered-ruffle-tunic/05-d4070-cream-embroidered-tunic.webp",
+      "/products/style-4070-embroidered-ruffle-tunic/06-d4070-sage-green-embroidered-tunic.webp",
+      "/products/style-4070-embroidered-ruffle-tunic/07-d4070-soft-pink-embroidered-tunic.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4070"
   },
   {
     "id": "4080",
