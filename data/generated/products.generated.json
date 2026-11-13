@@ -333,6 +333,35 @@
     "sourceFolder": "2035"
   },
   {
+    "id": "266",
+    "slug": "style-266-striped-lungi-set",
+    "title": "Style 266 Striped Lungi Set",
+    "category": "lungi-sets",
+    "startingPrice": "Rs. 1,750",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Striped raw silk top and lungi set with a chevron V neck in five colors for ladies wear retailers.",
+    "colors": [
+      "Teal Blue Stripe",
+      "Mustard Black Stripe",
+      "Magenta Cream Stripe",
+      "Rust Cream Stripe",
+      "Olive Black Stripe"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-266-striped-lungi-set/01-d266-teal-blue-stripe-lungi-set.webp",
+      "/products/style-266-striped-lungi-set/02-d266-mustard-black-stripe-lungi-set.webp",
+      "/products/style-266-striped-lungi-set/03-d266-magenta-cream-stripe-lungi-set.webp",
+      "/products/style-266-striped-lungi-set/04-d266-rust-cream-stripe-lungi-set.webp",
+      "/products/style-266-striped-lungi-set/05-d266-olive-black-stripe-lungi-set.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "266"
+  },
+  {
     "id": "3003 V-3",
     "slug": "style-3003-v-3",
     "title": "Style 3003 V-3",
@@ -657,6 +686,41 @@
     "sourceFolder": "4000"
   },
   {
+    "id": "4015",
+    "slug": "style-4015-printed-rayon-frock",
+    "title": "Style 4015 Printed Rayon Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,500",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Calf-length rayon frock with a round neck, button placket and tiered skirt in eight prints for ladies wear retailers.",
+    "colors": [
+      "Pink Leaf",
+      "Teal Leaf",
+      "Mustard Leaf",
+      "Black Leaf",
+      "Red Leaf",
+      "Red Pink Tie Dye",
+      "Aqua Tie Dye",
+      "Magenta Tie Dye"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-4015-printed-rayon-frock/01-d4015-pink-leaf-printed-frock.webp",
+      "/products/style-4015-printed-rayon-frock/02-d4015-teal-leaf-printed-frock.webp",
+      "/products/style-4015-printed-rayon-frock/03-d4015-mustard-leaf-printed-frock.webp",
+      "/products/style-4015-printed-rayon-frock/04-d4015-black-leaf-printed-frock.webp",
+      "/products/style-4015-printed-rayon-frock/05-d4015-red-leaf-printed-frock.webp",
+      "/products/style-4015-printed-rayon-frock/06-d4015-red-pink-tie-dye-printed-frock.webp",
+      "/products/style-4015-printed-rayon-frock/07-d4015-aqua-tie-dye-printed-frock.webp",
+      "/products/style-4015-printed-rayon-frock/08-d4015-magenta-tie-dye-printed-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4015"
+  },
+  {
     "id": "4060",
     "slug": "style-4060-printed-button-frock",
     "title": "Style 4060 Printed Button Frock",
@@ -719,6 +783,43 @@
       "https://res.cloudinary.com/ds4xc6fcf/image/upload/c_limit,f_auto,q_auto,w_1200/v1776596434/cityfashion/products/style-4080/img-7398-1?_a=BAMAOGWO0"
     ],
     "sourceFolder": "4080"
+  },
+  {
+    "id": "4090",
+    "slug": "style-4090-embroidered-tunic",
+    "title": "Style 4090 Embroidered Tunic",
+    "category": "embroidered-tops",
+    "startingPrice": "Rs. 1,800",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Knee-length tiered tunic with a band collar, pearl buttons and gold sleeve embroidery in nine colors for ladies wear retailers.",
+    "colors": [
+      "Magenta Purple",
+      "Royal Blue",
+      "Mustard",
+      "Camel Brown",
+      "Maroon",
+      "White Grey",
+      "Teal",
+      "Cobalt Blue",
+      "Black"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-4090-embroidered-tunic/01-d4090-magenta-purple-embroidered-tunic.webp",
+      "/products/style-4090-embroidered-tunic/02-d4090-royal-blue-embroidered-tunic.webp",
+      "/products/style-4090-embroidered-tunic/03-d4090-mustard-embroidered-tunic.webp",
+      "/products/style-4090-embroidered-tunic/04-d4090-camel-brown-embroidered-tunic.webp",
+      "/products/style-4090-embroidered-tunic/05-d4090-maroon-embroidered-tunic.webp",
+      "/products/style-4090-embroidered-tunic/06-d4090-white-grey-embroidered-tunic.webp",
+      "/products/style-4090-embroidered-tunic/07-d4090-teal-embroidered-tunic.webp",
+      "/products/style-4090-embroidered-tunic/08-d4090-cobalt-blue-embroidered-tunic.webp",
+      "/products/style-4090-embroidered-tunic/09-d4090-black-embroidered-tunic.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4090"
   },
   {
     "id": "4110",
