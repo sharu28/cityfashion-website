@@ -4,6 +4,9 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat"],
+  // Runs before every `wrangler deploy` (including Workers Builds on push to main), after
+  // `opennextjs-cloudflare build`, so the prerendered pages ship as static assets.
+  "build": { "command": "node scripts/copy-static-cache.mjs" },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
