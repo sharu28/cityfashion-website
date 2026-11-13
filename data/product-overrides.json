@@ -1341,5 +1341,75 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "3106": {
+    "title": "Style 3106 Belted Printed Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 2,850",
+    "moq": "6 pcs",
+    "description": "Belted printed frock with a collar and gathered skirt in twelve prints for ladies wear retailers.",
+    "imageOrder": [
+      "01-D3106-coral-red-belted-frock.png",
+      "02-D3106-sky-blue-belted-frock.png",
+      "03-D3106-grey-abstract-belted-frock.png",
+      "04-D3106-taupe-brown-stripe-belted-frock.png",
+      "05-D3106-orange-tie-dye-belted-frock.png",
+      "06-D3106-mauve-stripe-belted-frock.png",
+      "07-D3106-maroon-abstract-belted-frock.png",
+      "08-D3106-black-white-abstract-belted-frock.png",
+      "09-D3106-yellow-tie-dye-belted-frock.png",
+      "10-D3106-aqua-tie-dye-belted-frock.png",
+      "11-D3106-charcoal-abstract-belted-frock.png",
+      "12-D3106-green-stripe-belted-frock.png"
+    ],
+    "colors": [
+      "Coral Red",
+      "Sky Blue",
+      "Grey Abstract",
+      "Taupe Brown Stripe",
+      "Orange Tie Dye",
+      "Mauve Stripe",
+      "Maroon Abstract",
+      "Black White Abstract",
+      "Yellow Tie Dye",
+      "Aqua Tie Dye",
+      "Charcoal Abstract",
+      "Green Stripe"
+    ],
+    "notes": "Twelve finished studio pictures made earlier from the dummy and folded photos: one model, one plain backdrop, a near-identical pose in each. Price is the median of 3 wholesale invoices.",
+    "odooProductId": 426,
+    "odooDesignKey": "D3106",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "4096": {
+    "title": "Style 4096 Embroidered Top and Pant Set",
+    "category": "top-and-pant-sets",
+    "startingPrice": "Rs. 2,500",
+    "moq": "6 pcs",
+    "description": "Embroidered top and wide pant set in four colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D4096-blue-embroidered-top-pant-set.png",
+      "02-D4096-aqua-embroidered-top-pant-set.png",
+      "03-D4096-maroon-embroidered-top-pant-set.png",
+      "04-D4096-white-embroidered-top-pant-set.png"
+    ],
+    "colors": [
+      "Blue",
+      "Aqua",
+      "Maroon",
+      "White"
+    ],
+    "notes": "Four finished pictures made earlier: one model, one garden bench location. Price is the median of 6 wholesale invoices.",
+    "odooProductId": 559,
+    "odooDesignKey": "D4096",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }
