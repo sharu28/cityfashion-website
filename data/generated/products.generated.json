@@ -621,6 +621,49 @@
     "sourceFolder": "3105"
   },
   {
+    "id": "3106",
+    "slug": "style-3106-belted-printed-frock",
+    "title": "Style 3106 Belted Printed Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 2,850",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Belted printed frock with a collar and gathered skirt in twelve prints for ladies wear retailers.",
+    "colors": [
+      "Coral Red",
+      "Sky Blue",
+      "Grey Abstract",
+      "Taupe Brown Stripe",
+      "Orange Tie Dye",
+      "Mauve Stripe",
+      "Maroon Abstract",
+      "Black White Abstract",
+      "Yellow Tie Dye",
+      "Aqua Tie Dye",
+      "Charcoal Abstract",
+      "Green Stripe"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-3106-belted-printed-frock/01-d3106-coral-red-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/02-d3106-sky-blue-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/03-d3106-grey-abstract-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/04-d3106-taupe-brown-stripe-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/05-d3106-orange-tie-dye-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/06-d3106-mauve-stripe-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/07-d3106-maroon-abstract-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/08-d3106-black-white-abstract-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/09-d3106-yellow-tie-dye-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/10-d3106-aqua-tie-dye-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/11-d3106-charcoal-abstract-belted-frock.webp",
+      "/products/style-3106-belted-printed-frock/12-d3106-green-stripe-belted-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "3106"
+  },
+  {
     "id": "3127",
     "slug": "style-3127",
     "title": "Style 3127",
@@ -913,6 +956,33 @@
     ],
     "cloudinaryImages": [],
     "sourceFolder": "4090"
+  },
+  {
+    "id": "4096",
+    "slug": "style-4096-embroidered-top-and-pant-set",
+    "title": "Style 4096 Embroidered Top and Pant Set",
+    "category": "top-and-pant-sets",
+    "startingPrice": "Rs. 2,500",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Embroidered top and wide pant set in four colors for ladies wear retailers.",
+    "colors": [
+      "Blue",
+      "Aqua",
+      "Maroon",
+      "White"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-4096-embroidered-top-and-pant-set/01-d4096-blue-embroidered-top-pant-set.webp",
+      "/products/style-4096-embroidered-top-and-pant-set/02-d4096-aqua-embroidered-top-pant-set.webp",
+      "/products/style-4096-embroidered-top-and-pant-set/03-d4096-maroon-embroidered-top-pant-set.webp",
+      "/products/style-4096-embroidered-top-and-pant-set/04-d4096-white-embroidered-top-pant-set.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "4096"
   },
   {
     "id": "4110",
