@@ -1147,5 +1147,106 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "266": {
+    "title": "Style 266 Striped Lungi Set",
+    "category": "lungi-sets",
+    "startingPrice": "Rs. 1,750",
+    "moq": "6 pcs",
+    "description": "Striped raw silk top and lungi set with a chevron V neck in five colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D266-teal-blue-stripe-lungi-set.png",
+      "02-D266-mustard-black-stripe-lungi-set.png",
+      "03-D266-magenta-cream-stripe-lungi-set.png",
+      "04-D266-rust-cream-stripe-lungi-set.png",
+      "05-D266-olive-black-stripe-lungi-set.png"
+    ],
+    "colors": [
+      "Teal Blue Stripe",
+      "Mustard Black Stripe",
+      "Magenta Cream Stripe",
+      "Rust Cream Stripe",
+      "Olive Black Stripe"
+    ],
+    "notes": "Five-picture D266 set made 2026-11-13 from the dummy photos: one model, one colonial verandah location, a different pose and footwear in each picture. Price is an estimate: no wholesale invoices exist, so it is about 70 percent of two retail pieces.",
+    "odooProductId": 556,
+    "odooDesignKey": "D266",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "4015": {
+    "title": "Style 4015 Printed Rayon Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,500",
+    "moq": "6 pcs",
+    "description": "Calf-length rayon frock with a round neck, button placket and tiered skirt in eight prints for ladies wear retailers.",
+    "imageOrder": [
+      "01-D4015-pink-leaf-printed-frock.png",
+      "02-D4015-teal-leaf-printed-frock.png",
+      "03-D4015-mustard-leaf-printed-frock.png",
+      "04-D4015-black-leaf-printed-frock.png",
+      "05-D4015-red-leaf-printed-frock.png",
+      "06-D4015-red-pink-tie-dye-printed-frock.png",
+      "07-D4015-aqua-tie-dye-printed-frock.png",
+      "08-D4015-magenta-tie-dye-printed-frock.png"
+    ],
+    "colors": [
+      "Pink Leaf",
+      "Teal Leaf",
+      "Mustard Leaf",
+      "Black Leaf",
+      "Red Leaf",
+      "Red Pink Tie Dye",
+      "Aqua Tie Dye",
+      "Magenta Tie Dye"
+    ],
+    "notes": "Eight-picture D4015 set made 2026-11-13 from product renders of each print: one model, one coconut-grove location, a different pose and footwear in each picture. Price is the median of 15 wholesale invoices.",
+    "odooProductId": 449,
+    "odooDesignKey": "D4015",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "4090": {
+    "title": "Style 4090 Embroidered Tunic",
+    "category": "embroidered-tops",
+    "startingPrice": "Rs. 1,800",
+    "moq": "6 pcs",
+    "description": "Knee-length tiered tunic with a band collar, pearl buttons and gold sleeve embroidery in nine colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D4090-magenta-purple-embroidered-tunic.png",
+      "02-D4090-royal-blue-embroidered-tunic.png",
+      "03-D4090-mustard-embroidered-tunic.png",
+      "04-D4090-camel-brown-embroidered-tunic.png",
+      "05-D4090-maroon-embroidered-tunic.png",
+      "06-D4090-white-grey-embroidered-tunic.png",
+      "07-D4090-teal-embroidered-tunic.png",
+      "08-D4090-cobalt-blue-embroidered-tunic.png",
+      "09-D4090-black-embroidered-tunic.png"
+    ],
+    "colors": [
+      "Magenta Purple",
+      "Royal Blue",
+      "Mustard",
+      "Camel Brown",
+      "Maroon",
+      "White Grey",
+      "Teal",
+      "Cobalt Blue",
+      "Black"
+    ],
+    "notes": "Nine-picture D4090 set made 2026-11-13 from the dummy and flat-lay phone photos: one model, one cafe terrace location, a different pose and footwear in each picture. Models wear plain black trousers that are not part of the product. Price is the median of 13 wholesale invoices.",
+    "odooProductId": 547,
+    "odooDesignKey": "D4090",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }
