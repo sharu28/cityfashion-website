@@ -333,6 +333,76 @@
     "sourceFolder": "1900"
   },
   {
+    "id": "1950",
+    "slug": "style-1950-embroidered-border-top",
+    "title": "Style 1950 Embroidered Border Top",
+    "category": "embroidered-tops",
+    "startingPrice": "Rs. 1,650",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Knee-length top with a band collar, pearl buttons and an embroidered hem border in eight colors for ladies wear retailers.",
+    "colors": [
+      "Mustard",
+      "Navy",
+      "Maroon",
+      "Steel Blue",
+      "Plum",
+      "Dusty Rose",
+      "Light Grey",
+      "Red"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-1950-embroidered-border-top/01-d1950-mustard-embroidered-top.webp",
+      "/products/style-1950-embroidered-border-top/02-d1950-navy-embroidered-top.webp",
+      "/products/style-1950-embroidered-border-top/03-d1950-maroon-embroidered-top.webp",
+      "/products/style-1950-embroidered-border-top/04-d1950-steel-blue-embroidered-top.webp",
+      "/products/style-1950-embroidered-border-top/05-d1950-plum-embroidered-top.webp",
+      "/products/style-1950-embroidered-border-top/06-d1950-dusty-rose-embroidered-top.webp",
+      "/products/style-1950-embroidered-border-top/07-d1950-light-grey-embroidered-top.webp",
+      "/products/style-1950-embroidered-border-top/08-d1950-red-embroidered-top.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "1950"
+  },
+  {
+    "id": "2001",
+    "slug": "style-2001-bell-plazo-pant",
+    "title": "Style 2001 Bell Plazo Pant",
+    "category": "plaza-pants",
+    "startingPrice": "Rs. 900",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Wide-leg pleated plazo pant with a flared bell shape in eight colors for ladies wear retailers.",
+    "colors": [
+      "Tan Beige",
+      "White",
+      "Teal",
+      "Dark Brown",
+      "Black",
+      "Royal Blue",
+      "Red",
+      "Slate Grey"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-2001-bell-plazo-pant/01-d2001-tan-beige-bell-plazo-pant.webp",
+      "/products/style-2001-bell-plazo-pant/02-d2001-white-bell-plazo-pant.webp",
+      "/products/style-2001-bell-plazo-pant/03-d2001-teal-bell-plazo-pant.webp",
+      "/products/style-2001-bell-plazo-pant/04-d2001-dark-brown-bell-plazo-pant.webp",
+      "/products/style-2001-bell-plazo-pant/05-d2001-black-bell-plazo-pant.webp",
+      "/products/style-2001-bell-plazo-pant/06-d2001-royal-blue-bell-plazo-pant.webp",
+      "/products/style-2001-bell-plazo-pant/07-d2001-red-bell-plazo-pant.webp",
+      "/products/style-2001-bell-plazo-pant/08-d2001-slate-grey-bell-plazo-pant.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "2001"
+  },
+  {
     "id": "2035",
     "slug": "style-2035-printed-frock",
     "title": "Style 2035 Printed Frock",

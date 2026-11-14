@@ -1411,5 +1411,75 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "2001": {
+    "title": "Style 2001 Bell Plazo Pant",
+    "category": "plaza-pants",
+    "startingPrice": "Rs. 900",
+    "moq": "6 pcs",
+    "description": "Wide-leg pleated plazo pant with a flared bell shape in eight colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D2001-tan-beige-bell-plazo-pant.png",
+      "02-D2001-white-bell-plazo-pant.png",
+      "03-D2001-teal-bell-plazo-pant.png",
+      "04-D2001-dark-brown-bell-plazo-pant.png",
+      "05-D2001-black-bell-plazo-pant.png",
+      "06-D2001-royal-blue-bell-plazo-pant.png",
+      "07-D2001-red-bell-plazo-pant.png",
+      "08-D2001-slate-grey-bell-plazo-pant.png"
+    ],
+    "colors": [
+      "Tan Beige",
+      "White",
+      "Teal",
+      "Dark Brown",
+      "Black",
+      "Royal Blue",
+      "Red",
+      "Slate Grey"
+    ],
+    "notes": "Eight-picture D2001 set made 2026-11-14 from the dummy and flat-lay photos: one model, one heritage courtyard location, a different pose and footwear in each picture. The model wears a plain black top that is not part of the product. Price is the median of only 3 wholesale invoices.",
+    "odooProductId": 107,
+    "odooDesignKey": "D2001",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
+  },
+  "1950": {
+    "title": "Style 1950 Embroidered Border Top",
+    "category": "embroidered-tops",
+    "startingPrice": "Rs. 1,650",
+    "moq": "6 pcs",
+    "description": "Knee-length top with a band collar, pearl buttons and an embroidered hem border in eight colors for ladies wear retailers.",
+    "imageOrder": [
+      "01-D1950-mustard-embroidered-top.png",
+      "02-D1950-navy-embroidered-top.png",
+      "03-D1950-maroon-embroidered-top.png",
+      "04-D1950-steel-blue-embroidered-top.png",
+      "05-D1950-plum-embroidered-top.png",
+      "06-D1950-dusty-rose-embroidered-top.png",
+      "07-D1950-light-grey-embroidered-top.png",
+      "08-D1950-red-embroidered-top.png"
+    ],
+    "colors": [
+      "Mustard",
+      "Navy",
+      "Maroon",
+      "Steel Blue",
+      "Plum",
+      "Dusty Rose",
+      "Light Grey",
+      "Red"
+    ],
+    "notes": "Eight-picture D1950 set made 2026-11-14 from the dummy and flat-lay photos: one model, one whitewashed lane location, a different pose and footwear in each picture. The model wears plain white trousers that are not part of the product. Price is the median of 21 wholesale invoices.",
+    "odooProductId": 527,
+    "odooDesignKey": "D1950",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }
