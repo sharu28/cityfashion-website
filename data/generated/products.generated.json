@@ -107,6 +107,27 @@
     "sourceFolder": "1490"
   },
   {
+    "id": "1540",
+    "slug": "style-1540-golden-thattu-frock",
+    "title": "Style 1540 Golden Thattu Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,950",
+    "unitPriceLkr": null,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Ankle-length tiered frock with a band collar, a gold printed yoke and a gathered skirt for ladies wear retailers.",
+    "colors": [
+      "Royal Blue"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-1540-golden-thattu-frock/01-d1540-royal-blue-golden-thattu-frock.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "1540"
+  },
+  {
     "id": "1570 KY Bamboo",
     "slug": "style-1570-ky-bamboo",
     "title": "Style 1570 KY Bamboo",
