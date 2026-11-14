@@ -1481,5 +1481,26 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "1540": {
+    "title": "Style 1540 Golden Thattu Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 1,950",
+    "moq": "6 pcs",
+    "description": "Ankle-length tiered frock with a band collar, a gold printed yoke and a gathered skirt for ladies wear retailers.",
+    "imageOrder": [
+      "01-D1540-royal-blue-golden-thattu-frock.png"
+    ],
+    "colors": [
+      "Royal Blue"
+    ],
+    "notes": "One-picture D1540 set made 2026-11-14 from the blue front and back photos: one model, one frangipani garden location. Blue is the only colour in the photos. Price is the median of 78 wholesale invoices.",
+    "odooProductId": 225,
+    "odooDesignKey": "D1540",
+    "odooSyncMode": "mapped",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }
