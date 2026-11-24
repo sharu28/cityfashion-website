@@ -1,5 +1,5 @@
 import products from "../../data/generated/products.generated.json";
-import { company, whatsappNumber } from "@/lib/site";
+import { company, whatsappUrl } from "@/lib/site";
 
 export const categories = [
   {
@@ -168,5 +168,5 @@ export const buildWhatsAppLink = (product?: CatalogProductView | CatalogProduct)
     ? `Hello City Fashion, I want ${product.title} (${product.id}). Please send price, colors, and order details.`
     : "Hello City Fashion, please send your latest wholesale styles and prices.";
 
-  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  return `${whatsappUrl}?text=${encodeURIComponent(message)}`;
 };

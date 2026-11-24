@@ -8,19 +8,37 @@ import { ProductGrid } from "@/components/product-grid";
 import { ProductTile } from "@/components/product-tile";
 import { SectionTitle } from "@/components/section-title";
 import { allProducts, buildWhatsAppLink, featuredProducts, newArrivals, retailerDeals } from "@/lib/catalog";
-import { company, formattedWhatsAppNumber, getAbsoluteUrl, siteDescription } from "@/lib/site";
+import { catalogShareDescription, catalogShareTitle, shareMetadata } from "@/lib/share-metadata";
+import { company, formattedWhatsAppNumber, getAbsoluteUrl, phoneNumber, siteDescription, whatsappUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  openGraph: {
-    url: getAbsoluteUrl("/"),
-  },
-  twitter: {
-    images: [getAbsoluteUrl("/twitter-image")],
-  },
+  ...shareMetadata("/", catalogShareTitle, catalogShareDescription),
   description: siteDescription,
+};
+
+const businessStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "@id": getAbsoluteUrl("/#business"),
+  name: company.name,
+  description: siteDescription,
+  url: getAbsoluteUrl(),
+  telephone: phoneNumber,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: company.streetAddress,
+    addressLocality: company.addressLocality,
+    addressCountry: "LK",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: phoneNumber,
+    url: whatsappUrl,
+  },
 };
 
 const homepageNewArrivalSlugs = [
@@ -55,6 +73,10 @@ export default function Home() {
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessStructuredData).replace(/</g, "\\u003c") }}
+      />
       <HeroCarousel slides={heroSlides} />
 
       <CategoryTabs className="mt-6" />

@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 import { CategoryTabs } from "@/components/category-tabs";
 import { ProductBrowser } from "@/components/product-browser";
 import { getCategory, populatedCategories, productsByCategory } from "@/lib/catalog";
-import { formattedWhatsAppNumber, getAbsoluteUrl, siteName } from "@/lib/site";
+import { shareMetadata } from "@/lib/share-metadata";
+import { formattedWhatsAppNumber, siteName, whatsappUrl } from "@/lib/site";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -37,14 +38,11 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     alternates: {
       canonical: `/category/${category.slug}`,
     },
-    openGraph: {
-      title: `${category.name} | ${siteName}`,
-      description,
-      url: getAbsoluteUrl(`/category/${category.slug}`),
-    },
-    twitter: {
-      images: [getAbsoluteUrl("/twitter-image")],
-    },
+    ...shareMetadata(
+      `/category/${category.slug}`,
+      `${category.name} | ${siteName}`,
+      `${description} WhatsApp ${formattedWhatsAppNumber}.`,
+    ),
   };
 }
 
@@ -82,7 +80,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       <p className="mt-10 border-t border-[var(--line)] px-4 pt-5 text-sm leading-6 text-[var(--text-soft)] sm:px-6 lg:px-10">
-        Need help with sizes? Message {formattedWhatsAppNumber} with the style codes you like.
+        Need help with sizes? Message{" "}
+        <a href={whatsappUrl} className="underline underline-offset-4">
+          {formattedWhatsAppNumber}
+        </a>{" "}
+        on WhatsApp with the style codes you like.
       </p>
     </main>
   );

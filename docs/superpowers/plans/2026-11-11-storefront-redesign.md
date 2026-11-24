@@ -111,7 +111,7 @@ replace their tests.
     Expect a link named /City Fashion home/ and a link to `/order` whose name contains "Order, 0 styles".
   - `category tabs mark the active category`: render `<CategoryTabs activeSlug="frocks"/>`. Expect
     `getByRole("link",{name:"Frocks"})` to have `aria-current="page"`, and a link "All".
-  - `whatsapp float links to the shop number`: href contains `wa.me/94783232414`, name "Chat on WhatsApp".
+  - `whatsapp float links to the shop number`: href uses the shop's WhatsApp URL, name "Chat on WhatsApp".
 - [ ] **Step 2:** Run `npx vitest run tests/site-shell.test.tsx`. Expect a FAIL (missing modules).
 - [ ] **Step 3: Implement**
   - `globals.css`: replace the `:root` tokens with the Global Constraints colours (keep the token names

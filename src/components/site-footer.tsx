@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { CookieSettingsButton } from "@/components/cookie-consent";
 import { buildWhatsAppLink, populatedCategories } from "@/lib/catalog";
-import { company, formattedWhatsAppNumber } from "@/lib/site";
+import { company, formattedWhatsAppNumber, phoneNumber } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -17,7 +17,11 @@ export function SiteFooter() {
 
         <div className="space-y-3">
           <p className="label text-[var(--text-soft)]">Contact</p>
-          <p className="font-semibold">{formattedWhatsAppNumber}</p>
+          <p>
+            <a href={`tel:${phoneNumber}`} className="font-semibold underline underline-offset-4">
+              {formattedWhatsAppNumber}
+            </a>
+          </p>
           <p className="text-[var(--text-soft)]">{company.address}</p>
           <a
             href={buildWhatsAppLink()}
