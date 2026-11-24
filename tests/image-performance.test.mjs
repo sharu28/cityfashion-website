@@ -4,6 +4,21 @@ import test from "node:test";
 
 const read = (path) => fs.readFileSync(path, "utf8");
 
+test("local product photos get build-time variants at the same widths the loader asks for", () => {
+  const widths = (source) => source.match(/variantWidths = \[([^\]]+)\]/)?.[1].replace(/\s/g, "");
+  const script = read("scripts/make-image-variants.mjs");
+  const loader = read("src/lib/image-loader.ts");
+  const pkg = JSON.parse(read("package.json"));
+  const headers = read("public/_headers");
+
+  assert.ok(widths(script));
+  assert.equal(widths(loader), widths(script));
+  assert.match(pkg.scripts.build, /npm run image-variants && next build/);
+  assert.match(read(".gitignore"), /^\/public\/_img\/$/m);
+  assert.match(headers, /\/products\/\*\n\s+Cache-Control: public, max-age=604800/);
+  assert.match(headers, /\/_img\/\*\n\s+Cache-Control: public, max-age=604800/);
+});
+
 test("images stay resized through the Cloudinary loader with bounded responsive widths", () => {
   const config = read("next.config.ts");
 

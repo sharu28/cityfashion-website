@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "check": "tsc --noEmit && eslint .",
-    "build": "npm run check && next build",
+    "build": "npm run check && npm run image-variants && next build",
+    "image-variants": "node scripts/make-image-variants.mjs",
     "start": "next start",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
