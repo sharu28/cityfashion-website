@@ -1,0 +1,8 @@
+# Cloudflare Workers static-asset headers (copied into .open-next/assets at build).
+# Product photos only change when a style is re-imported, so let browsers and the
+# Cloudflare edge keep them for a week instead of re-checking on every visit.
+/products/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/_img/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400

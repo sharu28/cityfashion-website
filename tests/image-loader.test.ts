@@ -17,8 +17,15 @@ describe("image loader", () => {
     );
   });
 
-  it("leaves local product images and other hosts unchanged", () => {
-    expect(imageLoader({ src: "/products/style-1390/1.webp", width: 640 })).toBe("/products/style-1390/1.webp");
+  it("points local product photos at the smallest build-time copy that is wide enough", () => {
+    expect(imageLoader({ src: "/products/style-1390/1.webp", width: 160 })).toBe("/_img/w320/products/style-1390/1.webp");
+    expect(imageLoader({ src: "/products/style-1390/1.webp", width: 640 })).toBe("/_img/w640/products/style-1390/1.webp");
+    expect(imageLoader({ src: "/products/style-1390/1.webp", width: 750 })).toBe("/_img/w828/products/style-1390/1.webp");
+    expect(imageLoader({ src: "/products/style-1390/1.webp", width: 3840 })).toBe("/_img/w1200/products/style-1390/1.webp");
+  });
+
+  it("leaves other local files and other hosts unchanged", () => {
+    expect(imageLoader({ src: "/share-catalog-cover.png", width: 640 })).toBe("/share-catalog-cover.png");
     expect(imageLoader({ src: "https://example.com/a.jpg", width: 640 })).toBe("https://example.com/a.jpg");
   });
 });

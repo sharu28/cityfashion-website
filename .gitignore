@@ -25,3 +25,6 @@ supabase/.temp/
 !.dev.vars.example
 test-results/
 playwright-report/
+
+# Resized product photos, made by scripts/make-image-variants.mjs at build time
+/public/_img/
