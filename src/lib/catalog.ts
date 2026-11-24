@@ -145,6 +145,7 @@ export const featuredProducts = [...allProducts].sort((a, b) => badgeScore(b) - 
 
 // Newest launches first: shown at the top of New arrivals and of their category.
 export const spotlightSlugs = [
+  "style-3501-printed-long-top",
   "style-3500-ajrakh-short-top",
   "style-4118-short-top-china",
   "style-4110-printed-button-frock",
