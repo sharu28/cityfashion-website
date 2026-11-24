@@ -8,6 +8,7 @@ import { ProductPhotoStrip } from "@/components/product-photo-strip";
 import { ProductViewTracker } from "@/components/product-view-tracker";
 import { SectionTitle } from "@/components/section-title";
 import { allProducts, buildWhatsAppLink, getProduct, getRelatedProducts } from "@/lib/catalog";
+import { shareMetadata } from "@/lib/share-metadata";
 import { getAbsoluteUrl, siteName } from "@/lib/site";
 
 type ProductPageProps = {
@@ -41,24 +42,12 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     alternates: {
       canonical: `/products/${product.slug}`,
     },
-    openGraph: {
-      title: `${product.title} | ${siteName}`,
+    ...shareMetadata(
+      `/products/${product.slug}`,
+      `${product.title} | ${siteName}`,
       description,
-      url: getAbsoluteUrl(`/products/${product.slug}`),
-      images: product.coverImage
-        ? [
-            {
-              url: getAbsoluteUrl(product.coverImage),
-              width: 1200,
-              height: 1500,
-              alt: product.title,
-            },
-          ]
-        : undefined,
-    },
-    twitter: {
-      images: [product.coverImage ? getAbsoluteUrl(product.coverImage) : getAbsoluteUrl("/twitter-image")],
-    },
+      product.coverImage ? { url: getAbsoluteUrl(product.coverImage), alt: product.title } : undefined,
+    ),
   };
 }
 

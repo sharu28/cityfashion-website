@@ -1,72 +1,53 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
+import { catalogShareAlt, catalogShareSize } from "@/lib/share-metadata";
 import { company, formattedWhatsAppNumber } from "@/lib/site";
 
-export const alt = "City Fashion wholesale catalog";
-export const size = {
-  width: 1200,
-  height: 630,
-};
+export const alt = catalogShareAlt;
+export const size = catalogShareSize;
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const [photo, icon] = await Promise.all([
+    readFile(join(process.cwd(), "public/share-catalog-cover.png"), "base64"),
+    readFile(join(process.cwd(), "src/app/apple-icon.png"), "base64"),
+  ]);
+
   return new ImageResponse(
     (
-      <div
-        style={{
-          display: "flex",
-          height: "100%",
-          width: "100%",
-          background: "linear-gradient(135deg, #211f1b 0%, #181613 62%, #1f8f59 100%)",
-          color: "white",
-          padding: "56px",
-          fontFamily: "sans-serif",
-        }}
-      >
+      <div style={{ display: "flex", width: "100%", height: "100%", color: "#111111", background: "#f5f5f3" }}>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "100%",
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: "36px",
-            padding: "42px",
-            background: "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
+            justifyContent: "space-between",
+            width: 760,
+            height: 630,
+            padding: "54px 62px",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-              <div style={{ display: "flex", fontSize: 22, letterSpacing: 7, textTransform: "uppercase", opacity: 0.7 }}>
-                Wholesale Catalog
-              </div>
-              <div style={{ display: "flex", fontSize: 82, fontWeight: 800, lineHeight: 0.9, maxWidth: 790 }}>
-                Wholesale ladies wear for Sri Lanka shops.
-              </div>
-              <div style={{ display: "flex", fontSize: 30, opacity: 0.82, maxWidth: 760 }}>
-                {company.retailerLine}. Browse styles, view colors, and order on WhatsApp.
-              </div>
-            </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders directly to PNG. */}
+            <img src={`data:image/png;base64,${icon}`} width={64} height={64} alt="" style={{ borderRadius: 12 }} />
+            <div style={{ fontSize: 32, fontWeight: 700 }}>{company.name}</div>
+          </div>
 
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                <div style={{ display: "flex", fontSize: 34, fontWeight: 700 }}>{company.name}</div>
-                <div style={{ display: "flex", fontSize: 24, opacity: 0.78 }}>{company.address}</div>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  borderRadius: 999,
-                  background: "#1f8f59",
-                  padding: "16px 28px",
-                  fontSize: 28,
-                  fontWeight: 700,
-                }}
-              >
-                WhatsApp {formattedWhatsAppNumber}
-              </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+            <div style={{ display: "flex", flexDirection: "column", fontSize: 81, fontWeight: 700, lineHeight: 1.04 }}>
+              <span>Wholesale</span>
+              <span>ladies wear</span>
             </div>
+            <div style={{ fontSize: 30, color: "#4d4d4d" }}>Order from 6 pieces per style</div>
+          </div>
+
+          <div style={{ display: "flex", fontSize: 28, fontWeight: 700, color: "#105c38" }}>
+            WhatsApp {formattedWhatsAppNumber}
           </div>
         </div>
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders directly to PNG. */}
+        <img src={`data:image/png;base64,${photo}`} width={440} height={630} alt="Peach City Fashion top" />
       </div>
     ),
     size,

@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 import { CategoryTabs } from "@/components/category-tabs";
 import { ProductBrowser } from "@/components/product-browser";
 import { getCategory, populatedCategories, productsByCategory } from "@/lib/catalog";
-import { formattedWhatsAppNumber, getAbsoluteUrl, siteName, whatsappUrl } from "@/lib/site";
+import { shareMetadata } from "@/lib/share-metadata";
+import { formattedWhatsAppNumber, siteName, whatsappUrl } from "@/lib/site";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -37,14 +38,11 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     alternates: {
       canonical: `/category/${category.slug}`,
     },
-    openGraph: {
-      title: `${category.name} | ${siteName}`,
-      description,
-      url: getAbsoluteUrl(`/category/${category.slug}`),
-    },
-    twitter: {
-      images: [getAbsoluteUrl("/twitter-image")],
-    },
+    ...shareMetadata(
+      `/category/${category.slug}`,
+      `${category.name} | ${siteName}`,
+      `${description} WhatsApp ${formattedWhatsAppNumber}.`,
+    ),
   };
 }
 

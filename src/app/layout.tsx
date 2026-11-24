@@ -10,7 +10,8 @@ import { OrderSizesProvider } from "@/components/order-sizes-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
-import { getAbsoluteUrl, siteDescription, siteName, siteUrl } from "@/lib/site";
+import { catalogShareDescription, catalogShareTitle, shareMetadata } from "@/lib/share-metadata";
+import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
 import "./globals.css";
 
@@ -35,33 +36,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  openGraph: {
-    title: `${siteName} | Wholesale ladies wear`,
-    description: siteDescription,
-    url: siteUrl,
-    siteName,
-    type: "website",
-    locale: "en_LK",
-    images: [
-      {
-        url: getAbsoluteUrl("/opengraph-image"),
-        width: 1200,
-        height: 630,
-        alt: `${siteName} wholesale catalog`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteName} | Wholesale ladies wear`,
-    description: siteDescription,
-    images: [getAbsoluteUrl("/twitter-image")],
-  },
-  icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
-  },
+  ...shareMetadata("/", catalogShareTitle, catalogShareDescription),
   keywords: [
     "City Fashion",
     "wholesale ladies wear Sri Lanka",

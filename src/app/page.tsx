@@ -8,18 +8,14 @@ import { ProductGrid } from "@/components/product-grid";
 import { ProductTile } from "@/components/product-tile";
 import { SectionTitle } from "@/components/section-title";
 import { allProducts, buildWhatsAppLink, featuredProducts, newArrivals, retailerDeals } from "@/lib/catalog";
+import { catalogShareDescription, catalogShareTitle, shareMetadata } from "@/lib/share-metadata";
 import { company, formattedWhatsAppNumber, getAbsoluteUrl, phoneNumber, siteDescription, whatsappUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  openGraph: {
-    url: getAbsoluteUrl("/"),
-  },
-  twitter: {
-    images: [getAbsoluteUrl("/twitter-image")],
-  },
+  ...shareMetadata("/", catalogShareTitle, catalogShareDescription),
   description: siteDescription,
 };
 
