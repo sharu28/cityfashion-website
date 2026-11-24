@@ -1,4 +1,4 @@
-import { whatsappNumber } from "@/lib/site";
+import { whatsappUrl } from "@/lib/site";
 import type { SizeQuantity } from "@/lib/sizes";
 
 export type PlaceOrderItem = {
@@ -135,5 +135,5 @@ export function validatePlaceOrderPayload(value: unknown): PlaceOrderPayload {
 
 export function buildOrderSupportWhatsAppLink(reference: string) {
   const message = `Hello City Fashion, I placed order ${reference}.`;
-  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  return `${whatsappUrl}?text=${encodeURIComponent(message)}`;
 }

@@ -32,6 +32,6 @@ describe("site shell", () => {
     render(<WhatsAppFloat />);
 
     const link = screen.getByRole("link", { name: "Chat on WhatsApp" });
-    expect(link.getAttribute("href")).toContain("wa.me/94783232414");
+    expect(link.getAttribute("href")).toContain("wa.me/94761949852");
   });
 });

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { formattedWhatsAppNumber, whatsappNumber } from "@/lib/site";
+import { company, formattedWhatsAppNumber, whatsappUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy",
@@ -50,8 +50,8 @@ export default function PrivacyPage() {
         <section className="border-t border-[var(--line)] pt-6">
           <h2 className="label text-[0.8125rem] text-[var(--ink)]">Questions</h2>
           <p className="mt-3">
-            Contact City Fashion at 131 Keyzer Street, Colombo 11, or on{" "}
-            <a className="font-semibold text-[var(--ink)] underline underline-offset-4" href={`https://wa.me/${whatsappNumber}`}>
+            Contact {company.name} at {company.address}, or on{" "}
+            <a className="font-semibold text-[var(--ink)] underline underline-offset-4" href={whatsappUrl}>
               WhatsApp {formattedWhatsAppNumber}
             </a>
             .

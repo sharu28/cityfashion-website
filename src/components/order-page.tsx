@@ -241,7 +241,7 @@ export function OrderPage() {
               type="tel"
               inputMode="tel"
               autoComplete="tel"
-              placeholder="078 323 2414"
+              placeholder="07X XXX XXXX"
               value={whatsappNumber}
               onChange={(event) => setWhatsappNumber(event.target.value)}
               className={fieldClass}
