@@ -41,11 +41,6 @@ const businessStructuredData = {
   },
 };
 
-const homepageNewArrivalSlugs = [
-  "style-4118-short-top-china",
-  "style-4110-printed-button-frock",
-];
-
 const orderingSteps = [
   { title: "Pick your styles", body: "Tap + on a style. It adds 6 pieces in a mix of sizes." },
   { title: "Check your order", body: "Change sizes or pieces if you want. 6 pieces or more a style." },
@@ -53,13 +48,8 @@ const orderingSteps = [
 ];
 
 export default function Home() {
-  const homepageNewArrivals = [
-    ...homepageNewArrivalSlugs
-      .map((slug) => newArrivals.find((product) => product.slug === slug))
-      .filter((product): product is (typeof newArrivals)[number] => Boolean(product)),
-    ...newArrivals.filter((product) => !homepageNewArrivalSlugs.includes(product.slug)),
-  ];
-  const arrivals = (homepageNewArrivals.length > 0 ? homepageNewArrivals : featuredProducts).slice(0, 8);
+  // newArrivals is already ordered with the spotlight launches first (see catalog.ts).
+  const arrivals = (newArrivals.length > 0 ? newArrivals : featuredProducts).slice(0, 8);
   // The newest styles with a photo take turns in the hero.
   const heroSlides: HeroSlide[] = [...arrivals, ...featuredProducts]
     .filter((product, index, list) => product.coverImage && list.findIndex((p) => p.slug === product.slug) === index)

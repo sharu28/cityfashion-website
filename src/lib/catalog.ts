@@ -143,16 +143,30 @@ export const allProducts = (products as CatalogProduct[]).map(normalizeProduct);
 
 export const featuredProducts = [...allProducts].sort((a, b) => badgeScore(b) - badgeScore(a));
 
-export const newArrivals = allProducts.filter((product) =>
-  ["new", "new-and-deal"].includes(product.merchandisingLane),
-);
+// Newest launches first: shown at the top of New arrivals and of their category.
+export const spotlightSlugs = [
+  "style-3500-ajrakh-short-top",
+  "style-4118-short-top-china",
+  "style-4110-printed-button-frock",
+];
+
+const spotlightRank = (product: CatalogProductView) => {
+  const rank = spotlightSlugs.indexOf(product.slug);
+  return rank === -1 ? spotlightSlugs.length : rank;
+};
+
+const bySpotlight = (a: CatalogProductView, b: CatalogProductView) => spotlightRank(a) - spotlightRank(b);
+
+export const newArrivals = allProducts
+  .filter((product) => ["new", "new-and-deal"].includes(product.merchandisingLane))
+  .sort(bySpotlight);
 
 export const retailerDeals = allProducts.filter((product) =>
   ["deal", "new-and-deal"].includes(product.merchandisingLane),
 );
 
 export const productsByCategory = (slug: string) =>
-  allProducts.filter((product) => product.category === slug);
+  allProducts.filter((product) => product.category === slug).sort(bySpotlight);
 
 export const populatedCategories = categories.filter((category) =>
   allProducts.some((product) => product.category === category.slug),
