@@ -80,6 +80,9 @@ export function AdminOrderDetailEditor({ initialOrder }: { initialOrder: AdminOr
                 <p className="mt-1 text-sm font-black text-[var(--text-strong)]">
                   Sizes: {formatSizeBreakdown(item.sizes) || "confirm with customer"}
                 </p>
+                <p className="mt-1 text-sm font-black text-[var(--text-strong)]">
+                  Colours: {item.colors?.join(", ") || "confirm with customer"}
+                </p>
               </div>
               <p className="font-black text-[var(--text-strong)]">{formatLkr(item.line_total_lkr)}</p>
             </div>

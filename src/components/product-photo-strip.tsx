@@ -19,6 +19,13 @@ type ProductPhotoStripProps = {
   eagerFirst?: boolean;
   /** Overlays drawn on top of the photo (badge, add button). */
   children?: ReactNode;
+  /** Play the photos while a mouse rests on the strip. Off on the product page, where buyers browse by hand. */
+  autoplay?: boolean;
+  /** Always show the Previous / Next arrows on computers, not only on hover. */
+  persistentArrows?: boolean;
+  /** Ask the strip to show a photo. `at` changes on every request, so the same photo can be asked for again. */
+  requestedIndex?: { index: number; at: number } | null;
+  onActiveChange?: (index: number) => void;
 };
 
 function prefersReducedMotion() {
@@ -38,6 +45,10 @@ export function ProductPhotoStrip({
   showMarkers = true,
   eagerFirst = false,
   children,
+  autoplay = true,
+  persistentArrows = false,
+  requestedIndex = null,
+  onActiveChange,
 }: ProductPhotoStripProps) {
   const stripRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
@@ -46,6 +57,9 @@ export function ProductPhotoStrip({
   const images = Array.from(new Set(rawImages));
   const count = images.length;
   const aspectClass = aspect === "4/5" ? "aspect-[4/5]" : "aspect-[3/4]";
+  const arrowVisibility = persistentArrows
+    ? "disabled:hidden md:flex"
+    : "opacity-0 transition-opacity focus-visible:opacity-100 disabled:hidden group-hover/strip:opacity-100 md:flex";
 
   function goTo(index: number) {
     const strip = stripRef.current;
@@ -61,9 +75,23 @@ export function ProductPhotoStrip({
     setActive(Math.max(0, Math.min(count - 1, Math.round(strip.scrollLeft / strip.clientWidth))));
   }
 
+  useEffect(() => {
+    onActiveChange?.(active);
+  }, [active, onActiveChange]);
+
+  useEffect(() => {
+    if (!requestedIndex) return;
+    const strip = stripRef.current;
+    if (!strip) return;
+    const target = Math.max(0, Math.min(count - 1, requestedIndex.index));
+    // Jumps from a colour or a small photo go straight there instead of sliding past every photo between.
+    strip.scrollTo({ left: target * strip.clientWidth, behavior: "auto" });
+    queueMicrotask(() => setActive(target));
+  }, [requestedIndex, count]);
+
   // Play the photos one by one while a mouse rests on the card. Moving the mouse does not change the photo.
   useEffect(() => {
-    if (!isHovering || count < 2 || prefersReducedMotion()) return;
+    if (!autoplay || !isHovering || count < 2 || prefersReducedMotion()) return;
     const timer = window.setInterval(() => {
       setActive((current) => {
         const next = (current + 1) % count;
@@ -73,7 +101,7 @@ export function ProductPhotoStrip({
       });
     }, HOVER_PHOTO_MS);
     return () => window.clearInterval(timer);
-  }, [isHovering, count]);
+  }, [autoplay, isHovering, count]);
 
   function onPointerEnter(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType === "mouse") setIsHovering(true);
@@ -82,6 +110,7 @@ export function ProductPhotoStrip({
   function onPointerLeave(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType !== "mouse") return;
     setIsHovering(false);
+    if (!autoplay) return;
     const strip = stripRef.current;
     if (strip) strip.scrollTo({ left: 0, behavior: "auto" });
     setActive(0);
@@ -146,7 +175,7 @@ export function ProductPhotoStrip({
               aria-label="Previous photo"
               onClick={() => pick(active - 1)}
               disabled={active === 0}
-              className="absolute left-0 top-1/2 hidden h-11 w-9 -translate-y-1/2 items-center justify-center bg-white/90 opacity-0 transition-opacity focus-visible:opacity-100 disabled:hidden group-hover/strip:opacity-100 md:flex"
+              className={`absolute left-0 top-1/2 hidden h-11 w-9 -translate-y-1/2 items-center justify-center bg-white/90 ${arrowVisibility}`}
             >
               <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="m15 18-6-6 6-6" />
@@ -157,7 +186,7 @@ export function ProductPhotoStrip({
               aria-label="Next photo"
               onClick={() => pick(active + 1)}
               disabled={active === count - 1}
-              className="absolute right-0 top-1/2 hidden h-11 w-9 -translate-y-1/2 items-center justify-center bg-white/90 opacity-0 transition-opacity focus-visible:opacity-100 disabled:hidden group-hover/strip:opacity-100 md:flex"
+              className={`absolute right-0 top-1/2 hidden h-11 w-9 -translate-y-1/2 items-center justify-center bg-white/90 ${arrowVisibility}`}
             >
               <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="m9 18 6-6-6-6" />

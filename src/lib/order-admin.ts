@@ -13,7 +13,19 @@ import {
 export * from "@/lib/order-admin-shared";
 
 type StoredOrderRow = Omit<OrderRow, "final_total_lkr">;
-type StoredOrderItemRow = Omit<OrderItemRow, "sizes"> & { size_breakdown: string | null };
+type StoredOrderItemRow = Omit<OrderItemRow, "sizes" | "colors"> & { size_breakdown: string | null; colors?: string | null };
+
+function parseColors(value: string | null | undefined): OrderItemRow["colors"] {
+  if (!value) return null;
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (!Array.isArray(parsed)) return null;
+    const colors = parsed.filter((entry): entry is string => typeof entry === "string" && entry.trim() !== "");
+    return colors.length ? colors : null;
+  } catch {
+    return null;
+  }
+}
 
 function parseSizes(value: string | null): OrderItemRow["sizes"] {
   if (!value) return null;
@@ -65,7 +77,11 @@ export async function getOrder(db: D1Database, id: string): Promise<AdminOrderDe
 
   return {
     ...withFinalTotal(order),
-    items: items.results.map(({ size_breakdown, ...item }) => ({ ...item, sizes: parseSizes(size_breakdown) })),
+    items: items.results.map(({ size_breakdown, colors, ...item }) => ({
+      ...item,
+      sizes: parseSizes(size_breakdown),
+      colors: parseColors(colors),
+    })),
     reference: `CF-${order.public_number}`,
     paymentInstructions: process.env.PAYMENT_INSTRUCTIONS?.trim() ?? "",
   };

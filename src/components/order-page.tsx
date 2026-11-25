@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { useOrderCart } from "@/components/order-cart-provider";
-import { useOrderLine, useOrderSplits } from "@/components/order-sizes-provider";
+import { useOrderColorPicks, useOrderLine, useOrderSplits } from "@/components/order-sizes-provider";
 import { ProductGrid } from "@/components/product-grid";
 import { QuantityInput } from "@/components/quantity-input";
 import { SizeQuantityRows } from "@/components/size-quantity-rows";
@@ -37,6 +37,7 @@ type PayloadItem = PlaceOrderPayload["items"][number];
 export function OrderPage() {
   const { clear, entries, isLoaded, summary } = useOrderCart();
   const splits = useOrderSplits();
+  const colorPicks = useOrderColorPicks();
   const [customerName, setCustomerName] = useState("");
   const [whatsappNumber, setWhatsappNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,7 +56,7 @@ export function OrderPage() {
     [],
   );
   // Sizes are part of the order, so changing them after a failed try counts as a new order.
-  const cartSignature = JSON.stringify({ entries, splits });
+  const cartSignature = JSON.stringify({ entries, splits, colorPicks });
   const hasShortStyle = summary.lines.some((line) => shortStyles.has(line.productSlug));
 
   function markShort(slug: string, isShort: boolean) {
@@ -123,6 +124,9 @@ export function OrderPage() {
   function payloadItems(): PayloadItem[] {
     return entries.map(({ productSlug, quantity }) => {
       const item: PayloadItem = { productSlug, quantity };
+      const catalogColors = productBySlug.get(productSlug)?.colors ?? [];
+      const colors = (colorPicks[productSlug] ?? []).filter((color) => catalogColors.includes(color));
+      if (colors.length) item.colors = colors;
       const sizes = parseSizeRange(productBySlug.get(productSlug)?.sizeRange);
       if (SIZE_ORDERS_SENT && sizes.length > 0) {
         const split = fitSplitToTotal(splits[productSlug] ?? starterSplit(sizes), sizes, quantity);
@@ -318,6 +322,12 @@ function OrderLineItem({
           <p className="shrink-0 text-sm font-semibold">{formatLkr(lineTotalLkr)}</p>
         </div>
         <p className="mt-1 text-xs text-[var(--text-soft)]">{formatLkr(product.unitPriceLkr ?? 0)} each</p>
+        <p className="mt-1 text-xs text-[var(--text-soft)]">
+          {line.colors.length > 0 ? `Colours: ${line.colors.join(", ")}` : "Colours: staff help you choose"}{" "}
+          <Link href={href} className="text-[var(--ink)] underline underline-offset-2">
+            {line.colors.length > 0 ? "Change" : "Pick"}
+          </Link>
+        </p>
 
         {line.isSized ? (
           <div className="mt-3">

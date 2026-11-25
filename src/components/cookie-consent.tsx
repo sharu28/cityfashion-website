@@ -65,7 +65,7 @@ export function CookieConsent() {
   return (
     // A small card in the bottom-left corner: clear of the header, the order bar and the WhatsApp button.
     <div
-      className="fixed bottom-[calc(0.75rem+var(--order-bar-h,0px))] left-3 right-[5.25rem] z-[45] border border-[var(--line)] bg-white p-3 text-[var(--ink)] shadow-[0_8px_24px_rgba(0,0,0,0.08)] sm:bottom-[calc(1.25rem+var(--order-bar-h,0px))] sm:left-5 sm:right-auto sm:w-[22rem]"
+      className="fixed bottom-[calc(0.5rem+var(--order-bar-h,0px))] left-2 right-[4.75rem] z-[45] border border-[var(--line)] bg-white p-2.5 text-[var(--ink)] shadow-[0_8px_24px_rgba(0,0,0,0.08)] sm:bottom-[calc(1.25rem+var(--order-bar-h,0px))] sm:left-5 sm:right-auto sm:w-[22rem] sm:p-3"
       role="dialog"
       aria-label="Cookie choices"
       aria-live="polite"

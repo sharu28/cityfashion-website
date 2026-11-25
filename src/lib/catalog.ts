@@ -179,9 +179,10 @@ export const getProduct = (slug: string) => allProducts.find((product) => produc
 export const getRelatedProducts = (product: CatalogProductView, limit = 4) =>
   allProducts.filter((item) => item.category === product.category && item.slug !== product.slug).slice(0, limit);
 
-export const buildWhatsAppLink = (product?: CatalogProductView | CatalogProduct) => {
+export const buildWhatsAppLink = (product?: CatalogProductView | CatalogProduct, colors: string[] = []) => {
+  const colorLine = colors.length ? ` Colours: ${colors.join(", ")}.` : "";
   const message = product
-    ? `Hello City Fashion, I want ${product.title} (${product.id}). Please send price, colors, and order details.`
+    ? `Hello City Fashion, I want ${product.title} (${product.id}).${colorLine} Please send price, colors, and order details.`
     : "Hello City Fashion, please send your latest wholesale styles and prices.";
 
   return `${whatsappUrl}?text=${encodeURIComponent(message)}`;

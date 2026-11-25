@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { ProductColorPicker } from "@/components/product-color-picker";
+import { ProductGallery } from "@/components/product-gallery";
 import { ProductGrid } from "@/components/product-grid";
 import { ProductOrderPanel } from "@/components/product-order-panel";
-import { ProductPhotoStrip } from "@/components/product-photo-strip";
+import { ProductPageStateProvider } from "@/components/product-page-state";
 import { ProductViewTracker } from "@/components/product-view-tracker";
 import { SectionTitle } from "@/components/section-title";
 import { allProducts, buildWhatsAppLink, getProduct, getRelatedProducts } from "@/lib/catalog";
+import { colorOptions } from "@/lib/product-colors";
 import { shareMetadata } from "@/lib/share-metadata";
 import { getAbsoluteUrl, siteName } from "@/lib/site";
 
@@ -61,13 +64,22 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const relatedProducts = getRelatedProducts(product);
   const isDeal = ["deal", "new-and-deal"].includes(product.merchandisingLane);
+  // Unknown fabric and sizes share one line instead of two "Ask us" rows.
+  const unknown = [!product.fabric && "fabric", !product.sizeRange && "sizes"].filter(Boolean).join(" and ");
   const facts = [
     { label: "Minimum order", value: `${product.moq || "6 pcs"} (any sizes)` },
-    { label: "Fabric", value: product.fabric || "Ask us" },
-    { label: "Sizes", value: product.sizeRange || "Ask us" },
+    ...(product.fabric ? [{ label: "Fabric", value: product.fabric }] : []),
+    ...(product.sizeRange ? [{ label: "Sizes", value: product.sizeRange }] : []),
   ];
+  // Descriptions written as sentences read better as a short list.
+  const points = product.description
+    .split(/(?<=\.)\s+/)
+    .map((point) => point.trim().replace(/\.$/, ""))
+    .filter(Boolean);
+  const options = colorOptions(product);
 
   return (
+    <ProductPageStateProvider>
     <main className="pb-10">
       <ProductViewTracker
         category={product.categoryMeta.name}
@@ -89,12 +101,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="mx-auto max-w-[1440px] lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-12 lg:px-10">
         <section aria-label="Photos" className="min-w-0">
           <div className="mx-auto w-full lg:max-w-[calc((100dvh-7rem)*0.75)]">
-            <ProductPhotoStrip
-              images={product.images}
-              title={product.title}
-              imageSizes="(max-width: 1024px) 100vw, 50vw"
-              eagerFirst
-            />
+            <ProductGallery images={product.images} colors={product.colors} title={product.title} />
           </div>
         </section>
 
@@ -115,23 +122,28 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <dd className="text-right font-medium">{fact.value}</dd>
               </div>
             ))}
+            {unknown ? (
+              <div className="flex justify-between gap-4 py-2.5">
+                <dt className="text-[var(--text-soft)]">{unknown[0].toUpperCase() + unknown.slice(1)}</dt>
+                <dd className="text-right">
+                  <a
+                    href={buildWhatsAppLink(product)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium text-[var(--whatsapp)] underline underline-offset-4"
+                  >
+                    Ask on WhatsApp
+                  </a>
+                </dd>
+              </div>
+            ) : null}
           </dl>
 
-          <div className="mt-5">
-            <p className="label text-[var(--text-soft)]">
-              {product.colors.length > 0 ? `${product.colors.length} colours` : "Colours"}
-            </p>
-            {product.colors.length > 0 ? (
-              <ul className="mt-2 flex flex-wrap gap-1.5">
-                {product.colors.map((color) => (
-                  <li key={color} className="border border-[var(--line)] px-2.5 py-1 text-xs">
-                    {color}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-            <p className="mt-2 text-xs text-[var(--text-soft)]">Our staff confirm colours with you on WhatsApp.</p>
-          </div>
+          {options.length > 0 ? (
+            <div className="mt-5">
+              <ProductColorPicker product={product} options={options} />
+            </div>
+          ) : null}
 
           <div className="mt-6">
             <ProductOrderPanel product={product} />
@@ -141,6 +153,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <p className="mt-4 border border-[var(--ink)] p-3 text-sm leading-6">
               This style has special retailer terms. Ask on WhatsApp for the lot price, colors, and order details.
             </p>
+          ) : null}
+
+          {points.length > 1 ? (
+            <ul className="mt-5 list-disc space-y-1 pl-5 text-sm leading-6 text-[var(--text-soft)]">
+              {points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          ) : product.description ? (
+            <p className="mt-4 text-pretty text-sm leading-6 text-[var(--text-soft)]">{product.description}</p>
           ) : null}
 
           {/* Styles without a price already show a big WhatsApp button in the order panel. */}
@@ -155,9 +177,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </a>
           ) : null}
 
-          {product.description ? (
-            <p className="mt-4 text-pretty text-sm leading-6 text-[var(--text-soft)]">{product.description}</p>
-          ) : null}
         </aside>
       </div>
 
@@ -168,5 +187,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </section>
       ) : null}
     </main>
+    </ProductPageStateProvider>
   );
 }
