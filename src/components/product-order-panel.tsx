@@ -75,7 +75,7 @@ export function ProductOrderPanel({ product }: ProductOrderPanelProps) {
         rel="noreferrer"
         className="flex min-h-12 items-center justify-center bg-[var(--whatsapp)] px-5 text-sm font-semibold text-white"
       >
-        {product.unitPriceLkr ? "Order on WhatsApp" : "Ask price on WhatsApp"}
+        {product.unitPriceLkr || product.startingPrice.startsWith("Rs") ? "Order on WhatsApp" : "Ask price on WhatsApp"}
       </a>
     );
   }

@@ -49,7 +49,7 @@ export function ProductTile({ className = "", imageSizes = tileImageSizes, produ
         ) : null}
         {!product.orderable ? (
           <a href={buildWhatsAppLink(product)} target="_blank" rel="noreferrer" className="mt-1 inline-block font-semibold text-[var(--whatsapp)] underline underline-offset-2">
-            {product.unitPriceLkr || product.startingPrice ? "Order on WhatsApp" : "Ask price on WhatsApp"}
+            {product.unitPriceLkr || product.startingPrice.startsWith("Rs") ? "Order on WhatsApp" : "Ask price on WhatsApp"}
           </a>
         ) : null}
       </div>
