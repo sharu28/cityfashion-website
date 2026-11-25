@@ -29,6 +29,8 @@ export type OrderItemRow = {
   line_total_lkr: number;
   /** Pieces per size, or null when sizes are confirmed by staff. */
   sizes: SizeQuantity[] | null;
+  /** Colours the shop picked, or null when staff help them choose. */
+  colors: string[] | null;
   created_at: string;
 };
 

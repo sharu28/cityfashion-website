@@ -11,7 +11,8 @@ export function OrderCartBar() {
   const { isLoaded, summary } = useOrderCart();
   const pathname = usePathname();
   const barRef = useRef<HTMLDivElement>(null);
-  const isVisible = isLoaded && summary.styleCount > 0 && pathname !== "/order";
+  // Product pages show the order total next to their own button, so a second bar would only confuse.
+  const isVisible = isLoaded && summary.styleCount > 0 && pathname !== "/order" && !pathname.startsWith("/products/");
 
   // Tell the WhatsApp button (and page padding) how tall the bar is, so nothing hides behind it.
   useEffect(() => {

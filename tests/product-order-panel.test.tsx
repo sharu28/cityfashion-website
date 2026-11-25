@@ -47,8 +47,8 @@ describe("ProductOrderPanel", () => {
 
     expect(screen.getByTestId("cart")).toHaveTextContent('[{"productSlug":"style-1390-printed-long-frock","quantity":6}]');
     expect(localStorage.getItem("city-fashion-order-sizes-v1")).toContain('{"M":1,"L":2,"XL":2,"2XL":1}');
-    expect(screen.getByRole("button", { name: /^Update order/ })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "View order" })).toHaveAttribute("href", "/order");
+    expect(screen.getByRole("button", { name: "In your order" })).toBeDisabled();
+    expect(screen.getByRole("link", { name: /^View order/ })).toHaveAttribute("href", "/order");
   });
 
   it("updates the button when a size is typed", async () => {

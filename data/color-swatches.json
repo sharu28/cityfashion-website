@@ -1,0 +1,822 @@
+{
+  "style-1205-printed-long-top": {
+    "Red Blue Floral": {
+      "hex": "#b1b2af",
+      "swatch": "/swatches/style-1205-printed-long-top/red-blue-floral.webp"
+    },
+    "White Navy Motif": {
+      "hex": "#caced8",
+      "swatch": "/swatches/style-1205-printed-long-top/white-navy-motif.webp"
+    },
+    "Pink Grey Motif": {
+      "hex": "#f3b6c9",
+      "swatch": "/swatches/style-1205-printed-long-top/pink-grey-motif.webp"
+    },
+    "Pastel Watercolour": {
+      "hex": "#b2b4af",
+      "swatch": "/swatches/style-1205-printed-long-top/pastel-watercolour.webp"
+    },
+    "Teal Navy Leaf": {
+      "hex": "#528d93",
+      "swatch": "/swatches/style-1205-printed-long-top/teal-navy-leaf.webp"
+    },
+    "Yellow Orange Floral": {
+      "hex": "#d0c6b4",
+      "swatch": "/swatches/style-1205-printed-long-top/yellow-orange-floral.webp"
+    },
+    "Grey Blue Floral": {
+      "hex": "#d1d1cc",
+      "swatch": "/swatches/style-1205-printed-long-top/grey-blue-floral.webp"
+    },
+    "Lilac Rose": {
+      "hex": "#cdafb6",
+      "swatch": "/swatches/style-1205-printed-long-top/lilac-rose.webp"
+    },
+    "Blue Batik": {
+      "hex": "#c2bdb2",
+      "swatch": "/swatches/style-1205-printed-long-top/blue-batik.webp"
+    },
+    "Rust Brown Floral": {
+      "hex": "#ccb8ab",
+      "swatch": "/swatches/style-1205-printed-long-top/rust-brown-floral.webp"
+    }
+  },
+  "style-1390-printed-long-frock": {
+    "Blue Teal": {
+      "hex": "#0e304d",
+      "swatch": "/swatches/style-1390-printed-long-frock/blue-teal.webp"
+    },
+    "Rust Cream": {
+      "hex": "#ad7250",
+      "swatch": "/swatches/style-1390-printed-long-frock/rust-cream.webp"
+    },
+    "Purple Magenta": {
+      "hex": "#74288d",
+      "swatch": "/swatches/style-1390-printed-long-frock/purple-magenta.webp"
+    },
+    "Muted Aqua": {
+      "hex": "#b2a792",
+      "swatch": "/swatches/style-1390-printed-long-frock/muted-aqua.webp"
+    },
+    "Magenta": {
+      "hex": "#8c1437",
+      "swatch": "/swatches/style-1390-printed-long-frock/magenta.webp"
+    },
+    "Olive Pink": {
+      "hex": "#4f4c33",
+      "swatch": "/swatches/style-1390-printed-long-frock/olive-pink.webp"
+    },
+    "Mustard": {
+      "hex": "#716f4b",
+      "swatch": "/swatches/style-1390-printed-long-frock/mustard.webp"
+    },
+    "Pink": {
+      "hex": "#d1b0b0",
+      "swatch": "/swatches/style-1390-printed-long-frock/pink.webp"
+    }
+  },
+  "style-1490-printed-long-frock": {
+    "Coral Circles": {
+      "hex": "#55594d",
+      "swatch": "/swatches/style-1490-printed-long-frock/coral-circles.webp"
+    },
+    "Brown Floral": {
+      "hex": "#b18c71",
+      "swatch": "/swatches/style-1490-printed-long-frock/brown-floral.webp"
+    },
+    "Yellow Floral": {
+      "hex": "#af6d10",
+      "swatch": "/swatches/style-1490-printed-long-frock/yellow-floral.webp"
+    },
+    "Teal Circles": {
+      "hex": "#cdd1b2",
+      "swatch": "/swatches/style-1490-printed-long-frock/teal-circles.webp"
+    },
+    "Blue Abstract": {
+      "hex": "#d4d1ca",
+      "swatch": "/swatches/style-1490-printed-long-frock/blue-abstract.webp"
+    },
+    "Purple Floral": {
+      "hex": "#e9b197",
+      "swatch": "/swatches/style-1490-printed-long-frock/purple-floral.webp"
+    },
+    "Teal Orange Circles": {
+      "hex": "#d1ad91",
+      "swatch": "/swatches/style-1490-printed-long-frock/teal-orange-circles.webp"
+    },
+    "Orange Feather": {
+      "hex": "#37500a",
+      "swatch": "/swatches/style-1490-printed-long-frock/orange-feather.webp"
+    }
+  },
+  "style-1540-golden-thattu-frock": {
+    "Royal Blue": {
+      "hex": "#0259ca",
+      "swatch": "/swatches/style-1540-golden-thattu-frock/royal-blue.webp"
+    }
+  },
+  "style-1630-pleated-frock": {
+    "Mustard Yellow": {
+      "hex": "#efaa36",
+      "swatch": "/swatches/style-1630-pleated-frock/mustard-yellow.webp"
+    },
+    "Coral": {
+      "hex": "#f56a74",
+      "swatch": "/swatches/style-1630-pleated-frock/coral.webp"
+    },
+    "Sky Blue": {
+      "hex": "#46b1e8",
+      "swatch": "/swatches/style-1630-pleated-frock/sky-blue.webp"
+    },
+    "Navy": {
+      "hex": "#8dad51",
+      "swatch": "/swatches/style-1630-pleated-frock/navy.webp"
+    },
+    "Lilac": {
+      "hex": "#ae7796",
+      "swatch": "/swatches/style-1630-pleated-frock/lilac.webp"
+    },
+    "Peach Pink": {
+      "hex": "#e9988d",
+      "swatch": "/swatches/style-1630-pleated-frock/peach-pink.webp"
+    },
+    "Grey": {
+      "hex": "#8fb14e",
+      "swatch": "/swatches/style-1630-pleated-frock/grey.webp"
+    }
+  },
+  "style-1750-printed-shirt-and-pant-set": {
+    "Navy Floral": {
+      "hex": "#cdd0d6",
+      "swatch": "/swatches/style-1750-printed-shirt-and-pant-set/navy-floral.webp"
+    },
+    "Maroon White Abstract": {
+      "hex": "#0f070f",
+      "swatch": "/swatches/style-1750-printed-shirt-and-pant-set/maroon-white-abstract.webp"
+    },
+    "Black White Leaf": {
+      "hex": "#262630",
+      "swatch": "/swatches/style-1750-printed-shirt-and-pant-set/black-white-leaf.webp"
+    },
+    "Teal Maroon Swirl": {
+      "hex": "#171b2c",
+      "swatch": "/swatches/style-1750-printed-shirt-and-pant-set/teal-maroon-swirl.webp"
+    }
+  },
+  "style-1950-embroidered-border-top": {
+    "Mustard": {
+      "hex": "#2c6597",
+      "swatch": "/swatches/style-1950-embroidered-border-top/mustard.webp"
+    },
+    "Navy": {
+      "hex": "#252734",
+      "swatch": "/swatches/style-1950-embroidered-border-top/navy.webp"
+    },
+    "Maroon": {
+      "hex": "#76223b",
+      "swatch": "/swatches/style-1950-embroidered-border-top/maroon.webp"
+    },
+    "Steel Blue": {
+      "hex": "#586d8d",
+      "swatch": "/swatches/style-1950-embroidered-border-top/steel-blue.webp"
+    },
+    "Plum": {
+      "hex": "#482c37",
+      "swatch": "/swatches/style-1950-embroidered-border-top/plum.webp"
+    },
+    "Dusty Rose": {
+      "hex": "#774a49",
+      "swatch": "/swatches/style-1950-embroidered-border-top/dusty-rose.webp"
+    },
+    "Light Grey": {
+      "hex": "#9298a3",
+      "swatch": "/swatches/style-1950-embroidered-border-top/light-grey.webp"
+    },
+    "Red": {
+      "hex": "#b33342",
+      "swatch": "/swatches/style-1950-embroidered-border-top/red.webp"
+    }
+  },
+  "style-2001-bell-plazo-pant": {
+    "Tan Beige": {
+      "hex": "#d6ab73",
+      "swatch": "/swatches/style-2001-bell-plazo-pant/tan-beige.webp"
+    },
+    "White": {
+      "hex": "#d5d6d7",
+      "swatch": "/swatches/style-2001-bell-plazo-pant/white.webp"
+    },
+    "Teal": {
+      "hex": "#02aaaf",
+      "swatch": "/swatches/style-2001-bell-plazo-pant/teal.webp"
+    },
+    "Dark Brown": {
+      "hex": "#362729",
+      "swatch": "/swatches/style-2001-bell-plazo-pant/dark-brown.webp"
+    },
+    "Black": {
+      "hex": "#282a37",
+      "swatch": "/swatches/style-2001-bell-plazo-pant/black.webp"
+    },
+    "Royal Blue": {
+      "hex": "#343587",
+      "swatch": "/swatches/style-2001-bell-plazo-pant/royal-blue.webp"
+    },
+    "Red": {
+      "hex": "#c8142a",
+      "swatch": "/swatches/style-2001-bell-plazo-pant/red.webp"
+    },
+    "Slate Grey": {
+      "hex": "#535766",
+      "swatch": "/swatches/style-2001-bell-plazo-pant/slate-grey.webp"
+    }
+  },
+  "style-2035-printed-frock": {
+    "Green Diamond": {
+      "hex": "#d09671",
+      "swatch": "/swatches/style-2035-printed-frock/green-diamond.webp"
+    },
+    "Pink Motif": {
+      "hex": "#b06b71",
+      "swatch": "/swatches/style-2035-printed-frock/pink-motif.webp"
+    },
+    "Mustard Olive": {
+      "hex": "#b28c28",
+      "swatch": "/swatches/style-2035-printed-frock/mustard-olive.webp"
+    },
+    "Lime Leaf": {
+      "hex": "#8e9229",
+      "swatch": "/swatches/style-2035-printed-frock/lime-leaf.webp"
+    }
+  },
+  "style-266-striped-lungi-set": {
+    "Teal Blue Stripe": {
+      "hex": "#747169",
+      "swatch": "/swatches/style-266-striped-lungi-set/teal-blue-stripe.webp"
+    },
+    "Mustard Black Stripe": {
+      "hex": "#ae724d",
+      "swatch": "/swatches/style-266-striped-lungi-set/mustard-black-stripe.webp"
+    },
+    "Magenta Cream Stripe": {
+      "hex": "#d5946c",
+      "swatch": "/swatches/style-266-striped-lungi-set/magenta-cream-stripe.webp"
+    },
+    "Rust Cream Stripe": {
+      "hex": "#cbb6ab",
+      "swatch": "/swatches/style-266-striped-lungi-set/rust-cream-stripe.webp"
+    },
+    "Olive Black Stripe": {
+      "hex": "#2f2e2f",
+      "swatch": "/swatches/style-266-striped-lungi-set/olive-black-stripe.webp"
+    }
+  },
+  "style-3060-bandhani-print-frock": {
+    "Purple": {
+      "hex": "#492839",
+      "swatch": "/swatches/style-3060-bandhani-print-frock/purple.webp"
+    },
+    "Green": {
+      "hex": "#282a1a",
+      "swatch": "/swatches/style-3060-bandhani-print-frock/green.webp"
+    },
+    "Wine": {
+      "hex": "#512a2f",
+      "swatch": "/swatches/style-3060-bandhani-print-frock/wine.webp"
+    },
+    "Black Brown": {
+      "hex": "#4d342f",
+      "swatch": "/swatches/style-3060-bandhani-print-frock/black-brown.webp"
+    }
+  },
+  "style-3106-belted-printed-frock": {
+    "Coral Red": {
+      "hex": "#f0b2af",
+      "swatch": "/swatches/style-3106-belted-printed-frock/coral-red.webp"
+    },
+    "Sky Blue": {
+      "hex": "#73a6b8",
+      "swatch": "/swatches/style-3106-belted-printed-frock/sky-blue.webp"
+    },
+    "Grey Abstract": {
+      "hex": "#d3cdcc",
+      "swatch": "/swatches/style-3106-belted-printed-frock/grey-abstract.webp"
+    },
+    "Taupe Brown Stripe": {
+      "hex": "#b08a76",
+      "swatch": "/swatches/style-3106-belted-printed-frock/taupe-brown-stripe.webp"
+    },
+    "Orange Tie Dye": {
+      "hex": "#eaae92",
+      "swatch": "/swatches/style-3106-belted-printed-frock/orange-tie-dye.webp"
+    },
+    "Mauve Stripe": {
+      "hex": "#936d6c",
+      "swatch": "/swatches/style-3106-belted-printed-frock/mauve-stripe.webp"
+    },
+    "Maroon Abstract": {
+      "hex": "#e9e5db",
+      "swatch": "/swatches/style-3106-belted-printed-frock/maroon-abstract.webp"
+    },
+    "Black White Abstract": {
+      "hex": "#716f6d",
+      "swatch": "/swatches/style-3106-belted-printed-frock/black-white-abstract.webp"
+    },
+    "Yellow Tie Dye": {
+      "hex": "#ebd491",
+      "swatch": "/swatches/style-3106-belted-printed-frock/yellow-tie-dye.webp"
+    },
+    "Aqua Tie Dye": {
+      "hex": "#adcdd4",
+      "swatch": "/swatches/style-3106-belted-printed-frock/aqua-tie-dye.webp"
+    },
+    "Charcoal Abstract": {
+      "hex": "#d4d4ce",
+      "swatch": "/swatches/style-3106-belted-printed-frock/charcoal-abstract.webp"
+    },
+    "Green Stripe": {
+      "hex": "#96ab8b",
+      "swatch": "/swatches/style-3106-belted-printed-frock/green-stripe.webp"
+    }
+  },
+  "style-3500-ajrakh-short-top": {
+    "Navy Medallion": {
+      "hex": "#6e4c4f",
+      "swatch": "/swatches/style-3500-ajrakh-short-top/navy-medallion.webp"
+    },
+    "Red Medallion": {
+      "hex": "#8e3333",
+      "swatch": "/swatches/style-3500-ajrakh-short-top/red-medallion.webp"
+    },
+    "Maroon Oval": {
+      "hex": "#764d49",
+      "swatch": "/swatches/style-3500-ajrakh-short-top/maroon-oval.webp"
+    },
+    "Red Oval": {
+      "hex": "#a92a2f",
+      "swatch": "/swatches/style-3500-ajrakh-short-top/red-oval.webp"
+    },
+    "Navy Oval": {
+      "hex": "#2e2a31",
+      "swatch": "/swatches/style-3500-ajrakh-short-top/navy-oval.webp"
+    },
+    "Maroon Sunflower": {
+      "hex": "#502d2e",
+      "swatch": "/swatches/style-3500-ajrakh-short-top/maroon-sunflower.webp"
+    },
+    "Red Sunflower": {
+      "hex": "#8c151b",
+      "swatch": "/swatches/style-3500-ajrakh-short-top/red-sunflower.webp"
+    },
+    "Maroon Medallion": {
+      "hex": "#89574b",
+      "swatch": "/swatches/style-3500-ajrakh-short-top/maroon-medallion.webp"
+    }
+  },
+  "style-3501-printed-long-top": {
+    "Sage Bamboo": {
+      "hex": "#87988f",
+      "swatch": "/swatches/style-3501-printed-long-top/sage-bamboo.webp"
+    },
+    "Blue Grey Bamboo": {
+      "hex": "#a7b5ce",
+      "swatch": "/swatches/style-3501-printed-long-top/blue-grey-bamboo.webp"
+    },
+    "Taupe Bamboo": {
+      "hex": "#a89898",
+      "swatch": "/swatches/style-3501-printed-long-top/taupe-bamboo.webp"
+    },
+    "Lavender Bamboo": {
+      "hex": "#b3b4cd",
+      "swatch": "/swatches/style-3501-printed-long-top/lavender-bamboo.webp"
+    },
+    "Pink Mandala": {
+      "hex": "#84485b",
+      "swatch": "/swatches/style-3501-printed-long-top/pink-mandala.webp"
+    },
+    "Black Mandala": {
+      "hex": "#1e1d22",
+      "swatch": "/swatches/style-3501-printed-long-top/black-mandala.webp"
+    },
+    "Charcoal Mandala": {
+      "hex": "#59504e",
+      "swatch": "/swatches/style-3501-printed-long-top/charcoal-mandala.webp"
+    },
+    "Magenta Mandala": {
+      "hex": "#770e56",
+      "swatch": "/swatches/style-3501-printed-long-top/magenta-mandala.webp"
+    }
+  },
+  "style-3502-printed-long-top": {
+    "Black Dotted Leaf": {
+      "hex": "#26272d",
+      "swatch": "/swatches/style-3502-printed-long-top/black-dotted-leaf.webp"
+    },
+    "Navy Dotted Leaf": {
+      "hex": "#161c3b",
+      "swatch": "/swatches/style-3502-printed-long-top/navy-dotted-leaf.webp"
+    },
+    "Maroon Dotted Leaf": {
+      "hex": "#481725",
+      "swatch": "/swatches/style-3502-printed-long-top/maroon-dotted-leaf.webp"
+    },
+    "Olive Grey Dotted Leaf": {
+      "hex": "#585347",
+      "swatch": "/swatches/style-3502-printed-long-top/olive-grey-dotted-leaf.webp"
+    },
+    "Brown Fern": {
+      "hex": "#584a47",
+      "swatch": "/swatches/style-3502-printed-long-top/brown-fern.webp"
+    },
+    "Black Fern": {
+      "hex": "#2a2a32",
+      "swatch": "/swatches/style-3502-printed-long-top/black-fern.webp"
+    },
+    "Teal Floral Vine": {
+      "hex": "#0e2739",
+      "swatch": "/swatches/style-3502-printed-long-top/teal-floral-vine.webp"
+    },
+    "Olive Floral Vine": {
+      "hex": "#464735",
+      "swatch": "/swatches/style-3502-printed-long-top/olive-floral-vine.webp"
+    },
+    "Maroon Floral Vine": {
+      "hex": "#730318",
+      "swatch": "/swatches/style-3502-printed-long-top/maroon-floral-vine.webp"
+    },
+    "Orange Floral Vine": {
+      "hex": "#d4512d",
+      "swatch": "/swatches/style-3502-printed-long-top/orange-floral-vine.webp"
+    },
+    "Purple Leaf Triangle": {
+      "hex": "#371630",
+      "swatch": "/swatches/style-3502-printed-long-top/purple-leaf-triangle.webp"
+    },
+    "Navy Leaf Triangle": {
+      "hex": "#283350",
+      "swatch": "/swatches/style-3502-printed-long-top/navy-leaf-triangle.webp"
+    },
+    "Brown Leaf Triangle": {
+      "hex": "#382826",
+      "swatch": "/swatches/style-3502-printed-long-top/brown-leaf-triangle.webp"
+    },
+    "Black Leaf Triangle": {
+      "hex": "#262930",
+      "swatch": "/swatches/style-3502-printed-long-top/black-leaf-triangle.webp"
+    },
+    "Green Lotus": {
+      "hex": "#314e4c",
+      "swatch": "/swatches/style-3502-printed-long-top/green-lotus.webp"
+    },
+    "Mauve Lotus": {
+      "hex": "#582b39",
+      "swatch": "/swatches/style-3502-printed-long-top/mauve-lotus.webp"
+    },
+    "Blue Lotus": {
+      "hex": "#28344e",
+      "swatch": "/swatches/style-3502-printed-long-top/blue-lotus.webp"
+    },
+    "Teal Sunburst": {
+      "hex": "#123148",
+      "swatch": "/swatches/style-3502-printed-long-top/teal-sunburst.webp"
+    },
+    "Purple Sunburst": {
+      "hex": "#56284a",
+      "swatch": "/swatches/style-3502-printed-long-top/purple-sunburst.webp"
+    },
+    "Green Sunburst": {
+      "hex": "#1a2b2d",
+      "swatch": "/swatches/style-3502-printed-long-top/green-sunburst.webp"
+    },
+    "Wine Sunburst": {
+      "hex": "#301b28",
+      "swatch": "/swatches/style-3502-printed-long-top/wine-sunburst.webp"
+    },
+    "Green Tropical": {
+      "hex": "#172f2a",
+      "swatch": "/swatches/style-3502-printed-long-top/green-tropical.webp"
+    },
+    "Red Tropical": {
+      "hex": "#262956",
+      "swatch": "/swatches/style-3502-printed-long-top/red-tropical.webp"
+    },
+    "Maroon Tropical": {
+      "hex": "#321219",
+      "swatch": "/swatches/style-3502-printed-long-top/maroon-tropical.webp"
+    },
+    "Black Tropical": {
+      "hex": "#101114",
+      "swatch": "/swatches/style-3502-printed-long-top/black-tropical.webp"
+    }
+  },
+  "style-4000-golden-frock": {
+    "Navy Gold": {
+      "hex": "#292e4c",
+      "swatch": "/swatches/style-4000-golden-frock/navy-gold.webp"
+    },
+    "Black Gold": {
+      "hex": "#18181b",
+      "swatch": "/swatches/style-4000-golden-frock/black-gold.webp"
+    },
+    "White Gold": {
+      "hex": "#d1d0d1",
+      "swatch": "/swatches/style-4000-golden-frock/white-gold.webp"
+    }
+  },
+  "style-4015-printed-rayon-frock": {
+    "Pink Leaf": {
+      "hex": "#cf3171",
+      "swatch": "/swatches/style-4015-printed-rayon-frock/pink-leaf.webp"
+    },
+    "Teal Leaf": {
+      "hex": "#066f92",
+      "swatch": "/swatches/style-4015-printed-rayon-frock/teal-leaf.webp"
+    },
+    "Mustard Leaf": {
+      "hex": "#6d8e4e",
+      "swatch": "/swatches/style-4015-printed-rayon-frock/mustard-leaf.webp"
+    },
+    "Black Leaf": {
+      "hex": "#b3b3b3",
+      "swatch": "/swatches/style-4015-printed-rayon-frock/black-leaf.webp"
+    },
+    "Red Leaf": {
+      "hex": "#d09375",
+      "swatch": "/swatches/style-4015-printed-rayon-frock/red-leaf.webp"
+    },
+    "Red Pink Tie Dye": {
+      "hex": "#71112b",
+      "swatch": "/swatches/style-4015-printed-rayon-frock/red-pink-tie-dye.webp"
+    },
+    "Aqua Tie Dye": {
+      "hex": "#6b8f53",
+      "swatch": "/swatches/style-4015-printed-rayon-frock/aqua-tie-dye.webp"
+    },
+    "Magenta Tie Dye": {
+      "hex": "#6f0c34",
+      "swatch": "/swatches/style-4015-printed-rayon-frock/magenta-tie-dye.webp"
+    }
+  },
+  "style-4060-printed-button-frock": {
+    "Mustard Leaf": {
+      "hex": "#cc8d38",
+      "swatch": "/swatches/style-4060-printed-button-frock/mustard-leaf.webp"
+    },
+    "Sage Green Leaf": {
+      "hex": "#889a87",
+      "swatch": "/swatches/style-4060-printed-button-frock/sage-green-leaf.webp"
+    },
+    "Mauve Leaf": {
+      "hex": "#b16e6c",
+      "swatch": "/swatches/style-4060-printed-button-frock/mauve-leaf.webp"
+    },
+    "Red Leaf": {
+      "hex": "#91302b",
+      "swatch": "/swatches/style-4060-printed-button-frock/red-leaf.webp"
+    },
+    "Olive Tulip": {
+      "hex": "#6d7467",
+      "swatch": "/swatches/style-4060-printed-button-frock/olive-tulip.webp"
+    },
+    "Pink Tulip": {
+      "hex": "#cf667a",
+      "swatch": "/swatches/style-4060-printed-button-frock/pink-tulip.webp"
+    },
+    "Brown Tulip": {
+      "hex": "#936b55",
+      "swatch": "/swatches/style-4060-printed-button-frock/brown-tulip.webp"
+    }
+  },
+  "style-4070-embroidered-ruffle-tunic": {
+    "Coral Red": {
+      "hex": "#d24844",
+      "swatch": "/swatches/style-4070-embroidered-ruffle-tunic/coral-red.webp"
+    },
+    "Maroon": {
+      "hex": "#5a1228",
+      "swatch": "/swatches/style-4070-embroidered-ruffle-tunic/maroon.webp"
+    },
+    "Mustard": {
+      "hex": "#b46d09",
+      "swatch": "/swatches/style-4070-embroidered-ruffle-tunic/mustard.webp"
+    },
+    "White": {
+      "hex": "#d3d1d0",
+      "swatch": "/swatches/style-4070-embroidered-ruffle-tunic/white.webp"
+    },
+    "Cream": {
+      "hex": "#efd2a7",
+      "swatch": "/swatches/style-4070-embroidered-ruffle-tunic/cream.webp"
+    },
+    "Sage Green": {
+      "hex": "#738975",
+      "swatch": "/swatches/style-4070-embroidered-ruffle-tunic/sage-green.webp"
+    },
+    "Soft Pink": {
+      "hex": "#e59ba6",
+      "swatch": "/swatches/style-4070-embroidered-ruffle-tunic/soft-pink.webp"
+    }
+  },
+  "style-4090-embroidered-tunic": {
+    "Magenta Purple": {
+      "hex": "#93356b",
+      "swatch": "/swatches/style-4090-embroidered-tunic/magenta-purple.webp"
+    },
+    "Royal Blue": {
+      "hex": "#2e3295",
+      "swatch": "/swatches/style-4090-embroidered-tunic/royal-blue.webp"
+    },
+    "Mustard": {
+      "hex": "#d3892d",
+      "swatch": "/swatches/style-4090-embroidered-tunic/mustard.webp"
+    },
+    "Camel Brown": {
+      "hex": "#b68773",
+      "swatch": "/swatches/style-4090-embroidered-tunic/camel-brown.webp"
+    },
+    "Maroon": {
+      "hex": "#51182a",
+      "swatch": "/swatches/style-4090-embroidered-tunic/maroon.webp"
+    },
+    "White Grey": {
+      "hex": "#ced6e8",
+      "swatch": "/swatches/style-4090-embroidered-tunic/white-grey.webp"
+    },
+    "Teal": {
+      "hex": "#038ead",
+      "swatch": "/swatches/style-4090-embroidered-tunic/teal.webp"
+    },
+    "Cobalt Blue": {
+      "hex": "#103474",
+      "swatch": "/swatches/style-4090-embroidered-tunic/cobalt-blue.webp"
+    },
+    "Black": {
+      "hex": "#d2d2d0",
+      "swatch": "/swatches/style-4090-embroidered-tunic/black.webp"
+    }
+  },
+  "style-4096-embroidered-top-and-pant-set": {
+    "Blue": {
+      "hex": "#1757ae",
+      "swatch": "/swatches/style-4096-embroidered-top-and-pant-set/blue.webp"
+    },
+    "Aqua": {
+      "hex": "#03bac6",
+      "swatch": "/swatches/style-4096-embroidered-top-and-pant-set/aqua.webp"
+    },
+    "Maroon": {
+      "hex": "#851b32",
+      "swatch": "/swatches/style-4096-embroidered-top-and-pant-set/maroon.webp"
+    },
+    "White": {
+      "hex": "#d5d4d4",
+      "swatch": "/swatches/style-4096-embroidered-top-and-pant-set/white.webp"
+    }
+  },
+  "style-4110-printed-button-frock": {
+    "Ivory Charcoal": {
+      "hex": "#8f8f8e",
+      "swatch": "/swatches/style-4110-printed-button-frock/ivory-charcoal.webp"
+    },
+    "Deep Red Cream": {
+      "hex": "#706f6e",
+      "swatch": "/swatches/style-4110-printed-button-frock/deep-red-cream.webp"
+    },
+    "White Black": {
+      "hex": "#cecdd2",
+      "swatch": "/swatches/style-4110-printed-button-frock/white-black.webp"
+    },
+    "Ivory Navy": {
+      "hex": "#edefea",
+      "swatch": "/swatches/style-4110-printed-button-frock/ivory-navy.webp"
+    },
+    "Ivory Olive": {
+      "hex": "#8f8d6e",
+      "swatch": "/swatches/style-4110-printed-button-frock/ivory-olive.webp"
+    },
+    "White Cobalt": {
+      "hex": "#131312",
+      "swatch": "/swatches/style-4110-printed-button-frock/white-cobalt.webp"
+    },
+    "Deep Green Cream": {
+      "hex": "#162a29",
+      "swatch": "/swatches/style-4110-printed-button-frock/deep-green-cream.webp"
+    },
+    "Ivory Lavender": {
+      "hex": "#736e8f",
+      "swatch": "/swatches/style-4110-printed-button-frock/ivory-lavender.webp"
+    }
+  },
+  "style-4117-button-front-gathered-long-top": {
+    "Beige / tan": {
+      "hex": "#cbb397",
+      "swatch": "/swatches/style-4117-button-front-gathered-long-top/beige.webp"
+    },
+    "Soft pink": {
+      "hex": "#db95a6",
+      "swatch": "/swatches/style-4117-button-front-gathered-long-top/soft-pink.webp"
+    },
+    "Lime green": {
+      "hex": "#c8d388",
+      "swatch": "/swatches/style-4117-button-front-gathered-long-top/lime-green.webp"
+    },
+    "Coral pink": {
+      "hex": "#e37b90",
+      "swatch": "/swatches/style-4117-button-front-gathered-long-top/coral-pink.webp"
+    }
+  },
+  "style-4118-short-top-china": {
+    "Peach": {
+      "hex": "#ecc8b6",
+      "swatch": "/swatches/style-4118-short-top-china/peach.webp"
+    },
+    "Pink": {
+      "hex": "#eab4d1",
+      "swatch": "/swatches/style-4118-short-top-china/pink.webp"
+    },
+    "Mustard": {
+      "hex": "#ceb06d",
+      "swatch": "/swatches/style-4118-short-top-china/mustard.webp"
+    },
+    "Black": {
+      "hex": "#25272b",
+      "swatch": "/swatches/style-4118-short-top-china/black.webp"
+    },
+    "White": {
+      "hex": "#e9e9ec",
+      "swatch": "/swatches/style-4118-short-top-china/white.webp"
+    },
+    "Orange": {
+      "hex": "#c74627",
+      "swatch": "/swatches/style-4118-short-top-china/orange.webp"
+    }
+  },
+  "style-4120-collared-gathered-long-top": {
+    "Deep red / wine": {
+      "hex": "#8e1929",
+      "swatch": "/swatches/style-4120-collared-gathered-long-top/deep-red.webp"
+    },
+    "Beige / light cream": {
+      "hex": "#c9bcac",
+      "swatch": "/swatches/style-4120-collared-gathered-long-top/beige.webp"
+    },
+    "Pale blush / peach": {
+      "hex": "#f3d5ce",
+      "swatch": "/swatches/style-4120-collared-gathered-long-top/pale-blush.webp"
+    },
+    "Black": {
+      "hex": "#101115",
+      "swatch": "/swatches/style-4120-collared-gathered-long-top/black.webp"
+    },
+    "Light pink": {
+      "hex": "#eaafca",
+      "swatch": "/swatches/style-4120-collared-gathered-long-top/light-pink.webp"
+    },
+    "White / ivory": {
+      "hex": "#e5e6e5",
+      "swatch": "/swatches/style-4120-collared-gathered-long-top/white.webp"
+    }
+  },
+  "style-445-lungi-top-set": {
+    "Teal": {
+      "hex": "#78726a",
+      "swatch": "/swatches/style-445-lungi-top-set/teal.webp"
+    },
+    "Navy": {
+      "hex": "#242a39",
+      "swatch": "/swatches/style-445-lungi-top-set/navy.webp"
+    },
+    "Grey": {
+      "hex": "#676e74",
+      "swatch": "/swatches/style-445-lungi-top-set/grey.webp"
+    },
+    "Cream": {
+      "hex": "#ce9672",
+      "swatch": "/swatches/style-445-lungi-top-set/cream.webp"
+    },
+    "Black": {
+      "hex": "#25272b",
+      "swatch": "/swatches/style-445-lungi-top-set/black.webp"
+    },
+    "Dusty Pink": {
+      "hex": "#976867",
+      "swatch": "/swatches/style-445-lungi-top-set/dusty-pink.webp"
+    },
+    "Green": {
+      "hex": "#738954",
+      "swatch": "/swatches/style-445-lungi-top-set/green.webp"
+    },
+    "Orange": {
+      "hex": "#cf7448",
+      "swatch": "/swatches/style-445-lungi-top-set/orange.webp"
+    },
+    "Red": {
+      "hex": "#ac1439",
+      "swatch": "/swatches/style-445-lungi-top-set/red.webp"
+    },
+    "Magenta": {
+      "hex": "#b1194c",
+      "swatch": "/swatches/style-445-lungi-top-set/magenta.webp"
+    }
+  }
+}

@@ -21,6 +21,7 @@ export type OrderRepository = {
       quantity: number;
       lineTotalLkr: number;
       sizes?: SizeQuantity[];
+      colors?: string[];
     }>;
   }): Promise<OrderReceipt>;
 };
@@ -36,6 +37,7 @@ export type OrderNotifier = {
       quantity: number;
       lineTotalLkr: number;
       sizes?: SizeQuantity[];
+      colors?: string[];
     }>;
   }): Promise<void>;
 };
@@ -47,6 +49,8 @@ export type OrderCatalogProduct = {
   unitPriceLkr: number | null;
   /** Catalog size range, e.g. "M - 2XL". Sizes in an order must come from it. */
   sizeRange?: string;
+  /** Catalog colours. Colours in an order must come from it. */
+  colors?: string[];
 };
 
 export class OrderRateLimitError extends Error {
@@ -84,6 +88,10 @@ export async function submitOrder(
       sizes = orderedSizes(item.sizes, catalogSizes);
     }
 
+    if (item.colors && item.colors.some((color) => !(product.colors ?? []).includes(color))) {
+      throw new OrderValidationError("invalid_items");
+    }
+
     const unitPriceLkr = Number(product.unitPriceLkr);
     return {
       productId: product.id,
@@ -93,6 +101,7 @@ export async function submitOrder(
       quantity: item.quantity,
       lineTotalLkr: unitPriceLkr * item.quantity,
       ...(sizes ? { sizes } : {}),
+      ...(item.colors ? { colors: item.colors } : {}),
     };
   });
   const productTotalLkr = items.reduce((total, item) => total + item.lineTotalLkr, 0);

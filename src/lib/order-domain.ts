@@ -7,6 +7,8 @@ export type PlaceOrderItem = {
   quantity: number;
   /** Optional pieces per size; zero sizes dropped; they add up to `quantity`. */
   sizes?: SizeQuantity[];
+  /** Optional colours the shop picked, by catalog name. */
+  colors?: string[];
 };
 
 export type PlaceOrderPayload = {
@@ -51,6 +53,20 @@ export function normalizeSriLankaMobile(value: string) {
   }
 
   return `+94${local}`;
+}
+
+const maxColors = 60;
+
+/** Colour names: a list of short, distinct, non-empty strings. Missing or empty means "staff help choose". */
+function validateColors(value: unknown): string[] | undefined {
+  if (value === undefined || value === null) return undefined;
+  if (!Array.isArray(value) || value.length > maxColors) throw new OrderValidationError("invalid_items");
+  const colors: string[] = [];
+  for (const color of value) {
+    if (typeof color !== "string" || color.trim() === "" || color.length > 80) throw new OrderValidationError("invalid_items");
+    if (!colors.includes(color.trim())) colors.push(color.trim());
+  }
+  return colors.length ? colors : undefined;
 }
 
 function validateSizes(value: unknown, quantity: number): SizeQuantity[] | undefined {
@@ -122,7 +138,13 @@ export function validatePlaceOrderPayload(value: unknown): PlaceOrderPayload {
 
     seenSlugs.add(productSlug);
     const sizes = validateSizes(Reflect.get(item, "sizes"), Number(quantity));
-    return sizes ? { productSlug, quantity: Number(quantity), sizes } : { productSlug, quantity: Number(quantity) };
+    const colors = validateColors(Reflect.get(item, "colors"));
+    return {
+      productSlug,
+      quantity: Number(quantity),
+      ...(sizes ? { sizes } : {}),
+      ...(colors ? { colors } : {}),
+    };
   });
 
   return {

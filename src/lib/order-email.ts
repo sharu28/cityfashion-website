@@ -57,7 +57,8 @@ export function createCloudflareOrderNotifier(sender: OrderEmailSender | undefin
       const lines = order.items.map(
         (item) =>
           `${item.productTitle} (${item.productId}) — ${item.quantity} × ${formatLkr(item.unitPriceLkr)} = ${formatLkr(item.lineTotalLkr)}
-  Sizes: ${formatSizeBreakdown(item.sizes) || "staff to confirm"}`,
+  Sizes: ${formatSizeBreakdown(item.sizes) || "staff to confirm"}
+  Colours: ${item.colors?.join(", ") || "staff to confirm"}`,
       );
       const adminUrl = `${siteUrl}/admin/orders/${encodeURIComponent(order.id)}`;
       const text = [
@@ -74,7 +75,7 @@ export function createCloudflareOrderNotifier(sender: OrderEmailSender | undefin
       const htmlLines = order.items
         .map(
           (item) =>
-            `<li><strong>${escapeHtml(item.productTitle)}</strong> (${escapeHtml(item.productId)}) — ${escapeHtml(item.quantity)} × ${escapeHtml(formatLkr(item.unitPriceLkr))} = ${escapeHtml(formatLkr(item.lineTotalLkr))}<br>Sizes: ${escapeHtml(formatSizeBreakdown(item.sizes) || "staff to confirm")}</li>`,
+            `<li><strong>${escapeHtml(item.productTitle)}</strong> (${escapeHtml(item.productId)}) — ${escapeHtml(item.quantity)} × ${escapeHtml(formatLkr(item.unitPriceLkr))} = ${escapeHtml(formatLkr(item.lineTotalLkr))}<br>Sizes: ${escapeHtml(formatSizeBreakdown(item.sizes) || "staff to confirm")}<br>Colours: ${escapeHtml(item.colors?.join(", ") || "staff to confirm")}</li>`,
         )
         .join("");
       const html = `
