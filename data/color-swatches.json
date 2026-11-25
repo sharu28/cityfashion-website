@@ -509,6 +509,24 @@
       "swatch": "/swatches/style-3502-printed-long-top/black-tropical.webp"
     }
   },
+  "style-3503-paisley-long-top": {
+    "Plum Paisley": {
+      "hex": "#4b2735",
+      "swatch": "/swatches/style-3503-paisley-long-top/plum-paisley.webp"
+    },
+    "Bottle Green Paisley": {
+      "hex": "#1b2722",
+      "swatch": "/swatches/style-3503-paisley-long-top/bottle-green-paisley.webp"
+    },
+    "Maroon Paisley": {
+      "hex": "#660e13",
+      "swatch": "/swatches/style-3503-paisley-long-top/maroon-paisley.webp"
+    },
+    "Blue Paisley": {
+      "hex": "#092d54",
+      "swatch": "/swatches/style-3503-paisley-long-top/blue-paisley.webp"
+    }
+  },
   "style-4000-golden-frock": {
     "Navy Gold": {
       "hex": "#292e4c",

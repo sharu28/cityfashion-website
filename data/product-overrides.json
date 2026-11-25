@@ -1713,5 +1713,45 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "3503": {
+    "slug": "style-3503-paisley-long-top",
+    "title": "Style 3503 Paisley Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 2,350",
+    "unitPriceLkr": 2350,
+    "moq": "6 pcs",
+    "description": "Knee-length straight long top with side slits. V-neck with white leaf embroidery and small mirror dots. Three-quarter sleeves. Large paisley print. 4 colours.",
+    "imageOrder": [
+      "01-d3503-plum-paisley.webp",
+      "02-d3503-bottle-green-paisley.webp",
+      "03-d3503-maroon-paisley.webp",
+      "04-d3503-blue-paisley.webp",
+      "05-d3503-plum-paisley-neckline.webp",
+      "06-d3503-plum-paisley-print-sleeve.webp",
+      "07-d3503-plum-paisley-back.webp",
+      "08-d3503-bottle-green-paisley-neckline.webp",
+      "09-d3503-bottle-green-paisley-print-sleeve.webp",
+      "10-d3503-bottle-green-paisley-back.webp",
+      "11-d3503-maroon-paisley-neckline.webp",
+      "12-d3503-maroon-paisley-print-sleeve.webp",
+      "13-d3503-maroon-paisley-back.webp",
+      "14-d3503-blue-paisley-neckline.webp",
+      "15-d3503-blue-paisley-print-sleeve.webp",
+      "16-d3503-blue-paisley-back.webp"
+    ],
+    "colors": [
+      "Plum Paisley",
+      "Bottle Green Paisley",
+      "Maroon Paisley",
+      "Blue Paisley"
+    ],
+    "notes": "Indian imports shipment 2. Set made 2026-11-25 with Codex: one model on a quiet residential road in late-afternoon light (look #4), 4 colours, plus neckline, print-and-sleeve and back close-ups for every colour. Back views are AI reconstructions. Wholesale Rs 2,350 / retail Rs 3,750 from BATCH.md. Not in Odoo yet.",
+    "odooDesignKey": "D3503",
+    "odooSyncMode": "website-only",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }
