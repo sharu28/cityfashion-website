@@ -1064,6 +1064,45 @@
     "sourceFolder": "3502"
   },
   {
+    "id": "3503",
+    "slug": "style-3503-paisley-long-top",
+    "title": "Style 3503 Paisley Long Top",
+    "category": "printed-tops",
+    "startingPrice": "Rs. 2,350",
+    "unitPriceLkr": 2350,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Knee-length straight long top with side slits. V-neck with white leaf embroidery and small mirror dots. Three-quarter sleeves. Large paisley print. 4 colours.",
+    "colors": [
+      "Plum Paisley",
+      "Bottle Green Paisley",
+      "Maroon Paisley",
+      "Blue Paisley"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-3503-paisley-long-top/01-d3503-plum-paisley.webp",
+      "/products/style-3503-paisley-long-top/02-d3503-bottle-green-paisley.webp",
+      "/products/style-3503-paisley-long-top/03-d3503-maroon-paisley.webp",
+      "/products/style-3503-paisley-long-top/04-d3503-blue-paisley.webp",
+      "/products/style-3503-paisley-long-top/05-d3503-plum-paisley-neckline.webp",
+      "/products/style-3503-paisley-long-top/06-d3503-plum-paisley-print-sleeve.webp",
+      "/products/style-3503-paisley-long-top/07-d3503-plum-paisley-back.webp",
+      "/products/style-3503-paisley-long-top/08-d3503-bottle-green-paisley-neckline.webp",
+      "/products/style-3503-paisley-long-top/09-d3503-bottle-green-paisley-print-sleeve.webp",
+      "/products/style-3503-paisley-long-top/10-d3503-bottle-green-paisley-back.webp",
+      "/products/style-3503-paisley-long-top/11-d3503-maroon-paisley-neckline.webp",
+      "/products/style-3503-paisley-long-top/12-d3503-maroon-paisley-print-sleeve.webp",
+      "/products/style-3503-paisley-long-top/13-d3503-maroon-paisley-back.webp",
+      "/products/style-3503-paisley-long-top/14-d3503-blue-paisley-neckline.webp",
+      "/products/style-3503-paisley-long-top/15-d3503-blue-paisley-print-sleeve.webp",
+      "/products/style-3503-paisley-long-top/16-d3503-blue-paisley-back.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "3503"
+  },
+  {
     "id": "4000",
     "slug": "style-4000-golden-frock",
     "title": "Style 4000 Golden Frock",
