@@ -1837,5 +1837,47 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "3516": {
+    "slug": "style-3516-bell-sleeve-long-frock",
+    "title": "Style 3516 Bell Sleeve Long Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 3,500",
+    "unitPriceLkr": 3500,
+    "moq": "6 pcs",
+    "description": "Calf-length long frock, gathered at the high waist into a soft flared skirt. Embroidered front yoke. Three-quarter bell sleeves with lace edge. 2 prints: white diamond embroidery with cream geometric print, and gold sequin embroidery with large flower print. 8 colours.",
+    "imageOrder": [
+      "01-d3516-purple-diamond.webp",
+      "02-d3516-navy-diamond.webp",
+      "03-d3516-olive-diamond.webp",
+      "04-d3516-brown-diamond.webp",
+      "05-d3516-olive-floral.webp",
+      "06-d3516-black-floral.webp",
+      "07-d3516-rust-floral.webp",
+      "08-d3516-mustard-floral.webp",
+      "09-d3516-purple-diamond-neckline.webp",
+      "10-d3516-purple-diamond-print-sleeve.webp",
+      "11-d3516-purple-diamond-back.webp",
+      "12-d3516-olive-floral-neckline.webp",
+      "13-d3516-olive-floral-print-sleeve.webp",
+      "14-d3516-olive-floral-back.webp"
+    ],
+    "colors": [
+      "Purple Diamond",
+      "Navy Diamond",
+      "Olive Diamond",
+      "Brown Diamond",
+      "Olive Floral",
+      "Black Floral",
+      "Rust Floral",
+      "Mustard Floral"
+    ],
+    "notes": "Indian imports shipment 2. Physical tag reads D3514; Sheet4 (26 Nov 2026) numbers it D3516. Set made 2026-11-26 with Codex: one model in a leafy garden courtyard by a park bench (look #7), 8 colours across 2 prints, plus neckline, print-and-sleeve and back close-ups for the dummy colour of each print. Back views are AI reconstructions. Wholesale Rs 3,500 / retail Rs 5,600 from Sheet4. In Odoo as D3516 (76 pcs).",
+    "odooDesignKey": "D3516",
+    "odooSyncMode": "website-only",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }
