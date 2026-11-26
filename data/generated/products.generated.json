@@ -1186,6 +1186,47 @@
     "sourceFolder": "3515"
   },
   {
+    "id": "3516",
+    "slug": "style-3516-bell-sleeve-long-frock",
+    "title": "Style 3516 Bell Sleeve Long Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 3,500",
+    "unitPriceLkr": 3500,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Calf-length long frock, gathered at the high waist into a soft flared skirt. Embroidered front yoke. Three-quarter bell sleeves with lace edge. 2 prints: white diamond embroidery with cream geometric print, and gold sequin embroidery with large flower print. 8 colours.",
+    "colors": [
+      "Purple Diamond",
+      "Navy Diamond",
+      "Olive Diamond",
+      "Brown Diamond",
+      "Olive Floral",
+      "Black Floral",
+      "Rust Floral",
+      "Mustard Floral"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-3516-bell-sleeve-long-frock/01-d3516-purple-diamond.webp",
+      "/products/style-3516-bell-sleeve-long-frock/02-d3516-navy-diamond.webp",
+      "/products/style-3516-bell-sleeve-long-frock/03-d3516-olive-diamond.webp",
+      "/products/style-3516-bell-sleeve-long-frock/04-d3516-brown-diamond.webp",
+      "/products/style-3516-bell-sleeve-long-frock/05-d3516-olive-floral.webp",
+      "/products/style-3516-bell-sleeve-long-frock/06-d3516-black-floral.webp",
+      "/products/style-3516-bell-sleeve-long-frock/07-d3516-rust-floral.webp",
+      "/products/style-3516-bell-sleeve-long-frock/08-d3516-mustard-floral.webp",
+      "/products/style-3516-bell-sleeve-long-frock/09-d3516-purple-diamond-neckline.webp",
+      "/products/style-3516-bell-sleeve-long-frock/10-d3516-purple-diamond-print-sleeve.webp",
+      "/products/style-3516-bell-sleeve-long-frock/11-d3516-purple-diamond-back.webp",
+      "/products/style-3516-bell-sleeve-long-frock/12-d3516-olive-floral-neckline.webp",
+      "/products/style-3516-bell-sleeve-long-frock/13-d3516-olive-floral-print-sleeve.webp",
+      "/products/style-3516-bell-sleeve-long-frock/14-d3516-olive-floral-back.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "3516"
+  },
+  {
     "id": "4000",
     "slug": "style-4000-golden-frock",
     "title": "Style 4000 Golden Frock",

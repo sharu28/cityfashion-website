@@ -621,6 +621,40 @@
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/navy-tie-dye.webp"
     }
   },
+  "style-3516-bell-sleeve-long-frock": {
+    "Purple Diamond": {
+      "hex": "#70304f",
+      "swatch": "/swatches/style-3516-bell-sleeve-long-frock/purple-diamond.webp"
+    },
+    "Navy Diamond": {
+      "hex": "#2d374a",
+      "swatch": "/swatches/style-3516-bell-sleeve-long-frock/navy-diamond.webp"
+    },
+    "Olive Diamond": {
+      "hex": "#4d4919",
+      "swatch": "/swatches/style-3516-bell-sleeve-long-frock/olive-diamond.webp"
+    },
+    "Brown Diamond": {
+      "hex": "#724715",
+      "swatch": "/swatches/style-3516-bell-sleeve-long-frock/brown-diamond.webp"
+    },
+    "Olive Floral": {
+      "hex": "#584a15",
+      "swatch": "/swatches/style-3516-bell-sleeve-long-frock/olive-floral.webp"
+    },
+    "Black Floral": {
+      "hex": "#2d2c27",
+      "swatch": "/swatches/style-3516-bell-sleeve-long-frock/black-floral.webp"
+    },
+    "Rust Floral": {
+      "hex": "#942713",
+      "swatch": "/swatches/style-3516-bell-sleeve-long-frock/rust-floral.webp"
+    },
+    "Mustard Floral": {
+      "hex": "#8a570a",
+      "swatch": "/swatches/style-3516-bell-sleeve-long-frock/mustard-floral.webp"
+    }
+  },
   "style-4000-golden-frock": {
     "Navy Gold": {
       "hex": "#292e4c",
