@@ -655,6 +655,20 @@
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/mustard-floral.webp"
     }
   },
+  "style-3517-premium-long-frock": {
+    "Mustard": {
+      "hex": "#aa730b",
+      "swatch": "/swatches/style-3517-premium-long-frock/mustard.webp"
+    },
+    "Maroon": {
+      "hex": "#721526",
+      "swatch": "/swatches/style-3517-premium-long-frock/maroon.webp"
+    },
+    "Navy": {
+      "hex": "#16182a",
+      "swatch": "/swatches/style-3517-premium-long-frock/navy.webp"
+    }
+  },
   "style-4000-golden-frock": {
     "Navy Gold": {
       "hex": "#292e4c",
