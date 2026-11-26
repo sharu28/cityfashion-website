@@ -26,8 +26,52 @@ function renderOrderPage() {
 }
 
 describe("OrderPage", () => {
-  beforeEach(() => localStorage.clear());
+  beforeEach(() => {
+    localStorage.clear();
+    window.history.replaceState(null, "", "/order");
+  });
   afterEach(() => vi.unstubAllGlobals());
+
+  it("shows the placed order again after a refresh", async () => {
+    localStorage.setItem(
+      "city-fashion-placed-order-v1",
+      JSON.stringify({
+        reference: "CF-1002",
+        productTotalLkr: 9000,
+        createdAt: "2026-09-02T10:00:00.000Z",
+        customerName: "Nimali",
+        whatsappPhone: "+94742216040",
+        items: [
+          {
+            productSlug,
+            productId: "1390",
+            title: "Style 1390 Printed Long Frock",
+            coverImage: null,
+            unitPriceLkr: 1500,
+            quantity: 6,
+            lineTotalLkr: 9000,
+          },
+        ],
+      }),
+    );
+    window.history.replaceState(null, "", "/order?placed=CF-1002");
+    renderWith([]);
+
+    expect(await screen.findByText("CF-1002")).toBeVisible();
+    expect(screen.getByText("074 221 6040")).toBeVisible();
+    expect(screen.queryByText("Your order is empty")).toBeNull();
+  });
+
+  it("does not show an old order when the link names a different one", async () => {
+    localStorage.setItem(
+      "city-fashion-placed-order-v1",
+      JSON.stringify({ reference: "CF-1002", productTotalLkr: 0, createdAt: "", customerName: "A", whatsappPhone: "", items: [] }),
+    );
+    window.history.replaceState(null, "", "/order?placed=CF-9999");
+    renderWith([]);
+
+    expect(await screen.findByText("Your order is empty")).toBeVisible();
+  });
 
   it("submits only name, phone, idempotency key, and cart lines with their sizes", async () => {
     const fetchMock = vi.fn().mockResolvedValue({
@@ -50,8 +94,20 @@ describe("OrderPage", () => {
     await user.type(screen.getByLabelText("WhatsApp number"), "0742216040");
     await user.click(screen.getByRole("button", { name: "Place order" }));
 
-    expect(await screen.findByText("Order received")).toBeVisible();
+    expect(await screen.findByRole("heading", { level: 1, name: "Thank you, Nimali" })).toBeVisible();
+    expect(screen.getByText("Your order is placed.")).toBeVisible();
     expect(screen.getByText("CF-1001")).toBeVisible();
+    // The buyer can check the number staff will call and the styles they ordered.
+    expect(screen.getByText("074 221 6040")).toBeVisible();
+    expect(screen.getByText("Style 1390 Printed Long Frock")).toBeVisible();
+    expect(screen.getByText("M 1, L 2, XL 2, 2XL 1")).toBeVisible();
+    expect(screen.getByText("Delivery not included")).toBeVisible();
+    expect(window.location.search).toBe("?placed=CF-1001");
+    const sendLink = screen.getByRole("link", { name: "Send my order on WhatsApp" });
+    const message = new URL(sendLink.getAttribute("href")!).searchParams.get("text")!;
+    expect(message).toContain("I placed order CF-1001.");
+    expect(message).toContain("- Style 1390 Printed Long Frock: 6 pcs (M 1, L 2, XL 2, 2XL 1) = Rs. 9,000");
+    expect(message).toContain("Name: Nimali");
     expect(screen.getByRole("link", { name: "Message us on WhatsApp" })).toHaveAttribute(
       "href",
       expect.stringContaining("CF-1001"),

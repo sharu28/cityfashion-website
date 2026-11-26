@@ -11,11 +11,18 @@ import { QuantityInput } from "@/components/quantity-input";
 import { SizeQuantityRows } from "@/components/size-quantity-rows";
 import { allProducts, type CatalogProductView, formatLkr, newArrivals } from "@/lib/catalog";
 import { MIN_ORDER_QUANTITY } from "@/lib/order-cart";
+import { OrderConfirmation } from "@/components/order-confirmation";
 import {
-  buildOrderSupportWhatsAppLink,
+  normalizeSriLankaMobile,
   type OrderReceipt,
   type PlaceOrderPayload,
 } from "@/lib/order-domain";
+import {
+  loadPlacedOrder,
+  placedOrderParam,
+  savePlacedOrder,
+  type PlacedOrder,
+} from "@/lib/placed-order";
 import {
   fitSplitToTotal,
   formatSplit,
@@ -42,14 +49,32 @@ export function OrderPage() {
   const [whatsappNumber, setWhatsappNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [receipt, setReceipt] = useState<OrderReceipt | null>(null);
+  const [placedOrder, setPlacedOrder] = useState<PlacedOrder | null>(null);
+  const [hasCheckedPlaced, setHasCheckedPlaced] = useState(false);
   // Styles whose size rows show an unsaved change under 6 pieces. The order waits until they are fixed.
   const [shortStyles, setShortStyles] = useState<ReadonlySet<string>>(() => new Set());
 
+  // After a refresh, /order?placed=CF-1001 shows the saved confirmation again instead of an empty order.
+  useEffect(() => {
+    let isActive = true;
+    const reference = new URLSearchParams(window.location.search).get(placedOrderParam);
+    const stored = reference ? loadPlacedOrder(reference) : null;
+
+    queueMicrotask(() => {
+      if (!isActive) return;
+      if (stored) setPlacedOrder(stored);
+      setHasCheckedPlaced(true);
+    });
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
   // The form sits low on a phone; bring the order number into view once it is placed.
   useEffect(() => {
-    if (receipt) window.scrollTo({ top: 0 });
-  }, [receipt]);
+    if (placedOrder) window.scrollTo({ top: 0 });
+  }, [placedOrder]);
   const idempotency = useRef<{ cartSignature: string; key: string } | null>(null);
   const productBySlug = useMemo(
     () => new Map(allProducts.map((product) => [product.slug, product])),
@@ -69,36 +94,11 @@ export function OrderPage() {
     });
   }
 
-  if (receipt) {
-    return (
-      <section className="mx-auto max-w-xl px-4 py-10 sm:px-6">
-        <p className="label text-[var(--text-soft)]">Order received</p>
-        <h1 className="mt-3 text-5xl font-semibold tracking-[-0.02em] sm:text-6xl">{receipt.reference}</h1>
-        <div className="mt-8 flex items-baseline justify-between border-y border-[var(--line)] py-4">
-          <p className="text-sm text-[var(--text-soft)]">Product total</p>
-          <p className="text-2xl font-semibold">{formatLkr(receipt.productTotalLkr)}</p>
-        </div>
-        <p className="mt-6 text-base leading-7 text-[var(--text-soft)]">
-          Our staff will contact you shortly to confirm delivery and payment.
-        </p>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2">
-          <a
-            href={buildOrderSupportWhatsAppLink(receipt.reference)}
-            target="_blank"
-            rel="noreferrer"
-            className="flex min-h-12 items-center justify-center bg-[var(--whatsapp)] px-6 text-sm font-semibold text-white"
-          >
-            Message us on WhatsApp
-          </a>
-          <Link href="/#new-arrivals" className="flex min-h-12 items-center justify-center border border-[var(--ink)] px-6 text-sm font-semibold">
-            Continue shopping
-          </Link>
-        </div>
-      </section>
-    );
+  if (placedOrder) {
+    return <OrderConfirmation order={placedOrder} />;
   }
 
-  if (!isLoaded) {
+  if (!isLoaded || !hasCheckedPlaced) {
     return <p className="px-4 py-16 text-sm text-[var(--text-soft)] sm:px-6 lg:px-10">Loading your order...</p>;
   }
 
@@ -138,6 +138,42 @@ export function OrderPage() {
     });
   }
 
+  function toPlacedOrder(receipt: OrderReceipt, items: PayloadItem[]): PlacedOrder {
+    let whatsappPhone = whatsappNumber.trim();
+    try {
+      whatsappPhone = normalizeSriLankaMobile(whatsappNumber);
+    } catch {
+      // The server already accepted it, so keep what the buyer typed.
+    }
+    const itemBySlug = new Map(items.map((item) => [item.productSlug, item]));
+
+    return {
+      reference: receipt.reference,
+      productTotalLkr: receipt.productTotalLkr,
+      createdAt: receipt.createdAt,
+      customerName: customerName.trim(),
+      whatsappPhone,
+      items: summary.lines.flatMap((line) => {
+        const product = productBySlug.get(line.productSlug);
+        if (!product) return [];
+        const sent = itemBySlug.get(line.productSlug);
+        return [
+          {
+            productSlug: line.productSlug,
+            productId: product.id,
+            title: product.title,
+            coverImage: product.coverImage,
+            unitPriceLkr: line.unitPriceLkr,
+            quantity: line.quantity,
+            lineTotalLkr: line.lineTotalLkr,
+            sizes: sent?.sizes,
+            colors: sent?.colors,
+          },
+        ];
+      }),
+    };
+  }
+
   async function placeOrder() {
     const activeKey =
       idempotency.current?.cartSignature === cartSignature
@@ -166,7 +202,10 @@ export function OrderPage() {
       }
 
       idempotency.current = null;
-      setReceipt(result);
+      const order = toPlacedOrder(result, payload.items);
+      savePlacedOrder(order);
+      window.history.replaceState(null, "", `/order?${placedOrderParam}=${encodeURIComponent(order.reference)}`);
+      setPlacedOrder(order);
       clear();
     } catch {
       setErrorMessage(recoveryMessage);
