@@ -1879,5 +1879,34 @@
     "newArrivalApproval": "yes",
     "retailerDealApproval": "no",
     "priceSource": "override"
+  },
+  "3517": {
+    "slug": "style-3517-premium-long-frock",
+    "title": "Style 3517 Premium Long Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 3,500",
+    "unitPriceLkr": 3500,
+    "moq": "6 pcs",
+    "description": "Ankle-length premium long frock, gathered at the high waist into a full skirt with a frill at the hem. White floral embroidered yoke with fine gold grid. Three-quarter bell sleeves with lace edge. Ikat-style print. 3 colours.",
+    "imageOrder": [
+      "01-d3517-mustard.webp",
+      "02-d3517-maroon.webp",
+      "03-d3517-navy.webp",
+      "04-d3517-mustard-neckline.webp",
+      "05-d3517-mustard-print-sleeve.webp",
+      "06-d3517-mustard-back.webp"
+    ],
+    "colors": [
+      "Mustard",
+      "Maroon",
+      "Navy"
+    ],
+    "notes": "Indian imports shipment 2. Physical tag reads D3514 (Premium Frock); Sheet4 (26 Nov 2026) numbers it D3517. Set made 2026-11-26 with Codex: one model on a clean granite staircase (look #5), ankle length with no trousers per owner, 3 colours plus neckline, print-and-sleeve and back close-ups for mustard. Back views are AI reconstructions. Wholesale Rs 3,500 / retail Rs 5,600 from Sheet4. In Odoo as D3517 (52 pcs).",
+    "odooDesignKey": "D3517",
+    "odooSyncMode": "website-only",
+    "publicationStatus": "published",
+    "newArrivalApproval": "yes",
+    "retailerDealApproval": "no",
+    "priceSource": "override"
   }
 }

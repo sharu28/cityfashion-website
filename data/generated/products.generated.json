@@ -1227,6 +1227,34 @@
     "sourceFolder": "3516"
   },
   {
+    "id": "3517",
+    "slug": "style-3517-premium-long-frock",
+    "title": "Style 3517 Premium Long Frock",
+    "category": "frocks",
+    "startingPrice": "Rs. 3,500",
+    "unitPriceLkr": 3500,
+    "moq": "6 pcs",
+    "fabric": "",
+    "sizeRange": "",
+    "description": "Ankle-length premium long frock, gathered at the high waist into a full skirt with a frill at the hem. White floral embroidered yoke with fine gold grid. Three-quarter bell sleeves with lace edge. Ikat-style print. 3 colours.",
+    "colors": [
+      "Mustard",
+      "Maroon",
+      "Navy"
+    ],
+    "merchandisingLane": "new",
+    "images": [
+      "/products/style-3517-premium-long-frock/01-d3517-mustard.webp",
+      "/products/style-3517-premium-long-frock/02-d3517-maroon.webp",
+      "/products/style-3517-premium-long-frock/03-d3517-navy.webp",
+      "/products/style-3517-premium-long-frock/04-d3517-mustard-neckline.webp",
+      "/products/style-3517-premium-long-frock/05-d3517-mustard-print-sleeve.webp",
+      "/products/style-3517-premium-long-frock/06-d3517-mustard-back.webp"
+    ],
+    "cloudinaryImages": [],
+    "sourceFolder": "3517"
+  },
+  {
     "id": "4000",
     "slug": "style-4000-golden-frock",
     "title": "Style 4000 Golden Frock",
