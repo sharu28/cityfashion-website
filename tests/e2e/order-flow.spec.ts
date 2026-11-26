@@ -91,12 +91,15 @@ test("a retailer places an order and the owner receives it", async ({ page, brow
   await shot("checkout-filled");
   await page.getByRole("button", { name: "Place order" }).click();
 
-  const referenceHeading = page.getByRole("heading", { level: 1, name: /^CF-\d{4,}$/ });
-  await expect(referenceHeading).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /^Thank you/ })).toBeVisible();
+  const referenceText = page.getByText(/^CF-\d{4,}$/);
   // The customer must see their order number without scrolling (the form sits low on a phone).
-  await expect(referenceHeading).toBeInViewport();
-  await expect(page.getByText("Our staff will contact you shortly")).toBeVisible();
-  const reference = (await referenceHeading.textContent())!.trim();
+  await expect(referenceText).toBeInViewport();
+  await expect(page.getByText("Our staff will call you on")).toBeVisible();
+  const reference = (await referenceText.textContent())!.trim();
+  // A refresh keeps the confirmation instead of showing an empty order.
+  await page.reload();
+  await expect(page.getByText(reference, { exact: true })).toBeVisible();
   const publicNumber = Number(reference.slice(3));
   await shot("order-received");
 
