@@ -529,43 +529,43 @@
   },
   "style-3515-embroidered-yoke-long-frock": {
     "Red Rose": {
-      "hex": "#910f2b",
+      "hex": "#910e28",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/red-rose.webp"
     },
     "Brown Rose": {
-      "hex": "#734b2e",
+      "hex": "#6b360e",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/brown-rose.webp"
     },
     "Blue Rose": {
-      "hex": "#50504c",
+      "hex": "#0e374a",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/blue-rose.webp"
     },
     "Olive Rose": {
-      "hex": "#332716",
+      "hex": "#2f2618",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/olive-rose.webp"
     },
     "Mauve Vine": {
-      "hex": "#6d4f4f",
+      "hex": "#6f4e4d",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/mauve-vine.webp"
     },
     "Navy Vine": {
-      "hex": "#29374d",
+      "hex": "#29394e",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/navy-vine.webp"
     },
     "Mustard Vine": {
-      "hex": "#b28e4f",
+      "hex": "#ad730a",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/mustard-vine.webp"
     },
     "Brown Vine": {
-      "hex": "#4c352d",
+      "hex": "#4d352b",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/brown-vine.webp"
     },
     "Blue Floral": {
-      "hex": "#4f4f4f",
+      "hex": "#50504f",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/blue-floral.webp"
     },
     "Wine Floral": {
-      "hex": "#2e0f15",
+      "hex": "#2f0f14",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/wine-floral.webp"
     },
     "Black Floral": {
@@ -573,31 +573,31 @@
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/black-floral.webp"
     },
     "Beige Floral": {
-      "hex": "#ab9570",
+      "hex": "#ad936e",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/beige-floral.webp"
     },
     "Teal Leaf": {
-      "hex": "#0b2b35",
+      "hex": "#0a2c37",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/teal-leaf.webp"
     },
     "Black Leaf": {
-      "hex": "#302c28",
+      "hex": "#2f2c27",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/black-leaf.webp"
     },
     "Plum Leaf": {
-      "hex": "#370f27",
+      "hex": "#461530",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/plum-leaf.webp"
     },
     "Maroon Leaf": {
-      "hex": "#4a111a",
+      "hex": "#4e1119",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/maroon-leaf.webp"
     },
     "Purple Swirl": {
-      "hex": "#320e34",
+      "hex": "#4a164c",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/purple-swirl.webp"
     },
     "Pink Swirl": {
-      "hex": "#8e324b",
+      "hex": "#720e2a",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/pink-swirl.webp"
     },
     "Black Swirl": {
@@ -605,53 +605,53 @@
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/black-swirl.webp"
     },
     "Olive Swirl": {
-      "hex": "#cd9473",
+      "hex": "#d09471",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/olive-swirl.webp"
     },
     "Red Tie Dye": {
-      "hex": "#ab0b19",
+      "hex": "#af0816",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/red-tie-dye.webp"
     },
     "Olive Tie Dye": {
-      "hex": "#6d540a",
+      "hex": "#6f5408",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/olive-tie-dye.webp"
     },
     "Navy Tie Dye": {
-      "hex": "#0d192d",
+      "hex": "#0a182e",
       "swatch": "/swatches/style-3515-embroidered-yoke-long-frock/navy-tie-dye.webp"
     }
   },
   "style-3516-bell-sleeve-long-frock": {
     "Purple Diamond": {
-      "hex": "#70304f",
+      "hex": "#73294d",
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/purple-diamond.webp"
     },
     "Navy Diamond": {
-      "hex": "#2d374a",
+      "hex": "#2b374a",
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/navy-diamond.webp"
     },
     "Olive Diamond": {
-      "hex": "#4d4919",
+      "hex": "#504b18",
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/olive-diamond.webp"
     },
     "Brown Diamond": {
-      "hex": "#724715",
+      "hex": "#76470f",
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/brown-diamond.webp"
     },
     "Olive Floral": {
-      "hex": "#584a15",
+      "hex": "#695715",
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/olive-floral.webp"
     },
     "Black Floral": {
-      "hex": "#2d2c27",
+      "hex": "#2b2a28",
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/black-floral.webp"
     },
     "Rust Floral": {
-      "hex": "#942713",
+      "hex": "#972611",
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/rust-floral.webp"
     },
     "Mustard Floral": {
-      "hex": "#8a570a",
+      "hex": "#8e570a",
       "swatch": "/swatches/style-3516-bell-sleeve-long-frock/mustard-floral.webp"
     }
   },
