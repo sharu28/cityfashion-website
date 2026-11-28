@@ -791,6 +791,64 @@
       "swatch": "/swatches/style-3520-premium-collar-coord-set/taupe-daisy.webp"
     }
   },
+  "style-3519-printed-collar-coord-set": {
+    "Brown Leaf": {
+      "hex": "#b9aaab",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/brown-leaf.webp"
+    },
+    "Taupe Leaf": {
+      "hex": "#d3cdcc",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/taupe-leaf.webp"
+    },
+    "Olive Leaf": {
+      "hex": "#d2d4d2",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/olive-leaf.webp"
+    },
+    "Grey Leaf": {
+      "hex": "#aeaeb4",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/grey-leaf.webp"
+    },
+    "Lilac Floral": {
+      "hex": "#b796a6",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/lilac-floral.webp"
+    },
+    "Sky Blue Floral": {
+      "hex": "#d4d6d6",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/sky-blue-floral.webp"
+    },
+    "Beige Floral": {
+      "hex": "#d3cfcc",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/beige-floral.webp"
+    },
+    "Pink Floral": {
+      "hex": "#c8aeb5",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/pink-floral.webp"
+    },
+    "Mustard Feather": {
+      "hex": "#cdaf74",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/mustard-feather.webp"
+    },
+    "Rust Feather": {
+      "hex": "#b84d37",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/rust-feather.webp"
+    },
+    "Cream Feather": {
+      "hex": "#cbc4b9",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/cream-feather.webp"
+    },
+    "Brown Net Daisy": {
+      "hex": "#55494a",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/brown-net-daisy.webp"
+    },
+    "Olive Net Daisy": {
+      "hex": "#5c6553",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/olive-net-daisy.webp"
+    },
+    "Maroon Net Daisy": {
+      "hex": "#701b2c",
+      "swatch": "/swatches/style-3519-printed-collar-coord-set/maroon-net-daisy.webp"
+    }
+  },
   "style-4000-golden-frock": {
     "Navy Gold": {
       "hex": "#292e4c",
