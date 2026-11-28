@@ -669,6 +669,128 @@
       "swatch": "/swatches/style-3517-premium-long-frock/navy.webp"
     }
   },
+  "style-3520-premium-collar-coord-set": {
+    "Olive Shadow Leaf": {
+      "hex": "#54554b",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/olive-shadow-leaf.webp"
+    },
+    "Brown Shadow Leaf": {
+      "hex": "#8b7367",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/brown-shadow-leaf.webp"
+    },
+    "Black Shadow Leaf": {
+      "hex": "#c7b8ab",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/black-shadow-leaf.webp"
+    },
+    "Lavender Monstera": {
+      "hex": "#d4cdcf",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/lavender-monstera.webp"
+    },
+    "Grey Monstera": {
+      "hex": "#a7988f",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/grey-monstera.webp"
+    },
+    "Blue Monstera": {
+      "hex": "#d3d5d4",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/blue-monstera.webp"
+    },
+    "Bottle Green Flower": {
+      "hex": "#253231",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/bottle-green-flower.webp"
+    },
+    "Red Flower": {
+      "hex": "#8b1726",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/red-flower.webp"
+    },
+    "Khaki Flower": {
+      "hex": "#454544",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/khaki-flower.webp"
+    },
+    "Black Paisley": {
+      "hex": "#2a2827",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/black-paisley.webp"
+    },
+    "Navy Paisley": {
+      "hex": "#242634",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/navy-paisley.webp"
+    },
+    "Maroon Paisley": {
+      "hex": "#c9b7a7",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/maroon-paisley.webp"
+    },
+    "Teal Paisley": {
+      "hex": "#14425b",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/teal-paisley.webp"
+    },
+    "Mauve Confetti": {
+      "hex": "#99586e",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/mauve-confetti.webp"
+    },
+    "Brown Confetti": {
+      "hex": "#8a6e54",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/brown-confetti.webp"
+    },
+    "Teal Confetti": {
+      "hex": "#113950",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/teal-confetti.webp"
+    },
+    "Black Leaf Triangle": {
+      "hex": "#27282b",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/black-leaf-triangle.webp"
+    },
+    "Navy Leaf Triangle": {
+      "hex": "#293147",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/navy-leaf-triangle.webp"
+    },
+    "Wine Leaf Triangle": {
+      "hex": "#51182e",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/wine-leaf-triangle.webp"
+    },
+    "Navy Stripe Block": {
+      "hex": "#2b364e",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/navy-stripe-block.webp"
+    },
+    "Olive Stripe Block": {
+      "hex": "#666956",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/olive-stripe-block.webp"
+    },
+    "Red Stripe Block": {
+      "hex": "#892d3a",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/red-stripe-block.webp"
+    },
+    "Olive Starburst": {
+      "hex": "#6b694d",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/olive-starburst.webp"
+    },
+    "Slate Starburst": {
+      "hex": "#4a5765",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/slate-starburst.webp"
+    },
+    "Brick Starburst": {
+      "hex": "#8d3430",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/brick-starburst.webp"
+    },
+    "Navy Geometric": {
+      "hex": "#163248",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/navy-geometric.webp"
+    },
+    "Wine Geometric": {
+      "hex": "#50272d",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/wine-geometric.webp"
+    },
+    "Red Geometric": {
+      "hex": "#ab2c19",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/red-geometric.webp"
+    },
+    "Rose Daisy": {
+      "hex": "#952e52",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/rose-daisy.webp"
+    },
+    "Taupe Daisy": {
+      "hex": "#766458",
+      "swatch": "/swatches/style-3520-premium-collar-coord-set/taupe-daisy.webp"
+    }
+  },
   "style-4000-golden-frock": {
     "Navy Gold": {
       "hex": "#292e4c",
